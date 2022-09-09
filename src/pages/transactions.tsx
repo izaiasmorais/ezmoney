@@ -1,9 +1,8 @@
 import { Flex } from "@chakra-ui/react";
-import type { NextPage } from "next";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
-const Home: NextPage = () => {
+export default function Transactions() {
   return (
     <Flex w="100vw" h="100vh" bg="dark.500">
       <Sidebar />
@@ -18,6 +17,4 @@ const Home: NextPage = () => {
       </Flex>
     </Flex>
   );
-};
-
-export default Home;
+}

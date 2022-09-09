@@ -7,6 +7,8 @@ const colors = {
   },
   dark: {
     "100": "#323238",
+    "300": "#464A4D",
+    "500": "#293033",
     "700": "#0D0E0F",
   },
   red: {
@@ -27,8 +29,9 @@ const colors = {
   },
   white: {
     "100": "#FFFFFF",
-    "200": "#F2F4F5",
-    "300": "#E3E5E5",
+    "200": "#F5F5F5",
+    "300": "#F2F4F5",
+    "500": "#E3E5E5",
   },
 };
 
@@ -41,7 +44,7 @@ export const theme = extendTheme({
   },
   styles: {
     global: {
-      background: "gray.700",
+      background: "white.300",
     },
   },
 });
