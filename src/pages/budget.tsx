@@ -1,27 +1,20 @@
 import { Flex } from "@chakra-ui/react";
-import type { NextPage } from "next";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
-import { Summary } from "../components/Summary";
 
-const Home: NextPage = () => {
+export default function Budget() {
   return (
-    <Flex w="100vw" h="100vh" bg="white.200">
+    <Flex w="100vw" h="100vh" bg="dark.500">
       <Sidebar />
       <Flex
         w="100%"
-        margin="0 auto"
-        maxW={1400}
-        bg="white.200"
         direction="column"
+        bg="white.200"
         borderRadius="1rem 0 0 0"
         p="1rem"
       >
-        <Header page="Dashboard" />
-        <Summary />
+        <Header page="Budget" />
       </Flex>
     </Flex>
   );
-};
-
-export default Home;
+}

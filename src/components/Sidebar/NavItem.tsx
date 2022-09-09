@@ -1,6 +1,7 @@
 import { Text, Image, Flex } from "@chakra-ui/react";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface NavItemProps {
   name: string;
@@ -9,6 +10,10 @@ interface NavItemProps {
 }
 
 export function NavItem({ name, src, active = false }: NavItemProps) {
+  const { asPath } = useRouter();
+
+  const activeLink = asPath.endsWith(src) ? active : false;
+
   return (
     <Link href={src} key={name}>
       <Flex
@@ -16,8 +21,9 @@ export function NavItem({ name, src, active = false }: NavItemProps) {
         p=".5rem"
         w="100%"
         borderRadius=".3rem"
+        transition="color .3s"
         _hover={{ bg: "dark.300" }}
-        bg={active ? "purple.700 !important" : "normal"}
+        bg={activeLink ? "purple.700 !important" : "normal"}
       >
         <Image
           src={`/assets/Icon${name}.png`}

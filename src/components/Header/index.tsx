@@ -4,15 +4,15 @@ interface Props {
   page: string;
 }
 
-export function Header({page}: Props) {
+export function Header({ page }: Props) {
   return (
     <Flex
-      bg="white.100"
       w="100%"
       p="1rem"
       borderRadius="1rem"
       align="center"
       justify="space-between"
+      mb="3rem"
     >
       <Text fontWeight="500" fontSize="1.25rem">
         {page}

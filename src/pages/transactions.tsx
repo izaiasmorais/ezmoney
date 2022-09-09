@@ -13,7 +13,7 @@ export default function Transactions() {
         borderRadius="1rem 0 0 0"
         p="1rem"
       >
-        <Header page="Dashboard" />
+        <Header page="Transactions" />
       </Flex>
     </Flex>
   );
