@@ -19,12 +19,12 @@ export function HomeMenu() {
         <Text fontSize="1.25rem" fontWeight="500" gridColumn="1 / 4">
           Transações recentes
         </Text>
-        <Text fontSize="1.25rem" fontWeight="500">
+        <Text fontSize="1.25rem" fontWeight="500" ml="1.5rem">
           Orçamento
         </Text>
       </SimpleGrid>
 
-      <SimpleGrid gridTemplateColumns="repeat(4, 1fr)">
+      <SimpleGrid gridTemplateColumns="repeat(4, 1fr)" gap="1.5rem">
         <TransactionsTable />
         <Budget />
       </SimpleGrid>

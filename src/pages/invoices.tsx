@@ -14,7 +14,7 @@ export default function Transactions() {
         bg="#fdfdfd"
       >
         <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
-          <Header page="Orçamento" />
+          <Header page="Contas" />
         </Flex>
       </Flex>
     </Flex>
