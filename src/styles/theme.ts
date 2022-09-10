@@ -36,7 +36,6 @@ const colors = {
 };
 
 export const theme = extendTheme({
-  useSystemColorMode: true,
   colors,
   fonts: {
     heading: "Manrope",
