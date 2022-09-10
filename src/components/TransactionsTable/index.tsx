@@ -11,14 +11,14 @@ import {
 export function TransactionsTable() {
   return (
     <Flex
+      direction="column"
       bg="white.100"
       h="max-content"
       gridColumn="1 / 4"
-      p="1rem"
-      mr="-5.5rem"
-      direction="column"
-      gap="1rem"
       borderRadius="1rem"
+      p="1rem"
+      gap="1rem"
+      mr="2rem"
       boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
     >
       <Transaction
@@ -34,7 +34,7 @@ export function TransactionsTable() {
 
       <Transaction
         type="expanse"
-        title="Tranportation"
+        title="Transporte"
         description="Uber + Bus"
         color="red.700"
         bg="blue.100"
@@ -45,12 +45,12 @@ export function TransactionsTable() {
 
       <Transaction
         type="income"
-        title="Food"
-        description="Salary"
+        title="Salary"
+        description="Kindella payment"
         color="green.700"
         bg="green.100"
         hour="10:00 am"
-        icon={<FaFileInvoiceDollar color="#00A86B" size={30} />}
+        icon={<FaMoneyBillWave color="#00A86B" size={30} />}
         price={2750}
       />
 
@@ -72,7 +72,7 @@ export function TransactionsTable() {
         color="red.700"
         bg="purple.100"
         hour="10:00 am"
-        icon={<FaMoneyBillWave color="#7F3DFF" size={30} />}
+        icon={<FaFileInvoiceDollar color="#7F3DFF" size={30} />}
         price={3000}
       />
     </Flex>

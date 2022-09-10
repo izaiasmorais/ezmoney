@@ -18,7 +18,8 @@ export function NavItem({ name, src, active = false }: NavItemProps) {
     <Link href={src} key={name}>
       <Flex
         gap="1rem"
-        p=".5rem"
+        py=".5rem"
+        px="1rem"
         w="100%"
         cursor="pointer"
         borderRadius=".5rem"

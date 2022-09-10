@@ -24,7 +24,7 @@ export function Transaction({
 }: Props) {
   return (
     <Flex
-      bg="#fcfcfc"
+      // bg="#fcfcfc"
       w="100%"
       h="max-content"
       py=".5rem"

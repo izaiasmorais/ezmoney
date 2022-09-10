@@ -1,10 +1,7 @@
-import { Flex, SimpleGrid } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { Budget } from "../components/Budget";
-import { Header } from "../components/Header";
+import { HomeMenu } from "../components/HomeMenu";
 import { Sidebar } from "../components/Sidebar";
-import { Summary } from "../components/Summary";
-import { TransactionsTable } from "../components/TransactionsTable";
 
 const Home: NextPage = () => {
   return (
@@ -17,15 +14,7 @@ const Home: NextPage = () => {
         borderRadius="1rem 0 0 0"
         p="1rem"
       >
-        <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
-          <Header page="Dashboard" />
-          <Summary />
-
-          <SimpleGrid gridAutoColumns="repeat(4, 1fr)" mt="4rem" gap="7rem">
-            <TransactionsTable />
-            <Budget />
-          </SimpleGrid>
-        </Flex>
+        <HomeMenu />
       </Flex>
     </Flex>
   );
