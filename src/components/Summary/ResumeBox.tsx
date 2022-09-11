@@ -1,14 +1,16 @@
 import { Box, Flex, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
 interface Props {
   name: string;
   value: string;
+  icon: ReactNode;
 }
 
-export function ResumeBox({ name, value }: Props) {
+export function ResumeBox({ name, value, icon }: Props) {
   return (
     <SimpleGrid
-      bg="white.100"
+      bg="white.50"
       borderRadius="1rem"
       justifyContent="space-between"
       p="1.5rem"
@@ -25,7 +27,16 @@ export function ResumeBox({ name, value }: Props) {
       ]}
     >
       <Flex justify={["right", "left", "right", "left", "left", "right"]}>
-        <Image src={`/assets/${name}.png`} alt="Entradas" w="48px" h="48px" />
+        <Flex
+          bg="white.200"
+          w="50px"
+          h="50px"
+          align="center"
+          justify="center"
+          borderRadius="1rem"
+        >
+          {icon}
+        </Flex>
       </Flex>
       <Box gridRow={["1", "normal", "1", "normal", "normal", "1"]}>
         <Text color="blackAlpha.700" mb="1rem">

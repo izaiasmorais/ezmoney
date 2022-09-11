@@ -13,7 +13,7 @@ export function TransactionsTable() {
     <Flex
       w="100%"
       direction="column"
-      bg="white.100"
+      bg="white.50"
       h="max-content"
       borderRadius="1rem"
       p="1rem"
@@ -23,8 +23,8 @@ export function TransactionsTable() {
     >
       <Transaction
         type="expanse"
-        title="Food"
-        description="Buy some ramen"
+        title="Comida"
+        description="Compras no supermercado"
         color="red.700"
         bg="red.100"
         hour="08/09/2022"
@@ -35,7 +35,7 @@ export function TransactionsTable() {
       <Transaction
         type="expanse"
         title="Transporte"
-        description="Uber + Bus"
+        description="Uber + Ônibus"
         color="red.700"
         bg="blue.100"
         hour="04/09/2022"
@@ -45,8 +45,8 @@ export function TransactionsTable() {
 
       <Transaction
         type="income"
-        title="Salary"
-        description="Kindella payment"
+        title="Salário"
+        description="Pagamento da Kindella"
         color="green.700"
         bg="green.100"
         hour="01/09/2022"
@@ -56,8 +56,8 @@ export function TransactionsTable() {
 
       <Transaction
         type="expanse"
-        title="Shopping"
-        description="Bought many clothes"
+        title="Compras"
+        description="Algumas Roupas e Calçados"
         color="red.700"
         bg="yellow.100"
         hour="27/08/2022"
@@ -67,8 +67,8 @@ export function TransactionsTable() {
 
       <Transaction
         type="expanse"
-        title="Invoices"
-        description="All fatures of this month"
+        title="Contas"
+        description="Todas as faturas do mês"
         color="red.700"
         bg="purple.100"
         hour="01/07/2022"

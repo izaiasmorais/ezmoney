@@ -4,7 +4,7 @@ export function TotalBox() {
   return (
     <Flex
       bg="purple.700"
-      color="white.100"
+      color="white.50"
       borderRadius="1rem"
       direction="column"
       h="max-content !important"

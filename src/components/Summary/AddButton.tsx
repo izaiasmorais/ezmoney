@@ -14,7 +14,7 @@ export function AddButton({ func, name }: Props) {
       py="1.5rem"
       gap="1.5rem"
       alignItems="center"
-      bg="white.100"
+      bg="white.50"
       minW={200}
       onClick={func}
       justifyContent="space-between"

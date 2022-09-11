@@ -26,7 +26,7 @@ export function SidebarDrawer() {
     return (
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay>
-          <DrawerContent bg="dark.500" color="white.100">
+          <DrawerContent bg="dark.500" color="white.50">
             <DrawerCloseButton mt=".5rem" />
 
             <DrawerHeader>

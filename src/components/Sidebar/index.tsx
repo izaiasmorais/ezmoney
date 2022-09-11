@@ -48,7 +48,7 @@ export function Sidebar() {
           active
         />
         <NavItem
-          name="Transactions"
+          name="Transações"
           src="/transactions"
           icon={
             <FaExchangeAlt
@@ -59,7 +59,7 @@ export function Sidebar() {
           active
         />
         <NavItem
-          name="Budget"
+          name="Orçamento"
           src="/budget"
           icon={
             <FaPoll
@@ -70,7 +70,7 @@ export function Sidebar() {
           active
         />
         <NavItem
-          name="Invoices"
+          name="Contas"
           src="/invoices"
           icon={
             <FaClipboardList
@@ -81,7 +81,7 @@ export function Sidebar() {
           active
         />
         <NavItem
-          name="Settings"
+          name="Configurações"
           src="/settings"
           icon={
             <IoSettingsSharp
@@ -92,7 +92,7 @@ export function Sidebar() {
           active
         />
         <NavItem
-          name="Logout"
+          name="Desconectar"
           src="/logout"
           icon={
             <FaSignOutAlt
