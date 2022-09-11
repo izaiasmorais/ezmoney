@@ -12,7 +12,7 @@ export function HomeMenu() {
 
       <SimpleGrid
         gap="1.5rem"
-        mt="2rem"
+        my="2rem"
         gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
         <TransactionsTable />

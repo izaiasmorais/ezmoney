@@ -1,22 +1,37 @@
 import { Flex, Image, Stack, Text } from "@chakra-ui/react";
 import { NavItem } from "./NavItem";
-import { FaClipboardList, FaExchangeAlt, FaPoll } from "react-icons/fa";
+import {
+  FaClipboardList,
+  FaExchangeAlt,
+  FaPoll,
+  FaSignOutAlt,
+  FaThLarge,
+} from "react-icons/fa";
 import { IoSettingsSharp, IoWallet } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
+import { useRouter } from "next/router";
 
 export function Sidebar() {
+  const { asPath } = useRouter();
+
   return (
     <Flex
+      h="100v%"
       w="100%"
-      maxW="250px"
       bg="dark.500"
       direction="column"
-      display={["none", "none", "none", "flex"]}
+      maxW={["500px", "500px", "500px", "250px"]}
     >
-      <Flex align="center" gap=".5rem" p="1rem" mb="2rem">
+      <Flex
+        align="center"
+        gap=".5rem"
+        p="1rem"
+        mb="2rem"
+        display={["none", "none", "none", "flex"]}
+      >
         <Image src="/assets/Logo.png" alt="Dinheiro" w="40px" h="40px" />
         <Text color="white" fontSize="1.5rem" fontWeight="700">
-          EZMONEY
+          EZMoney
         </Text>
       </Flex>
 
@@ -24,37 +39,67 @@ export function Sidebar() {
         <NavItem
           name="Dashboard"
           src="/"
-          icon={<IoWallet size={20} color="#919eab" />}
+          icon={
+            <FaThLarge
+              size={20}
+              color={asPath.endsWith("/") ? "#ffffff" : "#919eab"}
+            />
+          }
           active
         />
         <NavItem
           name="Transactions"
           src="/transactions"
-          icon={<FaExchangeAlt size={20} color="#919eab" />}
+          icon={
+            <FaExchangeAlt
+              size={20}
+              color={asPath.endsWith("/transactions") ? "#ffffff" : "#919eab"}
+            />
+          }
           active
         />
         <NavItem
           name="Budget"
           src="/budget"
-          icon={<FaPoll size={20} color="#919eab" />}
+          icon={
+            <FaPoll
+              size={20}
+              color={asPath.endsWith("/budget") ? "#ffffff" : "#919eab"}
+            />
+          }
           active
         />
         <NavItem
           name="Invoices"
           src="/invoices"
-          icon={<FaClipboardList size={20} color="#919eab" />}
+          icon={
+            <FaClipboardList
+              size={20}
+              color={asPath.endsWith("/invoices") ? "#ffffff" : "#919eab"}
+            />
+          }
           active
         />
         <NavItem
           name="Settings"
           src="/settings"
-          icon={<IoSettingsSharp size={20} color="#919eab" />}
+          icon={
+            <IoSettingsSharp
+              size={20}
+              color={asPath.endsWith("/settings") ? "#ffffff" : "#919eab"}
+            />
+          }
           active
         />
         <NavItem
           name="Logout"
           src="/logout"
-          icon={<TbLogout size={20} color="#919eab" />}
+          icon={
+            <FaSignOutAlt
+              size={20}
+              color={asPath.endsWith("/logout") ? "#ffffff" : "#919eab"}
+            />
+          }
           active
         />
       </Stack>

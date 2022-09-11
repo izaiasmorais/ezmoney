@@ -1,12 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { HomeMenu } from "../components/HomeMenu";
-import { Sidebar } from "../components/Sidebar";
+import { SidebarDrawer } from "../components/Sidebar/Drawer";
 
 const Home: NextPage = () => {
   return (
     <Flex w="100vw" h="100vh" bg="dark.500">
-      <Sidebar />
+      <SidebarDrawer />
       <Flex
         direction="column"
         w="100%"

@@ -6,15 +6,18 @@ import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
 
 import "../styles/globals.css";
+import { SidebarDrawerContextProvider } from "../contexts/SidebarContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Head>
-        <title>EZMoney</title>
-      </Head>
-      <NextNProgress color="#7F3DFF" />
-      <Component {...pageProps} />
+      <SidebarDrawerContextProvider>
+        <Head>
+          <title>EZMoney</title>
+        </Head>
+        <NextNProgress color="#7F3DFF" />
+        <Component {...pageProps} />
+      </SidebarDrawerContextProvider>
     </ChakraProvider>
   );
 }

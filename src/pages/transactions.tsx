@@ -1,13 +1,13 @@
-import { Flex, Select, SimpleGrid, Text } from "@chakra-ui/react";
+import { Flex, Select } from "@chakra-ui/react";
 import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
+import { SidebarDrawer } from "../components/Sidebar/Drawer";
 import { NewTransactionButton } from "../components/Summary/NewTransactionsButton";
 import { TransactionsTable } from "../components/TransactionsTable";
 
 export default function Transactions() {
   return (
     <Flex w="100vw" h="100vh" bg="dark.500">
-      <Sidebar />
+      <SidebarDrawer />
       <Flex
         bg="#fdfdfd"
         direction="column"

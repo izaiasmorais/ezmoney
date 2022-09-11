@@ -1,12 +1,16 @@
-import { Flex, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
+import { useSidebarDrawer } from "../../contexts/SidebarContext";
+import { IoMdMenu } from "react-icons/io";
 
 interface Props {
   page: string;
 }
 
 export function Header({ page }: Props) {
+  const { onOpen } = useSidebarDrawer();
+
   return (
     <Flex
       w="100%"
@@ -16,9 +20,18 @@ export function Header({ page }: Props) {
       justify="space-between"
       mb="1rem"
     >
-      <Text fontWeight="600" fontSize="1.5rem">
-        {page}
-      </Text>
+      <Flex align="center" justify="center">
+        <Button
+          onClick={onOpen}
+          bg="transparent !important"
+          display={["block", "block", "block", "none"]}
+        >
+          <IoMdMenu size={30} />
+        </Button>
+        <Text fontWeight="600" fontSize="1.5rem">
+          {page}
+        </Text>
+      </Flex>
       <Flex gap="1.5rem" align="center">
         <IoSearchOutline size={20} cursor="pointer" />
         <VscBell size={20} cursor="pointer" />
