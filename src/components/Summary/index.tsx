@@ -1,4 +1,4 @@
-import { Button, Flex, SimpleGrid, Text, Image } from "@chakra-ui/react";
+import { Flex, SimpleGrid } from "@chakra-ui/react";
 import { NewTransactionButton } from "./NewTransactionsButton";
 import { ResumeBox } from "./ResumeBox";
 import { TotalBox } from "./TotalBox";
@@ -9,7 +9,7 @@ export function Summary() {
       gap="1.5rem"
       gridTemplateColumns={[
         "1fr",
-        "1fr",
+        "1fr 1fr",
         "1fr 1fr",
         "repeat(4, 1fr)",
         "repeat(4, 1fr)",

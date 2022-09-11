@@ -9,23 +9,24 @@ export default function Transactions() {
     <Flex w="100vw" h="100vh" bg="dark.500">
       <Sidebar />
       <Flex
-        w="100%"
-        direction="column"
-        borderRadius="1rem 0 0 0"
-        p="1rem"
         bg="#fdfdfd"
+        direction="column"
+        w="100%"
+        p="1rem"
+        borderRadius={["0", "0", "0", "1rem 0 0 0"]}
       >
         <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
           <Header page="Transações" />
 
-          <SimpleGrid
+          <Flex
             w="100%"
             mt="1rem"
             mb="1rem"
-            alignItems="center"
-            gridTemplateColumns="repeat(4, 1fr)"
+            gap="1.5rem"
+            align="center"
+            justify="space-between"
           >
-            <Select placeholder="Todos" maxWidth={300} gridColumn="1 / 4">
+            <Select placeholder="Todos" maxWidth={300}>
               <option value="option1">Entradas</option>
               <option value="option1">Saídas</option>
               <option value="option2">Compras</option>
@@ -36,7 +37,7 @@ export default function Transactions() {
             </Select>
 
             <NewTransactionButton />
-          </SimpleGrid>
+          </Flex>
 
           <TransactionsTable />
         </Flex>

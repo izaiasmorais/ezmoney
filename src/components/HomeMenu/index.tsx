@@ -11,20 +11,10 @@ export function HomeMenu() {
       <Summary />
 
       <SimpleGrid
-        w="100%"
-        mt="4rem"
-        mb="1rem"
-        gridTemplateColumns="repeat(4, 1fr)"
+        gap="1.5rem"
+        mt="2rem"
+        gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
-        <Text fontSize="1.25rem" fontWeight="500" gridColumn="1 / 4">
-          Transações recentes
-        </Text>
-        <Text fontSize="1.25rem" fontWeight="500" ml="1.5rem">
-          Orçamento
-        </Text>
-      </SimpleGrid>
-
-      <SimpleGrid gridTemplateColumns="repeat(4, 1fr)" gap="1.5rem">
         <TransactionsTable />
         <Budget />
       </SimpleGrid>

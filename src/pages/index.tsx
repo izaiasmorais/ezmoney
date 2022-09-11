@@ -10,9 +10,9 @@ const Home: NextPage = () => {
       <Flex
         direction="column"
         w="100%"
-        bg="#fdfdfd"
-        borderRadius="1rem 0 0 0"
         p="1rem"
+        bg="#fdfdfd"
+        borderRadius={["0", "0", "0", "1rem 0 0 0"]}
       >
         <HomeMenu />
       </Flex>

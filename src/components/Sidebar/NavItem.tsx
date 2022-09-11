@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { Text, Image, Flex } from "@chakra-ui/react";
-
+import { Text, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -28,9 +27,10 @@ export function NavItem({ name, src, active = false, icon }: NavItemProps) {
         transition="color .3s"
         _hover={{ bg: "dark.300" }}
         bg={activeLink ? "purple.700 !important" : "normal"}
+        color={activeLink ? "white.100" : "dark.200"}
       >
         {icon}
-        <Text>{name}</Text>
+        <Text fontWeight={500}>{name}</Text>
       </Flex>
     </Link>
   );

@@ -1,6 +1,8 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Select, SimpleGrid } from "@chakra-ui/react";
+import { Budget } from "../components/Budget";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
+import { NewTransactionButton } from "../components/Summary/NewTransactionsButton";
 
 export default function Transactions() {
   return (
@@ -15,6 +17,30 @@ export default function Transactions() {
       >
         <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
           <Header page="Orçamento" />
+
+          <SimpleGrid
+            w="100%"
+            mt="1rem"
+            mb="1rem"
+            alignItems="center"
+            gridTemplateColumns="repeat(4, 1fr)"
+          >
+            <Select placeholder="Todos" maxWidth={300} gridColumn="1 / 4">
+              <option value="option1">Entradas</option>
+              <option value="option1">Saídas</option>
+              <option value="option2">Compras</option>
+              <option value="option3">Salário</option>
+              <option value="option3">Contas</option>
+              <option value="option3">Transporte</option>
+              <option value="option3">Supermercado</option>
+            </Select>
+
+            <NewTransactionButton />
+          </SimpleGrid>
+
+          <SimpleGrid gridTemplateColumns="repeat(4, 1fr)">
+            <Budget />
+          </SimpleGrid>
         </Flex>
       </Flex>
     </Flex>

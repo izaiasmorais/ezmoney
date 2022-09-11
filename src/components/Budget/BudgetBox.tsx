@@ -10,6 +10,7 @@ interface Props {
 export function BudgetBox({ budget, category, overdue, remaining }: Props) {
   return (
     <Flex
+      boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
       borderRadius="1rem"
       direction="column"
       bg="white.100"
@@ -17,7 +18,6 @@ export function BudgetBox({ budget, category, overdue, remaining }: Props) {
       p="1rem"
       w="100%"
       gap=".5rem"
-      boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
     >
       <Text fontWeight="600" fontSize=".9rem">
         {category}

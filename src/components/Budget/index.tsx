@@ -3,7 +3,12 @@ import { BudgetBox } from "./BudgetBox";
 
 export function Budget() {
   return (
-    <Flex gridColumn="4 / 5" direction="column" h="max-content" gap="1rem">
+    <Flex
+      gridColumn={["1", "1", "1", "4 / 5"]}
+      direction={["column", "row", "row", "column"]}
+      h="max-content"
+      gap="1rem"
+    >
       <BudgetBox
         budget="R$400 de R$300"
         category="Transporte"
