@@ -1,8 +1,8 @@
-import { NewTransactionButton } from "../components/Summary/NewTransactionsButton";
-import { Flex, Select, SimpleGrid } from "@chakra-ui/react";
-import { Budget } from "../components/Budget";
-import { Header } from "../components/Header";
+import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { SidebarDrawer } from "../components/Sidebar/Drawer";
+import { AddButton } from "../components/Summary/AddButton";
+import { BudgetBox } from "../components/Budget/BudgetBox";
+import { Header } from "../components/Header";
 
 export default function Transactions() {
   return (
@@ -18,28 +18,28 @@ export default function Transactions() {
         <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
           <Header page="Orçamento" />
 
-          <SimpleGrid
+          <Flex
             w="100%"
             mt="1rem"
             mb="1rem"
-            alignItems="center"
-            gridTemplateColumns="repeat(4, 1fr)"
+            gap="1.5rem"
+            align="center"
+            justify="space-between"
           >
-            <Select placeholder="Todos" maxWidth={300} gridColumn="1 / 4">
-              <option value="option1">Entradas</option>
-              <option value="option1">Saídas</option>
-              <option value="option2">Compras</option>
-              <option value="option3">Salário</option>
-              <option value="option3">Contas</option>
-              <option value="option3">Transporte</option>
-              <option value="option3">Supermercado</option>
-            </Select>
+            <Text fontSize="1.25rem" fontWeight={500}>
+              Total: R$ 2000
+            </Text>
 
-            <NewTransactionButton />
-          </SimpleGrid>
+            <AddButton name="Criar orçamento" />
+          </Flex>
 
-          <SimpleGrid gridTemplateColumns="repeat(4, 1fr)">
-            <Budget />
+          <SimpleGrid
+            gridTemplateColumns="repeat(4, 1fr)"
+            gap="1.5rem"
+            mt="1rem"
+          >
+            <BudgetBox total={500} spent={600} category="Transporte" />
+            <BudgetBox total={1500} spent={1200} category="Shopping" />
           </SimpleGrid>
         </Flex>
       </Flex>

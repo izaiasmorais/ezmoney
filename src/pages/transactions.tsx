@@ -1,7 +1,7 @@
 import { Flex, Select } from "@chakra-ui/react";
 import { Header } from "../components/Header";
 import { SidebarDrawer } from "../components/Sidebar/Drawer";
-import { NewTransactionButton } from "../components/Summary/NewTransactionsButton";
+import { AddButton } from "../components/Summary/AddButton";
 import { TransactionsTable } from "../components/TransactionsTable";
 
 export default function Transactions() {
@@ -21,7 +21,7 @@ export default function Transactions() {
           <Flex
             w="100%"
             mt="1rem"
-            mb="1rem"
+            mb="2rem"
             gap="1.5rem"
             align="center"
             justify="space-between"
@@ -36,7 +36,7 @@ export default function Transactions() {
               <option value="option3">Supermercado</option>
             </Select>
 
-            <NewTransactionButton />
+            <AddButton name="Adicionar transação" />
           </Flex>
 
           <TransactionsTable />

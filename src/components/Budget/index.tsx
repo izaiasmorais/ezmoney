@@ -9,18 +9,8 @@ export function Budget() {
       h="max-content"
       gap="1rem"
     >
-      <BudgetBox
-        budget="R$400 de R$300"
-        category="Transporte"
-        overdue={true}
-        remaining={100}
-      />
-      <BudgetBox
-        budget="R$1200 de R$1500"
-        category="Shopping"
-        overdue={false}
-        remaining={300}
-      />
+      <BudgetBox total={500} spent={600} category="Transporte" />
+      <BudgetBox total={1500} spent={1200} category="Shopping" />
     </Flex>
   );
 }

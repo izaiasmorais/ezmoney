@@ -2,12 +2,13 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 
 interface Props {
   category: string;
-  remaining: number;
-  budget: string;
-  overdue: boolean;
+  total: number;
+  spent: number;
 }
 
-export function BudgetBox({ budget, category, overdue, remaining }: Props) {
+export function BudgetBox({ total, spent, category }: Props) {
+  const overdue = total - spent > 0 ? false : true;
+
   return (
     <Flex
       boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
@@ -23,7 +24,7 @@ export function BudgetBox({ budget, category, overdue, remaining }: Props) {
         {category}
       </Text>
       <Text fontWeight="700" fontSize="1.25rem">
-        Restante R$ {remaining}
+        Restante R$ {overdue ? "0" : total - spent}
       </Text>
       <Box
         bg={overdue ? "red.700" : "green.700"}
@@ -32,7 +33,7 @@ export function BudgetBox({ budget, category, overdue, remaining }: Props) {
         borderRadius=".5rem"
       />
       <Text fontWeight="600" fontSize=".75rem" color="blackAlpha.600">
-        {budget}
+        R$ {spent} de R$ {total}
       </Text>
     </Flex>
   );

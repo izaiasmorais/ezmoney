@@ -1,5 +1,5 @@
 import { Flex, SimpleGrid } from "@chakra-ui/react";
-import { NewTransactionButton } from "./NewTransactionsButton";
+import { AddButton } from "./AddButton";
 import { ResumeBox } from "./ResumeBox";
 import { TotalBox } from "./TotalBox";
 
@@ -21,7 +21,7 @@ export function Summary() {
       <ResumeBox name="Transfers" value="800" />
       <Flex gap="1rem" direction="column">
         <TotalBox />
-        <NewTransactionButton />
+        <AddButton name="Adicionar transação" />
       </Flex>
     </SimpleGrid>
   );
