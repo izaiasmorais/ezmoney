@@ -1,22 +1,24 @@
-import { Flex } from "@chakra-ui/react";
-import { Header } from "../components/Header";
-import { SidebarDrawer } from "../components/Sidebar/Drawer";
+import { Flex, Text } from "@chakra-ui/react";
+import { Layout } from "../components/Layout";
+import { AddButton } from "../components/Summary/AddButton";
 
-export default function Transactions() {
+export default function Invoices() {
   return (
-    <Flex w="100vw" h="100vh" bg="dark.500">
-      <SidebarDrawer />
+    <Layout title="Contas">
       <Flex
         w="100%"
-        direction="column"
-        borderRadius="1rem 0 0 0"
-        p="1rem"
-        bg="#fdfdfd"
+        mt="1rem"
+        mb="1rem"
+        gap="1.5rem"
+        align="center"
+        justify="space-between"
       >
-        <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
-          <Header page="Contas" />
-        </Flex>
+        <Text fontSize="1.25rem" fontWeight={500}>
+          Total: R$ 2000
+        </Text>
+
+        <AddButton name="Adicionar conta" />
       </Flex>
-    </Flex>
+    </Layout>
   );
 }

@@ -1,22 +1,24 @@
-import { Flex } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { HomeMenu } from "../components/HomeMenu";
-import { SidebarDrawer } from "../components/Sidebar/Drawer";
+import { BudgetTable } from "../components/BudgetTable";
+import { Layout } from "../components/Layout";
+import { Summary } from "../components/Summary";
+import { TransactionsTable } from "../components/TransactionsTable";
 
 const Home: NextPage = () => {
   return (
-    <Flex w="100vw" h="100vh" bg="dark.500">
-      <SidebarDrawer />
-      <Flex
-        direction="column"
-        w="100%"
-        p="1rem"
-        bg="#fdfdfd"
-        borderRadius={["0", "0", "0", "1rem 0 0 0"]}
+    <Layout title="Dashboard">
+      <Summary />
+
+      <SimpleGrid
+        gap="1.5rem"
+        my="2rem"
+        gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
-        <HomeMenu />
-      </Flex>
-    </Flex>
+        <TransactionsTable />
+        <BudgetTable />
+      </SimpleGrid>
+    </Layout>
   );
 };
 

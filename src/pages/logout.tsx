@@ -1,8 +1,8 @@
 import { Layout } from "../components/Layout";
 
-export default function Settings() {
+export default function Logout() {
   return (
-    <Layout title="Configurações">
+    <Layout title="Logout">
 
     </Layout>
   );

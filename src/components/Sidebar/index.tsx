@@ -1,14 +1,14 @@
 import { Flex, Image, Stack, Text } from "@chakra-ui/react";
 import { NavItem } from "./NavItem";
 import {
+  FaCalendarAlt,
   FaClipboardList,
   FaExchangeAlt,
   FaPoll,
   FaSignOutAlt,
   FaThLarge,
 } from "react-icons/fa";
-import { IoSettingsSharp, IoWallet } from "react-icons/io5";
-import { TbLogout } from "react-icons/tb";
+import { IoSettingsSharp } from "react-icons/io5";
 import { useRouter } from "next/router";
 
 export function Sidebar() {
@@ -76,6 +76,17 @@ export function Sidebar() {
             <FaClipboardList
               size={20}
               color={asPath.endsWith("/invoices") ? "#ffffff" : "#919eab"}
+            />
+          }
+          active
+        />
+        <NavItem
+          name="Calendar"
+          src="/calendar"
+          icon={
+            <FaCalendarAlt
+              size={20}
+              color={asPath.endsWith("/calendar") ? "#ffffff" : "#919eab"}
             />
           }
           active

@@ -1,48 +1,41 @@
 import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import { SidebarDrawer } from "../components/Sidebar/Drawer";
 import { AddButton } from "../components/Summary/AddButton";
-import { BudgetBox } from "../components/Budget/BudgetBox";
-import { Header } from "../components/Header";
+import { BudgetBox } from "../components/BudgetTable/BudgetBox";
+import { Layout } from "../components/Layout";
 
-export default function Transactions() {
+export default function Budget() {
   return (
-    <Flex w="100vw" h="100vh" bg="dark.500">
-      <SidebarDrawer />
+    <Layout title="Orçamento">
       <Flex
         w="100%"
-        direction="column"
-        borderRadius="1rem 0 0 0"
-        p="1rem"
-        bg="#fdfdfd"
+        mt="1rem"
+        mb="1rem"
+        gap="1.5rem"
+        align="center"
+        justify="space-between"
       >
-        <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
-          <Header page="Orçamento" />
+        <Text fontSize="1.25rem" fontWeight={500}>
+          Total: R$ 2000
+        </Text>
 
-          <Flex
-            w="100%"
-            mt="1rem"
-            mb="1rem"
-            gap="1.5rem"
-            align="center"
-            justify="space-between"
-          >
-            <Text fontSize="1.25rem" fontWeight={500}>
-              Total: R$ 2000
-            </Text>
-
-            <AddButton name="Criar orçamento" />
-          </Flex>
-
-          <SimpleGrid
-            gridTemplateColumns="repeat(4, 1fr)"
-            gap="1.5rem"
-            mt="1rem"
-          >
-            <BudgetBox total={500} spent={600} category="Transporte" />
-            <BudgetBox total={1500} spent={1200} category="Shopping" />
-          </SimpleGrid>
-        </Flex>
+        <AddButton name="Criar orçamento" />
       </Flex>
-    </Flex>
+
+      <SimpleGrid
+        gap="1.5rem"
+        mt="1rem"
+        gridTemplateColumns={[
+          "1fr",
+          "1fr 1fr",
+          "1fr 1fr",
+          "1fr 1fr",
+          "1fr 1fr",
+          "repeat(4, 1fr)",
+        ]}
+      >
+        <BudgetBox total={500} spent={600} category="Transporte" />
+        <BudgetBox total={1500} spent={1200} category="Shopping" />
+      </SimpleGrid>
+    </Layout>
   );
 }

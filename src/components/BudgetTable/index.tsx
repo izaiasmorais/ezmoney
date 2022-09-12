@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { BudgetBox } from "./BudgetBox";
 
-export function Budget() {
+export function BudgetTable() {
   return (
     <Flex
       gridColumn={["1", "1", "1", "4 / 5"]}

@@ -15,13 +15,13 @@ export function AddButton({ func, name }: Props) {
       gap="1.5rem"
       alignItems="center"
       bg="white.50"
-      minW={200}
+      minW={240}
       onClick={func}
       justifyContent="space-between"
       boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
     >
       <Text>{name}</Text>
-      <FaPlusCircle size={30} color="#7F3DFF" />
+      <FaPlusCircle size={30} color="#7F3DFF" min={30} />
     </Button>
   );
 }
