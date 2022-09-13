@@ -15,10 +15,10 @@ export function AddButton({ func, name }: Props) {
       borderRadius="1rem"
       display="flex"
       py="1.5rem"
-      gap="1.5rem"
+      gap={[".5rem", ".5rem", "1rem"]}
       alignItems="center"
       bg="back.boxes"
-      minW={240}
+      // minW={240}
       onClick={func}
       justifyContent="space-between"
       boxShadow={shadow}

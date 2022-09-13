@@ -13,7 +13,15 @@ export function Layout({ children, title }: Props) {
   return (
     <Flex w="100vw" minH="100vh" bg="back.sidebar">
       <SidebarDrawer />
-      {/* <Sidebar /> */}
+      <Flex
+        w="100%"
+        h="100vh"
+        direction="column"
+        display={["none", "none", "none", "flex"]}
+        maxW={["500px", "500px", "500px", "250px"]}
+      >
+        <Sidebar />
+      </Flex>
 
       <Flex
         direction="column"

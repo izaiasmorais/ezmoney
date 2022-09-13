@@ -16,7 +16,7 @@ export function Sidebar() {
 
   return (
     <Flex
-      h="100v%"
+      h="100%"
       w="100%"
       bg="back.sidebar"
       direction="column"

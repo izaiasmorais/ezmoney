@@ -14,7 +14,7 @@ export default function Transactions() {
         align="center"
         justify="space-between"
       >
-        <Select placeholder="Todos" maxWidth={300}>
+        <Select placeholder="Todos" maxWidth={160}>
           <option value="option1">Entradas</option>
           <option value="option1">Saídas</option>
           <option value="option2">Compras</option>

@@ -16,39 +16,29 @@ import { Sidebar } from "./index";
 export function SidebarDrawer() {
   const { isOpen, onClose } = useDrawer();
 
-  const isDrawerSidebar = useBreakpointValue({
-    base: true,
-    md: true,
-    lg: false,
-  });
+  return (
+    <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+      <DrawerOverlay>
+        <DrawerContent bg="back.sidebar" color="white.100">
+          <DrawerCloseButton mt=".5rem" />
 
-  if (isDrawerSidebar) {
-    return (
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-        <DrawerOverlay>
-          <DrawerContent bg="back.sidebar" color="white.50">
-            <DrawerCloseButton mt=".5rem" />
+          <DrawerHeader>
+            <Flex align="center" gap=".5rem">
+              <Image
+                src="/assets/Logo.png"
+                alt="Logo dinheiro | EZMoney"
+                w="40px"
+                h="40px"
+              />
+              <Text fontWeight="600">EZMoney</Text>
+            </Flex>
+          </DrawerHeader>
 
-            <DrawerHeader>
-              <Flex align="center" gap=".5rem">
-                <Image
-                  src="/assets/Logo.png"
-                  alt="Logo dinheiro | EZMoney"
-                  w="40px"
-                  h="40px"
-                />
-                <Text fontWeight="600">EZMoney</Text>
-              </Flex>
-            </DrawerHeader>
-
-            <DrawerBody mt="1rem" p="0">
-              <Sidebar />
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
-    );
-  }
-
-  return <Sidebar />;
+          <DrawerBody mt="1rem" p="0">
+            <Sidebar />
+          </DrawerBody>
+        </DrawerContent>
+      </DrawerOverlay>
+    </Drawer>
+  );
 }
