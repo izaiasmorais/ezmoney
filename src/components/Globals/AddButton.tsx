@@ -1,5 +1,6 @@
 import { Button, Text } from "@chakra-ui/react";
 import { FaPlusCircle } from "react-icons/fa";
+import { useShadow } from "../../contexts/ShadowContext";
 
 interface Props {
   func?: () => void;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 export function AddButton({ func, name }: Props) {
+  const { shadow } = useShadow();
+
   return (
     <Button
       borderRadius="1rem"
@@ -14,11 +17,11 @@ export function AddButton({ func, name }: Props) {
       py="1.5rem"
       gap="1.5rem"
       alignItems="center"
-      bg="white.50"
+      bg="back.boxes"
       minW={240}
       onClick={func}
       justifyContent="space-between"
-      boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
+      boxShadow={shadow}
     >
       <Text>{name}</Text>
       <FaPlusCircle size={30} color="#7F3DFF" min={30} />

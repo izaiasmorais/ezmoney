@@ -1,4 +1,4 @@
-import { Layout } from "../components/Layout";
+import { Layout } from "../components/Globals/Layout";
 
 export default function Logout() {
   return (

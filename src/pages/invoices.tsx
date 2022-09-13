@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { Layout } from "../components/Layout";
-import { AddButton } from "../components/Summary/AddButton";
+import { Layout } from "../components/Globals/Layout";
+import { AddButton } from "../components/Globals/AddButton";
 
 export default function Invoices() {
   return (

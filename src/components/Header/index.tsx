@@ -1,7 +1,7 @@
 import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
-import { useSidebarDrawer } from "../../contexts/SidebarContext";
+import { useDrawer } from "../../contexts/DrawerContext";
 import { IoMdMenu } from "react-icons/io";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function Header({ page }: Props) {
-  const { onOpen } = useSidebarDrawer();
+  const { onOpen } = useDrawer();
 
   return (
     <Flex

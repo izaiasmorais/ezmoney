@@ -1,25 +1,34 @@
 import type { AppProps } from "next/app";
+import { DrawerContextProvider } from "../contexts/DrawerContext";
 import { ChakraProvider } from "@chakra-ui/react";
-import { theme } from "../styles/theme";
-import Head from "next/head";
-
+import { useState } from "react";
+import { ToggleButton } from "../components/Globals/toggleButton";
+import { lightTheme, darkTheme } from "../styles/theme";
 import NextNProgress from "nextjs-progressbar";
-
+import Head from "next/head";
 import "../styles/globals.css";
-import { SidebarDrawerContextProvider } from "../contexts/SidebarContext";
+import { ShadowContextProvider } from "../contexts/ShadowContext";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
+  const [isLight, setIsLight] = useState(true);
+
+  const themeMode = isLight === true ? lightTheme : darkTheme;
+
   return (
-    <ChakraProvider theme={theme}>
-      <SidebarDrawerContextProvider>
-        <Head>
-          <title>EZMoney</title>
-        </Head>
-        <NextNProgress color="#7F3DFF" />
-        <Component {...pageProps} />
-      </SidebarDrawerContextProvider>
+    <ChakraProvider theme={themeMode}>
+      <ShadowContextProvider>
+        <DrawerContextProvider>
+          <Head>
+            <title>EZMoney</title>
+          </Head>
+          <NextNProgress color="#7F3DFF" />
+          <Component {...pageProps} />
+          <ToggleButton
+            isLight={isLight}
+            toggleFunction={() => setIsLight(!isLight)}
+          />
+        </DrawerContextProvider>
+      </ShadowContextProvider>
     </ChakraProvider>
   );
 }
-
-export default MyApp;

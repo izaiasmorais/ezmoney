@@ -1,8 +1,8 @@
 import { Flex } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { Header } from "./Header";
-import { Sidebar } from "./Sidebar";
-import { SidebarDrawer } from "./Sidebar/Drawer";
+import { Header } from "../Header";
+import { Sidebar } from "../Sidebar";
+import { SidebarDrawer } from "../Sidebar/Drawer";
 
 interface Props {
   children: ReactNode;
@@ -11,7 +11,7 @@ interface Props {
 
 export function Layout({ children, title }: Props) {
   return (
-    <Flex w="100vw" h="100vh" bg="dark.500">
+    <Flex w="100vw" minH="100vh" bg="back.sidebar">
       <SidebarDrawer />
       {/* <Sidebar /> */}
 
@@ -19,7 +19,8 @@ export function Layout({ children, title }: Props) {
         direction="column"
         w="100%"
         p="1rem"
-        bg="#fdfdfd"
+        bg="back.body"
+        color="text.body"
         borderRadius={["0", "0", "0", "1rem 0 0 0"]}
       >
         <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>

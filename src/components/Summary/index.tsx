@@ -4,7 +4,7 @@ import {
   FaArrowCircleUp,
   FaExchangeAlt,
 } from "react-icons/fa";
-import { AddButton } from "./AddButton";
+import { AddButton } from "../Globals/AddButton";
 import { ResumeBox } from "./ResumeBox";
 import { TotalBox } from "./TotalBox";
 

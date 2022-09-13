@@ -1,6 +1,6 @@
 import { Flex, Select } from "@chakra-ui/react";
-import { Layout } from "../components/Layout";
-import { AddButton } from "../components/Summary/AddButton";
+import { Layout } from "../components/Globals/Layout";
+import { AddButton } from "../components/Globals/AddButton";
 import { TransactionsTable } from "../components/TransactionsTable";
 
 export default function Transactions() {

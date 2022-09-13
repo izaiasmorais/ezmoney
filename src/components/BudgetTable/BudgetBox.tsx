@@ -1,4 +1,5 @@
 import { Flex, Text, Box } from "@chakra-ui/react";
+import { useShadow } from "../../contexts/ShadowContext";
 
 interface Props {
   category: string;
@@ -8,13 +9,14 @@ interface Props {
 
 export function BudgetBox({ total, spent, category }: Props) {
   const overdue = total - spent > 0 ? false : true;
+  const { shadow } = useShadow();
 
   return (
     <Flex
-      boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
+      boxShadow={shadow}
       borderRadius="1rem"
       direction="column"
-      bg="white.50"
+      bg="back.boxes"
       h="max-content"
       p="1rem"
       w="100%"
@@ -32,7 +34,7 @@ export function BudgetBox({ total, spent, category }: Props) {
         w="100%"
         borderRadius=".5rem"
       />
-      <Text fontWeight="600" fontSize=".75rem" color="blackAlpha.600">
+      <Text fontWeight="600" fontSize=".75rem" color="text.paragraphy">
         R$ {spent} de R$ {total}
       </Text>
     </Flex>

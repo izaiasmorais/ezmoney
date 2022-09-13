@@ -1,7 +1,7 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { BudgetTable } from "../components/BudgetTable";
-import { Layout } from "../components/Layout";
+import { Layout } from "../components/Globals/Layout";
 import { Summary } from "../components/Summary";
 import { TransactionsTable } from "../components/TransactionsTable";
 

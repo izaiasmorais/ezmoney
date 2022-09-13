@@ -24,7 +24,6 @@ export function Transaction({
 }: Props) {
   return (
     <Flex
-      // bg="#fcfcfc"
       w="100%"
       h="max-content"
       py=".5rem"
@@ -47,7 +46,7 @@ export function Transaction({
           <Text fontWeight="600" fontSize="1rem">
             {title}
           </Text>
-          <Text fontSize=".8rem" fontWeight="600" color="blackAlpha.600">
+          <Text fontSize=".8rem" fontWeight="600" color="text.paragraphy">
             {description}
           </Text>
         </Flex>

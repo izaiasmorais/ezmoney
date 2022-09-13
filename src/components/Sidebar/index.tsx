@@ -18,7 +18,7 @@ export function Sidebar() {
     <Flex
       h="100v%"
       w="100%"
-      bg="dark.500"
+      bg="back.sidebar"
       direction="column"
       maxW={["500px", "500px", "500px", "250px"]}
     >

@@ -25,9 +25,9 @@ export function NavItem({ name, src, active = false, icon }: NavItemProps) {
         cursor="pointer"
         borderRadius=".5rem"
         transition="color .3s"
-        _hover={{ bg: "dark.300" }}
+        _hover={{ bg: "#464A4D" }}
         bg={activeLink ? "purple.700 !important" : "normal"}
-        color={activeLink ? "white.50" : "dark.200"}
+        color={activeLink ? "white.100" : "text.sidebar"}
       >
         {icon}
         <Text fontWeight={500}>{name}</Text>

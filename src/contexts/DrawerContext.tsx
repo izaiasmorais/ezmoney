@@ -6,11 +6,11 @@ interface Props {
   children: ReactNode;
 }
 
-type SidebarDrawerContextData = UseDisclosureReturn;
+type DrawerContextData = UseDisclosureReturn;
 
-const SidebarDrawerContext = createContext({} as SidebarDrawerContextData);
+const DrawerContext = createContext({} as DrawerContextData);
 
-export function SidebarDrawerContextProvider({ children }: Props) {
+export function DrawerContextProvider({ children }: Props) {
   const disclosure = useDisclosure();
   const router = useRouter();
 
@@ -20,10 +20,10 @@ export function SidebarDrawerContextProvider({ children }: Props) {
   }, [router.asPath]);
 
   return (
-    <SidebarDrawerContext.Provider value={disclosure}>
+    <DrawerContext.Provider value={disclosure}>
       {children}
-    </SidebarDrawerContext.Provider>
+    </DrawerContext.Provider>
   );
 }
 
-export const useSidebarDrawer = () => useContext(SidebarDrawerContext);
+export const useDrawer = () => useContext(DrawerContext);

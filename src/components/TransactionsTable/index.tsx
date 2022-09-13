@@ -7,19 +7,21 @@ import {
   FaMoneyBillWave,
   FaCarSide,
 } from "react-icons/fa";
+import { useShadow } from "../../contexts/ShadowContext";
 
 export function TransactionsTable() {
+  const { shadow } = useShadow();
   return (
     <Flex
       w="100%"
       direction="column"
-      bg="white.50"
+      bg="back.boxes"
       h="max-content"
       borderRadius="1rem"
       p="1rem"
       gap="1rem"
       gridColumn={["1", "1", "1", "1 / 4"]}
-      boxShadow="rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px"
+      boxShadow={shadow}
     >
       <Transaction
         type="expanse"
