@@ -53,13 +53,13 @@ export default function Invoices() {
           <InvoiceHeader />
 
           <InvoiceItem
-            name="Fatura da máquina"
+            name="Fatura da TV"
             due="12/10/2022"
             price={656}
             status="Não pago"
           />
           <InvoiceItem
-            name="Empréstimo com agiota"
+            name="Empréstimo Banco do Brasil"
             due="01/11/2022"
             price={1200}
             status="Pago"
@@ -71,7 +71,7 @@ export default function Invoices() {
             status="Atrasado"
           />
           <InvoiceItem
-            name="Roupas na Rchelo"
+            name="Peças na Terabyte"
             due="30/01/2023"
             price={245}
             status="Rascunho"

@@ -48,7 +48,7 @@ export function TransactionsTable() {
       <Transaction
         type="income"
         title="Salário"
-        description="Pagamento da Kindella"
+        description="Pagamento da empresa"
         color="green.700"
         bg="green.100"
         hour="01/09/2022"
@@ -59,7 +59,7 @@ export function TransactionsTable() {
       <Transaction
         type="expanse"
         title="Compras"
-        description="Algumas Roupas e Calçados"
+        description="Roupas e Calçados"
         color="red.700"
         bg="yellow.100"
         hour="27/08/2022"

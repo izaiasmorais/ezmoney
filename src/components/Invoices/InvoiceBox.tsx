@@ -29,7 +29,7 @@ export function InvoiceBox({ icon, invoices, price, name, color }: Props) {
         <Text fontWeight={600} fontSize="1.125rem">
           {name}
         </Text>
-        <Text fontSize=".875rem" color="text.sidebar">
+        <Text fontSize=".9rem" color="text.sidebar">
           <Text fontWeight={600} display="inline">
             {invoices}
           </Text>{" "}
