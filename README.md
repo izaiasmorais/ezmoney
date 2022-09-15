@@ -12,7 +12,7 @@ https://user-images.githubusercontent.com/53953937/190296362-9047a2ae-8584-4f21-
 
 ### Funcionalidades
 
-- Listar, adicionar, editar e deletar transações, orçamentos e dívivas de forma completa.
+- Listar, adicionar, editar e deletar transações, orçamentos e dívivas.
 - Modo escuro completo.
 - Design responsivo completo.
 
