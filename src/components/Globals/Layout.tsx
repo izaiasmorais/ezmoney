@@ -7,9 +7,10 @@ import { SidebarDrawer } from "../Sidebar/Drawer";
 interface Props {
   children: ReactNode;
   title: string;
+  maxw?: number;
 }
 
-export function Layout({ children, title }: Props) {
+export function Layout({ children, title, maxw = 1400 }: Props) {
   return (
     <Flex w="100vw" minH="100vh" bg="back.sidebar">
       <SidebarDrawer />
@@ -31,8 +32,10 @@ export function Layout({ children, title }: Props) {
         color="text.body"
         borderRadius={["0", "0", "0", "1rem 0 0 0"]}
       >
-        <Flex direction="column" w="100%" margin="0 auto" maxW={1400}>
+        <Flex w="100%" margin="0 auto" maxW={1400}>
           <Header page={title} />
+        </Flex>
+        <Flex direction="column" w="100%" margin="0 auto" maxW={maxw}>
           {children}
         </Flex>
       </Flex>

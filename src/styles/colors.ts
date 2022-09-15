@@ -2,7 +2,7 @@ export const lightColors = {
   text: {
     body: "#000000",
     sidebar: "#919eab",
-    paragraphy: "#ACACAC",
+    paragraphy: "#637381",
   },
   back: {
     body: "#FDFDFD",
@@ -42,7 +42,7 @@ export const darkColors = {
   text: {
     body: "#ffffff",
     sidebar: "#919eab",
-    paragraphy: "#ACACAC",
+    paragraphy: "#919eab",
   },
   back: {
     body: "#1e2325",

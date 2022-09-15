@@ -1,7 +1,6 @@
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { useShadow } from "../../contexts/ShadowContext";
-import { boxShadow } from "./TotalBox";
 
 interface Props {
   name: string;
