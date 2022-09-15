@@ -15,7 +15,7 @@ export function TotalBox() {
       p="1rem"
       flex="1"
     >
-      <Text as="strong">Account Balance</Text>
+      <Text as="strong">Saldo da conta</Text>
       <Text
         fontSize={["2rem", "2rem", "2rem", "2rem", "2.5rem", "2.5rem"]}
         fontWeight="500"

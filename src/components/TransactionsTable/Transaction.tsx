@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: string;
   price: number;
-  hour: string;
+  date: string;
   bg: string;
   type: "income" | "expanse";
 }
@@ -17,7 +17,7 @@ export function Transaction({
   title,
   description,
   price,
-  hour,
+  date,
   bg,
   icon,
   type,
@@ -56,7 +56,7 @@ export function Transaction({
         <Text color={color} fontWeight="600">
           {type === "income" ? "R$" : "- R$"} {price}
         </Text>
-        <Text>{hour}</Text>
+        <Text color="text.paragraphy" fontWeight={600} fontSize=".9rem">{date}</Text>
       </Flex>
     </Flex>
   );

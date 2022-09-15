@@ -80,8 +80,8 @@ export function Sidebar() {
           }
           active
         />
-        <NavItem
-          name="Calendar"
+        {/* <NavItem
+          name="Calendário"
           src="/calendar"
           icon={
             <FaCalendarAlt
@@ -90,7 +90,7 @@ export function Sidebar() {
             />
           }
           active
-        />
+        /> */}
         <NavItem
           name="Configurações"
           src="/settings"

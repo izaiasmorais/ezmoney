@@ -47,7 +47,7 @@ export function ResumeBox({ name, value, icon }: Props) {
         </Text>
         <Text
           fontWeight="500"
-          fontSize={["2rem", "2rem", "2.5rem", "2rem", "2.5rem", "2.75rem"]}
+          fontSize={["2rem", "2rem", "2.5rem", "1.5rem", "2.5rem", "2.75rem"]}
           mb={["0", "0", "0", "0", "0", "1rem"]}
         >
           R$ {value}
