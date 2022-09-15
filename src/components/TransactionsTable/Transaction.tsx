@@ -27,7 +27,7 @@ export function Transaction({
       w="100%"
       h="max-content"
       py=".5rem"
-      px="1.5rem"
+      px={["0", "1rem", "1.5rem"]}
       borderRadius="1rem"
       justify="space-between"
     >

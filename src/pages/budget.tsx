@@ -26,7 +26,7 @@ export default function Budget() {
         mt="1rem"
         gridTemplateColumns={[
           "1fr",
-          "1fr 1fr",
+          "1fr ",
           "1fr 1fr",
           "1fr 1fr",
           "1fr 1fr",
