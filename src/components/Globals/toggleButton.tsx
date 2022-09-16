@@ -8,18 +8,11 @@ interface Props {
 }
 
 export function ToggleButton({ isLight, toggleFunction }: Props) {
-  const { colorMode, setColorMode } = useColorMode();
-  const { isLightMode, setIsLightMode } = useShadow();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   function handleToggleColorMode() {
     toggleFunction();
-    setIsLightMode(!isLightMode);
-
-    if (isLightMode === false) {
-      setColorMode("light");
-    } else {
-      setColorMode("dark");
-    }
+    toggleColorMode();
   }
 
   return (
