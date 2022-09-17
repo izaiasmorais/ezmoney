@@ -18,12 +18,11 @@ export function AddButton({ func, name }: Props) {
       gap={[".5rem", ".5rem", "1rem"]}
       alignItems="center"
       bg="back.boxes"
-      // minW={240}
       onClick={func}
       justifyContent="space-between"
       boxShadow={shadow}
     >
-      <Text>{name}</Text>
+      <Text fontSize={[".8rem", "1rem"]}>{name}</Text>
       <FaPlusCircle size={30} color="#7F3DFF" min={30} />
     </Button>
   );

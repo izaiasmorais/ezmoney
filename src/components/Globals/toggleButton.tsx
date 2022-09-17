@@ -1,18 +1,32 @@
 import { Button, useColorMode } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { useShadow } from "../../contexts/ShadowContext";
 
 interface Props {
   isLight: boolean;
-  toggleFunction: () => void;
+  toggler: (value: boolean) => void;
 }
 
-export function ToggleButton({ isLight, toggleFunction }: Props) {
+export function ToggleButton({ isLight, toggler }: Props) {
   const { colorMode, toggleColorMode } = useColorMode();
 
+  useEffect(() => {
+    const mode = localStorage.getItem("chakra-ui-color-mode");
+
+    if (mode === "light") {
+      toggler(true);
+    } else {
+      toggler(false);
+    }
+  }, []);
+
   function handleToggleColorMode() {
-    toggleFunction();
     toggleColorMode();
+    if (isLight) {
+      toggler(false);
+    } else {
+      toggler(true);
+    }
   }
 
   return (

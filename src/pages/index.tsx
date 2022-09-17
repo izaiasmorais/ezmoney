@@ -19,21 +19,19 @@ const Home: NextPage = () => {
       >
         <TransactionsTable
           viewAll={
-            <>
-              <Divider />
-
-              <Link href="/transactions">
-                <Flex
-                  align="center"
-                  justify="flex-end"
-                  gap=".5rem"
-                  cursor="pointer"
-                >
-                  <Text fontWeight={700}>Ver todas</Text>
-                  <AiOutlineRight />
-                </Flex>
-              </Link>
-            </>
+            <Link href="/transactions">
+              <Flex
+                align="center"
+                justify="flex-end"
+                gap=".5rem"
+                cursor="pointer"
+                fontSize=".9rem"
+                color="text.paragraphy"
+              >
+                <Text fontWeight={600}>Ver todas as transações</Text>
+                <AiOutlineRight />
+              </Flex>
+            </Link>
           }
         />
         <BudgetTable />

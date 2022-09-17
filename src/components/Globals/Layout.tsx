@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar";
@@ -12,7 +12,7 @@ interface Props {
 
 export function Layout({ children, title, maxw = 1400 }: Props) {
   return (
-    <Flex w="100vw" minH="100vh" bg="back.sidebar">
+    <Flex w="100%" minH="100vh" bg="back.sidebar">
       <SidebarDrawer />
       <Flex
         w="100%"

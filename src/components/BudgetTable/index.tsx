@@ -11,6 +11,7 @@ export function BudgetTable() {
     >
       <BudgetBox total={500} spent={600} category="Transporte" />
       <BudgetBox total={1500} spent={1200} category="Shopping" />
+      <BudgetBox total={2000} spent={450} category="Contas" />
     </Flex>
   );
 }

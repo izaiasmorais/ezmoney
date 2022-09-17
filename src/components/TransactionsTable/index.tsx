@@ -23,7 +23,7 @@ export function TransactionsTable({ viewAll }: TransactionProps) {
       bg="back.boxes"
       h="max-content"
       borderRadius="1rem"
-      p="1.5rem"
+      p={["1rem", "1.5rem"]}
       gap="1.5rem"
       gridColumn={["1", "1", "1", "1 / 4"]}
       boxShadow={shadow}

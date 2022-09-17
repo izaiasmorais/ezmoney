@@ -10,7 +10,7 @@ export default function Transactions() {
         w="100%"
         mt="1rem"
         mb="2rem"
-        gap="1.5rem"
+        gap={["1rem", "1.5rem"]}
         align="center"
         justify="space-between"
       >

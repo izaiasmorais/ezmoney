@@ -41,6 +41,7 @@ export default function Invoices() {
         borderRadius="1rem"
         overflow="hidden"
         mt="2rem"
+        pb="1rem"
         w="100%"
         bg="back.boxes"
         boxShadow={shadow}
