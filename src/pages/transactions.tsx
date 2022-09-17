@@ -5,7 +5,7 @@ import { TransactionsTable } from "../components/TransactionsTable";
 
 export default function Transactions() {
   return (
-    <Layout title="Transações">
+    <Layout title="Transações" maxw={1200}>
       <Flex
         w="100%"
         mt="1rem"

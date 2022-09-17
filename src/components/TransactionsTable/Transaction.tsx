@@ -23,14 +23,7 @@ export function Transaction({
   type,
 }: Props) {
   return (
-    <Flex
-      w="100%"
-      h="max-content"
-      py=".5rem"
-      px={["0", "1rem", "1.5rem"]}
-      borderRadius="1rem"
-      justify="space-between"
-    >
+    <Flex w="100%" h="max-content" borderRadius="1rem" justify="space-between">
       <Flex gap="1rem">
         <Flex
           w="60px"
@@ -56,7 +49,9 @@ export function Transaction({
         <Text color={color} fontWeight="600">
           {type === "income" ? "R$" : "- R$"} {price}
         </Text>
-        <Text color="text.paragraphy" fontWeight={600} fontSize=".9rem">{date}</Text>
+        <Text color="text.paragraphy" fontWeight={600} fontSize=".9rem">
+          {date}
+        </Text>
       </Flex>
     </Flex>
   );

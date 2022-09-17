@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Flex } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
 import { IoFastFoodSharp } from "react-icons/io5";
@@ -9,7 +10,11 @@ import {
 } from "react-icons/fa";
 import { useShadow } from "../../contexts/ShadowContext";
 
-export function TransactionsTable() {
+interface TransactionProps {
+  viewAll?: ReactNode;
+}
+
+export function TransactionsTable({ viewAll }: TransactionProps) {
   const { shadow } = useShadow();
   return (
     <Flex
@@ -18,8 +23,8 @@ export function TransactionsTable() {
       bg="back.boxes"
       h="max-content"
       borderRadius="1rem"
-      p="1rem"
-      gap="1rem"
+      p="1.5rem"
+      gap="1.5rem"
       gridColumn={["1", "1", "1", "1 / 4"]}
       boxShadow={shadow}
     >
@@ -28,9 +33,9 @@ export function TransactionsTable() {
         title="Comida"
         description="Compras no supermercado"
         color="red.700"
-        bg="red.100"
+        bg="yellow.100"
         date="08/09/2022"
-        icon={<IoFastFoodSharp color="#FD3C4A" size={30} />}
+        icon={<IoFastFoodSharp color="#FF9B00" size={30} />}
         price={1000}
       />
 
@@ -39,9 +44,9 @@ export function TransactionsTable() {
         title="Transporte"
         description="Uber + Ônibus"
         color="red.700"
-        bg="blue.100"
+        bg="red.100"
         date="04/09/2022"
-        icon={<FaCarSide color="#0077FF" size={30} />}
+        icon={<FaCarSide color="#FF4842" size={30} />}
         price={750}
       />
 
@@ -61,9 +66,9 @@ export function TransactionsTable() {
         title="Compras"
         description="Roupas e Calçados"
         color="red.700"
-        bg="yellow.100"
+        bg="purple.100"
         date="27/08/2022"
-        icon={<FaShoppingCart color="#FCAC12" size={30} />}
+        icon={<FaShoppingCart color="#7F3DFF" size={30} />}
         price={900}
       />
 
@@ -72,11 +77,13 @@ export function TransactionsTable() {
         title="Contas"
         description="Todas as faturas do mês"
         color="red.700"
-        bg="purple.100"
+        bg="blue.100"
         date="01/07/2022"
-        icon={<FaFileInvoiceDollar color="#7F3DFF" size={30} />}
+        icon={<FaFileInvoiceDollar color="#2D99FF" size={30} />}
         price={3000}
       />
+
+      {viewAll}
     </Flex>
   );
 }

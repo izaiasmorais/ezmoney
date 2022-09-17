@@ -12,20 +12,8 @@ import { ShadowContextProvider } from "../contexts/ShadowContext";
 export default function App({ Component, pageProps }: AppProps) {
   const [isLight, setIsLight] = useState(true);
 
-  useEffect(() => {
-    const mode = localStorage.getItem("chakra-ui-color-mode");
-
-    if (mode === "dark") {
-      setIsLight(false);
-    } else {
-      setIsLight(true);
-    }
-  }, []);
-
-  const themeMode = isLight === true ? lightTheme : darkTheme;
-
   return (
-    <ChakraProvider theme={themeMode}>
+    <ChakraProvider theme={lightTheme}>
       <ShadowContextProvider>
         <DrawerContextProvider>
           <Head>
