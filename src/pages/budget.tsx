@@ -5,7 +5,7 @@ import { Layout } from "../components/Globals/Layout";
 
 export default function Budget() {
   return (
-    <Layout title="Orçamento">
+    <Layout title="Orçamento" maxw={1200}>
       <Flex
         w="100%"
         mt="1rem"
@@ -30,11 +30,12 @@ export default function Budget() {
           "1fr 1fr",
           "1fr 1fr",
           "1fr 1fr",
-          "repeat(4, 1fr)",
+          "repeat(3, 1fr)",
         ]}
       >
         <BudgetBox total={500} spent={600} category="Transporte" />
         <BudgetBox total={1500} spent={1200} category="Shopping" />
+        <BudgetBox total={2000} spent={450} category="Contas" />
       </SimpleGrid>
     </Layout>
   );

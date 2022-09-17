@@ -46,6 +46,7 @@ export function InvoicesSummary() {
         name="Rascunho"
         price={695}
       />
+      
     </Flex>
   );
 }

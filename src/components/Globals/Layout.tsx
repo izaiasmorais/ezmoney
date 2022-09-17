@@ -27,7 +27,9 @@ export function Layout({ children, title, maxw = 1400 }: Props) {
       <Flex
         direction="column"
         w="100%"
-        p="1rem"
+        px="1rem"
+        pt="1rem"
+        pb="4rem"
         bg="back.body"
         color="text.body"
         borderRadius={["0", "0", "0", "1rem 0 0 0"]}

@@ -77,6 +77,18 @@ export default function Invoices() {
             price={245}
             status="Rascunho"
           />
+          <InvoiceItem
+            name="Fatura da TV"
+            due="12/10/2022"
+            price={656}
+            status="Não pago"
+          />
+          <InvoiceItem
+            name="Empréstimo Banco do Brasil"
+            due="01/11/2022"
+            price={1200}
+            status="Pago"
+          />
         </Flex>
       </Flex>
     </Layout>

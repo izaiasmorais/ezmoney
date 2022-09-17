@@ -5,7 +5,7 @@ export function BudgetTable() {
   return (
     <Flex
       gridColumn={["1", "1", "1", "4 / 5"]}
-      direction={["column", "row", "row", "column"]}
+      direction={["column", "column", "row", "column"]}
       h="max-content"
       gap="1rem"
     >

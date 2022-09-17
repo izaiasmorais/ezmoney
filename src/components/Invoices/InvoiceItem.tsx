@@ -37,12 +37,14 @@ export function InvoiceItem({ name, due, status, price }: Props) {
       alignItems="center"
       justifyContent="space-between"
       gridTemplateColumns={[
-        "repeat(4, 1fr)",
+        "repeat(5, 1fr)",
         "repeat(5, 1fr)",
         "repeat(8, 1fr)",
       ]}
     >
-      <Text gridColumn={["1 / 3", "1 / 3", "1 / 6"]}>{name}</Text>
+      <Text gridColumn={["1 / 3", "1 / 3", "1 / 6"]} maxW={240}>
+        {name}
+      </Text>
       <Text gridColumn={["3 / 4", "3 / 4", "6 / 7"]}>{due}</Text>
       <Text
         gridColumn={["4 / 5", "4 / 5", "7 / 8"]}
