@@ -1,13 +1,18 @@
-import { Divider, Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import type { NextPage } from "next";
+import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { AiOutlineRight } from "react-icons/ai";
 import { BudgetTable } from "../components/BudgetTable";
 import { Layout } from "../components/Globals/Layout";
 import { Summary } from "../components/Summary";
 import { TransactionsTable } from "../components/TransactionsTable";
 import Link from "next/link";
+import { api } from "../lib/axios";
+import { TransactionProps } from "../@types/types";
 
-const Home: NextPage = () => {
+interface HomeProps {
+  data: TransactionProps[];
+}
+
+export default function Home({ data }: HomeProps) {
   return (
     <Layout title="Dashboard">
       <Summary />
@@ -18,6 +23,7 @@ const Home: NextPage = () => {
         gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
         <TransactionsTable
+          data={data}
           viewAll={
             <Link href="/transactions">
               <Flex
@@ -38,6 +44,16 @@ const Home: NextPage = () => {
       </SimpleGrid>
     </Layout>
   );
-};
+}
 
-export default Home;
+export async function getServerSideProps() {
+  const response = await api.get("/transactions");
+
+  const data = response.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
+}

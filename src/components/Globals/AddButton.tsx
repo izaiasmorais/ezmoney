@@ -3,22 +3,22 @@ import { FaPlusCircle } from "react-icons/fa";
 import { useShadow } from "../../contexts/ShadowContext";
 
 interface Props {
-  func?: () => void;
   name: string;
+  clickFunction?: () => void;
 }
 
-export function AddButton({ func, name }: Props) {
+export function AddButton({ name, clickFunction }: Props) {
   const { shadow } = useShadow();
 
   return (
     <Button
+      onClick={clickFunction}
       borderRadius="1rem"
       display="flex"
       py="1.5rem"
       gap={[".5rem", ".5rem", "1rem"]}
       alignItems="center"
       bg="back.boxes"
-      onClick={func}
       justifyContent="space-between"
       boxShadow={shadow}
     >

@@ -1,4 +1,4 @@
-import { Flex, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Flex} from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar";

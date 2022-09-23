@@ -1,21 +1,18 @@
 import { ReactNode } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
-import { IoFastFoodSharp } from "react-icons/io5";
-import {
-  FaFileInvoiceDollar,
-  FaShoppingCart,
-  FaMoneyBillWave,
-  FaCarSide,
-} from "react-icons/fa";
 import { useShadow } from "../../contexts/ShadowContext";
+import { TransactionProps } from "../../@types/types";
+import { formatDate, icon } from "../../utils/conditionalFuntions";
 
-interface TransactionProps {
+interface TransactionTableProps {
   viewAll?: ReactNode;
+  data: TransactionProps[];
 }
 
-export function TransactionsTable({ viewAll }: TransactionProps) {
+export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
   const { shadow } = useShadow();
+
   return (
     <Flex
       w="100%"
@@ -28,60 +25,25 @@ export function TransactionsTable({ viewAll }: TransactionProps) {
       gridColumn={["1", "1", "1", "1 / 4"]}
       boxShadow={shadow}
     >
-      <Transaction
-        type="expanse"
-        title="Comida"
-        description="Compras no supermercado"
-        color="red.700"
-        bg="yellow.100"
-        date="08/09/2022"
-        icon={<IoFastFoodSharp color="#FF9B00" size={30} />}
-        price={1000}
-      />
-
-      <Transaction
-        type="expanse"
-        title="Transporte"
-        description="Uber + Ônibus"
-        color="red.700"
-        bg="red.100"
-        date="04/09/2022"
-        icon={<FaCarSide color="#FF4842" size={30} />}
-        price={750}
-      />
-
-      <Transaction
-        type="income"
-        title="Salário"
-        description="Pagamento da empresa"
-        color="green.700"
-        bg="green.100"
-        date="01/09/2022"
-        icon={<FaMoneyBillWave color="#00A86B" size={30} />}
-        price={2750}
-      />
-
-      <Transaction
-        type="expanse"
-        title="Compras"
-        description="Roupas e Calçados"
-        color="red.700"
-        bg="purple.100"
-        date="27/08/2022"
-        icon={<FaShoppingCart color="#7F3DFF" size={30} />}
-        price={900}
-      />
-
-      <Transaction
-        type="expanse"
-        title="Contas"
-        description="Todas as faturas do mês"
-        color="red.700"
-        bg="blue.100"
-        date="01/07/2022"
-        icon={<FaFileInvoiceDollar color="#2D99FF" size={30} />}
-        price={3000}
-      />
+      {data ? (
+        data.map((item) => (
+          <Transaction
+            key={item.id}
+            title={item.title}
+            description={item.description}
+            type={item.type === "Salário" ? "income" : "expanse"}
+            color={item.type === "Salário" ? "green.700" : "red.700"}
+            bg={icon(item.type).bgColor}
+            date={formatDate(item.createdAt)}
+            icon={icon(item.type).icon}
+            price={item.price}
+          />
+        ))
+      ) : (
+        <Text textAlign="center" color="text.paragraphy">
+          Não há transações para listar
+        </Text>
+      )}
 
       {viewAll}
     </Flex>

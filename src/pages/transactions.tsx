@@ -1,9 +1,18 @@
-import { Flex, Select } from "@chakra-ui/react";
+import { Flex, Select, useDisclosure } from "@chakra-ui/react";
 import { Layout } from "../components/Globals/Layout";
 import { AddButton } from "../components/Globals/AddButton";
 import { TransactionsTable } from "../components/TransactionsTable";
+import { api } from "../lib/axios";
+import { TransactionProps } from "../@types/types";
+import { MoneyModal } from "../components/Modal";
 
-export default function Transactions() {
+interface TransacionsListProps {
+  data: TransactionProps[];
+}
+
+export default function Transactions({ data }: TransacionsListProps) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Layout title="Transações" maxw={1200}>
       <Flex
@@ -24,10 +33,24 @@ export default function Transactions() {
           <option value="option3">Supermercado</option>
         </Select>
 
-        <AddButton name="Adicionar transação" />
+        <AddButton name="Adicionar transação" clickFunction={onOpen} />
       </Flex>
 
-      <TransactionsTable />
+      <TransactionsTable data={data} />
+
+      <MoneyModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  const response = await api.get("/transactions");
+
+  const data = response.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
