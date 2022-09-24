@@ -5,6 +5,8 @@ import { TransactionsTable } from "../components/TransactionsTable";
 import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";
 import { MoneyModal } from "../components/Modal";
+import { useMoney } from "../contexts/MoneyContext";
+import { useEffect } from "react";
 
 interface TransacionsListProps {
   data: TransactionProps[];
@@ -12,8 +14,13 @@ interface TransacionsListProps {
 
 export default function Transactions({ data }: TransacionsListProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { transactions, setTransactions } = useMoney();
 
-  console.log("REFRESHED");
+  useEffect(() => {
+    setTransactions(data);
+
+    console.log("REFRESHED");
+  }, []);
 
   return (
     <Layout title="Transações" maxw={1200}>
@@ -38,7 +45,7 @@ export default function Transactions({ data }: TransacionsListProps) {
         <AddButton name="Adicionar transação" clickFunction={onOpen} />
       </Flex>
 
-      <TransactionsTable data={data} />
+      <TransactionsTable data={transactions} />
 
       <MoneyModal isOpen={isOpen} onClose={onClose} />
     </Layout>
@@ -46,15 +53,24 @@ export default function Transactions({ data }: TransacionsListProps) {
 }
 
 export async function getServerSideProps() {
-  const response = await api.get(
-    "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
-  );
+  try {
+    const { data } = await api.get(
+      "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
+    );
 
-  const data = response.data;
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    const data = "";
+    console.log(error);
 
-  return {
-    props: {
-      data,
-    },
-  };
+    return {
+      props: {
+        data,
+      },
+    };
+  }
 }

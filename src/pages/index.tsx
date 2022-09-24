@@ -7,12 +7,20 @@ import { TransactionsTable } from "../components/TransactionsTable";
 import Link from "next/link";
 import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";
+import { useMoney } from "../contexts/MoneyContext";
+import { useEffect } from "react";
 
 interface HomeProps {
   data: TransactionProps[];
 }
 
 export default function Home({ data }: HomeProps) {
+  const { transactions, setTransactions } = useMoney();
+
+  useEffect(() => {
+    setTransactions(data);
+  }, []);
+
   return (
     <Layout title="Dashboard">
       <Summary />
@@ -23,7 +31,7 @@ export default function Home({ data }: HomeProps) {
         gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
         <TransactionsTable
-          data={data}
+          data={transactions}
           viewAll={
             <Link href="/transactions">
               <Flex
@@ -47,15 +55,26 @@ export default function Home({ data }: HomeProps) {
 }
 
 export async function getServerSideProps() {
-  const response = await api.get(
-    "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
-  );
+  try {
+    const response = await api.get(
+      "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
+    );
 
-  const data = response.data;
+    const data = response.data;
 
-  return {
-    props: {
-      data,
-    },
-  };
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    const data = "";
+    console.log(error);
+
+    return {
+      props: {
+        data,
+      },
+    };
+  }
 }

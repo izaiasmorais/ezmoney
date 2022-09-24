@@ -5,6 +5,7 @@ import { useShadow } from "../../contexts/ShadowContext";
 import { TransactionProps } from "../../@types/types";
 import { icon } from "../../utils/conditionalFuntions";
 import { formatDate } from "../../utils/formatDate";
+import { ThreeDots } from "react-loader-spinner";
 
 interface TransactionTableProps {
   viewAll?: ReactNode;
@@ -26,7 +27,7 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
       gridColumn={["1", "1", "1", "1 / 4"]}
       boxShadow={shadow}
     >
-      {data ? (
+      {data.length > 0 ? (
         data.map((item) => (
           <Transaction
             key={item.id}
@@ -41,9 +42,17 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
           />
         ))
       ) : (
-        <Text textAlign="center" color="text.paragraphy">
-          Não há transações para listar
-        </Text>
+        <Flex align="center" justify="center">
+          <ThreeDots
+            height="40"
+            width="40"
+            radius="9"
+            color="#000000"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            visible={true}
+          />
+        </Flex>
       )}
 
       {viewAll}
