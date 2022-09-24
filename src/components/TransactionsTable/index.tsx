@@ -3,7 +3,8 @@ import { Flex, Text } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
 import { useShadow } from "../../contexts/ShadowContext";
 import { TransactionProps } from "../../@types/types";
-import { formatDate, icon } from "../../utils/conditionalFuntions";
+import { icon } from "../../utils/conditionalFuntions";
+import { formatDate } from "../../utils/formatDate";
 
 interface TransactionTableProps {
   viewAll?: ReactNode;

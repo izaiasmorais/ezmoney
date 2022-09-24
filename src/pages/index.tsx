@@ -47,7 +47,9 @@ export default function Home({ data }: HomeProps) {
 }
 
 export async function getServerSideProps() {
-  const response = await api.get("/transactions");
+  const response = await api.get(
+    "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
+  );
 
   const data = response.data;
 

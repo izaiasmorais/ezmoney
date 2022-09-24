@@ -13,6 +13,8 @@ interface TransacionsListProps {
 export default function Transactions({ data }: TransacionsListProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  console.log("REFRESHED");
+
   return (
     <Layout title="Transações" maxw={1200}>
       <Flex
@@ -44,7 +46,9 @@ export default function Transactions({ data }: TransacionsListProps) {
 }
 
 export async function getServerSideProps() {
-  const response = await api.get("/transactions");
+  const response = await api.get(
+    "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
+  );
 
   const data = response.data;
 
