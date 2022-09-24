@@ -10,13 +10,13 @@ export function Toggler() {
       type="single"
       value={transactionType}
       onValueChange={setTransactionType}
-      style={{ gap: ".3rem", display: "flex" }}
+      style={{ gap: ".5rem", display: "flex" }}
     >
+      <TogglerItem name="Entrada" value="Entrada" />
       <TogglerItem name="Comida" value="Comida" />
       <TogglerItem name="Transporte" value="Transporte" />
-      <TogglerItem name="Contas" value="Contas" />
-      <TogglerItem name="Salário" value="Salário" />
-      <TogglerItem name="Compras" value="Compras" />
+      <TogglerItem name="Compra" value="Compra" />
+      <TogglerItem name="Conta" value="Conta" />
     </ToggleGroup.Root>
   );
 }

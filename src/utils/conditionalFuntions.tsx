@@ -34,15 +34,17 @@ const salaryData = {
 export function icon(type: string) {
   if (type === "Comida") {
     return foodData;
+
   } else if (type === "Transporte") {
     return transportData;
-  } else if (type === "Compras") {
+
+  } else if (type === "Compra") {
     return shoppingData;
-  } else if (type === "Contas") {
+
+  } else if (type === "Conta") {
     return invoicesData;
+
   } else {
     return salaryData;
   }
 }
-
-

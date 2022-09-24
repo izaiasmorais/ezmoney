@@ -18,8 +18,6 @@ export default function Transactions({ data }: TransacionsListProps) {
 
   useEffect(() => {
     setTransactions(data);
-
-    console.log("REFRESHED");
   }, []);
 
   return (

@@ -33,11 +33,11 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
             key={item.id}
             title={item.title}
             description={item.description}
-            type={item.type === "Salário" ? "income" : "expanse"}
-            color={item.type === "Salário" ? "green.700" : "red.700"}
-            bg={icon(item.type).bgColor}
+            type={item.type === "Entrada" ? "income" : "expanse"}
+            color={item.type === "Entrada" ? "green.700" : "red.700"}
             date={formatDate(item.createdAt)}
-            icon={icon(item.type).icon}
+            bg={icon(item.type)?.bgColor}
+            icon={icon(item.type)?.icon}
             price={item.price}
           />
         ))

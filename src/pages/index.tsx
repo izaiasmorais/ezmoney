@@ -17,8 +17,11 @@ interface HomeProps {
 export default function Home({ data }: HomeProps) {
   const { transactions, setTransactions } = useMoney();
 
+  const filteredData =
+    data.length > 5 ? data.slice(data.length - 6, data.length - 1) : data;
+
   useEffect(() => {
-    setTransactions(data);
+    setTransactions(filteredData);
   }, []);
 
   return (

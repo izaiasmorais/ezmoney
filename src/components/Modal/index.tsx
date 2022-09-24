@@ -11,9 +11,7 @@ import {
   Box,
   FormLabel,
 } from "@chakra-ui/react";
-import { ChangeEvent, useState } from "react";
 import { useMoney } from "../../contexts/MoneyContext";
-import { api } from "../../lib/axios";
 import { Toggler } from "./Toggler";
 
 interface ModalProps {
@@ -22,48 +20,17 @@ interface ModalProps {
 }
 
 export function MoneyModal({ isOpen, onClose }: ModalProps) {
-  const { setTransactions, transactionType } = useMoney();
-  const [newTransaction, setNewTransaction] = useState({
-    title: "",
-    description: "",
-    price: 0,
-  });
+  const { createTransaction, formData, handleChangeValues } = useMoney();
 
-  function handleChangeValues(event: ChangeEvent<HTMLInputElement>) {
-    setNewTransaction({
-      ...newTransaction,
-      [event.target.id]: event.target.value,
-    });
-  }
-
-  async function handleCreateTransaction() {
-    try {
-      await api.post(
-        "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions",
-        {
-          title: newTransaction.title,
-          description: newTransaction.description,
-          price: Number(newTransaction.price),
-          type: transactionType,
-        }
-      );
-
-      const { data } = await api.get(
-        "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
-      );
-
-      setTransactions(data);
-
-      onClose();
-    } catch (error) {
-      console.log(error);
-    }
+  function handleCreateTransaction() {
+    createTransaction();
+    onClose();
   }
 
   return (
     <Modal onClose={onClose} size={["sm", "md"]} isOpen={isOpen}>
       <ModalOverlay />
-      <ModalContent mt="200px" borderRadius="1rem">
+      <ModalContent mt="200px" borderRadius="1rem" bg="back.boxes">
         <ModalHeader>Adicionar transação</ModalHeader>
 
         <ModalCloseButton />
@@ -74,7 +41,7 @@ export function MoneyModal({ isOpen, onClose }: ModalProps) {
             <Input
               id="title"
               type="text"
-              value={newTransaction.title}
+              value={formData.title}
               onChange={handleChangeValues}
             />
           </Box>
@@ -83,7 +50,7 @@ export function MoneyModal({ isOpen, onClose }: ModalProps) {
             <Input
               id="description"
               type="text"
-              value={newTransaction.description}
+              value={formData.description}
               onChange={handleChangeValues}
             />
           </Box>
@@ -92,7 +59,7 @@ export function MoneyModal({ isOpen, onClose }: ModalProps) {
             <Input
               id="price"
               type="number"
-              value={newTransaction.price}
+              value={formData.price}
               onChange={handleChangeValues}
             />
           </Box>

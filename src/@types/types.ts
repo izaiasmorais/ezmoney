@@ -6,3 +6,9 @@ export type TransactionProps = {
   createdAt: Date;
   id: string;
 };
+
+export type FormDataProps = {
+  title: string;
+  price: number;
+  description: string;
+};

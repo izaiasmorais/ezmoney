@@ -14,7 +14,10 @@ export function TogglerItem({ name, value }: Props) {
       value={value}
       title={value}
       style={{
-        border: "1px solid #b2b7b878",
+        border:
+          transactionType === value
+            ? "1px solid transparent"
+            : "1px solid #b2b7b878",
         padding: ".5rem",
         borderRadius: ".5rem",
         fontSize: ".9rem",
