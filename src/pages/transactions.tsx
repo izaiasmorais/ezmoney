@@ -51,10 +51,10 @@ export default function Transactions({ data }: TransacionsListProps) {
 }
 
 export async function getServerSideProps() {
+  const userId = process.env.USER_ID;
+
   try {
-    const { data } = await api.get(
-      "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
-    );
+    const { data } = await api.get(`/clients/${userId}/transactions`);
 
     return {
       props: {

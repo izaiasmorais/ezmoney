@@ -58,12 +58,10 @@ export default function Home({ data }: HomeProps) {
 }
 
 export async function getServerSideProps() {
-  try {
-    const response = await api.get(
-      "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
-    );
+  const userId = process.env.USER_ID;
 
-    const data = response.data;
+  try {
+    const { data } = await api.get(`/clients/${userId}/transactions`);
 
     return {
       props: {
