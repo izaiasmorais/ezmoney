@@ -6,7 +6,7 @@
 
 ## 📃 Sobre o projeto
 
-Um dashboard completo para gerenciar suas financas. Feito Next.js, ChakraUI. Comecei com a ideia de desenvolver o site pois queria aprimorar meus conhecimentos com posicionamento avançado e estilos no geral, e também construir uma API mais completa a fim de criar um aplicação Full-stack de alto nível.
+Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI. Comecei com a ideia do projeto pois queria aprimorar meus conhecimentos com posicionamento avançado e estilos no geral, e também construir uma API mais completa possível, mesmo que com funcionalidades simples como CRUD em quase todos os casos de uso. 
 
 ### Funcionalidades
 
