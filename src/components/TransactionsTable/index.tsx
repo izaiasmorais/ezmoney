@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
 import { useShadow } from "../../contexts/ShadowContext";
 import { TransactionProps } from "../../@types/types";

@@ -16,6 +16,21 @@ export default function Transactions({ data }: TransacionsListProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { transactions, setTransactions } = useMoney();
 
+  function handleFilter(type: string) {
+    if (type === "") {
+      setTransactions(data);
+    } else if (type === "Entrada") {
+      const filtered = data.filter((item) => item.type === "Entrada");
+      setTransactions(filtered);
+    } else if (type === "Saída") {
+      const filtered = data.filter((item) => item.type !== "Entrada");
+      setTransactions(filtered);
+    } else {
+      const filtered = data.filter((item) => item.type === type);
+      setTransactions(filtered);
+    }
+  }
+
   useEffect(() => {
     setTransactions(data);
   }, []);
@@ -30,14 +45,17 @@ export default function Transactions({ data }: TransacionsListProps) {
         align="center"
         justify="space-between"
       >
-        <Select placeholder="Todos" maxWidth={160}>
-          <option value="option1">Entradas</option>
-          <option value="option1">Saídas</option>
-          <option value="option2">Compras</option>
-          <option value="option3">Salário</option>
-          <option value="option3">Contas</option>
-          <option value="option3">Transporte</option>
-          <option value="option3">Supermercado</option>
+        <Select
+          placeholder="Todos"
+          maxWidth={160}
+          onChange={(e) => handleFilter(e.target.value)}
+        >
+          <option value="Entrada">Entradas</option>
+          <option value="Saída">Saídas</option>
+          <option value="Compra">Compras</option>
+          <option value="Conta">Contas</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Comida">Comida</option>
         </Select>
 
         <AddButton name="Adicionar transação" clickFunction={onOpen} />
