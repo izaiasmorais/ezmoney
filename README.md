@@ -10,7 +10,7 @@ Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI
 
 ### Funcionalidades
 
-- Listar, adicionar, editar e deletar transações, orçamentos e dívivas.
+- Listar, adicionar, editar e deletar transações, orçamentos e dívidas.
 - Modo escuro completo.
 - Design responsivo completo.
 
