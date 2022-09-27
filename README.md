@@ -23,7 +23,7 @@ Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI
 ## 💻 Clonando projeto
 
 ```bash
-$ git clone https://github.com/IzaiasMorais/ezmoney.git && cd ezmoney
+$ git clone https://github.com/izaiasmorais/ezmoney.git && cd ezmoney
 ```
 
 ```bash
