@@ -3,7 +3,7 @@ import { Flex } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
 import { useShadow } from "../../contexts/ShadowContext";
 import { TransactionProps } from "../../@types/types";
-import { icon } from "../../utils/conditionalFuntions";
+import { icon } from "../../utils/conditionalFunctions";
 import { formatDate } from "../../utils/formatDate";
 import { ThreeDots } from "react-loader-spinner";
 
