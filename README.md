@@ -6,13 +6,11 @@
 
 ## 📃 Sobre o projeto
 
-Um dashboard completo para gerenciar suas financas. Feito Next.js, ChakraUI. Comecei com a ideia de desenvolver o site pois queria aprimorar meus conhecimentos com posicionamento avançado e estilos no geral, e também construir uma API mais completa a fim de criar um aplicação Full-stack de alto nível.
-
-https://user-images.githubusercontent.com/53953937/190296362-9047a2ae-8584-4f21-9fa3-22f2eb6118a9.mp4
+Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI. Comecei com a ideia do projeto pois queria aprimorar meus conhecimentos com posicionamento avançado e estilos no geral, e também construir uma API mais completa possível, mesmo que com funcionalidades simples como CRUD em quase todos os casos de uso. 
 
 ### Funcionalidades
 
-- Listar, adicionar, editar e deletar transações, orçamentos e dívivas.
+- Listar, adicionar, editar e deletar transações, orçamentos e dívidas.
 - Modo escuro completo.
 - Design responsivo completo.
 
@@ -25,7 +23,7 @@ https://user-images.githubusercontent.com/53953937/190296362-9047a2ae-8584-4f21-
 ## 💻 Clonando projeto
 
 ```bash
-$ git clone https://github.com/IzaiasMorais/ezmoney.git && cd ezmoney
+$ git clone https://github.com/izaiasmorais/ezmoney.git && cd ezmoney
 ```
 
 ```bash
