@@ -5,23 +5,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 export function ToggleButton() {
   const { setColorMode } = useColorMode();
-  const { theme, setTheme } = useTheme();
-
-  // useEffect(() => {
-  //   if (theme === "light") {
-  //     setColorMode("light");
-  //   } else {
-  //     setColorMode("dark");
-  //   }
-  // }, [theme]);
-
-  function handleThemeColor() {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  }
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <Button
@@ -30,9 +14,12 @@ export function ToggleButton() {
       _hover={{ bg: "#5022ab" }}
       bottom="30px"
       right="30px"
-      onClick={handleThemeColor}
     >
-      {theme === "light" ? <FaSun color="white" /> : <FaMoon color="white" />}
+      {resolvedTheme === "light" ? (
+        <FaMoon color="white" />
+      ) : (
+        <FaSun color="white" />
+      )}
     </Button>
   );
 }

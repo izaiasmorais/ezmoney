@@ -5,6 +5,7 @@ import {
   createContext,
   useContext,
   ChangeEvent,
+  useEffect,
 } from "react";
 import toast from "react-hot-toast";
 import { FormDataProps, ThemeProps, TransactionProps } from "../@types/types";
@@ -17,7 +18,6 @@ interface MoneyContextProviderProps {
 
 interface MoneyContextType {
   nextTheme: ThemeProps;
-  bgNextColor: string;
   transactions: TransactionProps[];
   formData: FormDataProps;
   transactionType: string;
@@ -31,7 +31,7 @@ interface MoneyContextType {
 export const MoneyContext = createContext({} as MoneyContextType);
 
 export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const [transactionType, setTransactionType] = useState("");
   const [formData, setFormData] = useState({
@@ -76,24 +76,20 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
     }
   }
 
+  let nextTheme = lightColors;
   let shadow = "";
 
-  if (theme === "light") {
+  if (resolvedTheme === "light") {
     shadow =
       "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px";
   } else {
     shadow = "";
   }
 
-  const bgNextColor = theme === "light" ? "#ffffff" : "#000000";
-
-  const nextTheme = theme === "light" ? lightColors : darkColors;
-
   return (
     <MoneyContext.Provider
       value={{
         nextTheme,
-        bgNextColor,
         shadow,
         transactions,
         setTransactions,

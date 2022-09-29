@@ -11,7 +11,7 @@ import { theme } from "../styles/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider>
       <ChakraProvider theme={theme}>
         <MoneyContextProvider>
           <DrawerContextProvider>

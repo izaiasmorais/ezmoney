@@ -29,7 +29,7 @@ export function MoneyModal({ isOpen, onClose }: ModalProps) {
   }
 
   return (
-    <Modal onClose={onClose} size={["sm", "md"]} isOpen={isOpen}>
+    <Modal isOpen={isOpen} onClose={onClose} size={["sm", "md"]}>
       <ModalOverlay />
       <ModalContent mt="200px" borderRadius="1rem" bg={nextTheme.back.boxes}>
         <ModalHeader>Adicionar transação</ModalHeader>

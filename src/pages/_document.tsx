@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
   render() {
     return (
       <Html lang="pt-br">
@@ -24,9 +24,9 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-        
       </Html>
     );
   }
 }
 
+export default MyDocument;

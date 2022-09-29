@@ -4,15 +4,13 @@ import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   name: string;
-  clickFunction?: () => void;
 }
 
-export function AddButton({ name, clickFunction }: Props) {
+export function AddButton({ name }: Props) {
   const { shadow, nextTheme } = useMoney();
 
   return (
     <Button
-      onClick={() => clickFunction}
       borderRadius="1rem"
       display="flex"
       py="1.5rem"

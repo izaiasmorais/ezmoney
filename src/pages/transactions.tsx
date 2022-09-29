@@ -58,7 +58,9 @@ export default function Transactions({ data }: TransacionsListProps) {
           <option value="Comida">Comida</option>
         </Select>
 
-        <AddButton name="Adicionar transação" clickFunction={onOpen} />
+        <Flex onClick={onOpen}>
+          <AddButton name="Adicionar transação" />
+        </Flex>
       </Flex>
 
       <TransactionsTable data={transactions} />
