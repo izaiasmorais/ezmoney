@@ -1,6 +1,6 @@
 import { Button, Text } from "@chakra-ui/react";
 import { FaPlusCircle } from "react-icons/fa";
-import { useShadow } from "../../contexts/ShadowContext";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   name: string;
@@ -8,17 +8,17 @@ interface Props {
 }
 
 export function AddButton({ name, clickFunction }: Props) {
-  const { shadow } = useShadow();
+  const { shadow, nextTheme } = useMoney();
 
   return (
     <Button
-      onClick={clickFunction}
+      onClick={() => clickFunction}
       borderRadius="1rem"
       display="flex"
       py="1.5rem"
       gap={[".5rem", ".5rem", "1rem"]}
       alignItems="center"
-      bg="back.boxes"
+      bg={nextTheme.back.boxes}
       justifyContent="space-between"
       boxShadow={shadow}
     >

@@ -12,3 +12,17 @@ export type FormDataProps = {
   price: number;
   description: string;
 };
+
+export type ThemeProps = {
+  text: {
+    body: string;
+    sidebar: string;
+    paragraphy: string;
+  };
+  back: {
+    body: string;
+    boxes: string;
+    sidebar: string;
+    card: string;
+  };
+};

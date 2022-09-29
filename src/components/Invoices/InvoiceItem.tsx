@@ -1,4 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   name: string;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export function InvoiceItem({ name, due, status, price }: Props) {
+  const { nextTheme } = useMoney();
+
   const bgColor =
     status === "Pago"
       ? "green.100"
@@ -32,7 +35,7 @@ export function InvoiceItem({ name, due, status, price }: Props) {
       py="1rem"
       w="100%"
       minW="650px"
-      color="text.paragraphy"
+      color={nextTheme.text.paragraphy}
       fontWeight={600}
       alignItems="center"
       justifyContent="space-between"

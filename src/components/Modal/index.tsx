@@ -20,7 +20,8 @@ interface ModalProps {
 }
 
 export function MoneyModal({ isOpen, onClose }: ModalProps) {
-  const { createTransaction, formData, handleChangeValues } = useMoney();
+  const { createTransaction, formData, handleChangeValues, nextTheme } =
+    useMoney();
 
   function handleCreateTransaction() {
     createTransaction();
@@ -30,7 +31,7 @@ export function MoneyModal({ isOpen, onClose }: ModalProps) {
   return (
     <Modal onClose={onClose} size={["sm", "md"]} isOpen={isOpen}>
       <ModalOverlay />
-      <ModalContent mt="200px" borderRadius="1rem" bg="back.boxes">
+      <ModalContent mt="200px" borderRadius="1rem" bg={nextTheme.back.boxes}>
         <ModalHeader>Adicionar transação</ModalHeader>
 
         <ModalCloseButton />

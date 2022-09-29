@@ -1,5 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   name: string;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export function InvoiceBox({ icon, invoices, price, name, color }: Props) {
+  const { nextTheme } = useMoney();
+
   return (
     <Flex
       gap="1.25rem"
@@ -17,12 +20,12 @@ export function InvoiceBox({ icon, invoices, price, name, color }: Props) {
       align="center"
       justify="center"
       borderRight="1px dashed"
-      borderColor="text.paragraphy"
+      borderColor={nextTheme.text.paragraphy}
       _last={{
         border: "none",
       }}
     >
-      <Flex bg="back.card" p="1rem" borderRadius="50%">
+      <Flex bg={nextTheme.back.card} p="1rem" borderRadius="50%">
         {icon}
       </Flex>
 
@@ -31,7 +34,7 @@ export function InvoiceBox({ icon, invoices, price, name, color }: Props) {
           {name}
         </Text>
 
-        <Text fontSize=".9rem" color="text.sidebar">
+        <Text fontSize=".9rem" color={nextTheme.text.sidebar}>
           <Text fontWeight={600} display="inline">
             {invoices}
           </Text>{" "}

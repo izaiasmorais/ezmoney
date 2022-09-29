@@ -1,13 +1,16 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
+import { useMoney } from "../../contexts/MoneyContext";
 
 export function InvoiceHeader() {
+  const { nextTheme } = useMoney();
+
   return (
     <SimpleGrid
       px="1.5rem"
       py="1rem"
       w="100%"
       minW="650px"
-      color="text.paragraphy"
+      color={nextTheme.text.paragraphy}
       fontWeight={700}
       justifyContent="space-between"
       gridTemplateColumns={[

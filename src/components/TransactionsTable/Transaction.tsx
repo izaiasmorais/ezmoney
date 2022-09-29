@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Flex, Text } from "@chakra-ui/react";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   icon: ReactNode;
@@ -22,6 +23,8 @@ export function Transaction({
   icon,
   type,
 }: Props) {
+  const { nextTheme } = useMoney();
+
   return (
     <Flex w="100%" h="max-content" borderRadius="1rem" justify="space-between">
       <Flex gap="1rem">
@@ -39,7 +42,11 @@ export function Transaction({
           <Text fontWeight="600" fontSize="1rem">
             {title}
           </Text>
-          <Text fontSize=".8rem" fontWeight="600" color="text.paragraphy">
+          <Text
+            fontSize=".8rem"
+            fontWeight="600"
+            color={nextTheme.text.paragraphy}
+          >
             {description}
           </Text>
         </Flex>
@@ -49,7 +56,11 @@ export function Transaction({
         <Text color={color} fontWeight="600">
           {type === "income" ? "R$" : "- R$"} {price}
         </Text>
-        <Text color="text.paragraphy" fontWeight={600} fontSize=".9rem">
+        <Text
+          color={nextTheme.text.paragraphy}
+          fontWeight={600}
+          fontSize=".9rem"
+        >
           {date}
         </Text>
       </Flex>

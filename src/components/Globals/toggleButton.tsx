@@ -1,31 +1,25 @@
 import { Button, useColorMode } from "@chakra-ui/react";
+import { useTheme } from "next-themes";
 import { useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-interface Props {
-  isLight: boolean;
-  toggler: (value: boolean) => void;
-}
+export function ToggleButton() {
+  const { setColorMode } = useColorMode();
+  const { theme, setTheme } = useTheme();
 
-export function ToggleButton({ isLight, toggler }: Props) {
-  const { colorMode, toggleColorMode } = useColorMode();
+  // useEffect(() => {
+  //   if (theme === "light") {
+  //     setColorMode("light");
+  //   } else {
+  //     setColorMode("dark");
+  //   }
+  // }, [theme]);
 
-  useEffect(() => {
-    const mode = localStorage.getItem("chakra-ui-color-mode");
-
-    if (mode === "light") {
-      toggler(true);
+  function handleThemeColor() {
+    if (theme === "light") {
+      setTheme("dark");
     } else {
-      toggler(false);
-    }
-  }, []);
-
-  function handleToggleColorMode() {
-    toggleColorMode();
-    if (isLight) {
-      toggler(false);
-    } else {
-      toggler(true);
+      setTheme("light");
     }
   }
 
@@ -36,9 +30,9 @@ export function ToggleButton({ isLight, toggler }: Props) {
       _hover={{ bg: "#5022ab" }}
       bottom="30px"
       right="30px"
-      onClick={handleToggleColorMode}
+      onClick={handleThemeColor}
     >
-      {isLight ? <FaSun color="white" /> : <FaMoon color="white" />}
+      {theme === "light" ? <FaSun color="white" /> : <FaMoon color="white" />}
     </Button>
   );
 }

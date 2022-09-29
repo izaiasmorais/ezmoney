@@ -15,7 +15,7 @@ interface HomeProps {
 }
 
 export default function Home({ data }: HomeProps) {
-  const { transactions, setTransactions } = useMoney();
+  const { transactions, setTransactions, nextTheme } = useMoney();
 
   const filteredData =
     data.length > 5 ? data.slice(data.length - 6, data.length - 1) : data;
@@ -43,7 +43,7 @@ export default function Home({ data }: HomeProps) {
                 gap=".5rem"
                 cursor="pointer"
                 fontSize=".9rem"
-                color="text.paragraphy"
+                color={nextTheme.text.paragraphy}
               >
                 <Text fontWeight={600}>Ver todas as transações</Text>
                 <AiOutlineRight />

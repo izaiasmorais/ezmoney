@@ -1,4 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   quantity: number;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export function FilterBox({ color, name, bg, quantity }: Props) {
+  const { nextTheme } = useMoney();
+
   return (
     <Flex mr="3rem" gap=".3rem" fontWeight={600}>
       <Flex
@@ -23,7 +26,7 @@ export function FilterBox({ color, name, bg, quantity }: Props) {
           {quantity}
         </Text>
       </Flex>
-      <Text color="text.paragraphy">{name}</Text>
+      <Text color={nextTheme.text.paragraphy}>{name}</Text>
     </Flex>
   );
 }

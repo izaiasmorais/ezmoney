@@ -10,15 +10,17 @@ import {
 } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useRouter } from "next/router";
+import { useMoney } from "../../contexts/MoneyContext";
 
 export function Sidebar() {
+  const { nextTheme } = useMoney();
   const { asPath } = useRouter();
 
   return (
     <Flex
       h="100%"
       w="100%"
-      bg="back.sidebar"
+      bg={nextTheme.back.sidebar}
       direction="column"
       maxW={["500px", "500px", "500px", "250px"]}
     >

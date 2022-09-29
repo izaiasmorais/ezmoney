@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Flex } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
-import { useShadow } from "../../contexts/ShadowContext";
+import { useMoney } from "../../contexts/MoneyContext";
 import { TransactionProps } from "../../@types/types";
 import { icon } from "../../utils/conditionalFunctions";
 import { formatDate } from "../../utils/formatDate";
@@ -13,13 +13,13 @@ interface TransactionTableProps {
 }
 
 export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
-  const { shadow } = useShadow();
+  const { shadow, nextTheme } = useMoney();
 
   return (
     <Flex
       w="100%"
       direction="column"
-      bg="back.boxes"
+      bg={nextTheme.back.boxes}
       h="max-content"
       borderRadius="1rem"
       p={["1rem", "1.5rem"]}

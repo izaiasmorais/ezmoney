@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Text, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface NavItemProps {
   name: string;
@@ -11,6 +12,7 @@ interface NavItemProps {
 }
 
 export function NavItem({ name, src, active = false, icon }: NavItemProps) {
+  const { nextTheme } = useMoney();
   const { asPath } = useRouter();
 
   const activeLink = asPath.endsWith(src) ? active : false;
@@ -27,7 +29,7 @@ export function NavItem({ name, src, active = false, icon }: NavItemProps) {
         transition="color .3s"
         _hover={{ bg: "#464A4D" }}
         bg={activeLink ? "purple.700 !important" : "normal"}
-        color={activeLink ? "white.100" : "text.sidebar"}
+        color={activeLink ? "white.100" : nextTheme.text.sidebar}
       >
         {icon}
         <Text fontWeight={500}>{name}</Text>

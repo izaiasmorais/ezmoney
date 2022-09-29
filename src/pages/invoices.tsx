@@ -1,14 +1,14 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { Layout } from "../components/Globals/Layout";
 import { AddButton } from "../components/Globals/AddButton";
-import { useShadow } from "../contexts/ShadowContext";
+import { useMoney } from "../contexts/MoneyContext";
 import { InvoicesSummary } from "../components/Invoices/InvoicesSummary";
 import { FilterTab } from "../components/Invoices/FilterTab";
 import { InvoiceItem } from "../components/Invoices/InvoiceItem";
 import { InvoiceHeader } from "../components/Invoices/InvoiceHeader";
 
 export default function Invoices() {
-  const { shadow } = useShadow();
+  const { shadow, nextTheme } = useMoney();
 
   return (
     <Layout title="Contas" maxw={1200}>
@@ -30,7 +30,7 @@ export default function Invoices() {
       <Flex
         overflowX="auto"
         borderRadius="1rem"
-        bg="back.boxes"
+        bg={nextTheme.back.boxes}
         boxShadow={shadow}
       >
         <InvoicesSummary />
@@ -43,7 +43,7 @@ export default function Invoices() {
         mt="2rem"
         pb="1rem"
         w="100%"
-        bg="back.boxes"
+        bg={nextTheme.back.boxes}
         boxShadow={shadow}
       >
         <Flex p=".5rem" overflowX="auto" bg="back.card">

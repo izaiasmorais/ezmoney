@@ -8,18 +8,19 @@ import {
   Flex,
   Text,
   Image,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useDrawer } from "../../contexts/DrawerContext";
+import { useMoney } from "../../contexts/MoneyContext";
 import { Sidebar } from "./index";
 
 export function SidebarDrawer() {
+  const { nextTheme } = useMoney();
   const { isOpen, onClose } = useDrawer();
 
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
       <DrawerOverlay>
-        <DrawerContent bg="back.sidebar" color="white.100">
+        <DrawerContent bg={nextTheme.back.sidebar} color="white.100">
           <DrawerCloseButton mt=".5rem" />
 
           <DrawerHeader>

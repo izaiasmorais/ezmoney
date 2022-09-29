@@ -4,22 +4,16 @@ import type { AppProps } from "next/app";
 import { DrawerContextProvider } from "../contexts/DrawerContext";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ToggleButton } from "../components/Globals/toggleButton";
-import { lightTheme, darkTheme } from "../styles/theme";
-import { ShadowContextProvider } from "../contexts/ShadowContext";
-import { useState } from "react";
+import { ThemeProvider } from "next-themes";
 import { MoneyContextProvider } from "../contexts/MoneyContext";
 import { Toaster } from "react-hot-toast";
-import "../styles/globals.css";
+import { theme } from "../styles/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [isLight, setIsLight] = useState(true);
-
-  const theme = isLight ? lightTheme : darkTheme;
-
   return (
-    <ChakraProvider theme={theme}>
-      <MoneyContextProvider>
-        <ShadowContextProvider>
+    <ThemeProvider attribute="class">
+      <ChakraProvider theme={theme}>
+        <MoneyContextProvider>
           <DrawerContextProvider>
             <Head>
               <title>EZMoney</title>
@@ -27,10 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
             <NextNProgress color="#7F3DFF" />
             <Component {...pageProps} />
             <Toaster position="top-center" reverseOrder={false} />
-            <ToggleButton isLight={isLight} toggler={setIsLight} />
+            <ToggleButton />
           </DrawerContextProvider>
-        </ShadowContextProvider>
-      </MoneyContextProvider>
-    </ChakraProvider>
+        </MoneyContextProvider>
+      </ChakraProvider>
+    </ThemeProvider>
   );
 }

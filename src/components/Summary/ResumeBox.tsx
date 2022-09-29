@@ -1,6 +1,6 @@
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { useShadow } from "../../contexts/ShadowContext";
+import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   name: string;
@@ -9,12 +9,12 @@ interface Props {
 }
 
 export function ResumeBox({ name, value, icon }: Props) {
-  const { shadow } = useShadow();
+  const { shadow, nextTheme } = useMoney();
 
   return (
     <SimpleGrid
       boxShadow={shadow}
-      bg="back.boxes"
+      bg={nextTheme.back.boxes}
       borderRadius="1rem"
       justifyContent="space-between"
       p="1.5rem"
@@ -31,7 +31,7 @@ export function ResumeBox({ name, value, icon }: Props) {
     >
       <Flex justify={["right", "left", "right", "left", "left", "right"]}>
         <Flex
-          bg="back.card"
+          bg={nextTheme.back.card}
           w="50px"
           h="50px"
           align="center"
@@ -42,7 +42,7 @@ export function ResumeBox({ name, value, icon }: Props) {
         </Flex>
       </Flex>
       <Box gridRow={["1", "normal", "1", "normal", "normal", "1"]}>
-        <Text color="text.paragraphy" mb="1rem">
+        <Text color={nextTheme.text.paragraphy} mb="1rem">
           {name}
         </Text>
         <Text

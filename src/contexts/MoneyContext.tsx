@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import {
   useState,
   ReactNode,
@@ -6,17 +7,21 @@ import {
   ChangeEvent,
 } from "react";
 import toast from "react-hot-toast";
-import { FormDataProps, TransactionProps } from "../@types/types";
+import { FormDataProps, ThemeProps, TransactionProps } from "../@types/types";
 import { api } from "../lib/axios";
+import { darkColors, lightColors } from "../styles/colors";
 
 interface MoneyContextProviderProps {
   children: ReactNode;
 }
 
 interface MoneyContextType {
+  nextTheme: ThemeProps;
+  bgNextColor: string;
   transactions: TransactionProps[];
   formData: FormDataProps;
   transactionType: string;
+  shadow: string;
   setTransactions: (transactions: TransactionProps[]) => void;
   setTransactionType: (value: string) => void;
   createTransaction: () => void;
@@ -26,6 +31,7 @@ interface MoneyContextType {
 export const MoneyContext = createContext({} as MoneyContextType);
 
 export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
+  const { theme } = useTheme();
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const [transactionType, setTransactionType] = useState("");
   const [formData, setFormData] = useState({
@@ -70,15 +76,31 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
     }
   }
 
+  let shadow = "";
+
+  if (theme === "light") {
+    shadow =
+      "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px";
+  } else {
+    shadow = "";
+  }
+
+  const bgNextColor = theme === "light" ? "#ffffff" : "#000000";
+
+  const nextTheme = theme === "light" ? lightColors : darkColors;
+
   return (
     <MoneyContext.Provider
       value={{
+        nextTheme,
+        bgNextColor,
+        shadow,
         transactions,
         setTransactions,
-        transactionType,
-        setTransactionType,
         createTransaction,
         handleChangeValues,
+        setTransactionType,
+        transactionType,
         formData,
       }}
     >

@@ -1,3 +1,5 @@
+import { defaultColors } from "./defaultColors";
+
 export const lightColors = {
   text: {
     body: "#000000",
@@ -9,32 +11,6 @@ export const lightColors = {
     boxes: "#ffffff",
     sidebar: "#293033",
     card: "#f5f5f5",
-  },
-  white: {
-    "100": "#FFFFFF",
-  },
-  black: {
-    "100": "#000000",
-  },
-  yellow: {
-    "100": "#FCEED4",
-    "700": "#FF9B00",
-  },
-  red: {
-    "100": "#FDD5D7",
-    "700": "#FF4842",
-  },
-  purple: {
-    "100": "#EEE5FF",
-    "700": "#826AF9",
-  },
-  green: {
-    "100": "#C0F2DC",
-    "700": "#00AB55",
-  },
-  blue: {
-    "100": "#BDDCFF",
-    "700": "#2D99FF",
   },
 };
 
@@ -49,31 +25,5 @@ export const darkColors = {
     boxes: "#293033",
     sidebar: "#293033",
     card: "#343d41",
-  },
-  white: {
-    "100": "#FFFFFF",
-  },
-  black: {
-    "100": "#000000",
-  },
-  yellow: {
-    "100": "#FCEED4",
-    "700": "#FCAC12",
-  },
-  red: {
-    "100": "#FDD5D7",
-    "700": "#FD3C4A",
-  },
-  purple: {
-    "100": "#EEE5FF",
-    "700": "#7F3DFF",
-  },
-  green: {
-    "100": "#CFFAEA",
-    "700": "#00A86B",
-  },
-  blue: {
-    "100": "#BDDCFF",
-    "700": "#0077FF",
   },
 };
