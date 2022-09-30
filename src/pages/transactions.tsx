@@ -1,12 +1,12 @@
 import { Flex, Select, useDisclosure } from "@chakra-ui/react";
 import { Layout } from "../components/Globals/Layout";
 import { AddButton } from "../components/Globals/AddButton";
-import { TransactionsTable } from "../components/TransactionsTable";
+import { TransactionsTable } from "../components/Transactions";
 import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";
-import { MoneyModal } from "../components/Modal";
 import { useMoney } from "../contexts/MoneyContext";
 import { useEffect } from "react";
+import { TransactionModal } from "../components/Transactions/TransactionModal";
 
 interface TransacionsListProps {
   data: TransactionProps[];
@@ -65,7 +65,7 @@ export default function Transactions({ data }: TransacionsListProps) {
 
       <TransactionsTable data={transactions} />
 
-      <MoneyModal isOpen={isOpen} onClose={onClose} />
+      <TransactionModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
 }

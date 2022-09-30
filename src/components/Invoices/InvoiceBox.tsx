@@ -34,12 +34,10 @@ export function InvoiceBox({ icon, invoices, price, name, color }: Props) {
           {name}
         </Text>
 
-        <Text fontSize=".9rem" color={nextTheme.text.sidebar}>
-          <Text fontWeight={600} display="inline">
-            {invoices}
-          </Text>{" "}
-          contas
-        </Text>
+        <Flex fontSize=".9rem" gap=".3rem">
+          <Text fontWeight={600}>{invoices}</Text>
+          <Text color={nextTheme.text.sidebar}>contas</Text>
+        </Flex>
 
         <Text fontWeight={700} color={color}>
           R$ {price}

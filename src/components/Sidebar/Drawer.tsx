@@ -26,7 +26,7 @@ export function SidebarDrawer() {
           <DrawerHeader>
             <Flex align="center" gap=".5rem">
               <Image
-                src="/assets/Logo.png"
+                src="/Logo.png"
                 alt="Logo dinheiro | EZMoney"
                 w="40px"
                 h="40px"

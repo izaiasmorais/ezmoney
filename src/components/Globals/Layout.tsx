@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useMoney } from "../../contexts/MoneyContext";
-import { Header } from "../Header";
+import { Header } from "./Header";
 import { Sidebar } from "../Sidebar";
 import { SidebarDrawer } from "../Sidebar/Drawer";
 
@@ -12,10 +12,15 @@ interface Props {
 }
 
 export function Layout({ children, title, maxw = 1400 }: Props) {
+  const [mounted, setMounted] = useState(false);
   const { nextTheme } = useMoney();
 
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return <Flex minH="162.38px" />;
+
   return (
-    <Flex w="100%" minH="100vh" bg={nextTheme.back.body}>
+    <Flex w="100%" minH="100vh" bg={nextTheme.back.sidebar}>
       <SidebarDrawer />
       <Flex
         w="100%"
@@ -34,7 +39,6 @@ export function Layout({ children, title, maxw = 1400 }: Props) {
         pt="1rem"
         pb="4rem"
         bg={nextTheme.back.body}
-        color={nextTheme.text.body}
         borderRadius={["0", "0", "0", "1rem 0 0 0"]}
       >
         <Flex w="100%" margin="0 auto" maxW={1400}>

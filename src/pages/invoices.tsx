@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { Layout } from "../components/Globals/Layout";
 import { AddButton } from "../components/Globals/AddButton";
 import { useMoney } from "../contexts/MoneyContext";
@@ -6,8 +6,10 @@ import { InvoicesSummary } from "../components/Invoices/InvoicesSummary";
 import { FilterTab } from "../components/Invoices/FilterTab";
 import { InvoiceItem } from "../components/Invoices/InvoiceItem";
 import { InvoiceHeader } from "../components/Invoices/InvoiceHeader";
+import { InvoicesModal } from "../components/Modal/InvoicesModal";
 
 export default function Invoices() {
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const { shadow, nextTheme } = useMoney();
 
   return (
@@ -24,7 +26,9 @@ export default function Invoices() {
           Lista de contas
         </Text>
 
-        <AddButton name="Adicionar conta" />
+        <Flex onClick={onOpen}>
+          <AddButton name="Adicionar conta" />
+        </Flex>
       </Flex>
 
       <Flex
@@ -46,7 +50,7 @@ export default function Invoices() {
         bg={nextTheme.back.boxes}
         boxShadow={shadow}
       >
-        <Flex p=".5rem" overflowX="auto" bg="back.card">
+        <Flex p=".5rem" overflowX="auto" bg={nextTheme.back.card}>
           <FilterTab />
         </Flex>
 
@@ -65,32 +69,10 @@ export default function Invoices() {
             price={1200}
             status="Pago"
           />
-          <InvoiceItem
-            name="Faturas da energia"
-            due="20/11/2022"
-            price={760}
-            status="Atrasado"
-          />
-          <InvoiceItem
-            name="Peças na Terabyte"
-            due="30/01/2023"
-            price={245}
-            status="Rascunho"
-          />
-          <InvoiceItem
-            name="Fatura da TV"
-            due="12/10/2022"
-            price={656}
-            status="Não pago"
-          />
-          <InvoiceItem
-            name="Empréstimo Banco do Brasil"
-            due="01/11/2022"
-            price={1200}
-            status="Pago"
-          />
         </Flex>
       </Flex>
+
+      <InvoicesModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
 }

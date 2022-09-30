@@ -1,24 +1,33 @@
 import { Button, useColorMode } from "@chakra-ui/react";
 import { useTheme } from "next-themes";
-import { useEffect } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 export function ToggleButton() {
   const { setColorMode } = useColorMode();
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
+
+  function toggleTheme() {
+    if (theme === "light") {
+      setTheme("dark");
+      setColorMode("dark");
+    } else {
+      setTheme("light");
+      setColorMode("light");
+    }
+  }
 
   return (
     <Button
-      position="absolute"
-      bg="#7F3DFF"
-      _hover={{ bg: "#5022ab" }}
-      bottom="30px"
-      right="30px"
+      bg="transparent"
+      mr="-1rem"
+      _hover={{ bg: "transaparent" }}
+      _active={{ bg: "transaparent" }}
+      onClick={toggleTheme}
     >
       {resolvedTheme === "light" ? (
-        <FaMoon color="white" />
+        <IoMoonOutline color="black" size={20} />
       ) : (
-        <FaSun color="white" />
+        <IoSunnyOutline color="white" size={20} />
       )}
     </Button>
   );

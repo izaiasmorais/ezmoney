@@ -3,7 +3,7 @@ import { AiOutlineRight } from "react-icons/ai";
 import { BudgetTable } from "../components/BudgetTable";
 import { Layout } from "../components/Globals/Layout";
 import { Summary } from "../components/Summary";
-import { TransactionsTable } from "../components/TransactionsTable";
+import { TransactionsTable } from "../components/Transactions";
 import Link from "next/link";
 import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";

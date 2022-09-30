@@ -3,6 +3,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { useDrawer } from "../../contexts/DrawerContext";
 import { IoMdMenu } from "react-icons/io";
+import { ToggleButton } from "./ToggleButton";
 
 interface Props {
   page: string;
@@ -33,10 +34,11 @@ export function Header({ page }: Props) {
         </Text>
       </Flex>
       <Flex gap="1.5rem" align="center">
+        <ToggleButton />
         <IoSearchOutline size={20} cursor="pointer" />
         <VscBell size={20} cursor="pointer" />
         <Image
-          src="/assets/Profile.png"
+          src="/Profile.png"
           alt="Perfil"
           w="40px"
           h="40px"

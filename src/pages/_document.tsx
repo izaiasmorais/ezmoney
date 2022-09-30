@@ -11,11 +11,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
-          <link
-            rel="shortcut icon"
-            href="/assets/Logo.png"
-            type="image/x-icon"
-          />
+          <link rel="shortcut icon" href="/Logo.png" type="image/x-icon" />
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         </Head>

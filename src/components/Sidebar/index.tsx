@@ -31,7 +31,7 @@ export function Sidebar() {
         mb="2rem"
         display={["none", "none", "none", "flex"]}
       >
-        <Image src="/assets/Logo.png" alt="Dinheiro" w="40px" h="40px" />
+        <Image src="/Logo.png" alt="Dinheiro" w="40px" h="40px" />
         <Text color="white" fontSize="1.5rem" fontWeight="700">
           EZMoney
         </Text>

@@ -10,7 +10,7 @@ import { InvoiceBox } from "./InvoiceBox";
 
 export function InvoicesSummary() {
   return (
-    <Flex gap="1rem" py="1rem" w="100%" minW="1000px">
+    <Flex gap="1rem" py="1rem" w="100%" h="114px" minW="1000px">
       <InvoiceBox
         icon={<FaClipboardList size={20} color="#0077FF" />}
         color="blue.700"
@@ -43,7 +43,7 @@ export function InvoicesSummary() {
         icon={<FaClipboard size={20} color="#7F3DFF" />}
         color="purple.700"
         invoices={4}
-        name="Rascunho"
+        name="Adiado"
         price={695}
       />
     </Flex>

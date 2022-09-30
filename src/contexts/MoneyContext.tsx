@@ -6,6 +6,8 @@ import {
   useContext,
   ChangeEvent,
   useEffect,
+  SetStateAction,
+  Dispatch,
 } from "react";
 import toast from "react-hot-toast";
 import { FormDataProps, ThemeProps, TransactionProps } from "../@types/types";
@@ -22,6 +24,7 @@ interface MoneyContextType {
   formData: FormDataProps;
   transactionType: string;
   shadow: string;
+  clearData: () => void;
   setTransactions: (transactions: TransactionProps[]) => void;
   setTransactionType: (value: string) => void;
   createTransaction: () => void;
@@ -31,13 +34,14 @@ interface MoneyContextType {
 export const MoneyContext = createContext({} as MoneyContextType);
 
 export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
-  const { resolvedTheme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const [transactionType, setTransactionType] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     price: 0,
+    dueDate: "",
   });
 
   const newTransaction = {
@@ -46,6 +50,10 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
     price: Number(formData.price),
     type: transactionType,
   };
+
+  function clearData() {
+    setFormData({ title: "", description: "", price: 0, dueDate: "" });
+  }
 
   function handleChangeValues(event: ChangeEvent<HTMLInputElement>) {
     setFormData({
@@ -66,7 +74,7 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
       );
 
       setTransactions(data);
-      setFormData({ title: "", description: "", price: 0 });
+      clearData();
 
       toast.success("Transação adicionada com sucesso!");
     } catch (error) {
@@ -80,9 +88,11 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
   let shadow = "";
 
   if (resolvedTheme === "light") {
+    nextTheme = lightColors;
     shadow =
       "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px";
   } else {
+    nextTheme = darkColors;
     shadow = "";
   }
 
@@ -91,6 +101,7 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
       value={{
         nextTheme,
         shadow,
+        clearData,
         transactions,
         setTransactions,
         createTransaction,

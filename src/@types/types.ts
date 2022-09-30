@@ -11,6 +11,7 @@ export type FormDataProps = {
   title: string;
   price: number;
   description: string;
+  dueDate?: string;
 };
 
 export type ThemeProps = {
