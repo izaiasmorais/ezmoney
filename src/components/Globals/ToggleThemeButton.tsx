@@ -2,7 +2,7 @@ import { Button, useColorMode } from "@chakra-ui/react";
 import { useTheme } from "next-themes";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
-export function ToggleButton() {
+export function ToggleThemeButton() {
   const { setColorMode } = useColorMode();
   const { theme, resolvedTheme, setTheme } = useTheme();
 
