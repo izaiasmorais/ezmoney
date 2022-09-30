@@ -18,6 +18,7 @@ export function TogglerItem({ name, value, type }: Props) {
         borderRadius: ".5rem",
         fontSize: ".9rem",
         fontWeight: "600",
+        width: "100%",
         background: type === value ? "#826AF9" : "inherit",
         color: type === value ? "white" : "inherit",
       }}

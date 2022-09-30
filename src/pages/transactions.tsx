@@ -71,7 +71,7 @@ export default function Transactions({ data }: TransacionsListProps) {
 }
 
 export async function getServerSideProps() {
-  const userId = process.env.USER_ID;
+  const userId = process.env.NEXT_PUBLIC_USER_ID;
 
   try {
     const { data } = await api.get(`/clients/${userId}/transactions`);

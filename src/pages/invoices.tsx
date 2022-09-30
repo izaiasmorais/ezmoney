@@ -6,11 +6,23 @@ import { InvoicesSummary } from "../components/Invoices/InvoicesSummary";
 import { FilterTab } from "../components/Invoices/FilterTab";
 import { InvoiceItem } from "../components/Invoices/InvoiceItem";
 import { InvoiceHeader } from "../components/Invoices/InvoiceHeader";
-import { InvoicesModal } from "../components/Modal/InvoicesModal";
+import { InvoicesModal } from "../components/Invoices/InvoicesModal";
+import { api } from "../lib/axios";
+import { InvoicesProps } from "../@types/types";
+import { format } from "date-fns";
+import { useEffect } from "react";
 
-export default function Invoices() {
+interface Props {
+  data: InvoicesProps[];
+}
+
+export default function Invoices({ data }: Props) {
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const { shadow, nextTheme } = useMoney();
+  const { shadow, nextTheme, invoices, setInvoices } = useMoney();
+
+  useEffect(() => {
+    setInvoices(data);
+  }, []);
 
   return (
     <Layout title="Contas" maxw={1200}>
@@ -57,22 +69,42 @@ export default function Invoices() {
         <Flex direction="column" overflowX="auto">
           <InvoiceHeader />
 
-          <InvoiceItem
-            name="Fatura da TV"
-            due="12/10/2022"
-            price={656}
-            status="Não pago"
-          />
-          <InvoiceItem
-            name="Empréstimo Banco do Brasil"
-            due="01/11/2022"
-            price={1200}
-            status="Pago"
-          />
+          {invoices.map((item) => (
+            <InvoiceItem
+              key={item.id}
+              name={item.title}
+              due={format(new Date(item.dueDate), "dd/MM/yyyy")}
+              price={item.price}
+              status={item.status}
+            />
+          ))}
         </Flex>
       </Flex>
 
       <InvoicesModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  const userId = process.env.NEXT_PUBLIC_USER_ID;
+
+  try {
+    const { data } = await api.get(`/clients/${userId}/invoices`);
+
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    const data = "";
+    console.log(error);
+
+    return {
+      props: {
+        data,
+      },
+    };
+  }
 }

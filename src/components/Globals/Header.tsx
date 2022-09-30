@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Button } from "@chakra-ui/react";
+import { Flex, Text, Image, Button, Avatar } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { useDrawer } from "../../contexts/DrawerContext";
@@ -29,7 +29,7 @@ export function Header({ page }: Props) {
         >
           <IoMdMenu size={30} />
         </Button>
-        <Text fontWeight="600" fontSize="1.5rem">
+        <Text fontWeight="600" fontSize={["1.1rem", "1.5rem"]}>
           {page}
         </Text>
       </Flex>
@@ -37,9 +37,9 @@ export function Header({ page }: Props) {
         <ToggleThemeButton />
         <IoSearchOutline size={20} cursor="pointer" />
         <VscBell size={20} cursor="pointer" />
-        <Image
+        <Avatar
           src="/Profile.png"
-          alt="Perfil"
+          name="Izaías Lima"
           w="40px"
           h="40px"
           cursor="pointer"

@@ -5,12 +5,14 @@ import {
   createContext,
   useContext,
   ChangeEvent,
-  useEffect,
-  SetStateAction,
-  Dispatch,
 } from "react";
 import toast from "react-hot-toast";
-import { FormDataProps, ThemeProps, TransactionProps } from "../@types/types";
+import {
+  FormDataProps,
+  InvoicesProps,
+  ThemeProps,
+  TransactionProps,
+} from "../@types/types";
 import { api } from "../lib/axios";
 import { darkColors, lightColors } from "../styles/colors";
 
@@ -19,36 +21,51 @@ interface MoneyContextProviderProps {
 }
 
 interface MoneyContextType {
+  invoices: InvoicesProps[];
   nextTheme: ThemeProps;
   transactions: TransactionProps[];
   formData: FormDataProps;
   transactionType: string;
   shadow: string;
+  invoiceType: string;
   clearData: () => void;
+  setInvoices: (invoices: InvoicesProps[]) => void;
+  setInvoiceType: (value: string) => void;
   setTransactions: (transactions: TransactionProps[]) => void;
   setTransactionType: (value: string) => void;
   createTransaction: () => void;
   handleChangeValues: (event: ChangeEvent<HTMLInputElement>) => void;
+  createInvoice: () => void;
 }
 
 export const MoneyContext = createContext({} as MoneyContextType);
 
 export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const [transactionType, setTransactionType] = useState("");
+  const [invoices, setInvoices] = useState<InvoicesProps[]>([]);
+  const [invoiceType, setInvoiceType] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     price: 0,
     dueDate: "",
   });
+  const userId = process.env.NEXT_PUBLIC_USER_ID;
 
   const newTransaction = {
     title: formData.title,
     description: formData.description,
     price: Number(formData.price),
     type: transactionType,
+  };
+
+  const newInvoice = {
+    title: formData.title,
+    price: Number(formData.price),
+    dueDate: formData.dueDate,
+    status: invoiceType,
   };
 
   function clearData() {
@@ -64,14 +81,9 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
 
   async function createTransaction() {
     try {
-      await api.post(
-        "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions",
-        newTransaction
-      );
+      await api.post(`/clients/${userId}/transactions`, newTransaction);
 
-      const { data } = await api.get(
-        "/clients/a9744fad-ea57-4b72-a8fa-ba3950d402a1/transactions"
-      );
+      const { data } = await api.get(`/clients/${userId}/transactions`);
 
       setTransactions(data);
       clearData();
@@ -80,7 +92,24 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
     } catch (error) {
       console.log(error);
 
-      toast.error("Erro ao adicionar transação");
+      toast.error("Erro ao adicionar transação!");
+    }
+  }
+
+  async function createInvoice() {
+    try {
+      await api.post(`/clients/${userId}/invoices`, newInvoice);
+
+      const { data } = await api.get(`/clients/${userId}/invoices`);
+
+      setInvoices(data);
+      clearData();
+
+      toast.success("Conta adicionada com sucesso!");
+    } catch (error) {
+      console.log(error);
+
+      toast.error("Erro ao adicionar conta!");
     }
   }
 
@@ -100,15 +129,20 @@ export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
     <MoneyContext.Provider
       value={{
         nextTheme,
-        shadow,
         clearData,
+        shadow,
         transactions,
+        formData,
+        invoices,
+        invoiceType,
+        transactionType,
+        setInvoices,
+        setInvoiceType,
         setTransactions,
+        setTransactionType,
         createTransaction,
         handleChangeValues,
-        setTransactionType,
-        transactionType,
-        formData,
+        createInvoice,
       }}
     >
       {children}

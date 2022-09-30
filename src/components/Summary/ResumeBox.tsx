@@ -4,7 +4,7 @@ import { useMoney } from "../../contexts/MoneyContext";
 
 interface Props {
   name: string;
-  value: string;
+  value: number;
   icon: ReactNode;
 }
 

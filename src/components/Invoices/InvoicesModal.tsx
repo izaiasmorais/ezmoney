@@ -7,9 +7,12 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Box,
+  FormLabel,
 } from "@chakra-ui/react";
 import { useMoney } from "../../contexts/MoneyContext";
-import { InputBox } from "./InputBox";
+import { InputBox } from "../Modal/InputBox";
+import { InvoicesToggler } from "./InvoicesToggler";
 
 interface Props {
   isOpen: boolean;
@@ -17,10 +20,11 @@ interface Props {
 }
 
 export function InvoicesModal({ isOpen, onClose }: Props) {
-  const { formData, nextTheme, clearData } = useMoney();
+  const { formData, nextTheme, clearData, createInvoice } = useMoney();
 
   function handleAddInvoice() {
-    console.log(formData);
+    createInvoice();
+    onClose();
   }
 
   function handleCancel() {
@@ -48,6 +52,10 @@ export function InvoicesModal({ isOpen, onClose }: Props) {
             type="date"
             value={formData.dueDate}
           />
+          <Box>
+            <FormLabel>Status</FormLabel>
+            <InvoicesToggler />
+          </Box>
         </ModalBody>
 
         <ModalFooter gap={2}>

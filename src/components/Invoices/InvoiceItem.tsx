@@ -1,31 +1,32 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import { useMoney } from "../../contexts/MoneyContext";
+import { StatusBox } from "./StatusBox";
 
 interface Props {
   name: string;
-  due: string;
   status: string;
   price: number;
+  due: string;
 }
 
 export function InvoiceItem({ name, due, status, price }: Props) {
   const { nextTheme } = useMoney();
 
   const bgColor =
-    status === "Pago"
+    status === "paid"
       ? "green.100"
-      : status === "Atrasado"
+      : status === "overdue"
       ? "red.100"
-      : status === "Não pago"
+      : status === "unpaid"
       ? "yellow.100"
       : "purple.100";
 
   const textColor =
-    status === "Pago"
+    status === "paid"
       ? "green.700"
-      : status === "Atrasado"
+      : status === "overdue"
       ? "red.700"
-      : status === "Não pago"
+      : status === "unpaid"
       ? "yellow.700"
       : "purple.700";
 
@@ -42,27 +43,22 @@ export function InvoiceItem({ name, due, status, price }: Props) {
       gridTemplateColumns={[
         "repeat(5, 1fr)",
         "repeat(5, 1fr)",
+        "repeat(5, 1fr)",
         "repeat(8, 1fr)",
       ]}
     >
-      <Text gridColumn={["1 / 3", "1 / 3", "1 / 6"]} maxW={240}>
+      <Text gridColumn={["1 / 3", "1 / 3", "1 / 3", "1 / 6"]} maxW={240}>
         {name}
       </Text>
-      <Text gridColumn={["3 / 4", "3 / 4", "6 / 7"]}>{due}</Text>
-      <Text
-        gridColumn={["4 / 5", "4 / 5", "7 / 8"]}
-        bg={bgColor}
-        w="max-content"
-        py=".3rem"
-        px=".5rem"
-        color={textColor}
-        fontWeight={700}
-        borderRadius=".5rem"
-        fontSize=".85rem"
+      <Text gridColumn={["3 / 4", "3 / 4", "3 / 4", "6 / 7"]}>{due}</Text>
+      <StatusBox
+        grid={["4 / 5", "4 / 5", "4 / 5", "7 / 8"]}
+        bgColor={bgColor}
+        textColor={textColor}
       >
         {status}
-      </Text>
-      <Text gridColumn={["5 / 6", "5 / 6", "8 / 9"]}>R$ {price},00</Text>
+      </StatusBox>
+      <Text gridColumn={["5 / 6", "5 / 6", "5 / 6", "8 / 9"]}>R$ {price}</Text>
     </SimpleGrid>
   );
 }

@@ -58,7 +58,7 @@ export default function Home({ data }: HomeProps) {
 }
 
 export async function getServerSideProps() {
-  const userId = process.env.USER_ID;
+  const userId = process.env.NEXT_PUBLIC_USER_ID;
 
   try {
     const { data } = await api.get(`/clients/${userId}/transactions`);
