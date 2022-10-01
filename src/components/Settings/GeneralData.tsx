@@ -6,7 +6,12 @@ export function GeneralData() {
   const { nextTheme } = useMoney();
 
   return (
-    <Flex w="100%" p="1rem" direction={["column", "row", "row"]} align="center">
+    <Flex
+      w="100%"
+      p="1rem"
+      direction={["column", "column", "row"]}
+      align="center"
+    >
       <MoneyBox
         direction="column"
         boxShadow="none"

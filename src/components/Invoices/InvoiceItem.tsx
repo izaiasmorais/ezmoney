@@ -30,6 +30,15 @@ export function InvoiceItem({ name, due, status, price }: Props) {
       ? "yellow.700"
       : "purple.700";
 
+  const statusText =
+    status === "paid"
+      ? "Pago"
+      : status === "overdue"
+      ? "Atrasado"
+      : status === "unpaid"
+      ? "Não pago"
+      : "Adiado";
+
   return (
     <SimpleGrid
       px="1.5rem"
@@ -56,7 +65,7 @@ export function InvoiceItem({ name, due, status, price }: Props) {
         bgColor={bgColor}
         textColor={textColor}
       >
-        {status}
+        {statusText}
       </StatusBox>
       <Text gridColumn={["5 / 6", "5 / 6", "5 / 6", "8 / 9"]}>R$ {price}</Text>
     </SimpleGrid>

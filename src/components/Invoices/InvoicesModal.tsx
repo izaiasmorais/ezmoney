@@ -10,7 +10,10 @@ import {
   Box,
   FormLabel,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import { useMoney } from "../../contexts/MoneyContext";
+import { LoadingDots } from "../Globals/LoadingDots";
 import { InputBox } from "../Modal/InputBox";
 import { InvoicesToggler } from "./InvoicesToggler";
 
@@ -20,11 +23,16 @@ interface Props {
 }
 
 export function InvoicesModal({ isOpen, onClose }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
   const { formData, nextTheme, clearData, createInvoice } = useMoney();
 
   function handleAddInvoice() {
+    setIsLoading(true);
     createInvoice();
-    onClose();
+    setTimeout(() => {
+      onClose();
+      setIsLoading(false);
+    }, 1000);
   }
 
   function handleCancel() {
@@ -66,7 +74,11 @@ export function InvoicesModal({ isOpen, onClose }: Props) {
             _hover={{ bg: "purple.500" }}
             onClick={handleAddInvoice}
           >
-            Confirmar
+            {isLoading ? (
+              <ThreeDots height="30" width="30" radius="9" color="white" />
+            ) : (
+              "Confirmar"
+            )}
           </Button>
         </ModalFooter>
       </ModalContent>

@@ -1,11 +1,12 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Flex } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
 import { useMoney } from "../../contexts/MoneyContext";
 import { TransactionProps } from "../../@types/types";
 import { icon } from "../../utils/conditionalFunctions";
 import { formatDate } from "../../utils/formatDate";
-import { ThreeDots } from "react-loader-spinner";
+import { LoadingDots } from "../Globals/LoadingDots";
+import { Empty } from "../Globals/Empty";
 
 interface TransactionTableProps {
   viewAll?: ReactNode;
@@ -13,7 +14,14 @@ interface TransactionTableProps {
 }
 
 export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
+  const [hasData, setHasData] = useState(true);
   const { shadow, nextTheme } = useMoney();
+
+  setTimeout(() => {
+    if (!data) {
+      setHasData(false);
+    }
+  }, 1000);
 
   return (
     <Flex
@@ -41,18 +49,12 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
             price={item.price}
           />
         ))
-      ) : (
+      ) : hasData === true ? (
         <Flex align="center" justify="center">
-          <ThreeDots
-            height="40"
-            width="40"
-            radius="9"
-            color="#000000"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            visible={true}
-          />
+          <LoadingDots />
         </Flex>
+      ) : (
+        <Empty />
       )}
 
       {viewAll}

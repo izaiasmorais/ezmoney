@@ -9,13 +9,14 @@ import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";
 import { useMoney } from "../contexts/MoneyContext";
 import { useEffect } from "react";
+import { ViewAllTransactions } from "../components/Transactions/ViewAllTransactions";
 
 interface HomeProps {
   data: TransactionProps[];
 }
 
 export default function Home({ data }: HomeProps) {
-  const { transactions, setTransactions, nextTheme } = useMoney();
+  const { transactions, setTransactions } = useMoney();
 
   const filteredData =
     data.length > 5 ? data.slice(data.length - 6, data.length - 1) : data;
@@ -35,21 +36,7 @@ export default function Home({ data }: HomeProps) {
       >
         <TransactionsTable
           data={transactions}
-          viewAll={
-            <Link href="/transactions">
-              <Flex
-                align="center"
-                justify="flex-end"
-                gap=".5rem"
-                cursor="pointer"
-                fontSize=".9rem"
-                color={nextTheme.text.paragraphy}
-              >
-                <Text fontWeight={600}>Ver todas as transações</Text>
-                <AiOutlineRight />
-              </Flex>
-            </Link>
-          }
+          viewAll={<ViewAllTransactions />}
         />
         <BudgetTable />
       </SimpleGrid>

@@ -28,16 +28,16 @@ export function SettingsFilter({ config, setConfig }: Props) {
   ];
 
   return (
-    <Flex fontWeight={600} w="550px">
+    <Flex fontWeight={500} w="550px">
       {data.map((item, index) => (
         <Flex
           key={index}
+          p="1rem"
           align="center"
           gap=".5rem"
-          p="1rem"
           minW="max-content"
           cursor="pointer"
-          onClick={() => [setConfig(item.name), console.log(config, name)]}
+          onClick={() => [setConfig(item.name)]}
           transition="color .2s forwards"
           color={item.name === config ? "#7F3DFF" : "inherit"}
           borderBottom={

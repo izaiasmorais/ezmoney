@@ -12,7 +12,7 @@ export function FilterBox({ color, name, bg, quantity }: Props) {
   const { nextTheme } = useMoney();
 
   return (
-    <Flex mr="3rem" gap=".3rem" fontWeight={600}>
+    <Flex mr={["1.5rem", "1.5rem", "3rem"]} gap=".3rem" fontWeight={600}>
       <Flex
         bg={bg}
         p=".3rem"

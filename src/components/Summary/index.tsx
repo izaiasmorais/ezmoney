@@ -12,24 +12,26 @@ import { TotalBox } from "./TotalBox";
 export function Summary() {
   const { transactions } = useMoney();
 
-  const summary = transactions.reduce(
-    (acc, transaction) => {
-      if (transaction.type === "Entrada") {
-        acc.deposits += transaction.price;
-        acc.total += transaction.price;
-      } else {
-        acc.withdraws += transaction.price;
-        acc.total -= transaction.price;
-      }
+  const summary =
+    transactions &&
+    transactions.reduce(
+      (acc, transaction) => {
+        if (transaction.type === "Entrada") {
+          acc.deposits += transaction.price;
+          acc.total += transaction.price;
+        } else {
+          acc.withdraws += transaction.price;
+          acc.total -= transaction.price;
+        }
 
-      return acc;
-    },
-    {
-      deposits: 0,
-      withdraws: 0,
-      total: 0,
-    }
-  );
+        return acc;
+      },
+      {
+        deposits: 0,
+        withdraws: 0,
+        total: 0,
+      }
+    );
 
   return (
     <SimpleGrid
@@ -45,12 +47,12 @@ export function Summary() {
     >
       <ResumeBox
         name="Entradas"
-        value={summary.deposits}
+        value={summary ? summary.deposits : 0}
         icon={<FaArrowCircleDown size={25} color="#0CDF92" />}
       />
       <ResumeBox
         name="Saídas"
-        value={summary.withdraws}
+        value={summary ? summary.withdraws : 0}
         icon={<FaArrowCircleUp size={25} color="#FD3C4A" />}
       />
       <ResumeBox
@@ -59,7 +61,7 @@ export function Summary() {
         icon={<FaExchangeAlt size={20} color="#45B1FF" />}
       />
       <Flex gap="1rem" direction="column">
-        <TotalBox total={summary.total} />
+        <TotalBox total={summary ? summary.total : 0} />
         <AddButton name="Adicionar transação" />
       </Flex>
     </SimpleGrid>

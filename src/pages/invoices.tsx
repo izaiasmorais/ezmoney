@@ -11,6 +11,8 @@ import { api } from "../lib/axios";
 import { InvoicesProps } from "../@types/types";
 import { format } from "date-fns";
 import { useEffect } from "react";
+import { InvoicesTop } from "../components/Invoices/InvoicesTop";
+import { InvoicesTable } from "../components/Invoices/InvoicesTable";
 
 interface Props {
   data: InvoicesProps[];
@@ -26,31 +28,9 @@ export default function Invoices({ data }: Props) {
 
   return (
     <Layout title="Contas" maxw={1200}>
-      <Flex
-        w="100%"
-        mt="1rem"
-        mb="1rem"
-        gap="1.5rem"
-        align="center"
-        justify="space-between"
-      >
-        <Text fontSize="1.25rem" fontWeight={500}>
-          Lista de contas
-        </Text>
+      <InvoicesTop onOpen={onOpen} />
 
-        <Flex onClick={onOpen}>
-          <AddButton name="Adicionar conta" />
-        </Flex>
-      </Flex>
-
-      <Flex
-        overflowX="auto"
-        borderRadius="1rem"
-        bg={nextTheme.back.boxes}
-        boxShadow={shadow}
-      >
-        <InvoicesSummary />
-      </Flex>
+      <InvoicesSummary />
 
       <Flex
         direction="column"
@@ -62,23 +42,9 @@ export default function Invoices({ data }: Props) {
         bg={nextTheme.back.boxes}
         boxShadow={shadow}
       >
-        <Flex p=".5rem" overflowX="auto" bg={nextTheme.back.card}>
-          <FilterTab />
-        </Flex>
+        <FilterTab />
 
-        <Flex direction="column" overflowX="auto">
-          <InvoiceHeader />
-
-          {invoices.map((item) => (
-            <InvoiceItem
-              key={item.id}
-              name={item.title}
-              due={format(new Date(item.dueDate), "dd/MM/yyyy")}
-              price={item.price}
-              status={item.status}
-            />
-          ))}
-        </Flex>
+        <InvoicesTable invoices={invoices} />
       </Flex>
 
       <InvoicesModal isOpen={isOpen} onClose={onClose} />

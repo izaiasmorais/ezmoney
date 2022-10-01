@@ -1,16 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FormLabel,
-  Image,
-  Input,
-  Text,
-} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { Layout } from "../components/Globals/Layout";
 import { MoneyBox } from "../components/Globals/MoneyBox";
 import { SettingsFilter } from "../components/Modal/SettingsFilter";
+import { ChangeLanguague } from "../components/Settings/ChangeLanguague";
+import { ChangePassword } from "../components/Settings/ChangePassword";
 import { GeneralData } from "../components/Settings/GeneralData";
 import { useMoney } from "../contexts/MoneyContext";
 
@@ -21,26 +15,26 @@ export default function Settings() {
   return (
     <Layout title="Configurações" maxw={1200}>
       <MoneyBox p="0" overflowY="auto" direction="column">
-        <Flex overflowX="auto" bg={nextTheme.back.card}>
+        <Flex
+          overflowX="auto"
+          bg={nextTheme.back.card}
+          css={{
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+          }}
+        >
           <SettingsFilter config={config} setConfig={setConfig} />
         </Flex>
 
         {config === "Dados Gerais" ? (
           <GeneralData />
+        ) : config === "Alterar Senha" ? (
+          <ChangePassword />
+        ) : config === "Idioma" ? (
+          <ChangeLanguague />
         ) : (
-          <Flex p="2rem" direction="column" maxW="400px" gap="1rem">
-            <Input placeholder="Senha Anterior" />
-            <Input placeholder="Nova Anterior" />
-            <Input placeholder="Confirmar Nova Anterior" />
-            <Button
-              color="white.100"
-              bg="purple.700"
-              display="block"
-              _hover={{ bg: "purple.500" }}
-            >
-              Salvar Mudanças
-            </Button>
-          </Flex>
+          <Flex></Flex>
         )}
       </MoneyBox>
     </Layout>
