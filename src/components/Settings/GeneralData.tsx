@@ -1,5 +1,14 @@
-import { Flex, FormLabel, Input, Box, Text, Image } from "@chakra-ui/react";
+import {
+  Flex,
+  FormLabel,
+  Input,
+  Box,
+  Text,
+  Image,
+  Button,
+} from "@chakra-ui/react";
 import { useMoney } from "../../contexts/MoneyContext";
+import { GlobalInput } from "../Globals/GlobalInput";
 import { MoneyBox } from "../Globals/MoneyBox";
 
 export function GeneralData() {
@@ -24,7 +33,7 @@ export function GeneralData() {
           maxW="150px"
           borderRadius="50%"
           p=".3rem"
-          border="1px dashed black"
+          border={`1px dashed ${nextTheme.text.paragraphy}`}
         />
 
         <Text
@@ -40,27 +49,36 @@ export function GeneralData() {
       <MoneyBox
         w="100%"
         boxShadow="none"
-        maxH={["", "", "200px"]}
+        maxH={["", "", "300px"]}
         display="grid"
         gap="1rem"
         gridTemplateColumns={["1fr", "1fr", "1fr 1fr"]}
       >
         <Box>
           <FormLabel>Nome</FormLabel>
-          <Input />
+          <GlobalInput type="text" />
         </Box>
         <Box>
           <FormLabel>Usuário</FormLabel>
-          <Input />
+          <GlobalInput type="text" />
         </Box>
         <Box>
           <FormLabel>Email</FormLabel>
-          <Input />
+          <GlobalInput type="email" />
         </Box>
         <Box>
           <FormLabel>Descrição</FormLabel>
-          <Input />
+          <GlobalInput type="text" />
         </Box>
+        <Flex w="100%" mt="1rem" gridColumn={["1", "1", "1 / 3"]} justify="end">
+          <Button
+            color="white.100"
+            bg="purple.700"
+            _hover={{ bg: "purple.500" }}
+          >
+            Salvar Mudanças
+          </Button>
+        </Flex>
       </MoneyBox>
     </Flex>
   );

@@ -10,12 +10,7 @@ import { theme } from "../styles/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem={false}
-      disableTransitionOnChange
-    >
+    <ThemeProvider attribute="class">
       <ChakraProvider theme={theme}>
         <MoneyContextProvider>
           <DrawerContextProvider>

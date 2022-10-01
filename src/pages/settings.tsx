@@ -6,6 +6,7 @@ import { SettingsFilter } from "../components/Modal/SettingsFilter";
 import { ChangeLanguague } from "../components/Settings/ChangeLanguague";
 import { ChangePassword } from "../components/Settings/ChangePassword";
 import { GeneralData } from "../components/Settings/GeneralData";
+import { SettingsSuport } from "../components/Settings/SettingsSuport";
 import { useMoney } from "../contexts/MoneyContext";
 
 export default function Settings() {
@@ -34,7 +35,7 @@ export default function Settings() {
         ) : config === "Idioma" ? (
           <ChangeLanguague />
         ) : (
-          <Flex></Flex>
+          <SettingsSuport />
         )}
       </MoneyBox>
     </Layout>
