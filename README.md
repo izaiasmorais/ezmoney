@@ -1,5 +1,5 @@
 <h1 align='center'>
-   💵 EZMoney
+    💵 EZMoney
 </h1>
 
 <p align="center">Uma aplicação completa para gerenciar suas finanças.</p>
