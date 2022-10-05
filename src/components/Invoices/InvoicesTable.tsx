@@ -1,6 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 import { format } from "date-fns";
+import { useState } from "react";
 import { InvoicesProps } from "../../@types/types";
+import { Empty } from "../Globals/Empty";
+import { LoadingDots } from "../Globals/LoadingDots";
 import { InvoiceHeader } from "./InvoiceHeader";
 import { InvoiceItem } from "./InvoiceItem";
 
@@ -9,6 +12,14 @@ interface Props {
 }
 
 export function InvoicesTable({ invoices }: Props) {
+  const [hasData, setHasData] = useState(true);
+
+  setTimeout(() => {
+    if (!invoices) {
+      setHasData(false);
+    }
+  }, 0);
+
   return (
     <Flex
       direction="column"
@@ -21,15 +32,23 @@ export function InvoicesTable({ invoices }: Props) {
     >
       <InvoiceHeader />
 
-      {invoices.map((item) => (
-        <InvoiceItem
-          key={item.id}
-          name={item.title}
-          due={format(new Date(item.dueDate), "dd/MM/yyyy")}
-          price={item.price}
-          status={item.status}
-        />
-      ))}
+      {invoices.length > 0 ? (
+        invoices.map((item) => (
+          <InvoiceItem
+            key={item.id}
+            name={item.title}
+            due={format(new Date(item.dueDate), "dd/MM/yyyy")}
+            price={item.price}
+            status={item.status}
+          />
+        ))
+      ) : hasData === true ? (
+        <Flex align="center" justify="center">
+          <LoadingDots />
+        </Flex>
+      ) : (
+        <Empty />
+      )}
     </Flex>
   );
 }

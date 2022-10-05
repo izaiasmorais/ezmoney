@@ -21,7 +21,7 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
     if (!data) {
       setHasData(false);
     }
-  }, 1000);
+  }, 0);
 
   return (
     <Flex

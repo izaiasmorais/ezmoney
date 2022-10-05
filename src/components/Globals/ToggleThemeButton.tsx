@@ -1,13 +1,24 @@
 import { Button, useColorMode } from "@chakra-ui/react";
 import { useTheme } from "next-themes";
+import { useEffect } from "react";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 export function ToggleThemeButton() {
   const { setColorMode } = useColorMode();
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { systemTheme, resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    if (systemTheme === "light") {
+      setTheme("light");
+      setColorMode("light");
+    } else {
+      setTheme("dark");
+      setColorMode("dark");
+    }
+  }, [systemTheme]);
 
   function toggleTheme() {
-    if (theme === "light") {
+    if (resolvedTheme === "light") {
       setTheme("dark");
       setColorMode("dark");
     } else {
