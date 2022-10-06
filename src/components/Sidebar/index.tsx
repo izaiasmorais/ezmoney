@@ -60,17 +60,7 @@ export function Sidebar() {
           }
           active
         />
-        <NavItem
-          name="Orçamento"
-          src="/budget"
-          icon={
-            <FaPoll
-              size={20}
-              color={asPath.endsWith("/budget") ? "#ffffff" : "#919eab"}
-            />
-          }
-          active
-        />
+
         <NavItem
           name="Contas"
           src="/invoices"
@@ -78,6 +68,17 @@ export function Sidebar() {
             <FaClipboardList
               size={20}
               color={asPath.endsWith("/invoices") ? "#ffffff" : "#919eab"}
+            />
+          }
+          active
+        />
+        <NavItem
+          name="Orçamento"
+          src="/budget"
+          icon={
+            <FaPoll
+              size={20}
+              color={asPath.endsWith("/budget") ? "#ffffff" : "#919eab"}
             />
           }
           active

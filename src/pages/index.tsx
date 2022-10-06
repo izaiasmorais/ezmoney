@@ -1,10 +1,8 @@
-import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import { AiOutlineRight } from "react-icons/ai";
+import { SimpleGrid } from "@chakra-ui/react";
 import { BudgetTable } from "../components/BudgetTable";
 import { Layout } from "../components/Globals/Layout";
 import { Summary } from "../components/Summary";
 import { TransactionsTable } from "../components/Transactions";
-import Link from "next/link";
 import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";
 import { useMoney } from "../contexts/MoneyContext";

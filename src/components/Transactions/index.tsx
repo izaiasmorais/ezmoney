@@ -54,7 +54,7 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
           <LoadingDots />
         </Flex>
       ) : (
-        <Empty />
+        <Empty title="Não há transações para listar" />
       )}
 
       {viewAll}

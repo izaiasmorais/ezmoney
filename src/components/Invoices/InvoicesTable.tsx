@@ -47,7 +47,7 @@ export function InvoicesTable({ invoices }: Props) {
           <LoadingDots />
         </Flex>
       ) : (
-        <Empty />
+        <Empty title="Não há contas para listar" />
       )}
     </Flex>
   );

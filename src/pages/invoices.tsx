@@ -1,15 +1,11 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import { Layout } from "../components/Globals/Layout";
-import { AddButton } from "../components/Globals/AddButton";
 import { useMoney } from "../contexts/MoneyContext";
 import { InvoicesSummary } from "../components/Invoices/InvoicesSummary";
 import { FilterTab } from "../components/Invoices/FilterTab";
-import { InvoiceItem } from "../components/Invoices/InvoiceItem";
-import { InvoiceHeader } from "../components/Invoices/InvoiceHeader";
 import { InvoicesModal } from "../components/Invoices/InvoicesModal";
 import { api } from "../lib/axios";
 import { InvoicesProps } from "../@types/types";
-import { format } from "date-fns";
 import { useEffect } from "react";
 import { InvoicesTop } from "../components/Invoices/InvoicesTop";
 import { InvoicesTable } from "../components/Invoices/InvoicesTable";

@@ -3,7 +3,11 @@ import { FaCarSide, FaShoppingCart } from "react-icons/fa";
 import { useMoney } from "../../contexts/MoneyContext";
 import { MoneyBox } from "./MoneyBox";
 
-export function Empty() {
+interface Props {
+  title: string;
+}
+
+export function Empty({ title }: Props) {
   const { nextTheme } = useMoney();
 
   const shadow =
@@ -71,7 +75,7 @@ export function Empty() {
         fontSize="1.25rem"
         color={nextTheme.text.paragraphy}
       >
-        Não há transações para listar
+        {title}
       </Text>
     </Flex>
   );
