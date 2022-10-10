@@ -1,3 +1,4 @@
+import { useColorMode } from "@chakra-ui/react";
 import { useTheme } from "next-themes";
 import {
   useState,
@@ -42,7 +43,8 @@ interface MoneyContextType {
 export const MoneyContext = createContext({} as MoneyContextType);
 
 export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
-  const { systemTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const { setColorMode } = useColorMode();
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const [transactionType, setTransactionType] = useState("");
   const [invoices, setInvoices] = useState<InvoicesProps[]>([]);
