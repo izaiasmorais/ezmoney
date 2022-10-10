@@ -17,9 +17,6 @@ export function GlobalSelect() {
     if (value === "system") setColorMode(theme);
   }, [systemTheme]);
 
-  const SelectValue =
-    theme === "light" ? "Light" : theme === "dark" ? "Dark" : "System";
-
   function ToggleTheme(value: string) {
     setValue(value);
     if (value === "dark") {
@@ -43,8 +40,6 @@ export function GlobalSelect() {
           display: "flex",
           alignItems: "center",
           gap: ".5rem",
-          boxShadow: shadow,
-          padding: ".5rem 1rem",
           borderRadius: ".5rem",
           outline: "none",
         }}
@@ -52,14 +47,12 @@ export function GlobalSelect() {
         <Select.Value>
           <Flex gap=".5rem" align="center">
             {theme === "light" ? (
-              <IoSunnyOutline />
+              <IoSunnyOutline size={20} />
             ) : theme === "dark" ? (
-              <IoMoonOutline />
+              <IoMoonOutline size={20} />
             ) : (
-              <IoTvOutline />
+              <IoTvOutline size={20} />
             )}
-
-            {SelectValue}
           </Flex>
         </Select.Value>
         <FiChevronDown />
