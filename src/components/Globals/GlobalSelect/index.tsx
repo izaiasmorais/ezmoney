@@ -8,13 +8,13 @@ import { IoMoonOutline, IoSunnyOutline, IoTvOutline } from "react-icons/io5";
 import { useMoney } from "../../../contexts/MoneyContext";
 
 export function GlobalSelect() {
-  const { shadow } = useMoney();
+  const { shadow, nextTheme } = useMoney();
   const { systemTheme, theme, setTheme } = useTheme();
-  const { toggleColorMode, setColorMode } = useColorMode();
+  const { setColorMode } = useColorMode();
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    setColorMode(theme);
+    if (value === "system") setColorMode(theme);
   }, [systemTheme]);
 
   const SelectValue =
@@ -24,15 +24,17 @@ export function GlobalSelect() {
     setValue(value);
     if (value === "dark") {
       setTheme("dark");
-      toggleColorMode();
+      setColorMode("dark");
     } else if (value === "light") {
       setTheme("light");
-      toggleColorMode();
+      setColorMode("light");
     } else {
       setTheme("system");
       setColorMode(systemTheme);
     }
   }
+
+  const margin = value === "system" ? "2.5rem" : "4rem";
 
   return (
     <Select.Root value={value} onValueChange={ToggleTheme}>
@@ -64,7 +66,14 @@ export function GlobalSelect() {
       </Select.Trigger>
 
       <Select.Portal>
-        <Select.Content style={{ marginTop: "2.5rem" }}>
+        <Select.Content
+          style={{
+            marginTop: margin,
+            boxShadow: shadow,
+            borderRadius: ".3rem",
+            background: nextTheme.back.boxes,
+          }}
+        >
           <Select.Viewport>
             <SelectItem name="System" value="system" />
             <SelectItem name="Light" value="light" />
