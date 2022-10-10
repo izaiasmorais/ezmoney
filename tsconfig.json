@@ -19,8 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/Globals/GlobalInput/index.tsx",
-    "src/components/Globals/GlobalInput/index.tsx"
+    "src/components/Globals/GlobalSelect/index.tsx",
+    "src/components/Globals/GlobalSelect/index.tsx"
   ],
   "exclude": ["node_modules"]
 }

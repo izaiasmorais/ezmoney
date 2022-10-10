@@ -1,10 +1,9 @@
-import { Flex, Text, Image, Button, Avatar } from "@chakra-ui/react";
+import { Flex, Text, Button, Avatar } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { useDrawer } from "../../contexts/DrawerContext";
 import { IoMdMenu } from "react-icons/io";
-import { ToggleThemeButton } from "./ToggleThemeButton";
-import { GlobalSelect } from "./GlobalInput/index.tsx";
+import { GlobalSelect } from "./GlobalSelect";
 
 interface Props {
   page: string;
