@@ -22,7 +22,7 @@ export function Empty({ title }: Props) {
       mr="4rem"
       p="2rem"
     >
-      <MoneyBox w="430px" gap=".7rem" boxShadow={shadow}>
+      <MoneyBox maxW="430px" gap=".7rem" boxShadow={shadow}>
         <Flex
           w="50px"
           h="50px"
@@ -45,7 +45,13 @@ export function Empty({ title }: Props) {
         </Box>
       </MoneyBox>
 
-      <MoneyBox w="430px" gap=".7rem" mt="-1rem" ml="4rem" boxShadow={shadow}>
+      <MoneyBox
+        maxW="430px"
+        gap=".7rem"
+        mt="-1rem"
+        ml="4rem"
+        boxShadow={shadow}
+      >
         <Flex
           w="50px"
           h="50px"
