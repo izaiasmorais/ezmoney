@@ -6,7 +6,7 @@ interface Props extends InputProps {
   color?: string;
 }
 
-export function GlobalInput({ children, color, ...rest }: Props) {
+export function GInput({ children, color, ...rest }: Props) {
   return (
     <Input focusBorderColor={color ? color : "purple.700"} {...rest}>
       {children}

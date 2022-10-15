@@ -7,4 +7,20 @@ export const theme = extendTheme({
     body: "Manrope, sans-serif",
   },
   colors: { ...defaultColors },
+  styles: {
+    global: {
+      html: {
+        "&::-webkit-scrollbar": {
+          width: "5px",
+        },
+        "&::-webkit-scrollbar-track": {
+          background: "#919eab",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          background: "#293033",
+          borderRadius: "5px",
+        },
+      },
+    },
+  },
 });

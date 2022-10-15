@@ -6,15 +6,23 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoMoonOutline, IoSunnyOutline, IoTvOutline } from "react-icons/io5";
 import { useMoney } from "../../contexts/MoneyContext";
 
 export function GlobalSelect() {
   const { nextTheme } = useMoney();
   const [value, setValue] = useState("system");
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, theme, setTheme } = useTheme();
   const { setColorMode } = useColorMode();
+
+  useEffect(() => {
+    if (resolvedTheme === "light") {
+      setColorMode("light");
+    } else {
+      setColorMode("dark");
+    }
+  }, [resolvedTheme]);
 
   function toggleTheme(value: string) {
     setValue(value);

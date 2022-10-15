@@ -8,7 +8,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useMoney } from "../../contexts/MoneyContext";
-import { GlobalInput } from "../Globals/GlobalInput";
+import { GInput } from "../Globals/GInput";
 import { MoneyBox } from "../Globals/MoneyBox";
 
 export function GeneralData() {
@@ -56,19 +56,19 @@ export function GeneralData() {
       >
         <Box>
           <FormLabel>Nome</FormLabel>
-          <GlobalInput type="text" />
+          <GInput type="text" />
         </Box>
         <Box>
           <FormLabel>Usuário</FormLabel>
-          <GlobalInput type="text" />
+          <GInput type="text" />
         </Box>
         <Box>
           <FormLabel>Email</FormLabel>
-          <GlobalInput type="email" />
+          <GInput type="email" />
         </Box>
         <Box>
           <FormLabel>Descrição</FormLabel>
-          <GlobalInput type="text" />
+          <GInput type="text" />
         </Box>
         <Flex w="100%" mt="1rem" gridColumn={["1", "1", "1 / 3"]} justify="end">
           <Button

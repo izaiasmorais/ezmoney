@@ -1,6 +1,6 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { useMoney } from "../../contexts/MoneyContext";
-import { TogglerItem } from "../Modal/TogglerItem";
+import { useMoney } from "../../../contexts/MoneyContext";
+import { TogglerItem } from "../../Modal/TogglerItem";
 
 export function InvoicesToggler() {
   const { invoiceType, setInvoiceType } = useMoney();

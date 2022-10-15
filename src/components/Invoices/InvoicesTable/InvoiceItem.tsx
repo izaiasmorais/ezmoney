@@ -1,6 +1,6 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import { useMoney } from "../../contexts/MoneyContext";
-import { StatusBox } from "./StatusBox";
+import { useMoney } from "../../../contexts/MoneyContext";
+import { StatusBadge } from "./StatusBadge";
 
 interface Props {
   name: string;
@@ -60,13 +60,13 @@ export function InvoiceItem({ name, due, status, price }: Props) {
         {name}
       </Text>
       <Text gridColumn={["3 / 4", "3 / 4", "3 / 4", "6 / 7"]}>{due}</Text>
-      <StatusBox
+      <StatusBadge
         grid={["4 / 5", "4 / 5", "4 / 5", "7 / 8"]}
         bgColor={bgColor}
         textColor={textColor}
       >
         {statusText}
-      </StatusBox>
+      </StatusBadge>
       <Text gridColumn={["5 / 6", "5 / 6", "5 / 6", "8 / 9"]}>R$ {price}</Text>
     </SimpleGrid>
   );

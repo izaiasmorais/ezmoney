@@ -62,7 +62,6 @@ export function Summary() {
       />
       <Flex gap="1rem" direction="column">
         <TotalBox total={summary ? summary.total : 0} />
-        <AddButton name="Adicionar transação" />
       </Flex>
     </SimpleGrid>
   );

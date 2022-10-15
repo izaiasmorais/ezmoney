@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useMoney } from "../../contexts/MoneyContext";
+import { useMoney } from "../../../contexts/MoneyContext";
 import { FilterBox } from "./FilterBox";
 
 export function FilterTab() {

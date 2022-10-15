@@ -1,5 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import { useMoney } from "../../contexts/MoneyContext";
+import { useMoney } from "../../../contexts/MoneyContext";
 
 export function InvoiceHeader() {
   const { nextTheme } = useMoney();

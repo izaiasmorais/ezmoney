@@ -8,7 +8,7 @@ interface Props {
   grid: string[];
 }
 
-export function StatusBox({ children, textColor, bgColor, grid }: Props) {
+export function StatusBadge({ children, textColor, bgColor, grid }: Props) {
   return (
     <Text
       gridColumn={grid}

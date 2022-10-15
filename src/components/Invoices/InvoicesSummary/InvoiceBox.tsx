@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { useMoney } from "../../contexts/MoneyContext";
+import { useMoney } from "../../../contexts/MoneyContext";
 
 interface Props {
   name: string;

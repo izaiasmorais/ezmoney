@@ -1,12 +1,12 @@
 import { Button, Flex } from "@chakra-ui/react";
-import { GlobalInput } from "../Globals/GlobalInput";
+import { GInput } from "../Globals/GInput";
 
 export function ChangePassword() {
   return (
     <Flex p="2rem" direction="column" maxW="400px" gap="1rem">
-      <GlobalInput placeholder="Senha Anterior" />
-      <GlobalInput placeholder="Nova Senha" />
-      <GlobalInput placeholder="Confirmar Nova Senha" />
+      <GInput placeholder="Senha Anterior" />
+      <GInput placeholder="Nova Senha" />
+      <GInput placeholder="Confirmar Nova Senha" />
       <Button
         color="white.100"
         bg="purple.700"

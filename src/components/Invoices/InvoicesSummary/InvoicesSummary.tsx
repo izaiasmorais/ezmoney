@@ -6,7 +6,7 @@ import {
   FaClipboardList,
   FaClock,
 } from "react-icons/fa";
-import { useMoney } from "../../contexts/MoneyContext";
+import { useMoney } from "../../../contexts/MoneyContext";
 import { InvoiceBox } from "./InvoiceBox";
 
 export function InvoicesSummary() {

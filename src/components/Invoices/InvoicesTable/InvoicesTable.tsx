@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { useState } from "react";
-import { InvoicesProps } from "../../@types/types";
-import { Empty } from "../Globals/Empty";
-import { LoadingDots } from "../Globals/LoadingDots";
+import { InvoicesProps } from "../../../@types/types";
+import { Empty } from "../../Globals/Empty";
+import { LoadingDots } from "../../Globals/LoadingDots";
 import { InvoiceHeader } from "./InvoiceHeader";
 import { InvoiceItem } from "./InvoiceItem";
 

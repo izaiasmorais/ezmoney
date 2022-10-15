@@ -1,11 +1,9 @@
 import { Flex, Image, Stack, Text } from "@chakra-ui/react";
 import { NavItem } from "./NavItem";
 import {
-  FaCalendarAlt,
   FaClipboardList,
   FaExchangeAlt,
   FaPoll,
-  FaSignOutAlt,
   FaThLarge,
 } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
@@ -83,17 +81,6 @@ export function Sidebar() {
           }
           active
         />
-        {/* <NavItem
-          name="Calendário"
-          src="/calendar"
-          icon={
-            <FaCalendarAlt
-              size={20}
-              color={asPath.endsWith("/calendar") ? "#ffffff" : "#919eab"}
-            />
-          }
-          active
-        /> */}
         <NavItem
           name="Configurações"
           src="/settings"
@@ -101,17 +88,6 @@ export function Sidebar() {
             <IoSettingsSharp
               size={20}
               color={asPath.endsWith("/settings") ? "#ffffff" : "#919eab"}
-            />
-          }
-          active
-        />
-        <NavItem
-          name="Desconectar"
-          src="/logout"
-          icon={
-            <FaSignOutAlt
-              size={20}
-              color={asPath.endsWith("/logout") ? "#ffffff" : "#919eab"}
             />
           }
           active

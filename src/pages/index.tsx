@@ -16,11 +16,10 @@ interface HomeProps {
 export default function Home({ data }: HomeProps) {
   const { transactions, setTransactions } = useMoney();
 
-  const filteredData =
-    data.length > 5 ? data.slice(data.length - 6, data.length - 1) : data;
+  const last5 = data.slice(-5);
 
   useEffect(() => {
-    setTransactions(filteredData);
+    setTransactions(data);
   }, []);
 
   return (
@@ -32,10 +31,7 @@ export default function Home({ data }: HomeProps) {
         my="2rem"
         gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
-        <TransactionsTable
-          data={transactions}
-          viewAll={<ViewAllTransactions />}
-        />
+        <TransactionsTable data={last5} viewAll={<ViewAllTransactions />} />
         <BudgetTable />
       </SimpleGrid>
     </Layout>

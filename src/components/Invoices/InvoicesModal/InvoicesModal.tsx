@@ -12,9 +12,9 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { useMoney } from "../../contexts/MoneyContext";
-import { LoadingDots } from "../Globals/LoadingDots";
-import { InputBox } from "../Modal/InputBox";
+import { useMoney } from "../../../contexts/MoneyContext";
+import { LoadingDots } from "../../Globals/LoadingDots";
+import { InputBox } from "../../Modal/InputBox";
 import { InvoicesToggler } from "./InvoicesToggler";
 
 interface Props {
