@@ -8,7 +8,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useMoney } from "../../contexts/MoneyContext";
-import { GInput } from "../Globals/GInput";
+import { GInput } from "../Modal/GInput";
 import { MoneyBox } from "../Globals/MoneyBox";
 
 export function GeneralData() {

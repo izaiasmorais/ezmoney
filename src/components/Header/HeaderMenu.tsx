@@ -1,0 +1,57 @@
+import {
+  Avatar,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text,
+} from "@chakra-ui/react";
+import { useMoney } from "../../contexts/MoneyContext";
+import { ItemMenu } from "../Globals/ItemMenu";
+
+export function HeaderMenu() {
+  const { nextTheme, shadow } = useMoney();
+
+  return (
+    <Menu>
+      <MenuButton>
+        <Avatar
+          src="/Profile.png"
+          name="Izaías Lima"
+          w="35px"
+          h="35px"
+          cursor="pointer"
+        />
+      </MenuButton>
+      <MenuList
+        bg={nextTheme.back.boxes}
+        boxShadow={shadow}
+        borderColor={nextTheme.back.boxes}
+        my="3"
+        p=".5rem"
+      >
+        <Flex align="center" direction="column" justify="center" p="1rem">
+          <Avatar
+            src="/Profile.png"
+            name="Izaías Lima"
+            w="100px"
+            h="100px"
+            cursor="pointer"
+            mb="1rem"
+          />
+          <Text fontWeight={600} fontSize="1.125rem">
+            Izaías Lima
+          </Text>
+          <Text fontSize=".875rem" color={nextTheme.text.paragraphy}>
+            izaiaslima356@gmail.com
+          </Text>
+        </Flex>
+
+        <ItemMenu>Perfil</ItemMenu>
+        <ItemMenu>Configurações</ItemMenu>
+        <ItemMenu>Sobre</ItemMenu>
+        <ItemMenu>Desconectar</ItemMenu>
+      </MenuList>
+    </Menu>
+  );
+}

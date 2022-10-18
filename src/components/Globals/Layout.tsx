@@ -1,7 +1,8 @@
 import { Flex } from "@chakra-ui/react";
 import { ReactNode, useEffect, useState } from "react";
 import { useMoney } from "../../contexts/MoneyContext";
-import { Header } from "./Header";
+import { Header } from "../Header";
+
 import { Sidebar } from "../Sidebar";
 import { SidebarDrawer } from "../Sidebar/Drawer";
 

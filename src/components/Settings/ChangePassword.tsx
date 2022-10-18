@@ -1,5 +1,5 @@
 import { Button, Flex } from "@chakra-ui/react";
-import { GInput } from "../Globals/GInput";
+import { GInput } from "../Modal/GInput";
 
 export function ChangePassword() {
   return (

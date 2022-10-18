@@ -9,9 +9,10 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { IoMoonOutline, IoSunnyOutline, IoTvOutline } from "react-icons/io5";
 import { useMoney } from "../../contexts/MoneyContext";
+import { ItemMenu } from "../Globals/ItemMenu";
 
-export function GlobalSelect() {
-  const { nextTheme } = useMoney();
+export function ThemeSelect() {
+  const { nextTheme, shadow } = useMoney();
   const [value, setValue] = useState("system");
   const { resolvedTheme, theme, setTheme } = useTheme();
   const { setColorMode } = useColorMode();
@@ -53,36 +54,21 @@ export function GlobalSelect() {
       <MenuList
         bg={nextTheme.back.boxes}
         borderColor={nextTheme.back.boxes}
+        boxShadow={shadow}
         my="3"
       >
-        <MenuItem
-          _focus={{ bg: nextTheme.back.boxes }}
-          _hover={{ bg: nextTheme.back.card }}
-          display="flex"
-          gap="3"
-          onClick={() => toggleTheme("system")}
-        >
+        <ItemMenu onClick={() => toggleTheme("system")}>
           <IoTvOutline size={20} /> System
-        </MenuItem>
+        </ItemMenu>
 
-        <MenuItem
-          display="flex"
-          gap="3"
-          _hover={{ bg: nextTheme.back.card }}
-          onClick={() => toggleTheme("light")}
-        >
+        <ItemMenu onClick={() => toggleTheme("light")}>
           <IoSunnyOutline size={20} />
           Light
-        </MenuItem>
+        </ItemMenu>
 
-        <MenuItem
-          display="flex"
-          gap="3"
-          _hover={{ bg: nextTheme.back.card }}
-          onClick={() => toggleTheme("dark")}
-        >
+        <ItemMenu onClick={() => toggleTheme("dark")}>
           <IoMoonOutline size={20} /> Dark
-        </MenuItem>
+        </ItemMenu>
       </MenuList>
     </Menu>
   );

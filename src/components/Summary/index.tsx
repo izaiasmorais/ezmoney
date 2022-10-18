@@ -5,7 +5,6 @@ import {
   FaExchangeAlt,
 } from "react-icons/fa";
 import { useMoney } from "../../contexts/MoneyContext";
-import { AddButton } from "../Globals/AddButton";
 import { ResumeBox } from "./ResumeBox";
 import { TotalBox } from "./TotalBox";
 

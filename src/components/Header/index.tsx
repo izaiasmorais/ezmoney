@@ -2,8 +2,10 @@ import { Flex, Text, Button, Avatar } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { IoMdMenu } from "react-icons/io";
-import { GlobalSelect } from "./GlobalSelect";
+import { ThemeSelect } from "./ThemeSelect";
 import { useDrawer } from "../../hooks/useDrawer";
+import { HeaderMenu } from "./HeaderMenu";
+import { Notifications } from "./Notifications";
 
 interface Props {
   page: string;
@@ -27,26 +29,21 @@ export function Header({ page }: Props) {
           bg="transparent !important"
           display={["block", "block", "block", "none"]}
         >
-          <IoMdMenu size={30} />
+          <IoMdMenu size={20} />
         </Button>
-        <Text fontWeight="600" fontSize={["1.1rem", "1.5rem"]}>
+        <Text fontWeight="600" fontSize={["1rem", "1.25rem", "1.5rem"]}>
           {page}
         </Text>
       </Flex>
-      <Flex gap="1.5rem" align="center">
-        <GlobalSelect />
 
+      <Flex gap="1.5rem" align="center">
         <IoSearchOutline size={20} cursor="pointer" />
 
-        <VscBell size={20} cursor="pointer" />
+        <Notifications />
 
-        <Avatar
-          src="/Profile.png"
-          name="Izaías Lima"
-          w="40px"
-          h="40px"
-          cursor="pointer"
-        />
+        <ThemeSelect />
+
+        <HeaderMenu />
       </Flex>
     </Flex>
   );
