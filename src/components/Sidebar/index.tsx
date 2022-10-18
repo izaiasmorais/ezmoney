@@ -38,11 +38,11 @@ export function Sidebar() {
       <Stack align="flex-start" color="white" px=".75rem">
         <NavItem
           name="Dashboard"
-          src="/"
+          src="/dashboard"
           icon={
             <FaThLarge
               size={20}
-              color={asPath.endsWith("/") ? "#ffffff" : "#919eab"}
+              color={asPath.endsWith("/dashboard") ? "#ffffff" : "#919eab"}
             />
           }
           active

@@ -6,11 +6,13 @@ import {
   MenuList,
   Text,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { useMoney } from "../../contexts/MoneyContext";
 import { ItemMenu } from "../Globals/ItemMenu";
 
 export function HeaderMenu() {
   const { nextTheme, shadow } = useMoney();
+  const { push } = useRouter();
 
   return (
     <Menu>
@@ -47,10 +49,10 @@ export function HeaderMenu() {
           </Text>
         </Flex>
 
-        <ItemMenu>Perfil</ItemMenu>
-        <ItemMenu>Configurações</ItemMenu>
+        <ItemMenu onClick={() => push("/settings")}>Perfil</ItemMenu>
+        <ItemMenu onClick={() => push("/settings")}>Configurações</ItemMenu>
         <ItemMenu>Sobre</ItemMenu>
-        <ItemMenu>Desconectar</ItemMenu>
+        <ItemMenu onClick={() => push("/")}>Desconectar</ItemMenu>
       </MenuList>
     </Menu>
   );
