@@ -9,8 +9,8 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
-import { useDrawer } from "../../contexts/DrawerContext";
 import { useMoney } from "../../contexts/MoneyContext";
+import { useDrawer } from "../../hooks/useDrawer";
 import { Sidebar } from "./index";
 
 export function SidebarDrawer() {

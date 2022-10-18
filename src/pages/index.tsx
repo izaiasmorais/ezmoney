@@ -2,7 +2,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 import { BudgetTable } from "../components/BudgetTable";
 import { Layout } from "../components/Globals/Layout";
 import { Summary } from "../components/Summary";
-import { TransactionsTable } from "../components/Transactions";
+import { TransactionsTable } from "../components/Transactions/TransactionTable";
 import { api } from "../lib/axios";
 import { TransactionProps } from "../@types/types";
 import { useMoney } from "../contexts/MoneyContext";
@@ -31,7 +31,7 @@ export default function Home({ data }: HomeProps) {
         my="2rem"
         gridTemplateColumns={["1fr", "1fr", "1fr", "repeat(4, 1fr)"]}
       >
-        <TransactionsTable data={last5} viewAll={<ViewAllTransactions />} />
+        <TransactionsTable data={last5} component={<ViewAllTransactions />} />
         <BudgetTable />
       </SimpleGrid>
     </Layout>

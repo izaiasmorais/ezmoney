@@ -49,25 +49,20 @@ export function InvoiceItem({ name, due, status, price }: Props) {
       fontWeight={600}
       alignItems="center"
       justifyContent="space-between"
-      gridTemplateColumns={[
-        "repeat(5, 1fr)",
-        "repeat(5, 1fr)",
-        "repeat(5, 1fr)",
-        "repeat(8, 1fr)",
-      ]}
+      gridTemplateColumns={["repeat(5, 1fr)", "repeat(6, 1fr)"]}
     >
-      <Text gridColumn={["1 / 3", "1 / 3", "1 / 3", "1 / 6"]} maxW={240}>
+      <Text gridColumn={["1 / 3", "1 / 4"]} maxW={240}>
         {name}
       </Text>
-      <Text gridColumn={["3 / 4", "3 / 4", "3 / 4", "6 / 7"]}>{due}</Text>
+      <Text gridColumn={["3 / 4", "4 / 5"]}>{due}</Text>
       <StatusBadge
-        grid={["4 / 5", "4 / 5", "4 / 5", "7 / 8"]}
+        grid={["4 / 5", "5 / 6"]}
         bgColor={bgColor}
         textColor={textColor}
       >
         {statusText}
       </StatusBadge>
-      <Text gridColumn={["5 / 6", "5 / 6", "5 / 6", "8 / 9"]}>R$ {price}</Text>
+      <Text gridColumn={["5 / 6", "6 / 7"]}>R$ {price}</Text>
     </SimpleGrid>
   );
 }

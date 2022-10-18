@@ -1,19 +1,19 @@
 import { ReactNode, useState } from "react";
 import { Flex } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
-import { useMoney } from "../../contexts/MoneyContext";
-import { TransactionProps } from "../../@types/types";
-import { icon } from "../../utils/conditionalFunctions";
-import { formatDate } from "../../utils/formatDate";
-import { LoadingDots } from "../Globals/LoadingDots";
-import { Empty } from "../Globals/Empty";
+import { useMoney } from "../../../contexts/MoneyContext";
+import { TransactionProps } from "../../../@types/types";
+import { icon } from "../../../utils/conditionalFunctions";
+import { formatDate } from "../../../utils/formatDate";
+import { LoadingDots } from "../../Globals/LoadingDots";
+import { Empty } from "../../Globals/Empty";
 
 interface TransactionTableProps {
-  viewAll?: ReactNode;
+  component?: ReactNode;
   data: TransactionProps[];
 }
 
-export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
+export function TransactionsTable({ data, component }: TransactionTableProps) {
   const [hasData, setHasData] = useState(true);
   const { shadow, nextTheme } = useMoney();
 
@@ -57,7 +57,7 @@ export function TransactionsTable({ data, viewAll }: TransactionTableProps) {
         <Empty title="Não há transações para listar" />
       )}
 
-      {viewAll}
+      {component}
     </Flex>
   );
 }

@@ -13,17 +13,12 @@ export function InvoiceHeader() {
       color={nextTheme.text.paragraphy}
       fontWeight={700}
       justifyContent="space-between"
-      gridTemplateColumns={[
-        "repeat(5, 1fr)",
-        "repeat(5, 1fr)",
-        "repeat(5, 1fr)",
-        "repeat(8, 1fr)",
-      ]}
+      gridTemplateColumns={["repeat(5, 1fr)", "repeat(6, 1fr)"]}
     >
-      <Text gridColumn={["1 / 3", "1 / 3", "1 / 3", "1 / 6"]}>Nome</Text>
-      <Text gridColumn={["3 / 4", "3 / 4", "3 / 4", "6 / 7"]}>Vencimento</Text>
-      <Text gridColumn={["4 / 5", "4 / 5", "4 / 5", "7 / 8"]}>Status</Text>
-      <Text gridColumn={["5 / 6", "5 / 6", "5 / 6", "8 / 9"]}>Valor</Text>
+      <Text gridColumn={["1 / 3", "1 / 4"]}>Nome</Text>
+      <Text gridColumn={["3 / 4", "4 / 5"]}>Vencimento</Text>
+      <Text gridColumn={["4 / 5", "5 / 6"]}>Status</Text>
+      <Text gridColumn={["5 / 6", "6 / 7"]}>Valor</Text>
     </SimpleGrid>
   );
 }

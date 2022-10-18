@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Flex, Text } from "@chakra-ui/react";
-import { useMoney } from "../../contexts/MoneyContext";
+import { useMoney } from "../../../contexts/MoneyContext";
 
 interface Props {
   icon: ReactNode;

@@ -1,4 +1,3 @@
-import { useColorMode } from "@chakra-ui/react";
 import { useTheme } from "next-themes";
 import {
   useState,
@@ -6,7 +5,6 @@ import {
   createContext,
   useContext,
   ChangeEvent,
-  useEffect,
 } from "react";
 import toast from "react-hot-toast";
 import {
@@ -44,7 +42,6 @@ export const MoneyContext = createContext({} as MoneyContextType);
 
 export function MoneyContextProvider({ children }: MoneyContextProviderProps) {
   const { resolvedTheme } = useTheme();
-  const { setColorMode } = useColorMode();
   const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const [transactionType, setTransactionType] = useState("");
   const [invoices, setInvoices] = useState<InvoicesProps[]>([]);

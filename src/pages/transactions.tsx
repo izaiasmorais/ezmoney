@@ -1,12 +1,14 @@
-import { Flex, Select, useDisclosure } from "@chakra-ui/react";
-import { Layout } from "../components/Globals/Layout";
-import { AddButton } from "../components/Globals/AddButton";
-import { TransactionsTable } from "../components/Transactions";
+import { useEffect } from "react";
 import { api } from "../lib/axios";
+import { useDisclosure } from "@chakra-ui/react";
+import { Layout } from "../components/Globals/Layout";
+import { TransactionsTable } from "../components/Transactions/TransactionTable";
 import { TransactionProps } from "../@types/types";
 import { useMoney } from "../contexts/MoneyContext";
-import { useEffect } from "react";
 import { TransactionModal } from "../components/Transactions/TransactionModal";
+import { TransactionHeading } from "../components/Transactions/TransactionHeading";
+import { Pagination } from "../components/Transactions/Pagination";
+import { usePagination } from "../hooks/usePagination";
 
 interface TransacionsListProps {
   data: TransactionProps[];
@@ -15,21 +17,7 @@ interface TransacionsListProps {
 export default function Transactions({ data }: TransacionsListProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { transactions, setTransactions } = useMoney();
-
-  function handleFilter(type: string) {
-    if (type === "") {
-      setTransactions(data);
-    } else if (type === "Entrada") {
-      const filtered = data.filter((item) => item.type === "Entrada");
-      setTransactions(filtered);
-    } else if (type === "Saída") {
-      const filtered = data.filter((item) => item.type !== "Entrada");
-      setTransactions(filtered);
-    } else {
-      const filtered = data.filter((item) => item.type === type);
-      setTransactions(filtered);
-    }
-  }
+  const { currentItems } = usePagination();
 
   useEffect(() => {
     setTransactions(data);
@@ -37,33 +25,9 @@ export default function Transactions({ data }: TransacionsListProps) {
 
   return (
     <Layout title="Transações" maxw={1200}>
-      <Flex
-        w="100%"
-        mt="1rem"
-        mb="2rem"
-        gap={["1rem", "1.5rem"]}
-        align="center"
-        justify="space-between"
-      >
-        <Select
-          placeholder="Todos"
-          maxWidth={160}
-          onChange={(e) => handleFilter(e.target.value)}
-        >
-          <option value="Entrada">Entradas</option>
-          <option value="Saída">Saídas</option>
-          <option value="Compra">Compras</option>
-          <option value="Conta">Contas</option>
-          <option value="Transporte">Transporte</option>
-          <option value="Comida">Comida</option>
-        </Select>
+      <TransactionHeading onOpen={onOpen} data={data} />
 
-        <Flex onClick={onOpen}>
-          <AddButton name="Adicionar transação" />
-        </Flex>
-      </Flex>
-
-      <TransactionsTable data={transactions} />
+      <TransactionsTable data={currentItems} component={<Pagination />} />
 
       <TransactionModal isOpen={isOpen} onClose={onClose} />
     </Layout>
