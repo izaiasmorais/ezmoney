@@ -7,7 +7,7 @@ export const lightColors = {
   back: {
     body: "#FDFDFD",
     boxes: "#ffffff",
-    sidebar: "#293033",
+    sidebar: "#212B36",
     card: "#f5f5f5",
   },
 };
@@ -19,10 +19,10 @@ export const darkColors = {
     paragraphy: "#919eab",
   },
   back: {
-    body: "#1e2325",
-    boxes: "#293033",
-    sidebar: "#293033",
-    card: "#343d41",
+    body: "#161C24",
+    sidebar: "#212B36",
+    boxes: "#212B36",
+    card: "#454F5B",
   },
 };
 

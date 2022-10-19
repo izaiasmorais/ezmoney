@@ -27,7 +27,7 @@ export function NavItem({ name, src, active = false, icon }: NavItemProps) {
         cursor="pointer"
         borderRadius=".5rem"
         transition="color .3s"
-        _hover={{ bg: "#464A4D" }}
+        _hover={{ bg: "#454F5B" }}
         bg={activeLink ? "purple.700 !important" : "normal"}
         color={activeLink ? "white.100" : nextTheme.text.sidebar}
       >
