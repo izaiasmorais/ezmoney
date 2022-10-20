@@ -8,6 +8,8 @@
 
 Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI. Comecei com a ideia do projeto pois queria aprimorar meus conhecimentos com posicionamento avançado e estilos no geral, e também construir uma API mais completa possível, mesmo que com funcionalidades simples como CRUD em quase todos os casos de uso. 
 
+https://user-images.githubusercontent.com/53953937/197023905-28fb524f-0c77-45fc-920f-d21d66c2d4db.mp4
+
 ### Funcionalidades
 
 - Listar, adicionar, editar e deletar transações, orçamentos e dívidas.
