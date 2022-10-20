@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useMoney } from "../../contexts/MoneyContext";
-import { ItemMenu } from "../Globals/ItemMenu";
+import { ItemMenu } from "./ItemMenu";
 
 export function HeaderMenu() {
   const { nextTheme, shadow } = useMoney();

@@ -16,7 +16,7 @@ interface TransacionsListProps {
 
 export default function Transactions({ data }: TransacionsListProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { transactions, setTransactions } = useMoney();
+  const { setTransactions } = useMoney();
   const { currentItems } = usePagination();
 
   useEffect(() => {

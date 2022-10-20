@@ -1,6 +1,9 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
+import { useMoney } from "../../contexts/MoneyContext";
 
 export function Presentation() {
+  const { nextTheme } = useMoney();
+
   return (
     <Flex
       display={["none", "none", "flex"]}
@@ -8,6 +11,7 @@ export function Presentation() {
       justify="center"
       direction="column"
       bg="#212B36"
+      color="white"
       w="50%"
       h="100%"
       p="2rem"

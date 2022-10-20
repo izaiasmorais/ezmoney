@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { IoMoonOutline, IoSunnyOutline, IoTvOutline } from "react-icons/io5";
 import { useMoney } from "../../contexts/MoneyContext";
-import { ItemMenu } from "../Globals/ItemMenu";
+import { ItemMenu } from "./ItemMenu";
 
 export function ThemeSelect() {
   const { nextTheme, shadow } = useMoney();

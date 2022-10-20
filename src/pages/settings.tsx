@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { Layout } from "../components/Globals/Layout";
-import { MoneyBox } from "../components/Globals/MoneyBox";
+import { GBox } from "../components/Globals/GBox";
 import { SettingsFilter } from "../components/Modal/SettingsFilter";
 import { ChangeLanguague } from "../components/Settings/ChangeLanguague";
 import { ChangePassword } from "../components/Settings/ChangePassword";
@@ -15,7 +15,7 @@ export default function Settings() {
 
   return (
     <Layout title="Configurações" maxw={1200}>
-      <MoneyBox p="0" overflowY="auto" direction="column">
+      <GBox p="0" overflowY="auto" direction="column">
         <Flex
           overflowX="auto"
           bg={nextTheme.back.card}
@@ -37,7 +37,7 @@ export default function Settings() {
         ) : (
           <SettingsSuport />
         )}
-      </MoneyBox>
+      </GBox>
     </Layout>
   );
 }

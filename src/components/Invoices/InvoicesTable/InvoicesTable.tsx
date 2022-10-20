@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { useState } from "react";
 import { InvoicesProps } from "../../../@types/types";
-import { Empty } from "../../Globals/Empty";
+import { GEmpty } from "../../Globals/GEmpty";
 import { LoadingDots } from "../../Globals/LoadingDots";
 import { InvoiceHeader } from "./InvoiceHeader";
 import { InvoiceItem } from "./InvoiceItem";
@@ -15,7 +15,7 @@ export function InvoicesTable({ invoices }: Props) {
   const [hasData, setHasData] = useState(true);
 
   setTimeout(() => {
-    if (!invoices) {
+    if (invoices.length === 0) {
       setHasData(false);
     }
   }, 0);
@@ -47,7 +47,7 @@ export function InvoicesTable({ invoices }: Props) {
           <LoadingDots />
         </Flex>
       ) : (
-        <Empty title="Não há contas para listar" />
+        <GEmpty title="Não há contas para listar" />
       )}
     </Flex>
   );

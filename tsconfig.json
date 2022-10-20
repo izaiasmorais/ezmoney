@@ -21,6 +21,6 @@
     "**/*.tsx",
     "src/components/Globals/GlobalSelect/index.tsx",
     "src/components/Globals/GlobalSelect/index.tsx"
-  ],
+, "src/components/GEmpty"  ],
   "exclude": ["node_modules"]
 }

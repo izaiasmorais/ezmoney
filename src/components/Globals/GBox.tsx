@@ -6,7 +6,7 @@ interface Props extends FlexProps {
   children: ReactNode;
 }
 
-export function MoneyBox({ children, ...rest }: Props) {
+export function GBox({ children, ...rest }: Props) {
   const { nextTheme, shadow } = useMoney();
 
   return (

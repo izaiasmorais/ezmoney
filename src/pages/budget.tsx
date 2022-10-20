@@ -1,6 +1,6 @@
 import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import { AddButton } from "../components/Globals/AddButton";
 import { BudgetBox } from "../components/BudgetTable/BudgetBox";
+import { AddButton } from "../components/Globals/GButton/AddButton";
 import { Layout } from "../components/Globals/Layout";
 
 export default function Budget() {
@@ -18,7 +18,7 @@ export default function Budget() {
           Total: R$ 2000
         </Text>
 
-        <AddButton name="Criar orçamento" />
+        <AddButton text="Criar orçamento" />
       </Flex>
 
       <SimpleGrid

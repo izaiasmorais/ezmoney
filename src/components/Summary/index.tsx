@@ -16,11 +16,11 @@ export function Summary() {
     transactions.reduce(
       (acc, transaction) => {
         if (transaction.type === "Entrada") {
-          acc.deposits += transaction.price;
-          acc.total += transaction.price;
+          acc.deposits += Number(transaction.price);
+          acc.total += Number(transaction.price);
         } else {
-          acc.withdraws += transaction.price;
-          acc.total -= transaction.price;
+          acc.withdraws += Number(transaction.price);
+          acc.total -= Number(transaction.price);
         }
 
         return acc;
@@ -46,12 +46,12 @@ export function Summary() {
     >
       <ResumeBox
         name="Entradas"
-        value={summary ? summary.deposits : 0}
+        value={summary ? Number(summary.deposits.toFixed(2)) : 0}
         icon={<FaArrowCircleDown size={25} color="#0CDF92" />}
       />
       <ResumeBox
         name="Saídas"
-        value={summary ? summary.withdraws : 0}
+        value={summary ? Number(summary.withdraws.toFixed(2)) : 0}
         icon={<FaArrowCircleUp size={25} color="#FD3C4A" />}
       />
       <ResumeBox
@@ -60,7 +60,7 @@ export function Summary() {
         icon={<FaExchangeAlt size={20} color="#45B1FF" />}
       />
       <Flex gap="1rem" direction="column">
-        <TotalBox total={summary ? summary.total : 0} />
+        <TotalBox total={summary ? Number(summary.total.toFixed(2)) : 0} />
       </Flex>
     </SimpleGrid>
   );

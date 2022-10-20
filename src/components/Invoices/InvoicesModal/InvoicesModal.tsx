@@ -13,7 +13,6 @@ import {
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { useMoney } from "../../../contexts/MoneyContext";
-import { LoadingDots } from "../../Globals/LoadingDots";
 import { InputBox } from "../../Modal/InputBox";
 import { InvoicesToggler } from "./InvoicesToggler";
 
@@ -52,7 +51,7 @@ export function InvoicesModal({ isOpen, onClose }: Props) {
             name="Valor"
             id="price"
             type="number"
-            value={formData.price}
+            value={Number(formData.price)}
           />
           <InputBox
             name="Vencimento"

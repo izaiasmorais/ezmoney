@@ -1,7 +1,9 @@
-import { Flex, Select } from "@chakra-ui/react";
+import { Flex, Select, Text } from "@chakra-ui/react";
+import { FaPlusCircle } from "react-icons/fa";
 import { TransactionProps } from "../../@types/types";
 import { useMoney } from "../../contexts/MoneyContext";
-import { AddButton } from "../Globals/AddButton";
+import { GButton } from "../Globals/GButton";
+import { AddButton } from "../Globals/GButton/AddButton";
 
 interface Props {
   data: TransactionProps[];
@@ -49,7 +51,7 @@ export function TransactionHeading({ data, onOpen }: Props) {
       </Select>
 
       <Flex onClick={onOpen}>
-        <AddButton name="Adicionar transação" />
+        <AddButton text="Adicionar transação" />
       </Flex>
     </Flex>
   );

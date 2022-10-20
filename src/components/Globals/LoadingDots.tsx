@@ -9,7 +9,7 @@ export function LoadingDots() {
       height="40"
       width="40"
       radius="9"
-      color={theme === "light" ? "#000000" : "#ffffff"}
+      color={theme === "light" ? "black" : theme === "dark" ? "white" : "white"}
       ariaLabel="three-dots-loading"
       visible={true}
     />

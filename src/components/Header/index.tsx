@@ -1,6 +1,5 @@
-import { Flex, Text, Button, Avatar } from "@chakra-ui/react";
+import { Flex, Text, Button } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
-import { VscBell } from "react-icons/vsc";
 import { IoMdMenu } from "react-icons/io";
 import { ThemeSelect } from "./ThemeSelect";
 import { useDrawer } from "../../hooks/useDrawer";
@@ -29,7 +28,7 @@ export function Header({ page }: Props) {
           bg="transparent !important"
           display={["block", "block", "block", "none"]}
         >
-          <IoMdMenu size={20} />
+          <IoMdMenu size={25} />
         </Button>
         <Text fontWeight="600" fontSize={["1rem", "1.25rem", "1.5rem"]}>
           {page}

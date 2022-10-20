@@ -1,13 +1,13 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { FaCarSide, FaShoppingCart } from "react-icons/fa";
-import { useMoney } from "../../contexts/MoneyContext";
-import { MoneyBox } from "./MoneyBox";
+import { useMoney } from "../../../contexts/MoneyContext";
+import { GBox } from "../GBox";
 
 interface Props {
   title: string;
 }
 
-export function Empty({ title }: Props) {
+export function GEmpty({ title }: Props) {
   const { nextTheme } = useMoney();
 
   const shadow =
@@ -22,10 +22,10 @@ export function Empty({ title }: Props) {
       mr="4rem"
       p="2rem"
     >
-      <MoneyBox maxW="430px" gap=".7rem" boxShadow={shadow}>
+      <GBox maxW="430px" w="100%" gap=".7rem" boxShadow={shadow}>
         <Flex
-          w="50px"
-          h="50px"
+          w="50px !important"
+          h="50px !important"
           bg="red.100"
           borderRadius="1rem"
           align="center"
@@ -34,7 +34,7 @@ export function Empty({ title }: Props) {
           <FaCarSide color="#FF4842" size={25} />
         </Flex>
 
-        <Box display="grid" w="340px">
+        <Box display="grid" maxW="340px" w="100%">
           <Box
             w="100%"
             h="15px"
@@ -43,18 +43,19 @@ export function Empty({ title }: Props) {
           />
           <Box w="60%" h="15px" bg={nextTheme.back.card} borderRadius=".5rem" />
         </Box>
-      </MoneyBox>
+      </GBox>
 
-      <MoneyBox
+      <GBox
         maxW="430px"
+        w="100%"
         gap=".7rem"
         mt="-1rem"
         ml="4rem"
         boxShadow={shadow}
       >
         <Flex
-          w="50px"
-          h="50px"
+          w="50px !important"
+          h="50px !important"
           bg="purple.100"
           borderRadius="1rem"
           align="center"
@@ -63,7 +64,7 @@ export function Empty({ title }: Props) {
           <FaShoppingCart color="#7F3DFF" size={25} />
         </Flex>
 
-        <Box display="grid" w="340px">
+        <Box display="grid" maxW="340px" w="100%">
           <Box
             w="100%"
             h="15px"
@@ -72,7 +73,7 @@ export function Empty({ title }: Props) {
           />
           <Box w="60%" h="15px" bg={nextTheme.back.card} borderRadius=".5rem" />
         </Box>
-      </MoneyBox>
+      </GBox>
 
       <Text
         mt="2rem"

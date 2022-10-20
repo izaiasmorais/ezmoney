@@ -6,7 +6,7 @@ import { TransactionProps } from "../../../@types/types";
 import { icon } from "../../../utils/conditionalFunctions";
 import { formatDate } from "../../../utils/formatDate";
 import { LoadingDots } from "../../Globals/LoadingDots";
-import { Empty } from "../../Globals/Empty";
+import { GEmpty } from "../../Globals/GEmpty";
 
 interface TransactionTableProps {
   component?: ReactNode;
@@ -18,7 +18,7 @@ export function TransactionsTable({ data, component }: TransactionTableProps) {
   const { shadow, nextTheme } = useMoney();
 
   setTimeout(() => {
-    if (!data) {
+    if (data.length === 0) {
       setHasData(false);
     }
   }, 0);
@@ -54,7 +54,7 @@ export function TransactionsTable({ data, component }: TransactionTableProps) {
           <LoadingDots />
         </Flex>
       ) : (
-        <Empty title="Não há transações para listar" />
+        <GEmpty title="Não há transações para listar" />
       )}
 
       {component}

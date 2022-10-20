@@ -1,14 +1,15 @@
-import { Flex, Checkbox, Button, Text, Input } from "@chakra-ui/react";
+import { Flex, Checkbox, Text, Input } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useMoney } from "../../contexts/MoneyContext";
+import { GButton } from "../Globals/GButton";
 
 export function AuthBox() {
   const { push } = useRouter();
   const { nextTheme } = useMoney();
 
-  function redirect() {
+  function Redirect() {
     push("dashboard");
   }
 
@@ -20,7 +21,7 @@ export function AuthBox() {
     <Flex
       w="100%"
       align="center"
-      bg="#161C24"
+      bg={nextTheme.back.body}
       justify="center"
       direction="column"
       h="100%"
@@ -28,7 +29,7 @@ export function AuthBox() {
     >
       <Flex maxW="350px" w="100%" direction="column" gap="1rem">
         <Text
-          color="white"
+          color={nextTheme.text.body}
           fontWeight={700}
           fontSize="1.5rem"
           lineHeight="36px"
@@ -42,8 +43,8 @@ export function AuthBox() {
           id="email"
           name="email"
           type="email"
-
           placeholder="E-mail"
+          color={nextTheme.text.body}
           _placeholder={{ color: "#718096" }}
         />
 
@@ -53,14 +54,15 @@ export function AuthBox() {
           id="password"
           name="password"
           type="password"
-        
           placeholder="Senha"
+          color={nextTheme.text.body}
           _placeholder={{ color: "#718096" }}
         />
 
         <Flex justify="space-between" fontSize=".875rem">
           <Checkbox
             color="#718096"
+            borderColor="#7180963d"
             colorScheme="purple"
             outline="none"
             fontSize=".875rem"
@@ -72,27 +74,19 @@ export function AuthBox() {
           </Text>
         </Flex>
 
-        <Button
+        <GButton
           bg="purple.700"
+          color="white"
           _hover={{ bg: "purple.500" }}
-          w="100%"
-          onClick={redirect}
+          onClick={Redirect}
         >
           Entrar
-        </Button>
+        </GButton>
 
-        <Button
-          w="100%"
-          gap=".5rem"
-          color="black"
-          display="flex"
-          alignItems="center"
-          bg="#EDF2F7"
-          _hover={{ bg: "#E2E8F0" }}
-        >
+        <GButton bg="#EDF2F7" _hover={{ bg: "#E2E8F0" }} color="black">
           <FcGoogle size={25} />
           Entrar com Google
-        </Button>
+        </GButton>
       </Flex>
     </Flex>
   );

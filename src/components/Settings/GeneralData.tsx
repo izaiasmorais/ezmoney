@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useMoney } from "../../contexts/MoneyContext";
 import { GInput } from "../Modal/GInput";
-import { MoneyBox } from "../Globals/MoneyBox";
+import { GBox } from "../Globals/GBox";
 
 export function GeneralData() {
   const { nextTheme } = useMoney();
@@ -21,12 +21,7 @@ export function GeneralData() {
       direction={["column", "column", "row"]}
       align="center"
     >
-      <MoneyBox
-        direction="column"
-        boxShadow="none"
-        align="center"
-        justify="center"
-      >
+      <GBox direction="column" boxShadow="none" align="center" justify="center">
         <Image
           src="/Profile.png"
           alt="Foto de Perfil"
@@ -44,9 +39,9 @@ export function GeneralData() {
         >
           Formatos permitidos: *.jpeg, *.png, *.jpg e *.gif.
         </Text>
-      </MoneyBox>
+      </GBox>
 
-      <MoneyBox
+      <GBox
         w="100%"
         boxShadow="none"
         maxH={["", "", "300px"]}
@@ -79,7 +74,7 @@ export function GeneralData() {
             Salvar Mudanças
           </Button>
         </Flex>
-      </MoneyBox>
+      </GBox>
     </Flex>
   );
 }

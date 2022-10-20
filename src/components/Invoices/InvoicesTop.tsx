@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { AddButton } from "../Globals/AddButton";
+import { AddButton } from "../Globals/GButton/AddButton";
 
 interface Props {
   onOpen: () => void;
@@ -20,7 +20,7 @@ export function InvoicesTop({ onOpen }: Props) {
       </Text>
 
       <Flex onClick={onOpen}>
-        <AddButton name="Adicionar conta" />
+        <AddButton text="Adicionar conta" />
       </Flex>
     </Flex>
   );

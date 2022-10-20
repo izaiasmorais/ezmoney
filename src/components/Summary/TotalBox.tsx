@@ -18,14 +18,12 @@ export function TotalBox({ total }: Props) {
       h="max-content !important"
       p="1.5rem"
       flex="1"
+      gap="1.5rem"
     >
       <Text flex="1" as="strong">
         Saldo total
       </Text>
-      <Text
-        fontSize={["2rem", "2rem", "2.5rem", "1.5rem", "2.5rem", "2.75rem"]}
-        fontWeight="500"
-      >
+      <Text fontWeight="500" fontSize={["1.25rem", "1.25rem", "2rem"]}>
         R$ {total}
       </Text>
     </Flex>
