@@ -10,7 +10,7 @@ Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI
 
 <div>
 <br/>
-<img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=7F3DFF&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=7F3DFF&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=NODE&message=V16.15.0&color=7F3DFF&style=for-the-badge"/>
+<img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=7F3DFF&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=7F3DFF&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=NODE&message=V18.16.0&color=7F3DFF&style=for-the-badge"/>
 </div>
 
 ### Funcionalidades
