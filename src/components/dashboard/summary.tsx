@@ -1,35 +1,40 @@
 import { SummaryCard } from "./summary-card";
-import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
+import {
+	ArrowDownCircle,
+	ArrowUpCircle,
+	CandlestickChart,
+	PiggyBank,
+} from "lucide-react";
 
 export function Summary() {
 	return (
 		<div className="gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
 			<SummaryCard
-				title="Total Revenue"
-				icon={<DollarSign size={20} />}
-				value="R$15,231.89"
-				description="+20.1% from last month"
+				title="Deposits"
+				icon={<ArrowDownCircle size={20} />}
+				value="$ 3234.78"
+				description="+2.1% from last month"
 			/>
 
 			<SummaryCard
-				title="Clients"
-				icon={<Users size={20} />}
-				value="235"
-				description="+16.6% from last month"
+				title="Withdrawals"
+				icon={<ArrowUpCircle size={20} />}
+				value="$ 2315.78"
+				description="-6.34% from last month"
 			/>
 
 			<SummaryCard
-				title="Sales"
-				icon={<CreditCard size={20} />}
-				value="265"
+				title="Investiments"
+				icon={<CandlestickChart size={20} />}
+				value="$ 764.44"
 				description="+19% from last month"
 			/>
 
 			<SummaryCard
-				title="Active now"
-				icon={<Activity size={20} />}
-				value="573"
-				description="+145 since last hour"
+				title="Total Balance"
+				icon={<PiggyBank size={20} />}
+				value="$ 1115.60"
+				description="+3.14 from last month"
 			/>
 		</div>
 	);
