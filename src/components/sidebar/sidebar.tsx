@@ -1,11 +1,11 @@
 import {
-	HeartHandshake,
+	Banknote,
+	CalendarDays,
+	ClipboardCheck,
+	CreditCard,
 	Home,
-	PackageSearch,
-	Sandwich,
-	ScrollText,
-	ShoppingCart,
-	Users,
+	LineChart,
+	Settings,
 	Wallet,
 } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
@@ -14,41 +14,53 @@ export function Sidebar() {
 	return (
 		<aside className="h-screen w-[300px] border-r p-4 hidden md:block">
 			<h1 className="text-2xl font-semibold flex items-center gap-2">
-				<Sandwich />
-				ezmoney
+				EZMoney
 			</h1>
 			<div className="mt-12 flex flex-col gap-1">
-				<span className="text-sm font-semibold mb-1">GENERAL</span>
+				<span className="text-sm font-semibold text-slate-500 mb-1">
+					GENERAL
+				</span>
 				<SidebarItem title="Dashboard" href="/" icon={<Home size={20} />} />
-				<SidebarItem title="Sales" href="/sales" icon={<Wallet size={20} />} />
 				<SidebarItem
-					title="Clients"
-					href="/clients"
-					icon={<Users size={20} />}
+					title="Transactions"
+					href="/transactions"
+					icon={<Banknote size={20} />}
 				/>
 				<SidebarItem
-					title="Products"
-					href="/products"
-					icon={<PackageSearch size={20} />}
+					title="Invoices"
+					href="/invoices"
+					icon={<CreditCard size={20} />}
 				/>
 				<SidebarItem
-					title="Online Store"
-					href="/online-store"
-					icon={<ShoppingCart size={20} />}
+					title="Budget"
+					href="/budget"
+					icon={<Wallet size={20} />}
 				/>
 			</div>
 
 			<div className="mt-6 flex flex-col gap-1">
-				<span className="text-sm font-semibold mb-1">BOOST</span>
+				<span className="text-sm font-semibold text-slate-500 mb-1">
+					MANAGEMENT
+				</span>
 				<SidebarItem
-					title="Coupons"
-					href="/coupons"
-					icon={<ScrollText size={20} />}
+					title="Calendar"
+					href="/calendar"
+					icon={<CalendarDays size={20} />}
 				/>
 				<SidebarItem
-					title="Loyalty"
-					href="/loyalty"
-					icon={<HeartHandshake size={20} />}
+					title="Investiments"
+					href="/investiments"
+					icon={<LineChart size={20} />}
+				/>
+				<SidebarItem
+					title="Tasks"
+					href="/tasks"
+					icon={<ClipboardCheck size={20} />}
+				/>
+				<SidebarItem
+					title="Settings"
+					href="/settings"
+					icon={<Settings size={20} />}
 				/>
 			</div>
 		</aside>
