@@ -14,6 +14,11 @@ export function Sidebar() {
 	return (
 		<aside className="h-screen w-[300px] border-r p-4 hidden md:block">
 			<h1 className="text-2xl font-semibold flex items-center gap-2">
+				<img
+					src="https://i.imgur.com/5IIwlfu.pngpublic/ezmoney.png"
+					alt="EZMoney Logo"
+					className="w-7 h-7"
+				/>
 				EZMoney
 			</h1>
 			<div className="mt-12 flex flex-col gap-1">

@@ -18,7 +18,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="antialiased" suppressHydrationWarning>
 			<head>
-				<link rel="icon" href="/next.jpg" sizes="any" />
+				<link rel="icon" href="/ezmoney.png" sizes="any" />
 			</head>
 			<body className={inter.className}>
 				<Providers>{children}</Providers>

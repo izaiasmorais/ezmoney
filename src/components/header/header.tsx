@@ -3,7 +3,7 @@ import { ThemeSwitcher } from "./theme-switcher";
 import { Notifications } from "./notifications";
 import { Menu } from "./menu";
 import { Button } from "../ui/button";
-import { AlignJustify } from "lucide-react";
+import { AlignJustify, Search } from "lucide-react";
 
 export function Header() {
 	return (
@@ -12,7 +12,17 @@ export function Header() {
 				<Button variant="outline" className="block md:hidden">
 					<AlignJustify size={20} />
 				</Button>
-				<Input placeholder="Search anything..." className="max-w-[300px]" />
+
+				<div
+					className="hidden md:flex w-[400px] flex-1 px-2 items-center
+				gap-0 border rounded-md overflow-hidden"
+				>
+					<Search size={20} className="text-zinc-500" />
+					<Input
+						placeholder="Search anything..."
+						className="!flex-1 !rounded-none !border-none !ring-0"
+					/>
+				</div>
 			</div>
 			<div className="flex gap-2">
 				<Notifications />
