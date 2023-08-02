@@ -1,9 +1,8 @@
 "use client";
 
 import { TransactionsBox } from "@/components/transactions/transactions-box";
-import { Button } from "@/components/ui/button";
+import { TransactionsModal } from "@/components/transactions/transactions-modal";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Plus } from "lucide-react";
 
 export default function Transaction() {
 	return (
@@ -14,8 +13,8 @@ export default function Transaction() {
 				</h1>
 			</div>
 
-			<div className="flex justify-between items-center">
-				<Tabs defaultValue="all" className="w-full">
+			<div className="flex flex-wrap gap-2 justify-between items-center">
+				<Tabs defaultValue="all">
 					<TabsList>
 						<TabsTrigger value="all">All</TabsTrigger>
 						<TabsTrigger value="food">Food</TabsTrigger>
@@ -26,10 +25,7 @@ export default function Transaction() {
 					<TabsContent value="all" className="flex flex-col"></TabsContent>
 				</Tabs>
 
-				<Button className="flex items-center justify-center gap-2 max-w-max w-[200px]">
-					<Plus size={20} />
-					Add Transaction
-				</Button>
+				<TransactionsModal />
 			</div>
 
 			<TransactionsBox />

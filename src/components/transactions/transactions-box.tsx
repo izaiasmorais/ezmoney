@@ -7,8 +7,8 @@ import { Input } from "../ui/input";
 export function TransactionsBox() {
 	return (
 		<Card>
-			<div className="p-6 flex items-center justify-between">
-				<div className="flex gap-6">
+			<div className="p-6 flex flex-wrap gap-6 items-center justify-between">
+				<div className="flex flex-wrap gap-6">
 					<TransactionsTypeSelect />
 					<TransactionsDataPicker />
 				</div>
