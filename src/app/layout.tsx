@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "ezmoney",
-	description: "Best restaurant dashboard out there",
+	description: "Best dashboard for your business out there",
 };
 
 export default function RootLayout({
