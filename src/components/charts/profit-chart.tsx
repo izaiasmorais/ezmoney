@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useStore } from "@/store";
+import { useStore } from "@/stores";
 import dynamic from "next/dynamic";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
@@ -24,7 +24,7 @@ export default function ProfitChart() {
 					3450, 2568, 4190, 3900, 1780, 3025, 2650, 4180, 3820, 2975, 4250,
 					3540,
 				],
-				color: "#000"
+				color: "#000",
 			},
 		],
 		stroke: {

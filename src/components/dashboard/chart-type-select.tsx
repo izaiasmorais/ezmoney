@@ -7,7 +7,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { useStore } from "@/store";
+import { useStore } from "@/stores";
 import { uppercaseFirstLetter } from "@/utils/uppercaseFirstLetter";
 
 export function ChartTypeSelect() {

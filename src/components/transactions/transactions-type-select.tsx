@@ -8,7 +8,7 @@ import {
 } from "../ui/select";
 
 export function TransactionsTypeSelect() {
-	const types = ["Deposit", "Withdrawals"];
+	const types = ["expense", "income"];
 
 	return (
 		<Select>
@@ -18,7 +18,7 @@ export function TransactionsTypeSelect() {
 
 			<SelectContent>
 				{types.map((type) => (
-					<SelectItem key={type.toLowerCase()} value={type.toLowerCase()}>
+					<SelectItem key={type} value={type}>
 						{uppercaseFirstLetter(type)}
 					</SelectItem>
 				))}

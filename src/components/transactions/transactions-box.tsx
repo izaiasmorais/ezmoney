@@ -3,6 +3,7 @@ import { TransactionsTypeSelect } from "./transactions-type-select";
 import { TransactionsTable } from "./transactions-table";
 import { TransactionsDataPicker } from "./transactions-data-picker";
 import { Input } from "../ui/input";
+import { TransactionsCategorySelect } from "./transactions-category-select";
 
 export function TransactionsBox() {
 	return (
@@ -10,6 +11,7 @@ export function TransactionsBox() {
 			<div className="p-6 flex flex-wrap gap-6 items-center justify-between">
 				<div className="flex flex-wrap gap-6">
 					<TransactionsTypeSelect />
+					<TransactionsCategorySelect />
 					<TransactionsDataPicker />
 				</div>
 				<Input placeholder="Search transactions..." className="max-w-[500px]" />

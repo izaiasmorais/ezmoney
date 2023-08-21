@@ -8,20 +8,17 @@ import {
 } from "../ui/select";
 
 export function TransactionsCategorySelect() {
-	const categories = ["Invoice", "Food", "Transport", "Shopping"];
+	const categories = ["invoice", "deposit", "food", "transport", "shopping"];
 
 	return (
-		<Select defaultValue="invoice">
-			<SelectTrigger>
-				<SelectValue />
+		<Select>
+			<SelectTrigger className="w-[180px]">
+				<SelectValue placeholder="Category"/>
 			</SelectTrigger>
 
 			<SelectContent>
 				{categories.map((category) => (
-					<SelectItem
-						key={category.toLowerCase()}
-						value={category.toLowerCase()}
-					>
+					<SelectItem key={category} value={category}>
 						{uppercaseFirstLetter(category)}
 					</SelectItem>
 				))}
