@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
-interface ChartState {
+interface IChartStore {
 	type: ApexChart["type"];
 	update: (type: string) => void;
 }
 
-export const useStore = create<ChartState>((set) => {
+export const useChart = create<IChartStore>((set) => {
 	return {
 		type: "area",
 

@@ -12,7 +12,6 @@ export default function Dashboard() {
 
 				<TabsContent value="this" className="flex flex-col mt-6 gap-6">
 					<Summary />
-
 				</TabsContent>
 
 				<TabsContent value="last" className="flex flex-col"></TabsContent>

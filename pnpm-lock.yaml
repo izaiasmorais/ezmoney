@@ -83,9 +83,9 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.4.11)(react-dom@18.2.0)(react@18.2.0)
-  nextjs-progressbar:
-    specifier: ^0.0.16
-    version: 0.0.16(next@13.4.11)(react@18.2.0)
+  next13-progressbar:
+    specifier: ^1.0.2
+    version: 1.0.2(next@13.4.11)(react@18.2.0)
   postcss:
     specifier: 8.4.27
     version: 8.4.27
@@ -3741,6 +3741,19 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /next13-progressbar@1.0.2(next@13.4.11)(react@18.2.0):
+    resolution: {integrity: sha512-Cd5IHpXfIwRGYmQ6eLJzstC41NyU6oAE8TSm5SNR0RE2DjHz/ZEVvGBSolA/ctaDhjF08Y0h0vp7/XKkC3J+Ag==}
+    peerDependencies:
+      next: '>= 13.0.0'
+      react: '>= 18.0.0'
+    dependencies:
+      '@types/nprogress': 0.2.0
+      next: 13.4.11(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
+      nprogress: 0.2.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
   /next@13.4.11(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-XlJClNF3OPCv99At3BA7TflcF5q2zJAuTcyE4l6f5LWN3Uh8FF4e8PhZfaBk0PKmsKL7yOMGele/UUzbLvLbzw==}
     engines: {node: '>=16.8.0'}
@@ -3782,19 +3795,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
-    dev: false
-
-  /nextjs-progressbar@0.0.16(next@13.4.11)(react@18.2.0):
-    resolution: {integrity: sha512-GV0fD38EMD3vSDCmkq+tObmoup6QA91a6a9MxGuhJZuRk/9TNsrHGnIQQQ/sggkMkXuT4fBgF6jRjFwScDT3zA==}
-    peerDependencies:
-      next: '>= 6.0.0'
-      react: '>= 16.0.0'
-    dependencies:
-      '@types/nprogress': 0.2.0
-      next: 13.4.11(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
-      nprogress: 0.2.0
-      prop-types: 15.8.1
-      react: 18.2.0
     dev: false
 
   /node-releases@2.0.13:

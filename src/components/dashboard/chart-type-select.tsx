@@ -7,12 +7,16 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { useStore } from "@/stores";
+import { useChart } from "@/stores/chart";
 import { uppercaseFirstLetter } from "@/utils/uppercaseFirstLetter";
 
 export function ChartTypeSelect() {
-	const update = useStore((state) => state.update);
-	const type = useStore((state) => state.type);
+	const { update, type } = useChart((state) => {
+		return {
+			update: state.update,
+			type: state.type,
+		};
+	});
 
 	const types = ["line", "area", "bar", "scatter"];
 
