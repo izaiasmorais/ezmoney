@@ -6,14 +6,29 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../ui/select";
+import { useTransaction } from "@/stores/transaction";
 
 export function TransactionsCategorySelect() {
-	const categories = ["invoice", "deposit", "food", "transport", "shopping"];
+	const categories = [
+		"all",
+		"invoice",
+		"deposit",
+		"food",
+		"transport",
+		"shopping",
+	];
+	const filterTransactions = useTransaction(
+		(store) => store.filterTransactions
+	);
 
 	return (
-		<Select>
+		<Select
+			onValueChange={(e) =>
+				filterTransactions(e === "all" ? [] : ["category", e])
+			}
+		>
 			<SelectTrigger className="w-[180px]">
-				<SelectValue placeholder="Category"/>
+				<SelectValue placeholder="Category" />
 			</SelectTrigger>
 
 			<SelectContent>

@@ -10,7 +10,7 @@ export interface ITransaction {
 
 export interface ITransactionParams {
 	limit?: number;
-	filter?: Record<string, any>;
+	filter?: string[];
 	sort?: string;
 	page?: number;
 	order?: string;

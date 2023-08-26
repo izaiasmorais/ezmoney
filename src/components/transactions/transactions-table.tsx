@@ -30,13 +30,10 @@ export function TransactionsTable() {
 		};
 	});
 
-	const { isLoading, isError } = useQuery(
-		["transactions", [params.page, params.limit]],
-		{
-			queryFn: () => getTransactions(params),
-			onSuccess: (data) => setTransactions(data),
-		}
-	);
+	const { isLoading, isError } = useQuery(["transactions", [params]], {
+		queryFn: () => getTransactions(params),
+		onSuccess: (data) => setTransactions(data),
+	});
 
 	if (isLoading) {
 		return (

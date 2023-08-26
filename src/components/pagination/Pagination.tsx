@@ -94,10 +94,7 @@ export function Pagination({
 
 			<div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
 				{currentPage >= 1 && (
-					<PaginationButton
-						onClick={() => handleClick(currentPage - 1)}
-						style={{ backgroundColor: "#f1f5f9", color: "black" }}
-					>
+					<PaginationButton onClick={() => handleClick(currentPage - 1)}>
 						<ChevronLeft size={20} />
 					</PaginationButton>
 				)}
@@ -130,7 +127,6 @@ export function Pagination({
 					<PaginationButton
 						onClick={() => handleClick(currentPage + 1)}
 						disabled={currentPage === totalItems ? true : false}
-						style={{ backgroundColor: "#f1f5f9", color: "black" }}
 					>
 						<ChevronRight size={20} />
 					</PaginationButton>

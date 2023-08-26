@@ -13,7 +13,7 @@ export function TransactionTableItem({
 	transaction,
 }: ITransactionTableItemProps) {
 	return (
-		<TableRow className="cursor-pointer border-b-[1px] border-slate-50">
+		<TableRow className="cursor-pointer border-b-[1px] border-slate-50 dark:border-slate-900">
 			<TableCell className="font-medium flex items-center gap-3">
 				<div
 					className="w-10 h-10 bg-slate-100 dark:bg-slate-800 flex items-center

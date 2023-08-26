@@ -7,10 +7,12 @@ export async function getTransactions(
 	const response = await api.get<ITransaction[]>("/transactions", {
 		params: {
 			_limit: options.limit ? options.limit : 5,
-			...options.filter,
 			_sort: options.sort,
 			_page: options.page,
 			_order: options.order,
+			[options.filter ? options.filter[0] : "_filter"]: options.filter
+				? options.filter[1]
+				: "",
 		},
 	});
 

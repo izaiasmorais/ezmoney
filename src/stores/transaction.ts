@@ -9,12 +9,13 @@ interface ITransactionStore {
 	setTransactions: (transactions: ITransaction[]) => void;
 	onChangePage: (page: number) => void;
 	onChangeItemsPerPage: (items: number) => void;
+	filterTransactions: (filter: string[]) => void;
 }
 
 export const useTransaction = create<ITransactionStore>((set) => ({
 	transactions: [],
 	params: {
-		filter: {},
+		filter: [],
 		limit: 5,
 		page: 1,
 		sort: "createdAt",
@@ -48,6 +49,14 @@ export const useTransaction = create<ITransactionStore>((set) => ({
 			params: {
 				...state.params,
 				limit,
+			},
+		}));
+	},
+	filterTransactions: (filter) => {
+		set((state) => ({
+			params: {
+				...state.params,
+				filter,
 			},
 		}));
 	},

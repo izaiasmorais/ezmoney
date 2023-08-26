@@ -2,10 +2,11 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
+	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { MoreVertical } from "lucide-react";
+import { Eye, MoreVertical, PenSquare, Trash2 } from "lucide-react";
 
 export function TransactionTableOptionsButton() {
 	return (
@@ -13,15 +14,26 @@ export function TransactionTableOptionsButton() {
 			<DropdownMenuTrigger>
 				<div
 					className="w-10 h-10 flex items-center justify-center rounded-full
-								hover:bg-gray-200 transition-all"
+					hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
 				>
 					<MoreVertical size={20} />
 				</div>
 			</DropdownMenuTrigger>
+
 			<DropdownMenuContent>
-				<DropdownMenuItem>View</DropdownMenuItem>
-				<DropdownMenuItem>Edit</DropdownMenuItem>
-				<DropdownMenuItem>Delete</DropdownMenuItem>
+				<DropdownMenuItem className="flex items-center gap-2 cursor-pointer text-base">
+					<Eye size={16} />
+					View
+				</DropdownMenuItem>
+				<DropdownMenuItem className="flex items-center gap-2 cursor-pointer text-base">
+					<PenSquare size={16} />
+					Edit
+				</DropdownMenuItem>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem className="flex items-center gap-2 text-red-500 !hover:text-red-500 cursor-pointer text-base">
+					<Trash2 size={16} />
+					Delete
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

@@ -10,9 +10,13 @@ import {
 } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 
-export function Sidebar() {
+interface SidebarProps {
+	style: string;
+}
+
+export function Sidebar({ style }: SidebarProps) {
 	return (
-		<aside className="h-screen w-[300px] border-r p-4 hidden md:block">
+		<aside className={style}>
 			<h1 className="text-2xl font-semibold flex items-center gap-2">
 				<img
 					src="https://i.imgur.com/5IIwlfu.pngpublic/ezmoney.png"

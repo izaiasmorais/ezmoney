@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import { Button } from "../ui/button";
 
 interface PaginationButtonProps
 	extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,13 +8,13 @@ interface PaginationButtonProps
 
 export function PaginationButton({ children, ...rest }: PaginationButtonProps) {
 	return (
-		<button
-			className="w-10 h-10 border border-none rounded-md bg-slate-100 text-xs font-medium flex
-		items-center justify-center cursor-pointer transition-colors duration-150 hover:bg-slate-200
-		disabled:bg-black disabled:text-white"
+		<Button
+			className="w-10 h-10 p-0 disabled:bg-black disabled:opacity-100 disabled:text-white
+			dark:disabled:bg-slate-100 dark:disabled:text-black"
+			variant="secondary"
 			{...rest}
 		>
 			{children}
-		</button>
+		</Button>
 	);
 }
