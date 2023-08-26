@@ -1,5 +1,4 @@
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
-import "./Pagination.scss";
 
 interface PaginationButtonProps
 	extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,9 +8,9 @@ interface PaginationButtonProps
 export function PaginationButton({ children, ...rest }: PaginationButtonProps) {
 	return (
 		<button
-			className="w-28 h-8 border border-none rounded-md bg-gray-300 text-xs font-medium flex
-		items-center justify-center cursor-pointer transition-colors duration-150 hover:bg-gray-400
-		disabled:bg-purple-700 disabled:text-white"
+			className="w-10 h-10 border border-none rounded-md bg-slate-100 text-xs font-medium flex
+		items-center justify-center cursor-pointer transition-colors duration-150 hover:bg-slate-200
+		disabled:bg-black disabled:text-white"
 			{...rest}
 		>
 			{children}

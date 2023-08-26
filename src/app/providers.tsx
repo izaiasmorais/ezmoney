@@ -16,17 +16,13 @@ export default function Providers({ children }: { children: ReactNode }) {
 		>
 			<QueryClientProvider client={queryClient}>
 				{children}
-				return (
-				<>
-					{children}
-					<Next13ProgressBar
-						height="3px"
-						color="#000"
-						options={{ showSpinner: true }}
-						showOnShallow
-					/>
-				</>
-				)
+
+				<Next13ProgressBar
+					height="3px"
+					color="#000"
+					options={{ showSpinner: true }}
+					showOnShallow
+				/>
 			</QueryClientProvider>
 		</ThemeProvider>
 	);

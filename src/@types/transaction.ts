@@ -7,3 +7,11 @@ export interface ITransaction {
 	type: string;
 	category: string;
 }
+
+export interface ITransactionParams {
+	limit?: number;
+	filter?: Record<string, any>;
+	sort?: string;
+	page?: number;
+	order?: string;
+}

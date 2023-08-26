@@ -1,6 +1,14 @@
+"use client";
 import React from "react";
 import { PaginationButton } from "./PaginationButton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "../ui/select";
 
 interface PaginationProps {
 	totalItems: number;
@@ -55,29 +63,33 @@ export function Pagination({
 				display: "flex",
 				width: "100%",
 				justifyContent: "space-between",
-				marginTop: "4rem",
+				marginTop: "2rem",
 			}}
 		>
 			<div
 				style={{
 					display: "flex",
-					width: "230px",
+					width: "250px",
 					gap: "1rem",
 					alignItems: "center",
 				}}
 			>
 				<p>Itens por página:</p>
 
-				<select
-					className="pdv-input"
-					style={{ maxWidth: "80px" }}
-					defaultValue={itemsPerPage}
-					onChange={(e) => onChangeItemsPerPage(Number(e.target.value))}
+				<Select
+					defaultValue={String(itemsPerPage)}
+					onValueChange={(e) => onChangeItemsPerPage(Number(e))}
 				>
-					<option value={25}>25</option>
-					<option value={50}>50</option>
-					<option value={100}>100</option>
-				</select>
+					<SelectTrigger className="w-[100px]">
+						<SelectValue placeholder="Category" />
+					</SelectTrigger>
+
+					<SelectContent>
+						<SelectItem value={"5"}>5</SelectItem>
+						<SelectItem value={"10"}>10</SelectItem>
+						<SelectItem value={"15"}>15</SelectItem>
+					</SelectContent>
+				</Select>
 			</div>
 
 			<div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>

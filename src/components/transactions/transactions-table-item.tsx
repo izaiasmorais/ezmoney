@@ -14,7 +14,7 @@ export function TransactionTableItem({
 }: ITransactionTableItemProps) {
 	return (
 		<TableRow className="cursor-pointer border-b-[1px] border-slate-50">
-			<TableCell className="font-medium flex items-center gap-2 py-3">
+			<TableCell className="font-medium flex items-center gap-3">
 				<div
 					className="w-10 h-10 bg-slate-100 dark:bg-slate-800 flex items-center
 						justify-center rounded-md"
@@ -23,7 +23,9 @@ export function TransactionTableItem({
 				</div>
 				{transaction.name}
 			</TableCell>
-			<TableCell>$ {transaction.value}</TableCell>
+			<TableCell className="!max-w-[190px]">
+				<div className="w-[100px]">$ {transaction.value}</div>
+			</TableCell>
 			<TableCell>{String(transaction.createdAt)}</TableCell>
 			<TableCell>{transaction.installment}</TableCell>
 			<TableCell>

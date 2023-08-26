@@ -1,15 +1,8 @@
-import { ITransaction } from "@/@types/transaction";
+import { ITransaction, ITransactionParams } from "@/@types/transaction";
 import { api } from "@/services/axios";
 
-interface TransactionOptions {
-	limit?: number;
-	filter?: Record<string, any>;
-	sort?: string;
-	page?: number;
-}
-
 export async function getTransactions(
-	options: TransactionOptions = {}
+	options: ITransactionParams = {}
 ): Promise<ITransaction[]> {
 	const response = await api.get<ITransaction[]>("/transactions", {
 		params: {
@@ -17,6 +10,7 @@ export async function getTransactions(
 			...options.filter,
 			_sort: options.sort,
 			_page: options.page,
+			_order: options.order,
 		},
 	});
 

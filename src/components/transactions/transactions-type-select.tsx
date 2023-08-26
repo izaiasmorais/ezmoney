@@ -11,7 +11,7 @@ export function TransactionsTypeSelect() {
 	const types = ["expense", "income"];
 
 	return (
-		<Select>
+		<Select >
 			<SelectTrigger className="w-[180px]">
 				<SelectValue placeholder="Type" />
 			</SelectTrigger>

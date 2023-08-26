@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "../ui/card";
 import { TransactionsTypeSelect } from "./transactions-type-select";
 import { TransactionsTable } from "./transactions-table";
@@ -8,7 +9,7 @@ import { TransactionsCategorySelect } from "./transactions-category-select";
 export function TransactionsBox() {
 	return (
 		<Card>
-			<div className="p-6 flex flex-wrap gap-6 items-center justify-between">
+			<div className="p-6 flex flex-wrap items-center justify-between">
 				<div className="flex flex-wrap gap-6">
 					<TransactionsTypeSelect />
 					<TransactionsCategorySelect />
