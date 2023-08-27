@@ -1,5 +1,4 @@
 "use client";
-
 import {
 	Select,
 	SelectContent,
@@ -11,17 +10,20 @@ import { useChart } from "@/stores/chart";
 import { uppercaseFirstLetter } from "@/utils/uppercaseFirstLetter";
 
 export function ChartTypeSelect() {
-	const { update, type } = useChart((state) => {
+	const { onChangeChartType, chartType } = useChart((state) => {
 		return {
-			update: state.update,
-			type: state.type,
+			onChangeChartType: state.onChangeChartType,
+			chartType: state.chartType,
 		};
 	});
 
-	const types = ["line", "area", "bar", "scatter"];
+	const types = ["line", "area", "bar"];
 
 	return (
-		<Select value={type} onValueChange={(e) => update(e)}>
+		<Select
+			value={chartType}
+			onValueChange={(e) => onChangeChartType(e as ApexChart["type"])}
+		>
 			<SelectTrigger className="w-[180px]">
 				<SelectValue placeholder="Chart type" />
 			</SelectTrigger>

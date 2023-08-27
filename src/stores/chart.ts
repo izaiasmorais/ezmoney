@@ -1,16 +1,16 @@
 import { create } from "zustand";
 
 interface IChartStore {
-	type: ApexChart["type"];
-	update: (type: string) => void;
+	chartType: ApexChart["type"];
+	onChangeChartType: (chartType: ApexChart["type"]) => void;
 }
 
 export const useChart = create<IChartStore>((set) => {
 	return {
-		type: "area",
+		chartType: "line",
 
-		update: (type: any) => {
-			set({ type });
+		onChangeChartType: (chartType) => {
+			set({ chartType });
 		},
 	};
 });

@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { TransactionModalDataPicker } from "./transaction-modal-data-picker";
+import { TransactionsModalDataPicker } from "./transactions-modal-data-picker";
 import { TransactionsCategorySelect } from "./transactions-category-select";
 
 export function TransactionsModal() {
@@ -60,7 +60,7 @@ export function TransactionsModal() {
 							Date
 						</Label>
 						<div className="col-span-3">
-							<TransactionModalDataPicker />
+							<TransactionsModalDataPicker />
 						</div>
 					</div>
 

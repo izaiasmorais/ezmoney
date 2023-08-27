@@ -1,3 +1,4 @@
+"use client";
 import ProfitChart from "../charts/profit-chart";
 import { YearSelect } from "./year-select";
 import { Card } from "../ui/card";

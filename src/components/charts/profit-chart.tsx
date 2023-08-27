@@ -1,18 +1,19 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { useChart } from "@/stores/chart";
 import dynamic from "next/dynamic";
 
-const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+const Chart = dynamic(() => import("react-apexcharts"), {
 	ssr: false,
 });
 
 export default function ProfitChart() {
-	const type = useChart((state) => state.type);
-	const [mounted, setMounted] = useState(false);
+	const chartType = useChart((state) => state.chartType);
 
 	const [chartOptions, setChartOptions] = useState<ApexCharts.ApexOptions>({
+		chart: {
+			type: chartType,
+		},
 		series: [
 			{
 				name: "Profit",
@@ -54,13 +55,22 @@ export default function ProfitChart() {
 	});
 
 	useEffect(() => {
+		setChartOptions((chartOptions) => ({
+			...chartOptions,
+			chart: {
+				type: chartType,
+			},
+		}));
+	}, [chartType]);
+
+	return (
 		<div>
-			<ReactApexChart
+			<Chart
 				options={chartOptions}
 				series={chartOptions.series}
 				height={350}
-				type={type}
+				type={chartType}
 			/>
-		</div>;
-	}, [type]);
+		</div>
+	);
 }

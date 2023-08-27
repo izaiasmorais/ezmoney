@@ -11,7 +11,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function TransactionModalDataPicker() {
+export function TransactionsModalDataPicker() {
 	const [date, setDate] = React.useState<Date>();
 
 	return (
