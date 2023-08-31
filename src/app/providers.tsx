@@ -1,10 +1,9 @@
 "use client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Next13ProgressBar } from "next13-progressbar";
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
-import { Next13ProgressBar } from "next13-progressbar";
-
-const queryClient = new QueryClient();
+import { queryClient } from "../services/react-query";
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (

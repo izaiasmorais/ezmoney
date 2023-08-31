@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
+	DialogDescription,
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
@@ -10,21 +11,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { TransactionsModalDataPicker } from "./transactions-modal-data-picker";
-import { TransactionsCategorySelect } from "./transactions-category-select";
 
-export function TransactionsModal() {
+export function InvoicesModal() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
 				<Button className="flex items-center justify-center gap-2 max-w-max w-[200px]">
 					<Plus size={20} />
-					Add Transaction
+					Add Invoices
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">
 				<DialogHeader>
-					<DialogTitle>New Transaction</DialogTitle>
+					<DialogTitle>New Invoice</DialogTitle>
 					{/* <DialogDescription>
 						Make changes to your profile here. Click save when youre done.
 					</DialogDescription> */}
@@ -58,9 +57,7 @@ export function TransactionsModal() {
 						<Label htmlFor="date" className="text-right">
 							Date
 						</Label>
-						<div className="col-span-3">
-							<TransactionsModalDataPicker />
-						</div>
+						<div className="col-span-3"></div>
 					</div>
 
 					<div className="grid grid-cols-4 items-center gap-4">
@@ -79,9 +76,7 @@ export function TransactionsModal() {
 						<Label htmlFor="category" className="text-right">
 							Category
 						</Label>
-						<div className="col-span-3">
-							<TransactionsCategorySelect />
-						</div>
+						<div className="col-span-3"></div>
 					</div>
 				</div>
 				<DialogFooter className="flex items-center">

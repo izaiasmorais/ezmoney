@@ -7,3 +7,11 @@ export interface IInvoice {
 	installments: number;
 	status: string;
 }
+
+export interface IInvoiceParams {
+	limit?: number;
+	filter?: string[];
+	sort?: string;
+	page?: number;
+	order?: string;
+}
