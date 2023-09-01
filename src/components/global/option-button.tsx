@@ -8,7 +8,7 @@ import {
 
 import { Eye, MoreVertical, PenSquare, Trash2 } from "lucide-react";
 
-export function TransactionTableOptionsButton() {
+export function OptionsButton() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>

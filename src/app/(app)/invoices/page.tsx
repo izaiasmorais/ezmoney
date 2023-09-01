@@ -1,3 +1,4 @@
+import { InvoicesBox } from "@/components/invoices/invoices-box";
 import { InvoicesModal } from "@/components/invoices/invoices-modal";
 import { InvoicesSummary } from "@/components/invoices/invoices-summary";
 
@@ -12,8 +13,9 @@ export default function Invoices() {
 				<InvoicesModal />
 			</div>
 
-			<div>
+			<div className="flex flex-col gap-6">
 				<InvoicesSummary />
+				<InvoicesBox />
 			</div>
 		</main>
 	);

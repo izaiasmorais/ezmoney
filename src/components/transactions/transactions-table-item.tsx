@@ -3,7 +3,7 @@ import { uppercaseFirstLetter } from "@/utils/uppercaseFirstLetter";
 import { Banknote } from "lucide-react";
 import { TableRow, TableCell } from "../ui/table";
 import { Badge } from "../ui/badge";
-import { TransactionTableOptionsButton } from "./transactions-table-option-button";
+import { OptionsButton } from "../global/option-button";
 
 interface ITransactionTableItemProps {
 	transaction: ITransaction;
@@ -24,7 +24,7 @@ export function TransactionTableItem({
 				{transaction.name}
 			</TableCell>
 			<TableCell className="!max-w-[190px]">
-				<div className="w-[100px]">$ {transaction.value}</div>
+				<div className="w-[100px]">R$ {transaction.value}</div>
 			</TableCell>
 			<TableCell>{String(transaction.createdAt)}</TableCell>
 			<TableCell>{transaction.installment}</TableCell>
@@ -41,7 +41,7 @@ export function TransactionTableItem({
 				</Badge>
 			</TableCell>
 			<TableCell>
-				<TransactionTableOptionsButton />
+				<OptionsButton />
 			</TableCell>
 		</TableRow>
 	);

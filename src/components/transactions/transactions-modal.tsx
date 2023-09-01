@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { TransactionsModalDataPicker } from "./transactions-modal-data-picker";
+import { DataPicker } from "../global/data-picker";
 import { TransactionsCategorySelect } from "./transactions-category-select";
 
 export function TransactionsModal() {
@@ -25,9 +25,6 @@ export function TransactionsModal() {
 			<DialogContent className="sm:max-w-[425px]">
 				<DialogHeader>
 					<DialogTitle>New Transaction</DialogTitle>
-					{/* <DialogDescription>
-						Make changes to your profile here. Click save when youre done.
-					</DialogDescription> */}
 				</DialogHeader>
 				<div className="grid gap-4 py-4">
 					<div className="grid grid-cols-4 items-center gap-4">
@@ -59,7 +56,7 @@ export function TransactionsModal() {
 							Date
 						</Label>
 						<div className="col-span-3">
-							<TransactionsModalDataPicker />
+							<DataPicker />
 						</div>
 					</div>
 

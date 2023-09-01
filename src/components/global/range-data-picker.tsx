@@ -12,7 +12,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function TransactionsDataPicker({
+export function RangeDataPicker({
 	className,
 }: React.HTMLAttributes<HTMLDivElement>) {
 	const [date, setDate] = React.useState<DateRange | undefined>({
