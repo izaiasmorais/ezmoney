@@ -14,7 +14,7 @@ export function InvoicesStatusSelect() {
 
 	return (
 		<Select
-			onValueChange={(e) => filterInvoices(e === "all" ? [] : ["type", e])}
+			onValueChange={(e) => filterInvoices(e === "all" ? [] : ["status", e])}
 		>
 			<SelectTrigger className="w-[180px]">
 				<SelectValue placeholder="Status" />

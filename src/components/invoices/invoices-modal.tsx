@@ -11,6 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { DataPicker } from "../global/data-picker";
+import { InvoicesStatusSelect } from "./invoices-status-select";
 
 export function InvoicesModal() {
 	return (
@@ -57,7 +59,9 @@ export function InvoicesModal() {
 						<Label htmlFor="date" className="text-right">
 							Date
 						</Label>
-						<div className="col-span-3"></div>
+						<div className="col-span-3">
+							<DataPicker />
+						</div>
 					</div>
 
 					<div className="grid grid-cols-4 items-center gap-4">
@@ -76,7 +80,9 @@ export function InvoicesModal() {
 						<Label htmlFor="category" className="text-right">
 							Category
 						</Label>
-						<div className="col-span-3"></div>
+						<div className="col-span-3">
+							<InvoicesStatusSelect />
+						</div>
 					</div>
 				</div>
 				<DialogFooter className="flex items-center">

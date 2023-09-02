@@ -1,17 +1,43 @@
+import { ElementType } from "react";
 import { Card } from "../ui/card";
-import { File } from "lucide-react";
+import { formatCurrency } from "@/utils/formatCurrency";
 
-export function InvoicesSummaryCard() {
+interface InvoicesSummaryCardProps {
+	title: string;
+	invoices: number;
+	icon: ElementType;
+	value: number;
+}
+
+export function InvoicesSummaryCard({
+	icon: Icon,
+	invoices,
+	value,
+	title,
+}: InvoicesSummaryCardProps) {
+	const color =
+		title === "Total"
+			? "text-blue-700"
+			: title === "Paid"
+			? "text-green-700"
+			: title === "Pending"
+			? "text-yellow-700"
+			: title === "Overdue"
+			? "text-red-700"
+			: "text-purple-700";
+
 	return (
 		<Card className="p-6 flex-1 flex gap-6 items-center text-sm">
 			<div className="w-12 h-12 border-slate-100 border-4 rounded-full flex items-center justify-center">
-				<File size={24} className="" />
+				<Icon size={24} weight="fill" />
 			</div>
 
 			<div className="flex flex-col gap-1">
-				<strong className="font-semibold text-base">Total</strong>
-				<p className="text-slate-400 font-medium">20 invoices</p>
-				<strong className="font-semibold">R$ 718.70</strong>
+				<strong className="font-semibold text-base">{title}</strong>
+				<p className="text-slate-400 font-medium">{invoices} invoices</p>
+				<strong className={`font-semibold ${color}`}>
+					{formatCurrency(value)}
+				</strong>
 			</div>
 		</Card>
 	);

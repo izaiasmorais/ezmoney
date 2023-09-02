@@ -14,21 +14,32 @@ import { useInvoice } from "@/stores/invoice";
 import { Pagination } from "../pagination/Pagination";
 
 export function InvoicesTable() {
-	const { setInvoices, invoices, params, onChangeItemsPerPage, onChangePage } =
-		useInvoice((state) => {
-			return {
-				setInvoices: state.setInvoices,
-				invoices: state.invoices,
-				params: state.params,
-				onChangePage: state.onChangePage,
-				onChangeItemsPerPage: state.onChangeItemsPerPage,
-			};
-		});
+	const {
+		setInvoices,
+		invoices,
+		params,
+		onChangeItemsPerPage,
+		onChangePage,
+		totalRecord,
+		invoicesSummary,
+	} = useInvoice((state) => {
+		return {
+			setInvoices: state.setInvoices,
+			invoices: state.invoices,
+			params: state.params,
+			onChangePage: state.onChangePage,
+			onChangeItemsPerPage: state.onChangeItemsPerPage,
+			totalRecord: state.totalRecord,
+			invoicesSummary: state.invoicesSummary,
+		};
+	});
 
 	const { isLoading, isError } = useQuery(["invoices", [params]], {
 		queryFn: () => getInvoices(params),
 		onSuccess: (data) => setInvoices(data),
 	});
+
+	console.log(invoicesSummary);
 
 	if (isLoading) {
 		return (
@@ -82,9 +93,9 @@ export function InvoicesTable() {
 					<Pagination
 						currentPage={params.page ? params.page : 1}
 						itemsPerPage={params.limit ? params.limit : 5}
-						totalItems={15}
 						onChangeItemsPerPage={onChangeItemsPerPage}
 						onChangePage={onChangePage}
+						totalItems={totalRecord}
 					/>
 				</div>
 			</>

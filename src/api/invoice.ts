@@ -1,9 +1,16 @@
 import { IInvoice, IInvoiceParams } from "@/@types/invoice";
 import { api } from "@/services/axios";
 
+export interface IInvoiceResponse {
+	invoicesWithParams: IInvoice[];
+	invoices: IInvoice[];
+}
+
 export async function getInvoices(
 	options: IInvoiceParams = {}
-): Promise<IInvoice[]> {
+): Promise<IInvoiceResponse> {
+	const res = await api.get<IInvoice[]>("/invoices");
+
 	const response = await api.get<IInvoice[]>("/invoices", {
 		params: {
 			_limit: options.limit ? options.limit : 5,
@@ -16,5 +23,8 @@ export async function getInvoices(
 		},
 	});
 
-	return response.data;
+	return {
+		invoicesWithParams: response.data,
+		invoices: res.data,
+	};
 }
