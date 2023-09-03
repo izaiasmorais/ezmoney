@@ -39,8 +39,6 @@ export function InvoicesTable() {
 		onSuccess: (data) => setInvoices(data),
 	});
 
-	console.log(invoicesSummary);
-
 	if (isLoading) {
 		return (
 			<div className="flex items-center justify-center p-4">
@@ -56,10 +54,10 @@ export function InvoicesTable() {
 		);
 	}
 
-	if (isError && !isLoading) {
+	if ((isError && !isLoading) || invoices.length === 0) {
 		return (
 			<div className="flex items-center justify-center p-4 text-lg">
-				Ocorreu um erro ao carregar as transações.
+				There's no invoices to list.
 			</div>
 		);
 	}

@@ -9,7 +9,7 @@ import {
 import { useInvoice } from "@/stores/invoice";
 
 export function InvoicesStatusSelect() {
-	const types = ["all", "paid", "pending", "due", "postponed"];
+	const types = ["all", "paid", "pending", "overdue", "postponed"];
 	const filterInvoices = useInvoice((store) => store.filterInvoices);
 
 	return (

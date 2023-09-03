@@ -1,3 +1,4 @@
+"use client";
 import { create } from "zustand";
 import { IInvoice, IInvoiceParams } from "@/@types/invoice";
 import { IInvoiceResponse } from "@/api/invoice";
@@ -66,7 +67,7 @@ export const useInvoice = create<IInvoiceStore>((set, get) => ({
 		set({ invoicesComplete: data.invoices });
 		const { params } = get();
 
-		if (params.filter === undefined) {
+		if (params.filter?.length === 0) {
 			set({ totalRecord: data.invoices.length });
 		} else {
 			set({ totalRecord: data.invoicesWithParams.length });
