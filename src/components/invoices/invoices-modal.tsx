@@ -20,7 +20,7 @@ export function InvoicesModal() {
 			<DialogTrigger asChild>
 				<Button className="flex items-center justify-center gap-2 max-w-max w-[200px]">
 					<Plus size={20} />
-					Add Invoices
+					Add Invoice
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">

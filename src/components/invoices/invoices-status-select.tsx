@@ -1,3 +1,4 @@
+'use client'
 import { uppercaseFirstLetter } from "@/utils/uppercaseFirstLetter";
 import {
 	Select,

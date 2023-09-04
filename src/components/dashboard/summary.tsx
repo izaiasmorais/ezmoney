@@ -12,28 +12,28 @@ export function Summary() {
 			<SummaryCard
 				title="Deposits"
 				icon={<ArrowDownCircle size={20} />}
-				value="$ 3234.78"
+				value={3234.78}
 				description="+2.1% from last month"
 			/>
 
 			<SummaryCard
 				title="Withdrawals"
 				icon={<ArrowUpCircle size={20} />}
-				value="$ 2315.78"
+				value={2315.78}
 				description="-6.34% from last month"
 			/>
 
 			<SummaryCard
 				title="Investiments"
 				icon={<CandlestickChart size={20} />}
-				value="$ 764.44"
+				value={764.44}
 				description="+19% from last month"
 			/>
 
 			<SummaryCard
 				title="Total Balance"
 				icon={<PiggyBank size={20} />}
-				value="$ 1115.60"
+				value={1115.6}
 				description="+3.14 from last month"
 			/>
 		</div>

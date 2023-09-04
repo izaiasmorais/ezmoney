@@ -1,10 +1,10 @@
 "use client";
 import { Card } from "../ui/card";
-import { InvoicesTypeSelect } from "./invoices-type-select";
-import { InvoicesTable } from "./invoices-table";
-import { Input } from "../ui/input";
 import { InvoicesStatusSelect } from "./invoices-status-select";
+import { InvoicesTypeSelect } from "./invoices-type-select";
 import { RangeDataPicker } from "../global/range-data-picker";
+import { InvoicesTable } from "./invoices-table";
+import { SearchInput } from "../dashboard/search-input";
 
 export function InvoicesBox() {
 	return (
@@ -15,7 +15,7 @@ export function InvoicesBox() {
 					<InvoicesTypeSelect />
 					<RangeDataPicker />
 				</div>
-				<Input placeholder="Search invoices..." className="max-w-[500px]" />
+				<SearchInput placeholder="Search invoices..." />
 			</div>
 			<InvoicesTable />
 		</Card>

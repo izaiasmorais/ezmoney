@@ -28,16 +28,14 @@ export function InvoicesSummaryCard({
 
 	return (
 		<Card className="p-6 flex-1 flex gap-6 items-center text-sm">
-			<div className="w-12 h-12 border-slate-100 border-4 rounded-full flex items-center justify-center">
+			<div className="w-12 h-12 rounded-full flex items-center	justify-center bg-slate-100">
 				<Icon size={24} weight="fill" />
 			</div>
 
 			<div className="flex flex-col gap-1">
 				<strong className="font-semibold text-base">{title}</strong>
 				<p className="text-slate-400 font-medium">{invoices} invoices</p>
-				<strong className={`font-semibold ${color}`}>
-					{formatCurrency(value)}
-				</strong>
+				<strong className={`font-semibold`}>{formatCurrency(value)}</strong>
 			</div>
 		</Card>
 	);

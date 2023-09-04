@@ -3,8 +3,8 @@ import { Card } from "../ui/card";
 import { TransactionsTypeSelect } from "./transactions-type-select";
 import { TransactionsTable } from "./transactions-table";
 import { RangeDataPicker } from "../global/range-data-picker";
-import { Input } from "../ui/input";
 import { TransactionsCategorySelect } from "./transactions-category-select";
+import { SearchInput } from "../dashboard/search-input";
 
 export function TransactionsBox() {
 	return (
@@ -15,7 +15,7 @@ export function TransactionsBox() {
 					<TransactionsCategorySelect />
 					<RangeDataPicker />
 				</div>
-				<Input placeholder="Search transactions..." className="max-w-[500px]" />
+				<SearchInput placeholder="Search transactions..." />
 			</div>
 			<TransactionsTable />
 		</Card>
