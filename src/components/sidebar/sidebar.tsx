@@ -52,6 +52,11 @@ export function Sidebar({ style }: SidebarProps) {
 					MANAGEMENT
 				</span>
 				<SidebarItem
+					title="Tasks"
+					href="/tasks"
+					icon={<ClipboardCheck size={20} />}
+				/>
+				<SidebarItem
 					title="Calendar"
 					href="/calendar"
 					icon={<CalendarDays size={20} />}
@@ -60,11 +65,6 @@ export function Sidebar({ style }: SidebarProps) {
 					title="Investiments"
 					href="/investiments"
 					icon={<LineChart size={20} />}
-				/>
-				<SidebarItem
-					title="Tasks"
-					href="/tasks"
-					icon={<ClipboardCheck size={20} />}
 				/>
 				<SidebarItem
 					title="Settings"
