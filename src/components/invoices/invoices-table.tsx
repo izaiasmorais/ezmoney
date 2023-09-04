@@ -21,7 +21,6 @@ export function InvoicesTable() {
 		onChangeItemsPerPage,
 		onChangePage,
 		totalRecord,
-		invoicesSummary,
 	} = useInvoice((state) => {
 		return {
 			setInvoices: state.setInvoices,
@@ -30,7 +29,6 @@ export function InvoicesTable() {
 			onChangePage: state.onChangePage,
 			onChangeItemsPerPage: state.onChangeItemsPerPage,
 			totalRecord: state.totalRecord,
-			invoicesSummary: state.invoicesSummary,
 		};
 	});
 
@@ -57,7 +55,7 @@ export function InvoicesTable() {
 	if ((isError && !isLoading) || invoices.length === 0) {
 		return (
 			<div className="flex items-center justify-center p-4 text-lg">
-				There's no invoices to list.
+				Não há contas para listar.
 			</div>
 		);
 	}
