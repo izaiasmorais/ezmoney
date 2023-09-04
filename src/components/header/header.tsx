@@ -4,7 +4,7 @@ import { Notifications } from "./notifications";
 import { Menu } from "./menu";
 import { Button } from "../ui/button";
 import { AlignJustify, Search } from "lucide-react";
-import { SearchInput } from "../dashboard/search-input";
+import { SearchInput } from "../global/search-input";
 
 export function Header() {
 	return (
@@ -13,7 +13,10 @@ export function Header() {
 				<AlignJustify size={20} />
 			</Button>
 
-			<SearchInput placeholder="Search anything..." className="hidden md:flex" />
+			<SearchInput
+				placeholder="Search anything..."
+				className="hidden md:flex"
+			/>
 
 			<div className="flex gap-2">
 				<Notifications />

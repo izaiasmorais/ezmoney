@@ -19,7 +19,7 @@ export function TransactionsModal() {
 			<DialogTrigger asChild>
 				<Button className="flex items-center justify-center gap-2 max-w-max w-[200px]">
 					<Plus size={20} />
-					Add Transaction
+					New transaction
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">

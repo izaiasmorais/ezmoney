@@ -4,6 +4,7 @@ import {
 	ClipboardCheck,
 	CreditCard,
 	Home,
+	Landmark,
 	LineChart,
 	Settings,
 	Wallet,
@@ -44,6 +45,11 @@ export function Sidebar({ style }: SidebarProps) {
 					title="Budget"
 					href="/budget"
 					icon={<Wallet size={20} />}
+				/>
+				<SidebarItem
+					title="Banking"
+					href="/banking"
+					icon={<Landmark size={20} />}
 				/>
 			</div>
 

@@ -71,7 +71,7 @@ export function InvoicesTable() {
 							<TableHead>Create</TableHead>
 							<TableHead>Due</TableHead>
 							<TableHead>Installments</TableHead>
-							<TableHead>Type</TableHead>
+							<TableHead>Status</TableHead>
 							<TableHead>Options</TableHead>
 						</TableRow>
 					</TableHeader>

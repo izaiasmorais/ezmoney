@@ -28,8 +28,11 @@ export function InvoicesSummaryCard({
 
 	return (
 		<Card className="p-6 flex-1 flex gap-6 items-center text-sm">
-			<div className="w-12 h-12 rounded-full flex items-center	justify-center bg-slate-100">
-				<Icon size={24} weight="fill" />
+			<div
+				className="w-12 h-12 rounded-full flex items-center	justify-center
+				bg-slate-50 text-slate-950	dark:bg-slate-700 dark:text-slate-50"
+			>
+				<Icon size={24} />
 			</div>
 
 			<div className="flex flex-col gap-1">

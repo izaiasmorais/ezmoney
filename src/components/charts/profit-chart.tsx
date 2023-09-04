@@ -13,6 +13,7 @@ export default function ProfitChart() {
 	const [chartOptions, setChartOptions] = useState<ApexCharts.ApexOptions>({
 		chart: {
 			type: chartType,
+			fontFamily: "Inter",
 		},
 		series: [
 			{
@@ -21,7 +22,6 @@ export default function ProfitChart() {
 					3450, 2568, 4190, 3900, 1780, 3025, 2650, 4180, 3820, 2975, 4250,
 					3540,
 				],
-				color: "#000",
 			},
 		],
 		stroke: {

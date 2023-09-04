@@ -4,7 +4,7 @@ import { TransactionsTypeSelect } from "./transactions-type-select";
 import { TransactionsTable } from "./transactions-table";
 import { RangeDataPicker } from "../global/range-data-picker";
 import { TransactionsCategorySelect } from "./transactions-category-select";
-import { SearchInput } from "../dashboard/search-input";
+import { SearchInput } from "../global/search-input";
 
 export function TransactionsBox() {
 	return (

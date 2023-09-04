@@ -1,14 +1,10 @@
-import {
-	BellIcon,
-	ExclamationTriangleIcon,
-	GearIcon,
-} from "@radix-ui/react-icons";
-import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import Link from "next/link";
-import { Merge, Rocket, Split } from "lucide-react";
+import { Merge, Rocket, Settings, Split } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+import { BellIcon } from "@radix-ui/react-icons";
 import { Separator } from "../ui/separator";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export async function Notifications() {
 	return (
@@ -23,8 +19,8 @@ export async function Notifications() {
 					<span>3</span>
 
 					<span className="absolute -right-0.5 -top-0.5 flex h-2 w-2">
-						<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
-						<span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+						<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+						<span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
 					</span>
 				</Button>
 			</PopoverTrigger>
@@ -36,7 +32,7 @@ export async function Notifications() {
 						className="text-muted-foreground hover:text-primary"
 						href="/settings"
 					>
-						<GearIcon className="h-4 w-4" />
+						<Settings size={16} />
 					</Link>
 				</div>
 

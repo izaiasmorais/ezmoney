@@ -12,7 +12,10 @@ export function SearchInput({ placeholder, className }: SearchInputProps) {
 
 	return (
 		<div className={cn(style, className)}>
-			<input placeholder={placeholder} className="outline-none flex-1" />
+			<input
+				placeholder={placeholder}
+				className="outline-none flex-1 bg-transparent"
+			/>
 			<Search
 				size={20}
 				className="text-slate-600 active:text-slate-950 font-semibold cursor-pointer"
