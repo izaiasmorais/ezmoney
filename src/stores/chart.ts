@@ -7,7 +7,7 @@ interface IChartStore {
 
 export const useChart = create<IChartStore>((set) => {
 	return {
-		chartType: "line",
+		chartType: "area",
 
 		onChangeChartType: (chartType) => {
 			set({ chartType });
