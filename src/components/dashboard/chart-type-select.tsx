@@ -17,7 +17,7 @@ export function ChartTypeSelect() {
 		};
 	});
 
-	const types = ["line", "area", "bar"];
+	const types = ["bar", "area", "scatter"];
 
 	return (
 		<Select

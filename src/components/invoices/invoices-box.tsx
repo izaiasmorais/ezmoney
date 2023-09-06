@@ -2,7 +2,7 @@
 import { Card } from "../ui/card";
 import { InvoicesStatusSelect } from "./invoices-status-select";
 import { InvoicesTypeSelect } from "./invoices-type-select";
-import { RangeDataPicker } from "../global/range-data-picker";
+import { RangeDatePicker } from "../global/range-data-picker";
 import { InvoicesTable } from "./invoices-table";
 import { SearchInput } from "../global/search-input";
 
@@ -13,7 +13,7 @@ export function InvoicesBox() {
 				<div className="flex flex-wrap gap-6">
 					<InvoicesStatusSelect />
 					<InvoicesTypeSelect />
-					<RangeDataPicker />
+					<RangeDatePicker />
 				</div>
 				<SearchInput placeholder="Search invoices..." />
 			</div>

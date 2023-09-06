@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
@@ -11,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { DataPicker } from "../global/data-picker";
+import { DatePicker } from "../global/date-picker";
 import { InvoicesStatusSelect } from "./invoices-status-select";
 
 export function InvoicesModal() {
@@ -60,7 +59,7 @@ export function InvoicesModal() {
 							Date
 						</Label>
 						<div className="col-span-3">
-							<DataPicker />
+							<DatePicker />
 						</div>
 					</div>
 

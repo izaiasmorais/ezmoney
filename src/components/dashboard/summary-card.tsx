@@ -16,7 +16,7 @@ export function SummaryCard({
 	title,
 }: SummaryCardProps) {
 	return (
-		<Card className="p-6">
+		<Card className="p-6 flex-1">
 			<div className="flex justify-between items-center">
 				<span className="text-sm font-semibold">{title}</span>
 				{icon}

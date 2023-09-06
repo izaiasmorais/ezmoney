@@ -2,7 +2,7 @@
 import { Card } from "../ui/card";
 import { TransactionsTypeSelect } from "./transactions-type-select";
 import { TransactionsTable } from "./transactions-table";
-import { RangeDataPicker } from "../global/range-data-picker";
+import { RangeDatePicker } from "../global/range-data-picker";
 import { TransactionsCategorySelect } from "./transactions-category-select";
 import { SearchInput } from "../global/search-input";
 
@@ -13,7 +13,7 @@ export function TransactionsBox() {
 				<div className="flex flex-wrap gap-6">
 					<TransactionsTypeSelect />
 					<TransactionsCategorySelect />
-					<RangeDataPicker />
+					<RangeDatePicker />
 				</div>
 				<SearchInput placeholder="Search transactions..." />
 			</div>

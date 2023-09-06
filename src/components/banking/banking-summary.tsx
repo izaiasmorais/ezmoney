@@ -1,9 +1,9 @@
-import { SummaryCard } from "./summary-card";
-import { LineChart, TrendingDown, TrendingUp, Wallet2 } from "lucide-react";
+import { SummaryCard } from "@/components/dashboard/summary-card";
+import { TrendingDown, TrendingUp, Wallet2 } from "lucide-react";
 
-export function Summary() {
+export function BankingSummary() {
 	return (
-		<div className="gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+		<div className="w-full flex gap-6">
 			<SummaryCard
 				title="Deposits"
 				icon={<TrendingDown size={20} />}
@@ -17,14 +17,6 @@ export function Summary() {
 				value={2315.78}
 				description="-6.34% from last month"
 			/>
-
-			<SummaryCard
-				title="Investiments"
-				icon={<LineChart size={20} />}
-				value={764.44}
-				description="+19% from last month"
-			/>
-
 			<SummaryCard
 				title="Total Balance"
 				icon={<Wallet2 size={20} />}
