@@ -1,4 +1,5 @@
 "use client";
+import { ChartType } from "@/@types/chart";
 import {
 	Select,
 	SelectContent,
@@ -17,12 +18,12 @@ export function ChartTypeSelect() {
 		};
 	});
 
-	const types = ["bar", "area", "scatter"];
+	const types = ["line", "bar", "area", "scatter"];
 
 	return (
 		<Select
 			value={chartType}
-			onValueChange={(e) => onChangeChartType(e as ApexChart["type"])}
+			onValueChange={(e) => onChangeChartType(e as ChartType)}
 		>
 			<SelectTrigger className="w-[180px]">
 				<SelectValue placeholder="Chart type" />

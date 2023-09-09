@@ -1,6 +1,6 @@
 import { BankingSummary } from "../../../components/banking/banking-summary";
 import { EarnBox } from "../../../components/banking/earn-box";
-import { EarnChart } from "../../../components/banking/earn-chart";
+import { EarnChart } from "../../../components/charts/earn-chart";
 
 export default function Banking() {
 	return (

@@ -1,75 +1,25 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { LineChart, Line } from "recharts";
+import { ChartSortSelect } from "./chart-sort-select";
+import { Card } from "@/components/ui/card";
 import { useChart } from "@/stores/chart";
-import dynamic from "next/dynamic";
+import { Chart } from "./chart";
 
-const Chart = dynamic(() => import("react-apexcharts"), {
-	ssr: false,
-});
-
-export default function ProfitChart() {
-	const chartType = useChart((state) => state.chartType);
-
-	const [chartOptions, setChartOptions] = useState<ApexCharts.ApexOptions>({
-		chart: {
-			type: chartType,
-		},
-		series: [
-			{
-				name: "Profit",
-				data: [
-					3450, 2568, 4190, 3900, 1780, 3025, 2650, 4180, 3820, 2975, 4250,
-					3540,
-				],
-			},
-		],
-		stroke: {
-			curve: "smooth",
-		},
-		dataLabels: {
-			enabled: false,
-		},
-		xaxis: {
-			type: "category",
-			categories: [
-				"January",
-				"February",
-				"March",
-				"April",
-				"May",
-				"June",
-				"July",
-				"August",
-				"September",
-				"October",
-				"November",
-				"December",
-			],
-		},
-		tooltip: {
-			x: {
-				format: "month",
-			},
-		},
-	});
-
-	useEffect(() => {
-		setChartOptions((chartOptions) => ({
-			...chartOptions,
-			chart: {
-				type: chartType,
-			},
-		}));
-	}, [chartType]);
+export function ProfitChart() {
+	const earnChartSortType = useChart((state) => state.earnChartSortType);
 
 	return (
-		<div>
-			<Chart
-				options={chartOptions}
-				series={chartOptions.series}
-				height={350}
-				type={chartType}
-			/>
-		</div>
+		<Card className="flex flex-col p-6 gap-6 h-[550px]">
+			<div className="flex items-center justify-between">
+				<strong className="text-xl font-medium">
+					Earning by {earnChartSortType}
+				</strong>
+				<div className="flex items-center gap-2">
+					<ChartSortSelect />
+				</div>
+			</div>
+
+			<Chart chartType={LineChart} type={Line} />
+		</Card>
 	);
 }

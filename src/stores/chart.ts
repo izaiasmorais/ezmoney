@@ -1,10 +1,11 @@
+import { ChartType } from "@/@types/chart";
 import { create } from "zustand";
 
 interface IChartStore {
-	chartType: ApexChart["type"];
+	chartType: ChartType;
 	earnChartSortType: string;
 	setEarnChartSortType: (sortType: string) => void;
-	onChangeChartType: (chartType: ApexChart["type"]) => void;
+	onChangeChartType: (chartType: ChartType) => void;
 }
 
 export const useChart = create<IChartStore>((set) => {

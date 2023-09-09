@@ -8,7 +8,7 @@ import {
 } from "../ui/select";
 import { useChart } from "@/stores/chart";
 
-export function EarnChartTypeSelect() {
+export function ChartSortSelect() {
 	const sorts = ["day", "month", "year"];
 	const { setEarnChartSortType, earnChartSortType } = useChart((state) => {
 		return {
