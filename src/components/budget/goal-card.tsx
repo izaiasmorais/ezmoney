@@ -4,7 +4,7 @@ import { OptionsButton } from "../global/option-button";
 
 export function GoalCard() {
 	return (
-		<Card className="flex-1 flex flex-col p-2">
+		<Card className="flex-1 flex flex-col p-2 min-w-[260px]">
 			<div className="w-full h-[200px] rounded-lg bg-slate-100 dark:bg-slate-800" />
 
 			<div className="flex justify-between">

@@ -1,14 +1,13 @@
-import { Input } from "../ui/input";
 import { ThemeSwitcher } from "./theme-switcher";
 import { Notifications } from "./notifications";
-import { Menu } from "./menu";
-import { Button } from "../ui/button";
-import { AlignJustify, Search } from "lucide-react";
 import { SearchInput } from "../global/search-input";
+import { AlignJustify } from "lucide-react";
+import { Button } from "../ui/button";
+import { Menu } from "./menu";
 
 export function Header() {
 	return (
-		<header className="flex w-full justify-between py-3 px-6 border-b">
+		<header className="flex w-full justify-between p-4 md:p-6 border-b">
 			<Button variant="outline" className="block md:hidden">
 				<AlignJustify size={20} />
 			</Button>
