@@ -9,24 +9,28 @@ import {
 } from "recharts";
 import { CustomTooltip } from "./custom-tooltip";
 import { ElementType } from "react";
-import { useChart } from "@/stores/chart";
 import { data } from "@/mocks/earn";
+import { useChart } from "@/stores/chart";
 
 interface ChartProps {
 	chartType: ElementType;
 	type: ElementType | any;
+	sortBy?: string;
 }
 
 export function Chart({
 	chartType: ChartContainer,
 	type: ChartType,
+	sortBy,
 }: ChartProps) {
 	const earnChartSortType = useChart((state) => state.earnChartSortType);
 
+	if (!sortBy) sortBy = earnChartSortType;
+
 	const dataContent =
-		earnChartSortType === "month"
+		sortBy === "month"
 			? data.earnByMonth
-			: earnChartSortType === "day"
+			: sortBy === "day"
 			? data.earnByDay
 			: data.earnByYear;
 

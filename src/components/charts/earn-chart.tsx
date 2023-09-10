@@ -12,7 +12,7 @@ import {
 	Line,
 	LineChart,
 } from "recharts";
-import { ChartSortSelect } from "./chart-sort-select";
+import { EarnChartSortSelect } from "./earn-chart-sort-select";
 import { useChart } from "@/stores/chart";
 import { ChartTypeSelect } from "./chart-type-select";
 import { Chart } from "./chart";
@@ -33,7 +33,7 @@ export function EarnChart() {
 				</strong>
 				<div className="flex items-center gap-2">
 					<ChartTypeSelect />
-					<ChartSortSelect />
+					<EarnChartSortSelect />
 				</div>
 			</div>
 

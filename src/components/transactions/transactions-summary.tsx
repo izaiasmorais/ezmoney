@@ -1,28 +1,28 @@
 import { Car, CreditCard, Sandwich, ShoppingCart } from "lucide-react";
-import { BudgetSummaryCard } from "./budget-summary-card";
+import { TransactionsSummaryCard } from "./transactions-summary-card";
 
-export function BudgetSummary() {
+export function TransactionsSummary() {
 	return (
 		<div className="flex items-center gap-6">
-			<BudgetSummaryCard
+			<TransactionsSummaryCard
 				title="Food"
 				icon={Sandwich}
 				currentValue={0}
 				totalValue={1000}
 			/>
-			<BudgetSummaryCard
+			<TransactionsSummaryCard
 				title="Transport"
 				icon={Car}
 				currentValue={0}
 				totalValue={500}
 			/>
-			<BudgetSummaryCard
+			<TransactionsSummaryCard
 				title="Shopping"
 				icon={ShoppingCart}
 				currentValue={0}
 				totalValue={1000}
 			/>
-			<BudgetSummaryCard
+			<TransactionsSummaryCard
 				title="Invoices"
 				icon={CreditCard}
 				currentValue={0}

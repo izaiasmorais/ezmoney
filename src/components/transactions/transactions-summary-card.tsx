@@ -2,19 +2,19 @@ import { Card } from "../ui/card";
 import { ElementType } from "react";
 import { formatCurrency } from "@/utils/formatCurrency";
 
-interface BudgetSummaryCardProps {
+interface TransactionsSummaryCardProps {
 	title: string;
 	icon: ElementType;
 	currentValue: number;
 	totalValue: number;
 }
 
-export function BudgetSummaryCard({
+export function TransactionsSummaryCard({
 	title,
 	icon: Icon,
 	currentValue,
 	totalValue,
-}: BudgetSummaryCardProps) {
+}: TransactionsSummaryCardProps) {
 	return (
 		<Card className="flex-1 p-6 flex gap-3">
 			<div

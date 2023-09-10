@@ -8,17 +8,17 @@ import {
 } from "../ui/select";
 import { useChart } from "@/stores/chart";
 
-export function ChartSortSelect() {
+export function ProfitChartSortSelect() {
 	const sorts = ["day", "month", "year"];
-	const { setEarnChartSortType, earnChartSortType } = useChart((state) => {
+	const { setProfitChartSortType, profitChartSortType } = useChart((state) => {
 		return {
-			setEarnChartSortType: state.setEarnChartSortType,
-			earnChartSortType: state.earnChartSortType,
+			setProfitChartSortType: state.setProfitChartSortType,
+			profitChartSortType: state.profitChartSortType,
 		};
 	});
 
 	return (
-		<Select value={earnChartSortType} onValueChange={setEarnChartSortType}>
+		<Select value={profitChartSortType} onValueChange={setProfitChartSortType}>
 			<SelectTrigger className="w-[180px]">
 				<SelectValue placeholder="Sort by" />
 			</SelectTrigger>

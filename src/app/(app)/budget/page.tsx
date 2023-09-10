@@ -1,5 +1,5 @@
-import { BudgetSummary } from "@/components/budget/budget-summary";
 import { GoalsBox } from "@/components/budget/goals-box";
+import { GoalsModal } from "@/components/budget/goals-modal";
 
 export default function Budget() {
 	return (
@@ -7,11 +7,10 @@ export default function Budget() {
 			<div className="flex flex-wrap gap-2 justify-between items-center">
 				<h1 className="text-2xl font-medium flex items-center gap-2">Budget</h1>
 
-				<div></div>
+				<GoalsModal />
 			</div>
 
 			<div className="flex flex-col gap-6">
-				<BudgetSummary />
 				<GoalsBox />
 			</div>
 		</main>
