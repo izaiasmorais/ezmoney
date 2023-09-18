@@ -26,8 +26,8 @@ export function EarnChart() {
 	});
 
 	return (
-		<Card className="p-6 flex flex-col gap-6 h-[550px]">
-			<div className="flex items-center justify-between">
+		<Card className="p-6 flex flex-col gap-6 xl:col-span-2">
+			<div className="flex flex-wrap gap-4 items-center justify-between">
 				<strong className="text-xl font-medium">
 					Earning by {earnChartSortType}
 				</strong>
@@ -37,7 +37,7 @@ export function EarnChart() {
 				</div>
 			</div>
 
-			<ResponsiveContainer width="100%" height="100%">
+			<ResponsiveContainer>
 				{chartType === "bar" ? (
 					<Chart chartType={BarChart} type={Bar} />
 				) : chartType === "area" ? (

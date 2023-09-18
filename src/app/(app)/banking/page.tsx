@@ -4,7 +4,7 @@ import { EarnChart } from "../../../components/charts/earn-chart";
 
 export default function Banking() {
 	return (
-		<main className="flex flex-col gap-3">
+		<main className="flex flex-col gap-4 md:gap-6">
 			<div className="flex flex-wrap gap-2 justify-between items-center">
 				<h1 className="text-2xl font-medium flex items-center gap-2">
 					Banking
@@ -13,15 +13,13 @@ export default function Banking() {
 				<div></div>
 			</div>
 
-			<div className="flex flex-col gap-6">
-				<BankingSummary />
+			<BankingSummary />
 
-				<div className="grid grid-cols-[3fr_1fr] gap-6">
-					<EarnChart />
+			<section className="grid gap-4 md:gap-6 xl:grid-cols-3">
+				<EarnChart />
 
-					<EarnBox />
-				</div>
-			</div>
+				<EarnBox />
+			</section>
 		</main>
 	);
 }

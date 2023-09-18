@@ -4,9 +4,9 @@ import { Sidebar } from "@/components/sidebar/sidebar";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<div className="flex h-screen">
-			<Sidebar style="flex-none w-[300px] border-r p-4 md:p-6 hidden md:block " />
+			<Sidebar style="flex-none w-[300px] hidden lg:block p-4" />
 
-			<main className="flex flex-grow flex-col">
+			<main className="h-full flex flex-grow flex-col border-l">
 				<div>
 					<Header />
 				</div>

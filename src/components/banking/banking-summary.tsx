@@ -3,7 +3,7 @@ import { TrendingDown, TrendingUp, Wallet2 } from "lucide-react";
 
 export function BankingSummary() {
 	return (
-		<div className="w-full flex gap-6">
+		<section id="banking-summary" className="grid gap-6 md:grid-cols-3">
 			<SummaryCard
 				title="Deposits"
 				icon={<TrendingDown size={20} />}
@@ -23,6 +23,6 @@ export function BankingSummary() {
 				value={1115.6}
 				description="+3.14 from last month"
 			/>
-		</div>
+		</section>
 	);
 }
