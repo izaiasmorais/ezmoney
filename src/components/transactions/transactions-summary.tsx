@@ -3,7 +3,10 @@ import { TransactionsSummaryCard } from "./transactions-summary-card";
 
 export function TransactionsSummary() {
 	return (
-		<div className="flex items-center gap-6">
+		<section
+			id="transactions-summary"
+			className="items-center gap-4 md:gap-6 grid xl:grid-cols-4 md:grid-cols-2"
+		>
 			<TransactionsSummaryCard
 				title="Food"
 				icon={Sandwich}
@@ -28,6 +31,6 @@ export function TransactionsSummary() {
 				currentValue={0}
 				totalValue={1000}
 			/>
-		</div>
+		</section>
 	);
 }

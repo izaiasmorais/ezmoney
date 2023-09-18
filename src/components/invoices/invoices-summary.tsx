@@ -15,7 +15,10 @@ export function InvoicesSummary() {
 	);
 
 	return (
-		<div className="flex flex-wrap w-full gap-6">
+		<section
+			id="invoices-summary"
+			className="w-full grid gap-4 md:gap-6 md:grid-cols-2 xl:grid-cols-5"
+		>
 			<InvoicesSummaryCard
 				icon={File}
 				title="Total"
@@ -46,6 +49,6 @@ export function InvoicesSummary() {
 				invoices={postponed.quantity}
 				value={postponed.value}
 			/>
-		</div>
+		</section>
 	);
 }
