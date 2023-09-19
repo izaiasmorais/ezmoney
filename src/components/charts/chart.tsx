@@ -16,14 +16,14 @@ interface ChartProps {
 	chartType: ElementType;
 	type: ElementType | any;
 	sortBy?: string;
-	height?: number;
+	
 }
 
 export function Chart({
 	chartType: ChartContainer,
 	type: ChartType,
 	sortBy,
-	height,
+
 }: ChartProps) {
 	const earnChartSortType = useChart((state) => state.earnChartSortType);
 
@@ -37,7 +37,7 @@ export function Chart({
 			: data.earnByYear;
 
 	return (
-		<ResponsiveContainer height={height ? height : 500}>
+		<ResponsiveContainer height={450}>
 			<ChartContainer data={dataContent}>
 				<CartesianGrid stroke="#f1f5f9" strokeDasharray="5 5" />
 				<Tooltip content={<CustomTooltip />} />

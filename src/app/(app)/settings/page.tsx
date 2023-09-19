@@ -1,3 +1,5 @@
+import { SettingsTabs } from "@/components/settings/settings-tabs";
+
 export default function Settings() {
 	return (
 		<main className="flex flex-col gap-3">
@@ -9,7 +11,9 @@ export default function Settings() {
 				<div></div>
 			</div>
 
-			<div className="flex flex-col gap-6"></div>
+			<div className="flex flex-col gap-6">
+				<SettingsTabs />
+			</div>
 		</main>
 	);
 }

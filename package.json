@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@faker-js/faker": "^8.0.2",
+		"@hookform/resolvers": "^3.3.1",
 		"@radix-ui/react-avatar": "^1.0.3",
 		"@radix-ui/react-checkbox": "^1.0.4",
 		"@radix-ui/react-dialog": "^1.0.4",
@@ -44,12 +45,14 @@
 		"react-apexcharts": "^1.4.1",
 		"react-day-picker": "^8.8.0",
 		"react-dom": "18.2.0",
+		"react-hook-form": "^7.46.1",
 		"react-loader-spinner": "^5.3.4",
 		"recharts": "^2.8.0",
 		"tailwind-merge": "^1.14.0",
 		"tailwindcss": "3.3.3",
 		"tailwindcss-animate": "^1.0.6",
 		"typescript": "5.1.6",
+		"zod": "^3.22.2",
 		"zustand": "^4.3.9"
 	}
 }
