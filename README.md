@@ -18,6 +18,7 @@ Um dashboard completo para gerenciar suas finanças, feito em Next.js + ChakraUI
 - [x] Gerenciamento de transações.
 - [x] Gerenciamento de contas a pagar.
 - [x] Gerenciamento de orçamentos (inscrições, objetivos de compra, etc).
+- [ ] Gerenciamento de lucros, cartões e finanças relacionadas a bancos no geral.
 - [ ] Gerenciamento de tarefas.
 - [ ] Calendário dinâmico integrado com tarefas e finanças no geral.
 - [ ] Gerenciamento de investimentos.
