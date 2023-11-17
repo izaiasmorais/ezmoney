@@ -45,11 +45,13 @@ export function Sidebar({ style }: SidebarProps) {
 					title="Budget"
 					href="/budget"
 					icon={<Wallet size={20} />}
+					disabled
 				/>
 				<SidebarItem
 					title="Banking"
 					href="/banking"
 					icon={<Landmark size={20} />}
+					disabled
 				/>
 			</div>
 
@@ -79,6 +81,7 @@ export function Sidebar({ style }: SidebarProps) {
 					title="Settings"
 					href="/settings"
 					icon={<Settings size={20} />}
+					disabled
 				/>
 			</div>
 		</aside>

@@ -1,6 +1,4 @@
 import { BankingSummary } from "../../../components/banking/banking-summary";
-import { EarnBox } from "../../../components/banking/earn-box";
-import { EarnChart } from "../../../components/charts/earn-chart";
 
 export default function Banking() {
 	return (
@@ -15,11 +13,7 @@ export default function Banking() {
 
 			<BankingSummary />
 
-			<section className="grid gap-4 md:gap-6 xl:grid-cols-3">
-				<EarnChart />
-
-				<EarnBox />
-			</section>
+			<section className="grid gap-4 md:gap-6 xl:grid-cols-3"></section>
 		</main>
 	);
 }

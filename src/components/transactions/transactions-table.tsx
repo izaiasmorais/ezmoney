@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { TransactionTableItem } from "./transactions-table-item";
 import { ThreeDots } from "react-loader-spinner";
 import { useTransaction } from "@/stores/transaction";
-import { Pagination } from "../pagination/Pagination";
+import { Pagination } from "../pagination/pagination";
 
 export function TransactionsTable() {
 	const {

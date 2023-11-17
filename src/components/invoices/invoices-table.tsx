@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { InvoiceTableItem } from "./invoices-table-item";
 import { ThreeDots } from "react-loader-spinner";
 import { useInvoice } from "@/stores/invoice";
-import { Pagination } from "../pagination/Pagination";
+import { Pagination } from "../pagination/pagination";
 
 export function InvoicesTable() {
 	const {
