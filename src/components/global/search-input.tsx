@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { cn } from "@/services/utils";
+import { cn } from "@/lib/utils";
 
 interface SearchInputProps {
 	placeholder?: string;

@@ -6,7 +6,7 @@ interface SummaryCardProps {
 	title: string;
 	value: number;
 	icon: ReactNode;
-	description: string;
+	description: ReactNode;
 }
 
 export function SummaryCard({
@@ -21,7 +21,7 @@ export function SummaryCard({
 				<span className="text-sm font-semibold">{title}</span>
 				{icon}
 			</div>
-			<h1 className="text-xl md:text-2xl font-bold mt-2">
+			<h1 className="text-xl md:text-2xl font-bold mt-2 leading-tight">
 				{formatCurrency(value)}
 			</h1>
 			<span className="text-muted-foreground font-medium text-xs">

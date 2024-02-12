@@ -1,7 +1,3 @@
 export function InvoicesTable() {
-	return (
-		<div>
-			
-		</div>
-	)
+	return <div></div>;
 }

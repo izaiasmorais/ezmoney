@@ -8,21 +8,40 @@ export function Summary() {
 				title="Income"
 				icon={<ArrowDownCircle size={20} />}
 				value={3234.78}
-				description="+2.1% from last month"
+				description={
+					<p>
+						<span className="text-emerald-500 dark:text-emerald-400">
+							+2.1%
+						</span>{" "}
+						from last month
+					</p>
+				}
 			/>
 
 			<SummaryCard
 				title="Expenses"
 				icon={<ArrowUpCircle size={20} />}
 				value={2315.78}
-				description="-6.34% from last month"
+				description={
+					<p>
+						<span className="text-red-500 dark:text-red-400">-6.34%</span> from
+						last month
+					</p>
+				}
 			/>
 
 			<SummaryCard
 				title="Total Balance"
 				icon={<Wallet2 size={20} />}
 				value={1115.6}
-				description="+3.14 from last month"
+				description={
+					<p>
+						<span className="text-emerald-500 dark:text-emerald-400">
+							-20.14%
+						</span>{" "}
+						from last month
+					</p>
+				}
 			/>
 		</section>
 	);
