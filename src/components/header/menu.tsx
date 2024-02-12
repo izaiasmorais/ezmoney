@@ -18,8 +18,9 @@ import {
 	Settings,
 	User,
 } from "lucide-react";
-import { Avatar } from "../dashboard/avatar";
+import { Avatar } from "./avatar";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export function Menu() {
 	return (
@@ -34,7 +35,7 @@ export function Menu() {
 				<DropdownMenuLabel>Izaías Lima</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<DropdownMenuItem className="cursor-pointer">
+					<DropdownMenuItem disabled className="cursor-pointer">
 						<User className="mr-2 h-4 w-4" />
 						<span>Profile</span>
 					</DropdownMenuItem>
@@ -42,7 +43,7 @@ export function Menu() {
 						<CreditCard className="mr-2 h-4 w-4" />
 						<span>Billing</span>
 					</DropdownMenuItem>
-					<DropdownMenuItem className="cursor-pointer">
+					<DropdownMenuItem disabled className="cursor-pointer">
 						<Settings className="mr-2 h-4 w-4" />
 						<span>Settings</span>
 					</DropdownMenuItem>
@@ -59,7 +60,7 @@ export function Menu() {
 						<span>GitHub</span>
 					</a>
 				</DropdownMenuItem>
-				<DropdownMenuItem className="cursor-pointer">
+				<DropdownMenuItem disabled className="cursor-pointer">
 					<LifeBuoy className="mr-2 h-4 w-4" />
 					<span>Support</span>
 				</DropdownMenuItem>
@@ -68,9 +69,11 @@ export function Menu() {
 					<span>API</span>
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem className="cursor-pointer">
-					<LogOut className="mr-2 h-4 w-4" />
-					<span>Log out</span>
+				<DropdownMenuItem className="cursor-pointer" asChild>
+					<Link href="/auth/log-in">
+						<LogOut className="mr-2 h-4 w-4" />
+						<span>Log out</span>
+					</Link>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

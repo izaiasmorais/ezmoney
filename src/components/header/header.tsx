@@ -18,7 +18,7 @@ export function Header() {
 			/>
 
 			<div className="flex gap-2">
-				<Notifications />
+				{/* <Notifications /> */}
 				<ThemeSwitcher />
 				<Menu />
 			</div>

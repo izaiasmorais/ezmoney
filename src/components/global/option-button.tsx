@@ -12,10 +12,7 @@ export function OptionsButton() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
-				<div
-					className="w-10 h-10 flex items-center justify-center rounded-full
-					hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
-				>
+				<div className="w-10 h-10 flex items-center justify-center rounded-full transition-all">
 					<MoreVertical size={20} />
 				</div>
 			</DropdownMenuTrigger>

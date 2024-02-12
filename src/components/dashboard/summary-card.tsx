@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Card } from "../ui/card";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { cn } from "@/lib/utils";
 
 interface SummaryCardProps {
 	title: string;
@@ -25,7 +24,9 @@ export function SummaryCard({
 			<h1 className="text-xl md:text-2xl font-bold mt-2">
 				{formatCurrency(value)}
 			</h1>
-			<span className="text-slate-500 font-medium text-xs">{description}</span>
+			<span className="text-muted-foreground font-medium text-xs">
+				{description}
+			</span>
 		</Card>
 	);
 }

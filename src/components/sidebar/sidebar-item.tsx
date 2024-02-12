@@ -18,14 +18,13 @@ export function SidebarItem({
 }: SidebarItemProps) {
 	const pathname = usePathname();
 
-	const style = pathname.endsWith(href) ? "bg-slate-100 dark:bg-slate-800" : "";
+	const style = pathname.endsWith(href) ? "bg-muted" : "";
 
 	return (
 		<Link
 			href={!disabled ? href : ""}
-			className={`px-4 py-2 rounded-md font-medium hover:bg-slate-50
-			dark:hover:bg-slate-700 flex justify-between items-center
-			 ${style} ${disabled && "cursor-not-allowed"}`}
+			className={`px-4 py-2 rounded-md font-medium flex justify-between items-center
+			 ${style} ${disabled && "cursor-not-allowed"} ${!disabled && "hover:bg-muted"}`}
 		>
 			<div className="flex gap-2 items-center">
 				{icon}
@@ -33,9 +32,7 @@ export function SidebarItem({
 			</div>
 
 			{disabled && (
-				<div className="bg-slate-100 text-slate-500 py-1 px-2 rounded-md text-xs">
-					Em breve
-				</div>
+				<div className="bg-muted py-1 px-2 rounded-md text-xs">Em breve</div>
 			)}
 		</Link>
 	);

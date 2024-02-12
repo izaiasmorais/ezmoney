@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/services/utils";
 
 interface SearchInputProps {
 	placeholder?: string;
@@ -16,10 +16,7 @@ export function SearchInput({ placeholder, className }: SearchInputProps) {
 				placeholder={placeholder}
 				className="outline-none flex-1 bg-transparent"
 			/>
-			<Search
-				size={20}
-				className="text-slate-600 active:text-slate-950 font-semibold cursor-pointer"
-			/>
+			<Search size={20} className="font-semibold cursor-pointer" />
 		</div>
 	);
 }
