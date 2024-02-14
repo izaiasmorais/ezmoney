@@ -27,27 +27,27 @@ export function Sidebar({ style }: SidebarProps) {
 				EZMoney
 			</h1>
 			<div className="mt-12 flex flex-col gap-1">
-				<span className="text-sm font-semibold mb-1">GENERAL</span>
+				<span className="text-sm font-semibold mb-1">GERAL</span>
 				<SidebarItem title="Dashboard" href="/" icon={<Home size={20} />} />
 				<SidebarItem
-					title="Invoices"
+					title="Contas"
 					href="/invoices"
 					icon={<CreditCard size={20} />}
 				/>
 				<SidebarItem
-					title="Transactions"
+					title="Transferências"
 					href="/transactions"
 					icon={<Banknote size={20} />}
 					disabled
 				/>
 				<SidebarItem
-					title="Budget"
+					title="Orçamento"
 					href="/budget"
 					icon={<Wallet size={20} />}
 					disabled
 				/>
 				<SidebarItem
-					title="Banking"
+					title="Banco"
 					href="/banking"
 					icon={<Landmark size={20} />}
 					disabled
@@ -55,27 +55,27 @@ export function Sidebar({ style }: SidebarProps) {
 			</div>
 
 			<div className="mt-6 flex flex-col gap-1">
-				<span className="text-sm font-semibold mb-1">MANAGEMENT</span>
+				<span className="text-sm font-semibold mb-1">GERENCIAMENTO</span>
 				<SidebarItem
-					title="Tasks"
+					title="Tarefas"
 					href="/tasks"
 					icon={<ClipboardCheck size={20} />}
 					disabled
 				/>
 				<SidebarItem
-					title="Calendar"
+					title="Calendário"
 					href="/calendar"
 					icon={<CalendarDays size={20} />}
 					disabled
 				/>
 				<SidebarItem
-					title="Investiments"
+					title="Investimentos"
 					href="/investiments"
 					icon={<LineChart size={20} />}
 					disabled
 				/>
 				<SidebarItem
-					title="Settings"
+					title="Configurações"
 					href="/settings"
 					icon={<Settings size={20} />}
 					disabled

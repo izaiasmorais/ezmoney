@@ -37,15 +37,15 @@ export function Menu() {
 				<DropdownMenuGroup>
 					<DropdownMenuItem disabled className="cursor-pointer">
 						<User className="mr-2 h-4 w-4" />
-						<span>Profile</span>
+						<span>Perfil</span>
 					</DropdownMenuItem>
 					<DropdownMenuItem disabled>
 						<CreditCard className="mr-2 h-4 w-4" />
-						<span>Billing</span>
+						<span>Assinatura</span>
 					</DropdownMenuItem>
 					<DropdownMenuItem disabled className="cursor-pointer">
 						<Settings className="mr-2 h-4 w-4" />
-						<span>Settings</span>
+						<span>Configurações</span>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
 
@@ -62,7 +62,7 @@ export function Menu() {
 				</DropdownMenuItem>
 				<DropdownMenuItem disabled className="cursor-pointer">
 					<LifeBuoy className="mr-2 h-4 w-4" />
-					<span>Support</span>
+					<span>Suporte</span>
 				</DropdownMenuItem>
 				<DropdownMenuItem disabled>
 					<Cloud className="mr-2 h-4 w-4" />
@@ -72,7 +72,7 @@ export function Menu() {
 				<DropdownMenuItem className="cursor-pointer" asChild>
 					<Link href="/auth/log-in">
 						<LogOut className="mr-2 h-4 w-4" />
-						<span>Log out</span>
+						<span>Sair</span>
 					</Link>
 				</DropdownMenuItem>
 			</DropdownMenuContent>

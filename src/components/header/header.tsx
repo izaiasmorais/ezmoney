@@ -13,7 +13,7 @@ export function Header() {
 			</Button>
 
 			<SearchInput
-				placeholder="Search anything..."
+				placeholder="Buscar..."
 				className="hidden md:flex"
 			/>
 

@@ -17,7 +17,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className="antialiased" suppressHydrationWarning>
+		<html lang="en" className="antialiased" suppressHydrationWarning={true}>
 			<head>
 				<link rel="icon" href="/ezmoney.png" sizes="any" />
 			</head>

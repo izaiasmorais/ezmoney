@@ -10,7 +10,7 @@ import {
 } from "../ui/select";
 import { DatePicker } from "../global/date-picker";
 
-export function InvoicesTableFilters() {
+export function InvoiceTableFilters() {
 	return (
 		<form className="flex items-center gap-2">
 			<span className="text-sm font-semibold">Filtros: </span>

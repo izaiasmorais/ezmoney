@@ -5,7 +5,7 @@ export function Summary() {
 	return (
 		<section id="summary" className="grid gap-6 md:grid-cols-3">
 			<SummaryCard
-				title="Income"
+				title="Entradas"
 				icon={<ArrowDownCircle size={20} />}
 				value={3234.78}
 				description={
@@ -13,33 +13,33 @@ export function Summary() {
 						<span className="text-emerald-500 dark:text-emerald-400">
 							+2.1%
 						</span>{" "}
-						from last month
+						a mais que o mês passado
 					</p>
 				}
 			/>
 
 			<SummaryCard
-				title="Expenses"
+				title="Saídas"
 				icon={<ArrowUpCircle size={20} />}
 				value={2315.78}
 				description={
 					<p>
-						<span className="text-red-500 dark:text-red-400">-6.34%</span> from
-						last month
+						<span className="text-red-500 dark:text-red-400">-6.34%</span> a
+						menos que o mês passado
 					</p>
 				}
 			/>
 
 			<SummaryCard
-				title="Total Balance"
+				title="Saldo Total"
 				icon={<Wallet2 size={20} />}
 				value={1115.6}
 				description={
 					<p>
 						<span className="text-emerald-500 dark:text-emerald-400">
-							-20.14%
+							+20.14%
 						</span>{" "}
-						from last month
+						a mais que o mês passado
 					</p>
 				}
 			/>

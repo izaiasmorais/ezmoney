@@ -13,13 +13,13 @@ export default function Dashboard() {
 			>
 				<Card className="p-4 md:p-6 space-y-4 md:space-y-6 xl:col-span-2">
 					<div className="flex justify-start w-full">
-						<strong className="text-xl font-medium">Profit</strong>
+						<strong className="text-xl font-medium">Lucro</strong>
 					</div>
 				</Card>
 
 				<Card className="p-4 md:p-6 space-y-4 md:space-y-6">
 					<div className="flex justify-start w-full">
-						<strong className="text-xl font-medium">Spending</strong>
+						<strong className="text-xl font-medium">Gastos</strong>
 					</div>
 				</Card>
 			</section>
