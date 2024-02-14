@@ -10,8 +10,14 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { ptBR } from "date-fns/locale";
 
-export function DatePicker() {
+interface DatePickerProps {
+	name: string;
+	style: string;
+}
+
+export function DatePicker({ name, style }: DatePickerProps) {
 	const [date, setDate] = React.useState<Date>();
 
 	return (
@@ -20,12 +26,17 @@ export function DatePicker() {
 				<Button
 					variant={"outline"}
 					className={cn(
-						"w-full justify-start text-left font-normal",
-						!date && "text-muted-foreground"
+						"justify-start text-left font-normal",
+						!date && "text-muted-foreground",
+						style
 					)}
 				>
 					<CalendarIcon className="mr-2 h-4 w-4" />
-					{date ? format(date, "PPP") : <span>Pick a date</span>}
+					{date ? (
+						format(date, "dd/MM/yyyy", { locale: ptBR })
+					) : (
+						<span>{name}</span>
+					)}
 				</Button>
 			</PopoverTrigger>
 
@@ -36,6 +47,7 @@ export function DatePicker() {
 					onSelect={setDate}
 					defaultMonth={new Date()}
 					initialFocus
+					locale={ptBR}
 				/>
 			</PopoverContent>
 		</Popover>

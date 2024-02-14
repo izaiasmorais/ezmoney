@@ -1,3 +1,5 @@
+import { InvoicesTableFilters } from "@/components/invoices/invoices-table-filters";
+
 export default function Invoices() {
 	return (
 		<main className="flex flex-col gap-6">
@@ -7,7 +9,11 @@ export default function Invoices() {
 				</h1>
 			</div>
 
-			<div className="flex flex-col gap-6"></div>
+			<div className="flex flex-col gap-6">
+				<div className="space-y-2.5">
+					<InvoicesTableFilters />
+				</div>
+			</div>
 		</main>
 	);
 }
