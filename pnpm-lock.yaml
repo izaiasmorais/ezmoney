@@ -86,6 +86,9 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.4.11)(react-dom@18.2.0)(react@18.2.0)
+  next13-progressbar:
+    specifier: ^1.2.1
+    version: 1.2.1(next@13.4.11)(react@18.2.0)
   postcss:
     specifier: 8.4.27
     version: 8.4.27
@@ -1244,6 +1247,10 @@ packages:
 
   /@types/node@20.4.2:
     resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
+    dev: false
+
+  /@types/nprogress@0.2.3:
+    resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
     dev: false
 
   /@types/prop-types@15.7.5:
@@ -2999,6 +3006,19 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /next13-progressbar@1.2.1(next@13.4.11)(react@18.2.0):
+    resolution: {integrity: sha512-VjO5eHSWa2TSPVX6EHFqdkPaJ4a8UrfK4QuUbjslkVkIxM2EQpg6LrIKmh9qKrlTLC0zOGenhjUoyYappVgOug==}
+    peerDependencies:
+      next: '>= 13.0.0'
+      react: '>= 18.0.0'
+    dependencies:
+      '@types/nprogress': 0.2.3
+      next: 13.4.11(react-dom@18.2.0)(react@18.2.0)
+      nprogress: 0.2.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
   /next@13.4.11(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-XlJClNF3OPCv99At3BA7TflcF5q2zJAuTcyE4l6f5LWN3Uh8FF4e8PhZfaBk0PKmsKL7yOMGele/UUzbLvLbzw==}
     engines: {node: '>=16.8.0'}
@@ -3068,6 +3088,10 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       path-key: 4.0.0
+    dev: false
+
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: false
 
   /object-assign@4.1.1:

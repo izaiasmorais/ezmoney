@@ -1,33 +1,18 @@
-import { MoreVertical, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "../ui/button";
-import { Dialog, DialogTrigger } from "../ui/dialog";
 import { TableCell, TableRow } from "../ui/table";
-import { InvoiceDetails } from "./invoice-details";
-import { InvoiceStatus } from "./invoice-status";
-import { IInvoice } from "@/api/get-invoices";
-import { format } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
 
-export interface InvoiceTableRowProps {
-	invoice: IInvoice;
-}
-
-export function InvoiceTableRow({ invoice }: InvoiceTableRowProps) {
+export function InvoicesTableSkeleton() {
 	return (
 		<TableRow>
 			<TableCell>
-				<Dialog>
-					<DialogTrigger asChild>
-						<Button variant="outline" size="xs">
-							<Search className="h-4 w-4" />
-							<span className="sr-only">Detalhes do pedido: </span>
-						</Button>
-					</DialogTrigger>
-					<InvoiceDetails />
-				</Dialog>
+				<Button variant="outline" size="xs" disabled>
+					<Search className="h-4 w-4" />
+					<span className="sr-only">Detalhes do pedido: </span>
+				</Button>
 			</TableCell>
 			<TableCell className="font-mono text-xs font-medium">
-				{invoice.invoiceId}
+				<Skeleton>
 			</TableCell>
 			<TableCell className="font-medium">{invoice.invoiceName}</TableCell>
 			<TableCell className="text-muted-foreground">

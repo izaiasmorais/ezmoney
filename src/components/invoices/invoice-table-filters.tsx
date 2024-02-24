@@ -1,3 +1,4 @@
+"use client";
 import { Search, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -8,28 +9,132 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../ui/select";
-import { DatePicker } from "../global/date-picker";
+import { DateRangePicker } from "../ui/date-range-picker";
+import { DateRange } from "react-day-picker";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { subDays } from "date-fns";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
+import { z } from "zod";
 
-export function InvoiceTableFilters() {
+const invoiceFilterSchema = z.object({
+	invoiceId: z.string().optional(),
+	invoiceName: z.string().optional(),
+	status: z.string().optional(),
+});
+
+type InvoiceFilterSchema = z.infer<typeof invoiceFilterSchema>;
+
+interface InvoiceTableFiltersProps {
+	dateRange: DateRange | undefined;
+	setDateRange: Dispatch<SetStateAction<DateRange | undefined>>;
+}
+
+export function InvoiceTableFilters({
+	dateRange,
+	setDateRange,
+}: InvoiceTableFiltersProps) {
+	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
+
+	const invoiceId = searchParams.get("invoiceId");
+	const invoiceName = searchParams.get("invoiceName");
+	const status = searchParams.get("status");
+
+	const { register, handleSubmit, control, reset } =
+		useForm<InvoiceFilterSchema>({
+			// @ts-ignore
+			resolver: zodResolver(invoiceFilterSchema),
+			defaultValues: {
+				invoiceId: invoiceId ?? "",
+				invoiceName: invoiceName ?? "",
+				status: status ?? "all",
+			},
+		});
+
+	function handleFilter({
+		invoiceId,
+		invoiceName,
+		status,
+	}: InvoiceFilterSchema) {
+		const state = new URLSearchParams(Array.from(searchParams.entries()));
+
+		if (invoiceId) {
+			state.set("invoiceId", invoiceId);
+		} else {
+			state.delete("invoiceId");
+		}
+
+		if (invoiceName) {
+			state.set("invoiceName", invoiceName);
+		} else {
+			state.delete("invoiceName");
+		}
+
+		if (status) {
+			state.set("status", status);
+		} else {
+			state.delete("status");
+		}
+
+		state.set("page", "1");
+		const search = state.toString();
+		const query = search ? `?${search}` : "";
+
+		router.push(`${pathname}${query}`);
+	}
+
 	return (
-		<form className="flex items-center gap-2">
+		<form
+			className="flex items-center gap-2"
+			onSubmit={handleSubmit(handleFilter)}
+		>
 			<span className="text-sm font-semibold">Filtros: </span>
-			<Input className="h-8 w-[320px]" placeholder="Nome da conta" />
 
-			<Select defaultValue="all">
-				<SelectTrigger className="h-8 w-[180px]">
-					<SelectValue />
-				</SelectTrigger>
-				<SelectContent>
-					<SelectItem value="all">Status</SelectItem>
-					<SelectItem value="pending">Pendente</SelectItem>
-					<SelectItem value="paid">Paga</SelectItem>
-					<SelectItem value="overdue">Atrasada</SelectItem>
-					<SelectItem value="postponed">Adiada</SelectItem>
-				</SelectContent>
-			</Select>
+			<Input
+				className="h-8 w-[200px]"
+				placeholder="Id da conta"
+				{...register("invoiceId")}
+			/>
 
-			<Select defaultValue="all">
+			<Input
+				className="h-8 w-[200px]"
+				placeholder="Nome da conta"
+				{...register("invoiceName")}
+			/>
+
+			<DateRangePicker date={dateRange} onDateChange={setDateRange} />
+
+			<Controller
+				name="status"
+				control={control}
+				render={({ field: { name, onChange, value, disabled } }) => {
+					return (
+						<Select
+							defaultValue="all"
+							name={name}
+							onValueChange={onChange}
+							value={value}
+							disabled={disabled}
+						>
+							<SelectTrigger className="h-8 w-[180px]">
+								<SelectValue />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value="all">Status</SelectItem>
+								<SelectItem value="pending">Pendente</SelectItem>
+								<SelectItem value="paid">Paga</SelectItem>
+								<SelectItem value="overdue">Atrasada</SelectItem>
+								<SelectItem value="postponed">Adiada</SelectItem>
+							</SelectContent>
+						</Select>
+					);
+				}}
+			/>
+
+			{/* <Select defaultValue="all">
 				<SelectTrigger className="h-8 w-[180px]">
 					<SelectValue />
 				</SelectTrigger>
@@ -40,9 +145,7 @@ export function InvoiceTableFilters() {
 					<SelectItem value="invoice">Conta</SelectItem>
 					<SelectItem value="shopping">Compra</SelectItem>
 				</SelectContent>
-			</Select>
-
-			<DatePicker name="Validade" style="h-8 w-[200px]" />
+			</Select> */}
 
 			<Button type="submit" variant="secondary" size="xs">
 				<Search className="mr-2 h-4 w-4" />

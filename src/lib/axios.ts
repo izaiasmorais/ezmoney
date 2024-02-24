@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-	baseURL: process.env.API_URL,
-	withCredentials: true,
+	baseURL: "https://63c94958320a0c4c95451970.mockapi.io",
 });
 
 if (process.env.ENABLE_API_DELAY) {

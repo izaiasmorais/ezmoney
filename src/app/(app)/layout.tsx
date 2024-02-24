@@ -11,7 +11,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 					<Header />
 				</div>
 
-				<div className="flex-grow overflow-y-auto p-4 md:p-6 gap-4 md:gap-6">
+				<div className="flex-grow overflow-y-auto p-4 gap-4 md:gap-6">
 					{children}
 				</div>
 			</main>
