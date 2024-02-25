@@ -32,7 +32,7 @@ export interface GetInvoicesResponse {
 }
 
 export async function getInvoices({
-	pageIndex = 1,
+	pageIndex,
 	perPage = 10,
 	invoiceId,
 	invoiceName,
@@ -40,9 +40,9 @@ export async function getInvoices({
 	dueDate,
 	status,
 }: GetInvoicesQuery) {
-	const invoices = await api.get<IInvoice[]>("/invoices");
+	const data = await api.get<IInvoice[]>("/invoices");
 
-	const totalCount = invoices.data.length;
+	let totalCount;
 
 	const response = await api.get<IInvoice[]>("/invoices", {
 		params: {
@@ -52,15 +52,21 @@ export async function getInvoices({
 			dueDate,
 			status,
 			limit: perPage,
-			page: pageIndex !== 1 ? pageIndex + 1 : pageIndex,
+			page: pageIndex,
 		},
 	});
+
+	if (response.data.length < 10) {
+		totalCount = response.data.length;
+	} else {
+		totalCount = data.data.length;
+	}
 
 	return {
 		invoices: response.data,
 		meta: {
-			pageIndex: 1,
-			perPage: 10,
+			pageIndex,
+			perPage,
 			totalCount,
 		},
 	} as GetInvoicesResponse;

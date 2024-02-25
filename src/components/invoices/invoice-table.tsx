@@ -18,6 +18,7 @@ import { DateRange } from "react-day-picker";
 import { subDays } from "date-fns";
 import { useSearchParams } from "next/navigation";
 import { z } from "zod";
+import { InvoicesTableSkeleton } from "./invoices-table-skeleton";
 
 export function InvoiceTable() {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>({
@@ -33,12 +34,20 @@ export function InvoiceTable() {
 
 	const pageIndex = z.coerce
 		.number()
-		.transform((page) => page - 1)
+		.transform((page) => page)
 		.parse(searchParams.get("page") ?? 1);
+
+	console.log(pageIndex);
 
 	const { data: result, isLoading: isLoadingInvoices } = useQuery({
 		queryKey: ["invoices", pageIndex, invoiceId, invoiceName, status],
-		queryFn: () => getInvoices({ pageIndex, invoiceId, invoiceName, status }),
+		queryFn: () =>
+			getInvoices({
+				pageIndex,
+				invoiceId,
+				invoiceName,
+				status: status === "all" ? null : status,
+			}),
 	});
 
 	console.log(result);
@@ -88,13 +97,15 @@ export function InvoiceTable() {
 									<InvoiceTableRow key={invoice.invoiceId} invoice={invoice} />
 								);
 							})}
+
+						{!result && <InvoicesTableSkeleton />}
 					</TableBody>
 				</Table>
 			</div>
 
 			{result && (
 				<Pagination
-					pageIndex={result.meta.pageIndex}
+					pageIndex={result.meta.pageIndex - 1}
 					perPage={result.meta.perPage}
 					totalCount={result.meta.totalCount}
 					onPageChange={() => {}}

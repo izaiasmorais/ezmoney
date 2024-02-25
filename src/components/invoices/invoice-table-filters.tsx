@@ -1,4 +1,3 @@
-"use client";
 import { Search, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -9,13 +8,12 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../ui/select";
-import { DateRangePicker } from "../ui/date-range-picker";
-import { DateRange } from "react-day-picker";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { subDays } from "date-fns";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { DateRangePicker } from "../ui/date-range-picker";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { DateRange } from "react-day-picker";
 import { z } from "zod";
 
 const invoiceFilterSchema = z.object({
