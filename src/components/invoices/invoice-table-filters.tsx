@@ -122,10 +122,10 @@ export function InvoiceTableFilters({
 							</SelectTrigger>
 							<SelectContent>
 								<SelectItem value="all">Status</SelectItem>
-								<SelectItem value="pending">Pendente</SelectItem>
-								<SelectItem value="paid">Paga</SelectItem>
-								<SelectItem value="overdue">Atrasada</SelectItem>
-								<SelectItem value="postponed">Adiada</SelectItem>
+								<SelectItem value="deposit">Pendente</SelectItem>
+								<SelectItem value="invoice">Pago</SelectItem>
+								<SelectItem value="withdrawal">Atrasado</SelectItem>
+								<SelectItem value="payment">Adiada</SelectItem>
 							</SelectContent>
 						</Select>
 					);

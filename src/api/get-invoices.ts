@@ -40,7 +40,15 @@ export async function getInvoices({
 	dueDate,
 	status,
 }: GetInvoicesQuery) {
-	const data = await api.get<IInvoice[]>("/invoices");
+	const data = await api.get<IInvoice[]>("/invoices", {
+		params: {
+			invoiceId,
+			invoiceName,
+			createdAt,
+			dueDate,
+			status,
+		},
+	});
 
 	let totalCount;
 
@@ -56,10 +64,12 @@ export async function getInvoices({
 		},
 	});
 
-	if (response.data.length < 10) {
-		totalCount = response.data.length;
-	} else {
+	if (data.data.length < 10) {
 		totalCount = data.data.length;
+	} else if (data.data.length >= 10 && data.data.length < 30) {
+		totalCount = data.data.length;
+	} else {
+		totalCount = 30;
 	}
 
 	return {

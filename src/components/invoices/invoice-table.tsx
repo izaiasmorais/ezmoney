@@ -16,7 +16,7 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
 import { subDays } from "date-fns";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
 import { InvoicesTableSkeleton } from "./invoices-table-skeleton";
 
@@ -26,6 +26,8 @@ export function InvoiceTable() {
 		to: new Date(),
 	});
 
+	const router = useRouter();
+	const pathname = usePathname();
 	const searchParams = useSearchParams();
 
 	const invoiceId = searchParams.get("invoiceId");
@@ -50,15 +52,16 @@ export function InvoiceTable() {
 			}),
 	});
 
-	console.log(result);
+	function handlePaginate(pageIndex: number) {
+		const state = new URLSearchParams(Array.from(searchParams.entries()));
 
-	// function handlePaginate(pageIndex: number) {
-	// 	setSearchParams((prev) => {
-	// 		prev.set("page", (pageIndex + 1).toString());
+		state.set("page", (pageIndex + 1).toString());
 
-	// 		return prev;
-	// 	});
-	// }
+		const search = state.toString();
+		const query = search ? `?${search}` : "";
+
+		router.push(`${pathname}${query}`);
+	}
 
 	return (
 		<div className="space-y-4">
@@ -108,7 +111,7 @@ export function InvoiceTable() {
 					pageIndex={result.meta.pageIndex - 1}
 					perPage={result.meta.perPage}
 					totalCount={result.meta.totalCount}
-					onPageChange={() => {}}
+					onPageChange={handlePaginate}
 				/>
 			)}
 		</div>

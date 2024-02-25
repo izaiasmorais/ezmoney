@@ -45,7 +45,7 @@ export function InvoiceTableRow({ invoice }: InvoiceTableRowProps) {
 					currency: "BRL",
 				})}
 			</TableCell>
-			<TableCell className="font-medium">1</TableCell>
+			<TableCell className="font-medium">{invoice.installments}</TableCell>
 			<TableCell>
 				<Button variant="outline" size="xs">
 					<MoreVertical className="h-4 w-4" />
