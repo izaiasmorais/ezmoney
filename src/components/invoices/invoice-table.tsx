@@ -63,13 +63,13 @@ export function InvoiceTable() {
 
 	return (
 		<div className="space-y-4">
-			<div className="flex items-center justify-between">
+			<div className="flex items-center justify-between flex-wrap gap-2">
 				<InvoiceTableFilters
 					dateRange={dateRange}
 					setDateRange={setDateRange}
 				/>
 
-				<Button className="flex items-center gap-2" size="xs">
+				<Button className="flex items-center gap-2 w-full" size="xs">
 					<Plus className="w-5 h-5" />
 					Adicionar conta
 				</Button>
@@ -81,7 +81,7 @@ export function InvoiceTable() {
 						<TableRow>
 							<TableHead className="w-[64px]"></TableHead>
 							<TableHead className="w-[200px]">Identificador</TableHead>
-							<TableHead>Conta</TableHead>
+							<TableHead className="min-w-[200px]">Conta</TableHead>
 							<TableHead className="w-[180px]">Criação</TableHead>
 							<TableHead className="w-[180px]">Validade</TableHead>
 							<TableHead className="w-[140px]">Status</TableHead>

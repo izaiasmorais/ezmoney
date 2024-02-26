@@ -10,13 +10,15 @@ import {
 	Wallet,
 } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
+import { CollapsibleTrigger } from "../ui/collapsible";
 
 export function SidebarContent() {
 	return (
 		<>
-			<div className="mt-12 flex flex-col gap-1">
+			<div className="flex flex-col gap-1">
 				<span className="text-sm font-semibold mb-1">GERAL</span>
 				<SidebarItem title="Dashboard" href="/" icon={<Home size={20} />} />
+
 				<SidebarItem
 					title="Contas"
 					href="/invoices"

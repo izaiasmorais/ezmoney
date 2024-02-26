@@ -112,13 +112,13 @@ export function InvoiceTableFilters({
 			<span className="text-sm font-semibold hidden lg:block">Filtros: </span>
 
 			<Input
-				className="h-8 w-[200px]"
+				className="h-8 w-full"
 				placeholder="Id da conta"
 				{...register("invoiceId")}
 			/>
 
 			<Input
-				className="h-8 w-[200px]"
+				className="h-8 w-full"
 				placeholder="Nome da conta"
 				{...register("invoiceName")}
 			/>
@@ -137,7 +137,7 @@ export function InvoiceTableFilters({
 							value={value}
 							disabled={disabled}
 						>
-							<SelectTrigger className="h-8 w-[180px]">
+							<SelectTrigger className="h-8 w-full">
 								<SelectValue />
 							</SelectTrigger>
 							<SelectContent>
@@ -165,7 +165,7 @@ export function InvoiceTableFilters({
 				</SelectContent>
 			</Select> */}
 
-			<Button type="submit" variant="secondary" size="xs">
+			<Button type="submit" variant="secondary" size="xs" className="w-full">
 				<Search className="mr-2 h-4 w-4" />
 				Filtrar resultados
 			</Button>
@@ -175,6 +175,7 @@ export function InvoiceTableFilters({
 				variant="outline"
 				size="xs"
 				onClick={() => handleClearFilters()}
+				className="w-full"
 			>
 				<X className="mr-2 h-4 w-4" />
 				Limpar resultados
