@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 
 export default function Dashboard() {
 	return (
-		<main className="flex flex-col gap-4 h-full">
+		<main className="flex flex-col gap-4">
 			<Summary />
 
 			<section

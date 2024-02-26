@@ -1,83 +1,44 @@
+"use client";
+import { Menu } from "lucide-react";
+import { Button } from "../ui/button";
 import {
-	Banknote,
-	CalendarDays,
-	ClipboardCheck,
-	CreditCard,
-	Home,
-	Landmark,
-	LineChart,
-	Settings,
-	Wallet,
-} from "lucide-react";
-import { SidebarItem } from "./sidebar-item";
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import Image from "next/image";
+import { SidebarContent } from "./sidebar-content";
 
-interface SidebarProps {
-	style: string;
-}
-
-export function Sidebar({ style }: SidebarProps) {
+export function Sidebar() {
 	return (
-		<aside className={style}>
-			<h1 className="text-2xl font-semibold flex items-center gap-2">
-				<Image src="/ezmoney.png" alt="EZMoney Logo" width={36} height={36} />
-				EZMoney
-			</h1>
-			<div className="mt-12 flex flex-col gap-1">
-				<span className="text-sm font-semibold mb-1">GERAL</span>
-				<SidebarItem title="Dashboard" href="/" icon={<Home size={20} />} />
-				<SidebarItem
-					title="Contas"
-					href="/invoices"
-					icon={<CreditCard size={20} />}
-				/>
-				<SidebarItem
-					title="Transferências"
-					href="/transactions"
-					icon={<Banknote size={20} />}
-					disabled
-				/>
-				<SidebarItem
-					title="Orçamento"
-					href="/budget"
-					icon={<Wallet size={20} />}
-					disabled
-				/>
-				<SidebarItem
-					title="Banco"
-					href="/banking"
-					icon={<Landmark size={20} />}
-					disabled
-				/>
+		<Collapsible
+			className="border-b data-[state=open]:bottom-0 lg:data-[state=closed]:bottom-0 left-0 top-0
+			right-0 flex flex-col p-4 fixed z-20 lg:right-auto lg:w-80 lg:border-r
+			data-[state=open]:h-screen lg:data-[state=open]:h-screen lg:h-auto bg-white dark:bg-zinc-950"
+		>
+			<div className="flex items-center justify-between ">
+				<h1 className="text-2xl font-semibold flex items-center gap-2">
+					<Image src="/ezmoney.png" alt="EZMoney Logo" width={36} height={36} />
+					EZMoney
+				</h1>
+
+				<CollapsibleTrigger asChild className="lg:hidden">
+					<Button variant="ghost">
+						<Menu className="w-6 h-6 text-zinc-500" />
+					</Button>
+				</CollapsibleTrigger>
 			</div>
 
-			<div className="mt-6 flex flex-col gap-1">
-				<span className="text-sm font-semibold mb-1">GERENCIAMENTO</span>
-				<SidebarItem
-					title="Tarefas"
-					href="/tasks"
-					icon={<ClipboardCheck size={20} />}
-					disabled
-				/>
-				<SidebarItem
-					title="Calendário"
-					href="/calendar"
-					icon={<CalendarDays size={20} />}
-					disabled
-				/>
-				<SidebarItem
-					title="Investimentos"
-					href="/investiments"
-					icon={<LineChart size={20} />}
-					disabled
-				/>
-				<SidebarItem
-					title="Configurações"
-					href="/settings"
-					icon={<Settings size={20} />}
-					disabled
-				/>
-			</div>
-		</aside>
+			<CollapsibleContent
+				asChild
+				forceMount
+				className="data-[state=closed]:hidden data-[state=closed]:animate-slideUpAndFade
+				data-[state=open]:animate-slideDownAndFade lg:data-[state=closed]:flex"
+			>
+				<div className="flex flex-1 flex-col">
+					<SidebarContent />
+				</div>
+			</CollapsibleContent>
+		</Collapsible>
 	);
 }

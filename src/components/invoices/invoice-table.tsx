@@ -39,8 +39,6 @@ export function InvoiceTable() {
 		.transform((page) => page)
 		.parse(searchParams.get("page") ?? 1);
 
-	console.log(pageIndex);
-
 	const { data: result, isLoading: isLoadingInvoices } = useQuery({
 		queryKey: ["invoices", pageIndex, invoiceId, invoiceName, status],
 		queryFn: () =>
@@ -101,7 +99,7 @@ export function InvoiceTable() {
 								);
 							})}
 
-						{!result && <InvoicesTableSkeleton />}
+						{isLoadingInvoices && <InvoicesTableSkeleton />}
 					</TableBody>
 				</Table>
 			</div>

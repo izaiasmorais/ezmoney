@@ -1,5 +1,4 @@
 import { ThemeSwitcher } from "./theme-switcher";
-import { Notifications } from "./notifications";
 import { SearchInput } from "../global/search-input";
 import { AlignJustify } from "lucide-react";
 import { Button } from "../ui/button";
@@ -15,7 +14,6 @@ export function Header() {
 			<SearchInput placeholder="Buscar..." className="hidden md:flex" />
 
 			<div className="flex gap-2">
-				{/* <Notifications /> */}
 				<ThemeSwitcher />
 				<Menu />
 			</div>

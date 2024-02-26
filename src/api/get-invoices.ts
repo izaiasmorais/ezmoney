@@ -33,7 +33,7 @@ export interface GetInvoicesResponse {
 
 export async function getInvoices({
 	pageIndex,
-	perPage = 10,
+	perPage = 30,
 	invoiceId,
 	invoiceName,
 	createdAt,

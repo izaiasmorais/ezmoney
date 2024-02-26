@@ -84,12 +84,32 @@ export function InvoiceTableFilters({
 		router.push(`${pathname}${query}`);
 	}
 
+	function handleClearFilters() {
+		const state = new URLSearchParams(Array.from(searchParams.entries()));
+
+		state.delete("invoiceId");
+		state.delete("invoiceName");
+		state.delete("status");
+		state.set("page", "1");
+
+		reset({
+			invoiceId: "",
+			invoiceName: "",
+			status: "all",
+		});
+
+		const search = state.toString();
+		const query = search ? `?${search}` : "";
+
+		router.push(`${pathname}${query}`);
+	}
+
 	return (
 		<form
-			className="flex items-center gap-2"
+			className="flex flex-wrap items-center gap-2"
 			onSubmit={handleSubmit(handleFilter)}
 		>
-			<span className="text-sm font-semibold">Filtros: </span>
+			<span className="text-sm font-semibold hidden lg:block">Filtros: </span>
 
 			<Input
 				className="h-8 w-[200px]"
@@ -150,7 +170,12 @@ export function InvoiceTableFilters({
 				Filtrar resultados
 			</Button>
 
-			<Button type="button" variant="outline" size="xs">
+			<Button
+				type="button"
+				variant="outline"
+				size="xs"
+				onClick={() => handleClearFilters()}
+			>
 				<X className="mr-2 h-4 w-4" />
 				Limpar resultados
 			</Button>

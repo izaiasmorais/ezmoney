@@ -3,17 +3,13 @@ import { Sidebar } from "@/components/sidebar/sidebar";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<div className="flex h-screen">
-			<Sidebar style="flex-none w-[300px] hidden lg:block p-4" />
+		<div className="lg:grid lg:grid-cols-app min-h-screen">
+			<Sidebar />
 
-			<main className="h-full flex flex-grow flex-col border-l">
-				<div>
-					<Header />
-				</div>
+			<main className="lg:col-start-2 max-w-[100vw] flex flex-col h-screen">
+				<Header />
 
-				<div className="flex-grow overflow-y-auto p-4 gap-4 md:gap-6">
-					{children}
-				</div>
+				<div className="p-4 flex-grow overflow-auto">{children}</div>
 			</main>
 		</div>
 	);
