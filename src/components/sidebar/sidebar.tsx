@@ -1,13 +1,13 @@
 "use client";
-import { Menu } from "lucide-react";
+import { SidebarContent } from "./sidebar-content";
 import { Button } from "../ui/button";
+import { Menu } from "lucide-react";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import Image from "next/image";
-import { SidebarContent } from "./sidebar-content";
 
 export function Sidebar() {
 	return (
