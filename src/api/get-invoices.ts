@@ -7,16 +7,16 @@ export interface GetInvoicesQuery {
 	perPage?: number;
 	invoiceId?: string | null;
 	invoiceName?: string | null;
-	createdAt?: string | null;
-	dueDate?: string | null;
+	createdAt?: Date | null;
+	dueDate?: Date | null;
 	status?: string | null;
 }
 
 export interface IInvoice {
 	invoiceId: string;
 	invoiceName: string;
-	createdAt: string;
-	dueDate: string;
+	createdAt: Date;
+	dueDate: Date;
 	value: string;
 	status: InvoiceStatus;
 	installments: string;
@@ -33,7 +33,7 @@ export interface GetInvoicesResponse {
 
 export async function getInvoices({
 	pageIndex,
-	perPage = 30,
+	perPage = 10,
 	invoiceId,
 	invoiceName,
 	createdAt,
@@ -44,8 +44,6 @@ export async function getInvoices({
 		params: {
 			invoiceId,
 			invoiceName,
-			createdAt,
-			dueDate,
 			status,
 		},
 	});
@@ -56,8 +54,6 @@ export async function getInvoices({
 		params: {
 			invoiceId,
 			invoiceName,
-			createdAt,
-			dueDate,
 			status,
 			limit: perPage,
 			page: pageIndex,

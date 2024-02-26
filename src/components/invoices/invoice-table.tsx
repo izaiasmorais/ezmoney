@@ -22,7 +22,7 @@ import { InvoicesTableSkeleton } from "./invoices-table-skeleton";
 
 export function InvoiceTable() {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>({
-		from: subDays(new Date(), 7),
+		from: subDays(new Date(), 30),
 		to: new Date(),
 	});
 
@@ -63,13 +63,16 @@ export function InvoiceTable() {
 
 	return (
 		<div className="space-y-4">
-			<div className="flex items-center justify-between flex-wrap gap-2">
+			<div className="flex items-center justify-between flex-wrap lg:flex-nowrap gap-2">
 				<InvoiceTableFilters
 					dateRange={dateRange}
 					setDateRange={setDateRange}
 				/>
 
-				<Button className="flex items-center gap-2 w-full" size="xs">
+				<Button
+					className="flex items-center gap-2 w-full lg:max-w-[220px]"
+					size="xs"
+				>
 					<Plus className="w-5 h-5" />
 					Adicionar conta
 				</Button>

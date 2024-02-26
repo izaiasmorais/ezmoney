@@ -106,7 +106,7 @@ export function InvoiceTableFilters({
 
 	return (
 		<form
-			className="flex flex-wrap items-center gap-2"
+			className="flex flex-wrap lg:flex-nowrap items-center gap-2 w-full"
 			onSubmit={handleSubmit(handleFilter)}
 		>
 			<span className="text-sm font-semibold hidden lg:block">Filtros: </span>
@@ -123,7 +123,7 @@ export function InvoiceTableFilters({
 				{...register("invoiceName")}
 			/>
 
-			<DateRangePicker date={dateRange} onDateChange={setDateRange} />
+			{/* <DateRangePicker date={dateRange} onDateChange={setDateRange} /> */}
 
 			<Controller
 				name="status"
