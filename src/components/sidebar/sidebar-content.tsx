@@ -10,36 +10,39 @@ import {
 	Wallet,
 } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
-import { CollapsibleTrigger } from "../ui/collapsible";
 
 export function SidebarContent() {
 	return (
 		<>
 			<div className="flex flex-col gap-1">
 				<span className="text-sm font-semibold mb-1">GERAL</span>
-				<SidebarItem title="Dashboard" href="/" icon={<Home size={20} />} />
+				<SidebarItem
+					title="Dashboard"
+					href="/"
+					icon={<Home size={20} strokeWidth={1.5} />}
+				/>
 
 				<SidebarItem
 					title="Contas"
 					href="/invoices"
-					icon={<CreditCard size={20} />}
+					icon={<CreditCard size={20} strokeWidth={1.5} />}
 				/>
 				<SidebarItem
 					title="Transferências"
 					href="/transactions"
-					icon={<Banknote size={20} />}
+					icon={<Banknote size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 				<SidebarItem
 					title="Orçamento"
 					href="/budget"
-					icon={<Wallet size={20} />}
+					icon={<Wallet size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 				<SidebarItem
 					title="Banco"
 					href="/banking"
-					icon={<Landmark size={20} />}
+					icon={<Landmark size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 			</div>
@@ -49,25 +52,25 @@ export function SidebarContent() {
 				<SidebarItem
 					title="Tarefas"
 					href="/tasks"
-					icon={<ClipboardCheck size={20} />}
+					icon={<ClipboardCheck size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 				<SidebarItem
 					title="Calendário"
 					href="/calendar"
-					icon={<CalendarDays size={20} />}
+					icon={<CalendarDays size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 				<SidebarItem
 					title="Investimentos"
 					href="/investiments"
-					icon={<LineChart size={20} />}
+					icon={<LineChart size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 				<SidebarItem
 					title="Configurações"
 					href="/settings"
-					icon={<Settings size={20} />}
+					icon={<Settings size={20} strokeWidth={1.5} />}
 					disabled
 				/>
 			</div>

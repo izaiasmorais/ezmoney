@@ -4,11 +4,11 @@ import Providers from "./providers";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const manrope = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "ezmoney",
-	description: "Best dashboard for your business out there",
+	description: "Best finance manager for your.",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
 				<link rel="icon" href="/ezmoney.png" sizes="any" />
 			</head>
 
-			<body className={inter.className}>
+			<body className={manrope.className}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>

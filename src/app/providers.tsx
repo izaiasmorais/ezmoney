@@ -4,6 +4,8 @@ import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
 import { queryClient } from "../lib/react-query";
 import { Next13ProgressBar } from "next13-progressbar";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ptBR } from "@clerk/localizations";
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
@@ -15,7 +17,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 				disableTransitionOnChange
 			>
 				<QueryClientProvider client={queryClient}>
-					{children}
+					<ClerkProvider localization={ptBR}>{children}</ClerkProvider>
 				</QueryClientProvider>
 			</ThemeProvider>
 

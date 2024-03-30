@@ -26,13 +26,13 @@ export function Sidebar() {
 		>
 			<div className="flex items-center justify-between ">
 				<h1 className="text-xl xl:text-2xl font-semibold flex items-center gap-2">
-					<Image
+					{/* <Image
 						src="/ezmoney.png"
 						alt="EZMoney Logo"
 						width={36}
 						height={36}
 						className="w-6 h-6 xl:w-8 xl:h-8"
-					/>
+					/> */}
 					EZMoney
 				</h1>
 

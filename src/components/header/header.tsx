@@ -3,6 +3,7 @@ import { SearchInput } from "../global/search-input";
 import { AlignJustify } from "lucide-react";
 import { Button } from "../ui/button";
 import { Menu } from "./menu";
+import { UserButton } from "@clerk/nextjs";
 
 export function Header() {
 	return (
@@ -14,6 +15,7 @@ export function Header() {
 			<SearchInput placeholder="Buscar..." className="hidden md:flex" />
 
 			<div className="flex gap-2">
+				<UserButton afterSignOutUrl="/" />
 				<ThemeSwitcher />
 				<Menu />
 			</div>
