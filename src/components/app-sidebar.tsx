@@ -11,6 +11,7 @@ import {
 	SidebarRail,
 } from "@/components/ui/sidebar";
 import { sidebarData } from "@/mocks/sidebar";
+import Image from "next/image";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	return (

@@ -21,7 +21,13 @@ export function InvoicesSummaryItem({
 		<div className={cn("min-w-[300px] p-4", className)}>
 			<div className="flex items-center gap-3">
 				<div className={`rounded-full p-2 ${colorClass}`}>{icon}</div>
-				<span className="text-sm font-medium">{title}</span>
+				<span className="text-sm font-medium">
+					{title === "Total" && "Total"}
+					{title === "Paid" && "Pago"}
+					{title === "Overdue" && "Atrasado"}
+					{title === "Pending" && "Pendente"}
+					{title === "Draft" && "Rascunho"}
+				</span>
 			</div>
 
 			<div className="mt-3">

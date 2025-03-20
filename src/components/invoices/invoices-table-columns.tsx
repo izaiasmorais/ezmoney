@@ -150,17 +150,20 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				<Badge
 					className={`rounded-full shadow-none font-semibold px-2 capitalize ${
 						status === "paid"
-							? "text-green-700 bg-green-50 hover:bg-green-50"
+							? "text-green-600 bg-green-50 hover:bg-green-50"
 							: status === "overdue"
-							? "text-red-700 bg-red-50 hover:bg-red-50"
+							? "text-red-600 bg-red-50 hover:bg-red-50"
 							: status === "pending"
-							? "text-yellow-700 bg-yellow-50 hover:bg-yellow-50"
+							? "text-yellow-600 bg-yellow-50 hover:bg-yellow-50"
 							: status === "draft"
-							? "text-indigo-700 bg-indigo-50 hover:bg-indigo-50"
+							? "text-indigo-600 bg-indigo-50 hover:bg-indigo-50"
 							: "text-muted-foreground bg-muted hover:bg-muted"
 					}`}
 				>
-					{status}
+					{status === "paid" && "Pago"}
+					{status === "overdue" && "Atrasado"}
+					{status === "pending" && "Pendente"}
+					{status === "draft" && "Rascunho"}
 				</Badge>
 			);
 		},
@@ -180,7 +183,8 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 		cell: ({ row }) => (
 			<div className="capitalize">
 				<Badge className="rounded-full px-3 bg-muted text-foregrou border border-zinc-300">
-					{row.getValue("type")}
+					{row.getValue("type") === "recurring" && "Recorrente"}
+					{row.getValue("type") === "fixed" && "Fixa"}
 				</Badge>
 			</div>
 		),

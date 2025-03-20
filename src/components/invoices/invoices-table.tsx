@@ -31,6 +31,14 @@ import { invoices } from "@/mocks/invoices";
 import { invoicesTableColumns } from "./invoices-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
 import { translateInvoicesTableKeys } from "@/utils/translate-products-table-keys";
+import { Combobox } from "../ui/combobox";
+
+const statusComboboxOptions = [
+	{ label: "Pago", value: "paid" },
+	{ label: "Pendente", value: "pending" },
+	{ label: "Atrasado", value: "overdue" },
+	{ label: "Rascunho", value: "draft" },
+];
 
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -71,6 +79,19 @@ export function InvoicesTable() {
 						table.getColumn("name")?.setFilterValue(event.target.value)
 					}
 				/>
+
+				<Combobox
+					entity="status"
+					translatedEntity="Status"
+					emptyMessage="Nenhum status encontrado"
+					placeholder="Filtrar por status"
+					items={statusComboboxOptions}
+					onChange={(value) =>
+						table.getColumn("status")?.setFilterValue(value)
+					}
+				/>
+
+				
 
 				<Button
 					variant="outline"

@@ -3,8 +3,8 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "PDV",
-	description: "O melhor PDV do Brasil",
+	title: "EZMoney",
+	description: "Organize sua vida financeira com um clique.",
 };
 
 export default function RootLayout({
@@ -18,6 +18,10 @@ export default function RootLayout({
 			className={GeistSans.className}
 			suppressHydrationWarning={true}
 		>
+			<head>
+				<link rel="icon" href="/ezmoney.svg" sizes="any" />
+			</head>
+
 			<body className="antialised vsc-initialized" cz-shortcut-listen="true">
 				{children}
 			</body>
