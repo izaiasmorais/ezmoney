@@ -27,25 +27,17 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { invoices } from "@/mocks/invoices";
-import { invoicesTableColumns } from "./invoices-table-columns";
+import { transactions } from "@/mocks/transactions";
+import { transactionsTableColumns } from "./transactions-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
-import { translateInvoicesTableKeys } from "@/utils/translate-products-table-keys";
 import { Combobox } from "../ui/combobox";
 
-const statusComboboxOptions = [
-	{ label: "Pago", value: "paid" },
-	{ label: "Pendente", value: "pending" },
-	{ label: "Atrasado", value: "overdue" },
-	{ label: "Rascunho", value: "draft" },
-];
-
 const typeComboboxOptions = [
-	{ label: "Fixa", value: "fixed" },
-	{ label: "Recorrente", value: "recurring" },
+	{ label: "Depósito", value: "deposit" },
+	{ label: "Despesa", value: "expense" },
 ];
 
-export function InvoicesTable() {
+export function TransactionsTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
 		[]
@@ -55,8 +47,8 @@ export function InvoicesTable() {
 	const [rowSelection, setRowSelection] = React.useState({});
 
 	const table = useReactTable({
-		data: invoices,
-		columns: invoicesTableColumns,
+		data: transactions,
+		columns: transactionsTableColumns,
 		onSortingChange: setSorting,
 		onColumnFiltersChange: setColumnFilters,
 		getCoreRowModel: getCoreRowModel(),
@@ -78,20 +70,11 @@ export function InvoicesTable() {
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:flex items-center gap-4">
 				<SearchInput
 					className="w-[300px]"
-					placeholder="Pesquisar contas..."
+					placeholder="Pesquisar transações..."
 					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
 					onChange={(event) =>
 						table.getColumn("name")?.setFilterValue(event.target.value)
 					}
-				/>
-
-				<Combobox
-					entity="status"
-					translatedEntity="Status"
-					emptyMessage="Nenhum status encontrado"
-					placeholder="Filtrar por status"
-					items={statusComboboxOptions}
-					onChange={(value) => table.getColumn("status")?.setFilterValue(value)}
 				/>
 
 				<Combobox
@@ -105,7 +88,7 @@ export function InvoicesTable() {
 
 				<Button
 					variant="outline"
-					className="font-semibold "
+					className="font-semibold"
 					onClick={() => [table.resetSorting(), table.resetColumnFilters()]}
 				>
 					<X />
@@ -135,17 +118,17 @@ export function InvoicesTable() {
 											column.toggleVisibility(!!value)
 										}
 									>
-										{translateInvoicesTableKeys(column.id)}
+										{column.id.charAt(0).toUpperCase() + column.id.slice(1)}
 									</DropdownMenuCheckboxItem>
 								);
 							})}
 					</DropdownMenuContent>
 				</DropdownMenu>
 
-				<Button className="font-semibold " asChild>
+				<Button className="font-semibold" asChild>
 					<div className="flex items-center space-x-2">
 						<PlusIcon />
-						Adicionar Conta
+						Adicionar Transação
 					</div>
 				</Button>
 			</div>
@@ -192,7 +175,7 @@ export function InvoicesTable() {
 						) : (
 							<TableRow>
 								<TableCell
-									colSpan={invoicesTableColumns.length}
+									colSpan={transactionsTableColumns.length}
 									className="h-24 text-center"
 								>
 									Sem resultados
