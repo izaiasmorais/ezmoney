@@ -96,7 +96,7 @@ export function TransactionsChart() {
 	}));
 
 	return (
-		<Card className="flex flex-col col-span-1 shadow-none border-muted pb-0 overflow-hidden">
+		<Card className="flex flex-col lg:col-span-1 shadow-none border-muted pb-0 overflow- h-full">
 			<CardHeader className="pb-0">
 				<div className="flex flex-col gap-1">
 					<CardTitle className="text-lg">Gastos</CardTitle>
@@ -182,7 +182,7 @@ export function TransactionsChart() {
 			</CardContent>
 
 			<CardFooter className="flex-col gap-2 text-sm p-4 border-t border-dashed">
-				<div className="grid grid-cols-4 gap-4 p-4">
+				<div className="grid grid-cols-2 2xl:grid-cols-4 gap-4 p-4">
 					{chartData.map((entry, index) => (
 						<div key={entry.category} className="flex items-center gap-2">
 							<div

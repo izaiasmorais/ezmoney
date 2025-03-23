@@ -37,18 +37,18 @@ export function useTransactions(
 		const currentMonth = currentDate.getMonth();
 
 		const months = [
-			"january",
-			"february",
-			"march",
-			"april",
-			"may",
-			"june",
-			"july",
-			"august",
-			"september",
-			"october",
-			"november",
-			"december",
+			"janeiro",
+			"fevereiro",
+			"março",
+			"abril",
+			"maio",
+			"junho",
+			"julho",
+			"agosto",
+			"setembro",
+			"outubro",
+			"novembro",
+			"dezembro",
 		];
 
 		const monthsToInclude =

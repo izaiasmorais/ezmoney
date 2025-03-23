@@ -1,275 +1,212 @@
+import { v4 as uuidv4 } from "uuid";
 import type { Transaction } from "@/@types/transactions";
 
-export const transactions: Transaction[] = [
-	{
-		id: "t1a2b3c4-e29b-41d4-a716-446655440000",
-		name: "Pagamento Conta de Luz",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 189.9,
-		category: "Utilidades",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t2b3c4d5-9dad-11d1-80b4-00c04fd430c8",
-		name: "Pagamento Conta de Água",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 92.5,
-		category: "Utilidades",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t3c4d5e6-58cc-4372-a567-0e02b2c3d479",
-		name: "Assinatura Netflix",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 55.9,
-		category: "Entretenimento",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t4d5e6f7-9dad-11d1-80b4-00c04fd430c8",
-		name: "Assinatura Disney+",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 43.9,
-		category: "Entretenimento",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t5e6f7g8-58cc-4372-a567-0e02b2c3d479",
-		name: "Internet Fibra",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 129.9,
-		category: "Utilidades",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t6f7g8h9-e29b-41d4-a716-446655440000",
-		name: "Parcela Consórcio Carro",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 890.0,
-		category: "Transporte",
-		installment: 12,
-		type: "expense",
-	},
-	{
-		id: "t7g8h9i0-9dad-11d1-80b4-00c04fd430c8",
-		name: "Pagamento Conta de Telefone",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 79.9,
-		category: "Utilidades",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t8h9i0j1-58cc-4372-a567-0e02b2c3d479",
-		name: "Assinatura Spotify Premium",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 34.9,
-		category: "Entretenimento",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t9i0j1k2-e29b-41d4-a716-446655440000",
-		name: "Manutenção Jardim",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 150.0,
-		category: "Casa",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t0j1k2l3-9dad-11d1-80b4-00c04fd430c8",
-		name: "Plano de Saúde",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 450.0,
-		category: "Saúde",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t1k2l3m4-58cc-4372-a567-0e02b2c3d479",
-		name: "Compra Supermercado",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 378.45,
-		category: "Alimentação",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t2l3m4n5-e29b-41d4-a716-446655440000",
-		name: "Aluguel Apartamento",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 1800.0,
-		category: "Moradia",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t3m4n5o6-9dad-11d1-80b4-00c04fd430c8",
-		name: "Academia Fitness",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 99.9,
-		category: "Saúde",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t4n5o6p7-58cc-4372-a567-0e02b2c3d479",
-		name: "Curso Online",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 299.9,
-		category: "Educação",
-		installment: 3,
-		type: "expense",
-	},
-	{
-		id: "t5o6p7q8-e29b-41d4-a716-446655440000",
-		name: "Seguro Carro",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 1200.0,
-		category: "Transporte",
-		installment: 6,
-		type: "expense",
-	},
-	{
-		id: "t6p7q8r9-9dad-11d1-80b4-00c04fd430c8",
-		name: "Salário Mensal",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 3500.0,
-		category: "Renda",
-		installment: 1,
-		type: "deposit",
-	},
-	{
-		id: "t7q8r9s0-58cc-4372-a567-0e02b2c3d479",
-		name: "Freelance Projeto",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 1200.0,
-		category: "Renda",
-		installment: 1,
-		type: "deposit",
-	},
-	{
-		id: "t8r9s0t1-e29b-41d4-a716-446655440000",
-		name: "Jantar Restaurante",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 85.0,
-		category: "Lazer",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t9s0t1u2-9dad-11d1-80b4-00c04fd430c8",
-		name: "Compra Roupas",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 250.0,
-		category: "Vestuário",
-		installment: 2,
-		type: "expense",
-	},
-	{
-		id: "t0t1u2v3-58cc-4372-a567-0e02b2c3d479",
-		name: "Reembolso Despesa",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 150.0,
-		category: "Renda",
-		installment: 1,
-		type: "deposit",
-	},
-	// Novas transações
-	{
-		id: "t1u2v3w4-e29b-41d4-a716-446655440000",
-		name: "Investimento Tesouro Direto",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 5000.0,
-		category: "Investimentos",
-		installment: 1,
-		type: "investment",
-	},
-	{
-		id: "t2v3w4x5-9dad-11d1-80b4-00c04fd430c8",
-		name: "Compra Ações B3",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 3000.0,
-		category: "Investimentos",
-		installment: 1,
-		type: "investment",
-	},
-	{
-		id: "t3w4x5y6-58cc-4372-a567-0e02b2c3d479",
-		name: "Fundo Imobiliário",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 2000.0,
-		category: "Investimentos",
-		installment: 1,
-		type: "investment",
-	},
-	{
-		id: "t4x5y6z7-e29b-41d4-a716-446655440000",
-		name: "Viagem Fim de Semana",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 450.0,
-		category: "Lazer",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t5y6z7a8-9dad-11d1-80b4-00c04fd430c8",
-		name: "Manutenção Carro",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 600.0,
-		category: "Transporte",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t6z7a8b9-58cc-4372-a567-0e02b2c3d479",
-		name: "Pagamento Dentista",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 300.0,
-		category: "Saúde",
-		installment: 2,
-		type: "expense",
-	},
-	{
-		id: "t7a8b9c0-e29b-41d4-a716-446655440000",
-		name: "Rendimento Investimento",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 250.0,
-		category: "Renda",
-		installment: 1,
-		type: "deposit",
-	},
-	{
-		id: "t8b9c0d1-9dad-11d1-80b4-00c04fd430c8",
-		name: "Compra Material Escolar",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 180.0,
-		category: "Educação",
-		installment: 1,
-		type: "expense",
-	},
-	{
-		id: "t9c0d1e2-58cc-4372-a567-0e02b2c3d479",
-		name: "Investimento CDB",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 4000.0,
-		category: "Investimentos",
-		installment: 1,
-		type: "investment",
-	},
-	{
-		id: "t0d1e2f3-e29b-41d4-a716-446655440000",
-		name: "Presente Aniversário",
-		createdAt: "2025-03-16T21:26:01.708Z",
-		value: 120.0,
-		category: "Outros",
-		installment: 1,
-		type: "expense",
-	},
-];
+function generateTransactions(count: number): Transaction[] {
+	const transactionTitles = {
+		expense: [
+			{
+				name: "Pagamento Conta de Luz",
+				category: "Utilidades",
+				valueRange: [150, 250],
+			},
+			{
+				name: "Pagamento Conta de Água",
+				category: "Utilidades",
+				valueRange: [80, 120],
+			},
+			{
+				name: "Assinatura Netflix",
+				category: "Entretenimento",
+				valueRange: [50, 70],
+			},
+			{
+				name: "Assinatura Disney+",
+				category: "Entretenimento",
+				valueRange: [35, 50],
+			},
+			{
+				name: "Internet Fibra",
+				category: "Utilidades",
+				valueRange: [100, 150],
+			},
+			{
+				name: "Parcela Consórcio Carro",
+				category: "Transporte",
+				valueRange: [800, 950],
+			},
+			{
+				name: "Pagamento Conta de Telefone",
+				category: "Utilidades",
+				valueRange: [70, 90],
+			},
+			{
+				name: "Assinatura Spotify Premium",
+				category: "Entretenimento",
+				valueRange: [30, 40],
+			},
+			{ name: "Manutenção Jardim", category: "Casa", valueRange: [120, 180] },
+			{ name: "Plano de Saúde", category: "Saúde", valueRange: [400, 500] },
+			{
+				name: "Compra Supermercado",
+				category: "Alimentação",
+				valueRange: [300, 450],
+			},
+			{
+				name: "Aluguel Apartamento",
+				category: "Moradia",
+				valueRange: [1600, 2000],
+			},
+			{ name: "Academia Fitness", category: "Saúde", valueRange: [90, 110] },
+			{ name: "Curso Online", category: "Educação", valueRange: [250, 350] },
+			{
+				name: "Seguro Carro",
+				category: "Transporte",
+				valueRange: [1000, 1400],
+			},
+			{ name: "Jantar Restaurante", category: "Lazer", valueRange: [70, 100] },
+			{ name: "Compra Roupas", category: "Vestuário", valueRange: [200, 300] },
+			{
+				name: "Viagem Fim de Semana",
+				category: "Lazer",
+				valueRange: [400, 600],
+			},
+			{
+				name: "Manutenção Carro",
+				category: "Transporte",
+				valueRange: [500, 700],
+			},
+			{ name: "Pagamento Dentista", category: "Saúde", valueRange: [250, 350] },
+			{
+				name: "Compra Material Escolar",
+				category: "Educação",
+				valueRange: [150, 200],
+			},
+			{
+				name: "Presente Aniversário",
+				category: "Outros",
+				valueRange: [100, 150],
+			},
+			{ name: "Conserto Geladeira", category: "Casa", valueRange: [300, 400] },
+			{
+				name: "Assinatura Amazon Prime",
+				category: "Entretenimento",
+				valueRange: [15, 25],
+			},
+			{ name: "Compra Farmácia", category: "Saúde", valueRange: [70, 100] },
+			{
+				name: "Estacionamento Shopping",
+				category: "Transporte",
+				valueRange: [20, 30],
+			},
+			{ name: "IPTU", category: "Impostos", valueRange: [380, 450] },
+			{
+				name: "Saque Caixa Eletrônico",
+				category: "Outros",
+				valueRange: [150, 250],
+			},
+		],
+		deposit: [
+			{ name: "Salário Mensal", category: "Renda", valueRange: [3000, 4000] },
+			{
+				name: "Freelance Projeto",
+				category: "Renda",
+				valueRange: [1000, 1500],
+			},
+			{ name: "Reembolso Despesa", category: "Renda", valueRange: [100, 200] },
+			{
+				name: "Rendimento Investimento",
+				category: "Renda",
+				valueRange: [200, 300],
+			},
+			{ name: "Bônus Anual", category: "Renda", valueRange: [2500, 3000] },
+			{ name: "Venda Item Usado", category: "Renda", valueRange: [300, 400] },
+		],
+		investment: [
+			{
+				name: "Investimento Tesouro Direto",
+				category: "Investimentos",
+				valueRange: [4500, 5500],
+			},
+			{
+				name: "Compra Ações B3",
+				category: "Investimentos",
+				valueRange: [2800, 3200],
+			},
+			{
+				name: "Fundo Imobiliário",
+				category: "Investimentos",
+				valueRange: [1800, 2200],
+			},
+			{
+				name: "Investimento CDB",
+				category: "Investimentos",
+				valueRange: [3800, 4200],
+			},
+		],
+	};
+
+	const transactions: Transaction[] = [];
+
+	for (let i = 0; i < count; i++) {
+		// Randomly select transaction type
+		const types = ["expense", "deposit", "investment"] as const;
+		const typeIndex = Math.floor(Math.random() * 10);
+		// Weight the distribution: 70% expense, 20% deposit, 10% investment
+		const type = typeIndex < 7 ? types[0] : typeIndex < 9 ? types[1] : types[2];
+
+		// Randomly select a transaction title based on the type
+		const titlesForType = transactionTitles[type];
+		const titleIndex = Math.floor(Math.random() * titlesForType.length);
+		const selectedTitle = titlesForType[titleIndex];
+
+		// Generate a random date between Jan 1, 2025 and Mar 31, 2025
+		const startDate = new Date(2024, 0, 1).getTime(); // Jan 1, 2025
+		const endDate = new Date(2025, 2, 31).getTime(); // Mar 31, 2025
+		const randomDate = new Date(
+			startDate + Math.random() * (endDate - startDate)
+		);
+
+		// Random time of day
+		randomDate.setHours(Math.floor(Math.random() * 14) + 8); // Between 8am and 10pm
+		randomDate.setMinutes(Math.floor(Math.random() * 60));
+		randomDate.setSeconds(Math.floor(Math.random() * 60));
+
+		// Generate random value within the range
+		const minValue = selectedTitle.valueRange[0];
+		const maxValue = selectedTitle.valueRange[1];
+		const value = +(minValue + Math.random() * (maxValue - minValue)).toFixed(
+			1
+		);
+
+		// Generate random installments based on type
+		let installment = 1;
+		if (type === "expense") {
+			// For some expenses, we might have installments
+			const needsInstallment = Math.random() < 0.2; // 20% chance
+			if (needsInstallment) {
+				installment = Math.floor(Math.random() * 11) + 2; // 2 to 12 installments
+			}
+		}
+
+		transactions.push({
+			id: uuidv4(),
+			name: selectedTitle.name,
+			createdAt: randomDate.toISOString(),
+			value: value,
+			category: selectedTitle.category,
+			installment: installment,
+			type: type,
+		});
+	}
+
+	// Sort by date for better readability
+	transactions.sort(
+		(a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+	);
+
+	return transactions;
+}
+
+const randomTransactions = generateTransactions(200);
+
+export const transactions: Transaction[] = randomTransactions;
