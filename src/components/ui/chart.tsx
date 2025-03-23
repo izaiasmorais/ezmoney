@@ -222,7 +222,7 @@ function ChartTooltipContent({
                   )}
                   <div
                     className={cn(
-                      "flex flex-1 justify-between leading-none",
+                      "flex flex-1 gap-1 justify-between leading-none",
                       nestLabel ? "items-end" : "items-center"
                     )}
                   >
@@ -231,7 +231,8 @@ function ChartTooltipContent({
                       <span className="text-muted-foreground">
                         {itemConfig?.label || item.name}
                       </span>
-                    </div>
+										</div>
+
                     {item.value && (
                       <span className="text-foreground font-mono font-medium tabular-nums">
                         {item.value.toLocaleString()}

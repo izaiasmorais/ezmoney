@@ -1,5 +1,5 @@
 import { useTransactions } from "@/hooks/use-transactions";
-import { SummaryCard } from "./summary-card";
+import { SummaryCard } from "./transactions-summary-card";
 
 export function Summary() {
 	const { totalDeposits, totalExpenses, totalInvestments } = useTransactions();
