@@ -5,5 +5,5 @@ export type Transaction = {
 	value: number;
 	category: string;
 	installment: number;
-	type: "deposit" | "expense";
+	type: "deposit" | "expense" | "investment";
 };

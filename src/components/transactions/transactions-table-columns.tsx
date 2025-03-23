@@ -144,11 +144,14 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 					className={`rounded-full shadow-none font-semibold px-2 capitalize ${
 						type === "deposit"
 							? "text-green-600 bg-green-50 hover:bg-green-50"
-							: "text-red-600 bg-red-50 hover:bg-red-50"
+							: type === "expense"
+							? "text-red-600 bg-red-50 hover:bg-red-50"
+							: "text-blue-600 bg-blue-50 hover:bg-blue-50"
 					}`}
 				>
 					{type === "deposit" && "Depósito"}
 					{type === "expense" && "Despesa"}
+					{type === "investment" && "Investimento"}
 				</Badge>
 			);
 		},

@@ -31,10 +31,12 @@ import { transactions } from "@/mocks/transactions";
 import { transactionsTableColumns } from "./transactions-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
 import { Combobox } from "../ui/combobox";
+import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
 
 const typeComboboxOptions = [
 	{ label: "Depósito", value: "deposit" },
 	{ label: "Despesa", value: "expense" },
+	{ label: "Investimento", value: "investment" },
 ];
 
 export function TransactionsTable() {
@@ -118,7 +120,7 @@ export function TransactionsTable() {
 											column.toggleVisibility(!!value)
 										}
 									>
-										{column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+										{translateTransactionsTableKeys(column.id)}
 									</DropdownMenuCheckboxItem>
 								);
 							})}
