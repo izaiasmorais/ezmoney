@@ -32,18 +32,10 @@ import { invoicesTableColumns } from "./invoices-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
 import { translateInvoicesTableKeys } from "@/utils/translate-products-table-keys";
 import { Combobox } from "../ui/combobox";
+import Link from "next/link";
+import { invoiceStatusOptions } from "@/mocks/invoice-statuses";
+import { invoiceTypeOptions } from "@/mocks/invoice-types";
 
-const statusComboboxOptions = [
-	{ label: "Pago", value: "paid" },
-	{ label: "Pendente", value: "pending" },
-	{ label: "Atrasado", value: "overdue" },
-	{ label: "Rascunho", value: "draft" },
-];
-
-const typeComboboxOptions = [
-	{ label: "Fixa", value: "fixed" },
-	{ label: "Recorrente", value: "recurring" },
-];
 
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -90,7 +82,7 @@ export function InvoicesTable() {
 					translatedEntity="Status"
 					emptyMessage="Nenhum status encontrado"
 					placeholder="Filtrar por status"
-					items={statusComboboxOptions}
+					items={invoiceStatusOptions}
 					onChange={(value) => table.getColumn("status")?.setFilterValue(value)}
 				/>
 
@@ -99,7 +91,7 @@ export function InvoicesTable() {
 					translatedEntity="Tipo"
 					emptyMessage="Nenhum tipo encontrado"
 					placeholder="Filtrar por tipo"
-					items={typeComboboxOptions}
+					items={invoiceTypeOptions}
 					onChange={(value) => table.getColumn("type")?.setFilterValue(value)}
 				/>
 
@@ -143,10 +135,12 @@ export function InvoicesTable() {
 				</DropdownMenu>
 
 				<Button className="font-semibold " asChild>
-					<div className="flex items-center space-x-2">
-						<PlusIcon />
-						Adicionar Conta
-					</div>
+					<Link href="/contas/adicionar-conta">
+						<div className="flex items-center space-x-2">
+							<PlusIcon />
+							Adicionar Conta
+						</div>
+					</Link>
 				</Button>
 			</div>
 

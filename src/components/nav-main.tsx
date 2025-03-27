@@ -38,7 +38,7 @@ export function NavMain({
 
 	function isActive(url: string) {
 		return pathname.endsWith(url)
-			? "text-violet-600 hover:text-violet-700/80 dark:text-violet-800 bg-violet-50 hover:bg-violet-50/80 dark:bg-violet-950/50"
+			? "text-indigo-600 hover:text-ingido-600/80 dark:text-indigo-600 bg-indigo-50 hover:bg-indigo-50 dark:bg-indigo-50/50"
 			: "text-foreground/90";
 	}
 
@@ -109,7 +109,7 @@ export function NavMain({
 																strokeWidth={1.75}
 																className={`${
 																	pathname.includes(subItem.url) &&
-																	"!text-violet-700"
+																	"!text-minimal-purple"
 																}`}
 															/>
 														)}
