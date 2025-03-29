@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { NavMain } from "@/components/nav-main";
 import { TeamSwitcher } from "@/components/team-switcher";
@@ -9,27 +10,7 @@ import {
 	SidebarRail,
 } from "@/components/ui/sidebar";
 import { sidebarData } from "@/mocks/sidebar";
-import { authClient } from "@/lib/auth-client";
-import { NavUserSkeleton } from "./nav-user-skeleton";
-import { NavUser } from "./nav-user";
-
-const UserProfile = () => {
-	const { data: session, isPending } = authClient.useSession();
-
-	if (isPending || !session || !session.user) {
-		throw new Promise((resolve) => setTimeout(resolve, 10));
-	}
-
-	return (
-		<NavUser
-			user={{
-				name: session.user.name,
-				email: session.user.email,
-				avatar: session.user.image ?? "",
-			}}
-		/>
-	);
-};
+import { NavUserClient } from "./nav-user-client";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	return (
@@ -43,9 +24,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			</SidebarContent>
 
 			<SidebarFooter>
-				<React.Suspense fallback={<NavUserSkeleton />}>
-					<UserProfile />
-				</React.Suspense>
+				<NavUserClient />
 			</SidebarFooter>
 
 			<SidebarRail />

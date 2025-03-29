@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
 
 	const isUserAuthenticated = !!sessionCookie;
 
-	const publicRoutes = ["/entrar", "/cadastro"];
+	const publicRoutes = ["/entrar", "/cadastro", "/resetar-senha"];
 
 	if (!isUserAuthenticated) {
 		url.pathname = "/entrar";

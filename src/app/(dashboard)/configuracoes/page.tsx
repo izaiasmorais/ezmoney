@@ -1,20 +1,15 @@
-import { Settings } from "lucide-react";
+import { ProfileForm } from "@/components/settings/profile-form";
+import { PasswordForm } from "@/components/settings/password-form";
+import { DeleteAccountForm } from "@/components/settings/delete-account-form";
 
-export default function Page() {
+export default function Settings() {
 	return (
-		<div className="w-full p-4">
-			<div
-				className="border border-dashed border-zinc-200 rounded-lg h-[500px] flex items-center
-			justify-center flex-col gap-2"
-			>
-				<div className="w-20 h-20 flex items-center justify-center rounded-full bg-muted">
-					<Settings size={48} strokeWidth={1} />
-				</div>
+		<div className="container mx-auto p-6 space-y-10">
+			<ProfileForm />
 
-				<h2 className="text-xl font-semibold">Configurações</h2>
+			<PasswordForm />
 
-				<span className="text-muted-foreground">Página não disponível</span>
-			</div>
+			<DeleteAccountForm />
 		</div>
 	);
 }
