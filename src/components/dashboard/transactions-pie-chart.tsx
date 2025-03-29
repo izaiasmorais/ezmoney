@@ -79,7 +79,7 @@ const orderedColors = Object.values(chartConfig)
 	.map((config) => config.color!)
 	.reverse();
 
-export function TransactionsChart() {
+export function TransactionsPieChart() {
 	const { expensesByCategory, totalExpenses } = useTransactions();
 
 	const sortedData = expensesByCategory
@@ -96,7 +96,7 @@ export function TransactionsChart() {
 	}));
 
 	return (
-		<Card className="flex flex-col lg:col-span-1 shadow-none border-muted pb-0 overflow- h-full">
+		<Card className="flex flex-col lg:col-span-1 shadow-none border-muted pb-0 h-full">
 			<CardHeader className="pb-0">
 				<div className="flex flex-col gap-1">
 					<CardTitle className="text-lg">Gastos</CardTitle>

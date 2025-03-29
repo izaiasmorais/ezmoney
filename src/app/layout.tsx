@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+
+import Providers from "./providers";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,8 +21,12 @@ export default function RootLayout({
 				<link rel="icon" href="/ezmoney.svg" sizes="any" />
 			</head>
 
-			<body className="antialised vsc-initialized" cz-shortcut-listen="true">
-				{children}
+			<body
+				className="antialised vsc-initialized"
+				cz-shortcut-listen="true"
+				suppressHydrationWarning
+			>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);
