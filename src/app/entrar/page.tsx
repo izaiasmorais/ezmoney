@@ -14,10 +14,12 @@ export default function SignIn() {
 			<div className="flex flex-col items-center justify-center gap-6 w-[400px]">
 				<a href="#" className="flex items-center gap-2 self-center font-medium">
 					<Image
-						src={"/ezmoney.svg"}
+						src={"/ezmoney.png"}
 						alt="Logo do EZMoney"
 						width={32}
 						height={32}
+						quality={100}
+						priority
 					/>
 					EZMoney
 				</a>

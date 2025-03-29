@@ -14,6 +14,8 @@ const signInFormSchema = z.object({
 export function useSignIn() {
 	const router = useRouter();
 	const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
+	const [isLoadingSignInWithGoogle, setIsLoadingSignInWithGoogle] =
+		useState(false);
 
 	const form = useFormMutation({
 		schema: signInFormSchema,
@@ -50,8 +52,31 @@ export function useSignIn() {
 		},
 	});
 
+	async function handleSignInWithGoogle() {
+		await authClient.signIn.social(
+			{
+				provider: "google",
+			},
+			{
+				onRequest: () => {
+					setIsLoadingSignInWithGoogle(true);
+				},
+				onSuccess: (ctx) => {
+					console.log(ctx);
+				},
+				onError: (ctx: ErrorContext) => {
+					console.log(ctx);
+
+					setIsLoadingSignInWithGoogle(false);
+				},
+			}
+		);
+	}
+
 	return {
 		form,
 		isLoadingSignIn,
+		isLoadingSignInWithGoogle,
+		handleSignInWithGoogle,
 	};
 }
