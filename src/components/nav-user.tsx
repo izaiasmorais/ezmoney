@@ -1,5 +1,5 @@
 "use client";
-import { BadgeCheck, ChevronsUpDown, LogOut } from "lucide-react";
+import { ChevronsUpDown, LogOut, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	DropdownMenu,
@@ -16,6 +16,7 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export function NavUser({
 	user,
@@ -76,16 +77,18 @@ export function NavUser({
 
 						<DropdownMenuGroup>
 							<DropdownMenuItem>
-								<BadgeCheck />
-								Account
+								<User />
+								Perfil
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 
 						<DropdownMenuSeparator />
 
-						<DropdownMenuItem>
-							<LogOut />
-							Log out
+						<DropdownMenuItem asChild>
+							<Link href="/entrar">
+								<LogOut />
+								<span>Sair</span>
+							</Link>
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>

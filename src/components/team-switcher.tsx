@@ -42,9 +42,6 @@ export function TeamSwitcher({
 							size="lg"
 							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 						>
-							{/* <div className="bg-indigo-500 flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
-								<activeTeam.logo className="size-4" />
-							</div> */}
 							<Image
 								src={"/ezmoney.svg"}
 								alt="Logo do EZMoney"
