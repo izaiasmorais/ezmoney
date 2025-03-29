@@ -17,6 +17,7 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 export function NavUser({
 	user,
@@ -84,7 +85,10 @@ export function NavUser({
 
 						<DropdownMenuSeparator />
 
-						<DropdownMenuItem asChild>
+						<DropdownMenuItem
+							asChild
+							onClick={async () => await authClient.signOut()}
+						>
 							<Link href="/entrar">
 								<LogOut />
 								<span>Sair</span>
