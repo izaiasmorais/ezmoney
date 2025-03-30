@@ -19,7 +19,7 @@ export function DeleteAccountForm() {
 			</div>
 
 			<div className="col-span-1 md:col-span-2">
-				<Card className="border-muted rounded-lg p-0">
+				<Card className="border-muted rounded-lg p-0 shadow-none">
 					<CardContent className="p-6">
 						<p className="mb-4 text-sm">
 							Depois que sua conta for excluída, todos os seus recursos e dados

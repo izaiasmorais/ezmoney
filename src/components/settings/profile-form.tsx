@@ -1,9 +1,5 @@
 "use client";
 import React from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -15,26 +11,18 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-
-const profileSchema = z.object({
-	avatarUrl: z.string().url({ message: "URL inválida" }),
-	name: z.string().min(2, { message: "Nome deve ter pelo menos 2 caracteres" }),
-	email: z.string().email({ message: "Email inválido" }),
-});
+import { useQuery } from "@tanstack/react-query";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { getSession } from "@/api/session/get-session";
+import { useEditProfile } from "@/hooks/use-update-profile";
+import { Skeleton } from "../ui/skeleton";
 
 export function ProfileForm() {
-	const profileForm = useForm<z.infer<typeof profileSchema>>({
-		resolver: zodResolver(profileSchema),
-		defaultValues: {
-			name: "",
-			email: "",
-			avatarUrl: "",
-		},
+	const { form } = useEditProfile();
+	const { data, isLoading: isLoadingGetSession } = useQuery({
+		queryKey: ["get-session"],
+		queryFn: getSession,
 	});
-
-	const handleSubmit = (data: z.infer<typeof profileSchema>) => {
-		console.log("Profile data:", data);
-	};
 
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -48,41 +36,62 @@ export function ProfileForm() {
 			<div className="col-span-1 md:col-span-2">
 				<Card className="border-muted rounded-lg overflow-auto shadow-none p-0">
 					<CardContent className="space-y-6 mt-6">
-						<Form {...profileForm}>
-							<form
-								onSubmit={profileForm.handleSubmit(handleSubmit)}
-								className="space-y-6"
-							>
+						<Form {...form}>
+							<form onSubmit={form.handleSubmitForm} className="space-y-6">
 								<FormField
-									control={profileForm.control}
+									control={form.control}
 									name="avatarUrl"
 									render={() => (
 										<FormItem>
 											<FormLabel>Foto</FormLabel>
+
 											<FormControl>
-												<Avatar className="h-20 w-20">
-													<AvatarImage src="https://github.com/izaiasmorais.png" />
-													<AvatarFallback>IZ</AvatarFallback>
-												</Avatar>
+												<div>
+													{isLoadingGetSession && (
+														<div className="w-20 h-20 rounded-full bg-muted" />
+													)}
+
+													{!isLoadingGetSession && data && (
+														<Avatar className="h-20 w-20">
+															<AvatarImage src={data.user.image} />
+
+															<AvatarFallback>
+																{data.user.name
+																	.split(" ")
+																	.map((n) => n[0])
+																	.join("")}
+															</AvatarFallback>
+														</Avatar>
+													)}
+												</div>
 											</FormControl>
+
 											<FormMessage />
 										</FormItem>
 									)}
 								/>
 
 								<FormField
-									control={profileForm.control}
+									control={form.control}
 									name="name"
-									render={({ field }) => (
+									render={() => (
 										<FormItem>
 											<FormLabel>Name</FormLabel>
 											<FormControl>
-												<Input
-													type="text"
-													placeholder="Digite seu nome"
-													{...field}
-													disabled
-												/>
+												<div>
+													{isLoadingGetSession && (
+														<Skeleton className="w-full h-9 rounded-sm bg-sidebar" />
+													)}
+
+													{!isLoadingGetSession && data && (
+														<Input
+															type="text"
+															placeholder="Digite seu nome"
+															defaultValue={data.user.name}
+															disabled
+														/>
+													)}
+												</div>
 											</FormControl>
 											<FormMessage />
 										</FormItem>
@@ -90,19 +99,29 @@ export function ProfileForm() {
 								/>
 
 								<FormField
-									control={profileForm.control}
+									control={form.control}
 									name="email"
-									render={({ field }) => (
+									render={() => (
 										<FormItem>
 											<FormLabel>Email</FormLabel>
+
 											<FormControl>
-												<Input
-													type="email"
-													placeholder="Digite seu email"
-													{...field}
-													disabled
-												/>
+												<div>
+													{isLoadingGetSession && (
+														<Skeleton className="w-full h-9 rounded-sm bg-sidebar" />
+													)}
+
+													{!isLoadingGetSession && data && (
+														<Input
+															type="email"
+															placeholder="Digite seu email"
+															defaultValue={data.user.email}
+															disabled
+														/>
+													)}
+												</div>
 											</FormControl>
+
 											<FormMessage />
 										</FormItem>
 									)}
@@ -112,9 +131,7 @@ export function ProfileForm() {
 					</CardContent>
 
 					<CardFooter className="bg-sidebar flex justify-end p-3">
-						<Button onClick={profileForm.handleSubmit(handleSubmit)}>
-							Salvar
-						</Button>
+						<Button onClick={form.handleSubmitForm}>Salvar</Button>
 					</CardFooter>
 				</Card>
 			</div>

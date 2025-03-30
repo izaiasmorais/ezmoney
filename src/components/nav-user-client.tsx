@@ -1,35 +1,23 @@
 "use client";
-import { authClient } from "@/lib/auth-client";
-import { useEffect, useState } from "react";
+import { getSession } from "@/api/session/get-session";
 import { NavUser } from "./nav-user";
 import { NavUserSkeleton } from "./nav-user-skeleton";
+import { useQuery } from "@tanstack/react-query";
 
 export function NavUserClient() {
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [avatarUrl, setAvatarUrl] = useState("");
+	const { data, isLoading: isLoadingGetSession } = useQuery({
+		queryKey: ["get-session"],
+		queryFn: getSession,
+	});
 
-	async function getUser() {
-		const { data: session } = await authClient.getSession();
-		return session;
-	}
-
-	useEffect(() => {
-		getUser().then((data) => {
-			setName(data?.user?.name ?? "");
-			setEmail(data?.user?.email ?? "");
-			setAvatarUrl(data?.user?.image ?? "");
-		});
-	}, []);
-
-	if (!email) return <NavUserSkeleton />;
+	if (isLoadingGetSession) return <NavUserSkeleton />;
 
 	return (
 		<NavUser
 			user={{
-				name: name,
-				email: email,
-				avatar: avatarUrl ?? "",
+				name: data?.user.name ?? "",
+				email: data?.user.email ?? "",
+				avatar: data?.user.image ?? "",
 			}}
 		/>
 	);
