@@ -27,7 +27,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { invoices } from "@/mocks/invoices";
 import { invoicesTableColumns } from "./invoices-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
 import { translateInvoicesTableKeys } from "@/utils/translate-products-table-keys";
@@ -35,6 +34,8 @@ import { Combobox } from "../ui/combobox";
 import Link from "next/link";
 import { invoiceStatusOptions } from "@/mocks/invoice-statuses";
 import { invoiceTypeOptions } from "@/mocks/invoice-types";
+import { useGetInvoices } from "@/hooks/use-get-invoices";
+import { InvoicesTableSkeleton } from "./invoices-table-item-skeleton";
 
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -44,9 +45,10 @@ export function InvoicesTable() {
 	const [columnVisibility, setColumnVisibility] =
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
+	const { data, isLoadingGetInvoices } = useGetInvoices();
 
 	const table = useReactTable({
-		data: invoices,
+		data: data,
 		columns: invoicesTableColumns,
 		onSortingChange: setSorting,
 		onColumnFiltersChange: setColumnFilters,
@@ -101,6 +103,7 @@ export function InvoicesTable() {
 					<X />
 					Limpar Filtros
 				</Button>
+
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<Button
@@ -166,7 +169,12 @@ export function InvoicesTable() {
 					</TableHeader>
 
 					<TableBody>
-						{table.getRowModel().rows?.length ? (
+						{isLoadingGetInvoices && <InvoicesTableSkeleton />}
+
+						{!isLoadingGetInvoices &&
+							data &&
+							data.length > 0 &&
+							table.getRowModel().rows?.length &&
 							table.getRowModel().rows.map((row) => (
 								<TableRow
 									key={row.id}
@@ -182,8 +190,9 @@ export function InvoicesTable() {
 										</TableCell>
 									))}
 								</TableRow>
-							))
-						) : (
+							))}
+
+						{!isLoadingGetInvoices && (!data || data.length === 0) && (
 							<TableRow>
 								<TableCell
 									colSpan={invoicesTableColumns.length}
@@ -212,6 +221,7 @@ export function InvoicesTable() {
 					>
 						Anterior
 					</Button>
+
 					<Button
 						variant="outline"
 						size="sm"

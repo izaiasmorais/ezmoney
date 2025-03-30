@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const createInvoiceRequestBodySchema = z.object({
 	name: z.string(),
@@ -25,19 +27,19 @@ export async function POST(req: Request) {
 
 	const invoiceData = createInvoiceRequestBodySchema.parse(body);
 
-	// const session = await auth.api.getSession({
-	// 	headers: await headers(),
-	// });
+	const session = await auth.api.getSession({
+		headers: await headers(),
+	});
 
-	// if (!session) {
-	// 	return response.status(401).json({
-	// 		success: false,
-	// 		error: "Unauthorized",
-	// 		data: null,
-	// 	});
-	// }
+	if (!session) {
+		return response.status(401).json({
+			success: false,
+			error: "Unauthorized",
+			data: null,
+		});
+	}
 
-	// const userInfo = session?.user;
+	const userInfo = session?.user;
 
 	const invoice = await prisma.invoice.create({
 		data: {
@@ -48,7 +50,7 @@ export async function POST(req: Request) {
 			installments: invoiceData.installments,
 			status: invoiceData.status,
 			type: invoiceData.type,
-			user_id: "S1cVHyefaukT58pPY7UcxJE4PJHGs9RU",
+			user_id: userInfo.id,
 			createdAt: new Date(),
 		},
 	});
