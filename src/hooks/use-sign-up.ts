@@ -3,6 +3,7 @@ import { useFormMutation } from "./use-form-mutation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { z } from "zod";
+import { ErrorContext } from "better-auth/react";
 
 const signUpFormSchema = z.object({
 	name: z.string().min(1, "O nome é obrigatório."),
@@ -13,6 +14,8 @@ const signUpFormSchema = z.object({
 export function useSignUp() {
 	const router = useRouter();
 	const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
+	const [isLoadingSignUpWithGoogle, setIsLoadingSignUpWithGoogle] =
+		useState(false);
 	const form = useFormMutation({
 		schema: signUpFormSchema,
 		defaultValues: {
@@ -43,8 +46,31 @@ export function useSignUp() {
 		},
 	});
 
+	async function handleSignUpWithGoogle() {
+		await authClient.signIn.social(
+			{
+				provider: "google",
+			},
+			{
+				onRequest: () => {
+					setIsLoadingSignUpWithGoogle(true);
+				},
+				onSuccess: (ctx) => {
+					console.log(ctx);
+				},
+				onError: (ctx: ErrorContext) => {
+					console.log(ctx);
+
+					setIsLoadingSignUpWithGoogle(false);
+				},
+			}
+		);
+	}
+
 	return {
 		form,
 		isLoadingSignUp,
+		isLoadingSignUpWithGoogle,
+		handleSignUpWithGoogle,
 	};
 }

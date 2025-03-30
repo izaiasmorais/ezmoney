@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { invoices } from "@/mocks/invoices";
+import { Invoice } from "@/@types/invoices";
+import { useGetInvoices } from "./use-get-invoices";
 
 interface InvoicesSummaryData {
 	invoicesData: {
@@ -14,10 +15,30 @@ interface InvoicesSummaryData {
 		overdueCount: number;
 		draftCount: number;
 	};
+	isLoading: boolean;
 }
 
-export function useInvoices(): InvoicesSummaryData {
+export function useInvoicesSummary(): InvoicesSummaryData {
+	const { data, isLoadingGetInvoices } = useGetInvoices();
+
 	const summary = useMemo(() => {
+		const invoices: Invoice[] = data ? data : [];
+
+		if (!invoices?.length) {
+			return {
+				totalAmount: "R$ 0,00",
+				paidAmount: "R$ 0,00",
+				pendingAmount: "R$ 0,00",
+				overdueAmount: "R$ 0,00",
+				draftAmount: "R$ 0,00",
+				totalCount: 0,
+				paidCount: 0,
+				pendingCount: 0,
+				overdueCount: 0,
+				draftCount: 0,
+			};
+		}
+
 		const total = invoices.reduce((sum, invoice) => sum + invoice.value, 0);
 
 		const paid = invoices
@@ -65,11 +86,12 @@ export function useInvoices(): InvoicesSummaryData {
 			overdueCount,
 			draftCount,
 		};
-	}, []);
+	}, [data]);
 
 	return {
 		invoicesData: {
 			...summary,
 		},
+		isLoading: isLoadingGetInvoices,
 	};
 }

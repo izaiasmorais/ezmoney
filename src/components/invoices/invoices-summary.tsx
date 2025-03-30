@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
 	DollarSign,
@@ -7,26 +8,21 @@ import {
 	FileText,
 } from "lucide-react";
 import { InvoicesSummaryItem } from "./invoices-summary-item";
+import { useInvoicesSummary } from "@/hooks/use-invoices";
+import { InvoicesSummarySkeleton } from "./invoices-summary-skeleton";
 
-interface InvoicesSummaryProps {
-	invoicesData: {
-		totalAmount: string;
-		paidAmount: string;
-		pendingAmount: string;
-		overdueAmount: string;
-		draftAmount: string;
-		totalCount: number;
-		paidCount: number;
-		pendingCount: number;
-		overdueCount: number;
-		draftCount: number;
-	};
-}
+export function InvoicesSummary() {
+	const { invoicesData, isLoading } = useInvoicesSummary();
 
-export function InvoicesSummary({ invoicesData }: InvoicesSummaryProps) {
+	if (isLoading) {
+		return <InvoicesSummarySkeleton />;
+	}
+
 	return (
-		<div className="w-full shadow-none rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-		xl:grid-cols-5 gap-4">
+		<div
+			className="w-full shadow-none rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+		xl:grid-cols-5 gap-4"
+		>
 			<InvoicesSummaryItem
 				title="Total"
 				amount={invoicesData.totalAmount}
