@@ -36,7 +36,6 @@ import Link from "next/link";
 import { invoiceStatusOptions } from "@/mocks/invoice-statuses";
 import { invoiceTypeOptions } from "@/mocks/invoice-types";
 
-
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -67,9 +66,9 @@ export function InvoicesTable() {
 
 	return (
 		<div className="w-full space-y-4">
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:flex items-center gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:flex items-center gap-4">
 				<SearchInput
-					className="w-[300px]"
+					className="w-full xl:w-[300px]"
 					placeholder="Pesquisar contas..."
 					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
 					onChange={(event) =>
@@ -94,7 +93,6 @@ export function InvoicesTable() {
 					items={invoiceTypeOptions}
 					onChange={(value) => table.getColumn("type")?.setFilterValue(value)}
 				/>
-
 				<Button
 					variant="outline"
 					className="font-semibold "
@@ -103,10 +101,12 @@ export function InvoicesTable() {
 					<X />
 					Limpar Filtros
 				</Button>
-
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<Button variant="outline" className="font-semibold md:ml-auto">
+						<Button
+							variant="outline"
+							className="font-semibold md:ml-auto w-full xl:w-[100px]"
+						>
 							<div className="flex items-center space-x-2">
 								Colunas <ChevronDown />
 							</div>

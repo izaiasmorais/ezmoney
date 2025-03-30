@@ -37,15 +37,17 @@ model session {
 }
 
 model user {
-  id            String    @id
+  id            String   @id
   name          String
-  email         String    @unique
+  email         String   @unique
   emailVerified Boolean
   image         String?
   createdAt     DateTime
   updatedAt     DateTime
-  account       account[]
-  session       session[]
+
+  invoices Invoice[]
+  account  account[]
+  session  session[]
 }
 
 model verification {
@@ -55,4 +57,21 @@ model verification {
   expiresAt  DateTime
   createdAt  DateTime?
   updatedAt  DateTime?
+}
+
+model Invoice {
+  id           String   @id @default(uuid())
+  name         String
+  createdAt    DateTime @default(now())
+  dueDate      DateTime
+  value        Float
+  installments Int
+  status       String // "paid" | "overdue" | "draft" | "pending"
+  type         String // "fixed" | "recurring"
+  user_id      String
+  userId       String?
+
+  user user? @relation(fields: [userId], references: [id])
+
+  @@map("invoices")
 }

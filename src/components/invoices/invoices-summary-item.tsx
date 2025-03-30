@@ -18,7 +18,7 @@ export function InvoicesSummaryItem({
 	count,
 }: InvoiceSummaryItemProps) {
 	return (
-		<div className={cn("min-w-[300px] p-4", className)}>
+		<div className={cn("p-6 border rounded-md", className)}>
 			<div className="flex items-center gap-3">
 				<div className={`rounded-full p-2 ${colorClass}`}>{icon}</div>
 				<span className="text-sm font-medium">

@@ -25,14 +25,14 @@ interface InvoicesSummaryProps {
 
 export function InvoicesSummary({ invoicesData }: InvoicesSummaryProps) {
 	return (
-		<div className="w-full border shadow-none rounded-xl grid grid-cols-5">
+		<div className="w-full shadow-none rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+		xl:grid-cols-5 gap-4">
 			<InvoicesSummaryItem
 				title="Total"
 				amount={invoicesData.totalAmount}
 				count={invoicesData.totalCount}
 				icon={<DollarSign className="h-5 w-5 text-blue-500" />}
 				colorClass="bg-blue-50"
-				className="border-r"
 			/>
 
 			<InvoicesSummaryItem
@@ -41,7 +41,6 @@ export function InvoicesSummary({ invoicesData }: InvoicesSummaryProps) {
 				count={invoicesData.paidCount}
 				icon={<CheckCircle className="h-5 w-5 text-green-500" />}
 				colorClass="bg-green-50"
-				className="border-r"
 			/>
 
 			<InvoicesSummaryItem
@@ -50,7 +49,6 @@ export function InvoicesSummary({ invoicesData }: InvoicesSummaryProps) {
 				count={invoicesData.pendingCount}
 				icon={<Clock className="h-5 w-5 text-yellow-500" />}
 				colorClass="bg-yellow-50"
-				className="border-r"
 			/>
 
 			<InvoicesSummaryItem
@@ -59,9 +57,7 @@ export function InvoicesSummary({ invoicesData }: InvoicesSummaryProps) {
 				count={invoicesData.overdueCount}
 				icon={<AlertCircle className="h-5 w-5 text-red-500" />}
 				colorClass="bg-red-50"
-				className="border-r"
 			/>
-
 			<InvoicesSummaryItem
 				title="Draft"
 				amount={invoicesData.draftAmount}
