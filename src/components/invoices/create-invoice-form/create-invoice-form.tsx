@@ -19,14 +19,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateInvoice } from "@/hooks/use-create-invoice";
 import { invoiceStatusOptions } from "@/mocks/invoice-statuses";
-import { invoiceTypeOptions } from "@/mocks/invoice-types";
+import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options";
 import { FormCombobox } from "@/components/form/form-combobox";
 import { FormDatePicker } from "@/components/form/form-date-picker";
+import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 
 export function CreateInvoiceForm() {
 	const { form } = useCreateInvoice();
 
-	const totalValue = form.watch("unitValue") * form.watch("installments");
+	const totalValue =
+		form.watch("unitValue") * form.watch("installments")
+			? form.watch("unitValue") * form.watch("installments")
+			: 0;
 
 	return (
 		<Form {...form}>
@@ -41,19 +45,30 @@ export function CreateInvoiceForm() {
 					</h2>
 
 					<div className="flex flex-col gap-4">
-						<FormField
-							control={form.control}
-							name="name"
-							render={({ field }) => (
-								<FormItem className="m-0">
-									<FormLabel>Nome da Conta</FormLabel>
-									<FormControl>
-										<Input placeholder="Ex: Conta de Energia" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+						<div className="grid md:grid-cols-2 gap-4">
+							<FormField
+								control={form.control}
+								name="name"
+								render={({ field }) => (
+									<FormItem className="m-0">
+										<FormLabel>Nome da Conta</FormLabel>
+										<FormControl>
+											<Input placeholder="Ex: Conta de Energia" {...field} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+
+							<FormCombobox
+								form={form}
+								options={invoiceCategoryOptions}
+								entity="category"
+								translatedEntity="Categoria"
+								placeholder="Selecione a categoria"
+								emptyMessage="Nenhuma categoria encontrada."
+							/>
+						</div>
 
 						<div className="grid md:grid-cols-2 gap-4">
 							<FormCombobox
@@ -67,8 +82,8 @@ export function CreateInvoiceForm() {
 
 							<FormCombobox
 								form={form}
-								options={invoiceTypeOptions}
-								entity="type"
+								options={invoicePaymentTypeOptions}
+								entity="paymentType"
 								translatedEntity="Tipo"
 								placeholder="Selecione o tipo de conta"
 								emptyMessage="Nenhum status encontrado."
@@ -116,7 +131,7 @@ export function CreateInvoiceForm() {
 
 							<TableBody>
 								<TableRow>
-									<TableCell className="p-3">
+									<TableCell className="p-3 align-top">
 										<FormField
 											control={form.control}
 											name="unitValue"
@@ -137,7 +152,7 @@ export function CreateInvoiceForm() {
 										/>
 									</TableCell>
 
-									<TableCell className="p-3 h-full">
+									<TableCell className="p-3 h-full align-top">
 										<FormField
 											control={form.control}
 											name="installments"
@@ -159,13 +174,9 @@ export function CreateInvoiceForm() {
 									</TableCell>
 
 									<TableCell className="p-3 align-top">
-										<Input
-											type="string"
-											placeholder="Valor Total"
-											className="w-full"
-											value={totalValue ? `R$ ${totalValue}` : undefined}
-											disabled
-										/>
+										<div className="h-9 min-w-[150px] rounded-md shadow-xs border p-2 pl-3 bg-slate-100">
+											{`R$ ${totalValue}`}
+										</div>
 									</TableCell>
 								</TableRow>
 							</TableBody>
@@ -178,9 +189,23 @@ export function CreateInvoiceForm() {
 						OBSERVAÇÕES
 					</h2>
 
-					<Textarea
-						placeholder="Adicione uma observação"
-						className="min-h-[100px] resize-none"
+					<FormField
+						control={form.control}
+						name="description"
+						render={({ field }) => (
+							<FormItem className="m-0">
+								<FormControl>
+									<Textarea
+										placeholder="Ex: Conta de energia referente ao mês de janeiro de 2024."
+										rows={3}
+										maxLength={250}
+										{...field}
+									/>
+								</FormControl>
+
+								<FormMessage />
+							</FormItem>
+						)}
 					/>
 
 					<div className="text-xs text-gray-500 text-right mt-1">0/250</div>

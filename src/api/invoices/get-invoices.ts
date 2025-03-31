@@ -1,7 +1,7 @@
 import { HTTPSuccessResponse, HTTPErrorResponse } from "@/@types/http";
 import { AxiosError } from "axios";
 import { api } from "@/lib/axios";
-import { Invoice } from "@/@types/invoices";
+import { Invoice } from "@/@types/invoice";
 
 type GetInvoicesResult = HTTPSuccessResponse<Invoice[]> | HTTPErrorResponse;
 

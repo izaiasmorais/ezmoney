@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { queryClient } from "@/lib/react-query";
 
 export function NavUser({
 	user,
@@ -39,6 +40,7 @@ export function NavUser({
 				},
 			},
 		});
+		queryClient.clear();
 	}
 
 	return (

@@ -28,27 +28,16 @@ export async function GET() {
 
 	const invoices = await prisma.invoice.findMany({
 		where: {
-			user_id: userInfo.id,
+			userId: userInfo.id,
 		},
 		orderBy: {
 			createdAt: "desc",
 		},
 	});
 
-	const formattedInvoices = invoices.map((invoice) => ({
-		id: invoice.id,
-		name: invoice.name,
-		createdAt: invoice.createdAt.toISOString(),
-		dueDate: invoice.dueDate.toISOString(),
-		value: invoice.value,
-		installments: invoice.installments,
-		status: invoice.status,
-		type: invoice.type,
-	}));
-
 	return response.status(200).json({
 		success: true,
 		error: null,
-		data: formattedInvoices,
+		data: invoices,
 	});
 }

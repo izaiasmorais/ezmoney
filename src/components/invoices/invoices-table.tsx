@@ -31,11 +31,11 @@ import { invoicesTableColumns } from "./invoices-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
 import { translateInvoicesTableKeys } from "@/utils/translate-products-table-keys";
 import { Combobox } from "../ui/combobox";
-import Link from "next/link";
 import { invoiceStatusOptions } from "@/mocks/invoice-statuses";
-import { invoiceTypeOptions } from "@/mocks/invoice-types";
+import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options";
 import { useGetInvoices } from "@/hooks/use-get-invoices";
 import { InvoicesTableSkeleton } from "./invoices-table-item-skeleton";
+import { useRouter } from "next/navigation";
 
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -46,6 +46,7 @@ export function InvoicesTable() {
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
 	const { data, isLoadingGetInvoices } = useGetInvoices();
+	const router = useRouter();
 
 	const table = useReactTable({
 		data: data,
@@ -92,7 +93,7 @@ export function InvoicesTable() {
 					translatedEntity="Tipo"
 					emptyMessage="Nenhum tipo encontrado"
 					placeholder="Filtrar por tipo"
-					items={invoiceTypeOptions}
+					items={invoicePaymentTypeOptions}
 					onChange={(value) => table.getColumn("type")?.setFilterValue(value)}
 				/>
 				<Button
@@ -137,13 +138,12 @@ export function InvoicesTable() {
 					</DropdownMenuContent>
 				</DropdownMenu>
 
-				<Button className="font-semibold " asChild>
-					<Link href="/contas/adicionar-conta">
-						<div className="flex items-center space-x-2">
-							<PlusIcon />
-							Adicionar Conta
-						</div>
-					</Link>
+				<Button
+					className="font-semibold"
+					onClick={() => router.push("/contas/adicionar-conta")}
+				>
+					<PlusIcon />
+					Adicionar Conta
 				</Button>
 			</div>
 

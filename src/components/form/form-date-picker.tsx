@@ -18,6 +18,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { FieldValues, Path } from "react-hook-form";
+import { ptBR } from "date-fns/locale";
 
 interface FormDatePickerProps<TFieldValues extends FieldValues> {
 	form: UseFormReturn<TFieldValues>;
@@ -62,6 +63,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
 						<PopoverContent className="w-auto p-0" align="start">
 							<Calendar
 								mode="single"
+								locale={ptBR}
 								selected={field.value ? new Date(field.value) : undefined}
 								onSelect={(date) =>
 									field.onChange(date ? date.toISOString() : null)

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Invoice } from "@/@types/invoices";
+import { Invoice } from "@/@types/invoice";
 import { useGetInvoices } from "./use-get-invoices";
 
 interface InvoicesSummaryData {
@@ -39,23 +39,23 @@ export function useInvoicesSummary(): InvoicesSummaryData {
 			};
 		}
 
-		const total = invoices.reduce((sum, invoice) => sum + invoice.value, 0);
+		const total = invoices.reduce((sum, invoice) => sum + invoice.unitValue, 0);
 
 		const paid = invoices
 			.filter((invoice) => invoice.status === "paid")
-			.reduce((sum, invoice) => sum + invoice.value, 0);
+			.reduce((sum, invoice) => sum + invoice.unitValue, 0);
 
 		const pending = invoices
 			.filter((invoice) => invoice.status === "pending")
-			.reduce((sum, invoice) => sum + invoice.value, 0);
+			.reduce((sum, invoice) => sum + invoice.unitValue, 0);
 
 		const overdue = invoices
 			.filter((invoice) => invoice.status === "overdue")
-			.reduce((sum, invoice) => sum + invoice.value, 0);
+			.reduce((sum, invoice) => sum + invoice.unitValue, 0);
 
 		const draft = invoices
 			.filter((invoice) => invoice.status === "draft")
-			.reduce((sum, invoice) => sum + invoice.value, 0);
+			.reduce((sum, invoice) => sum + invoice.unitValue, 0);
 
 		const totalCount = invoices.length;
 		const paidCount = invoices.filter(

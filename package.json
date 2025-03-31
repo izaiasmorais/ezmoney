@@ -8,6 +8,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"pull": "pnpm prisma db pull",
+		"migrate": "pnpm prisma migrate dev",
+		"reset": "pnpm prisma migrate reset",
 		"generate": "pnpm prisma generate",
 		"studio": "pnpm prisma studio -b chrome -p 5174"
 	},

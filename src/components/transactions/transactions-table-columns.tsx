@@ -11,7 +11,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import type { Transaction } from "@/@types/transactions";
+import type { Transaction } from "@/@types/transaction";
 
 export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	{

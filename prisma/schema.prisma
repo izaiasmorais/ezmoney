@@ -7,36 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model account {
-  id                    String    @id
-  accountId             String
-  providerId            String
-  userId                String
-  accessToken           String?
-  refreshToken          String?
-  idToken               String?
-  accessTokenExpiresAt  DateTime?
-  refreshTokenExpiresAt DateTime?
-  scope                 String?
-  password              String?
-  createdAt             DateTime
-  updatedAt             DateTime
-  user                  user      @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model session {
-  id        String   @id
-  expiresAt DateTime
-  token     String   @unique
-  createdAt DateTime
-  updatedAt DateTime
-  ipAddress String?
-  userAgent String?
-  userId    String
-  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model user {
+model User {
   id            String   @id
   name          String
   email         String   @unique
@@ -46,11 +17,44 @@ model user {
   updatedAt     DateTime
 
   invoices Invoice[]
-  account  account[]
-  session  session[]
+  accounts Account[]
+  sessions Session[]
 }
 
-model verification {
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  userId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+
+  userId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Verification {
   id         String    @id
   identifier String
   value      String
@@ -60,18 +64,21 @@ model verification {
 }
 
 model Invoice {
-  id           String   @id @default(uuid())
+  id           String    @id @default(uuid())
   name         String
-  createdAt    DateTime @default(now())
+  description  String?
+  createdAt    DateTime  @default(now())
   dueDate      DateTime
-  value        Float
+  updatedAt    DateTime? @updatedAt
+  unitValue    Float
   installments Int
   status       String // "paid" | "overdue" | "draft" | "pending"
-  type         String // "fixed" | "recurring"
-  user_id      String
-  userId       String?
+  paymentType  String // "unique" | "recurring"
+  category     String // "subscription" | "loan" | "purchase" | "general" | "streaming"
 
-  user user? @relation(fields: [userId], references: [id])
+  userId String
+
+  user User @relation(fields: [userId], references: [id])
 
   @@map("invoices")
 }

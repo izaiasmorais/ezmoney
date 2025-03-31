@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import type { Transaction } from "@/@types/transactions";
+import type { Transaction } from "@/@types/transaction";
 
 export const transactions: Transaction[] = [
 	// Janeiro
