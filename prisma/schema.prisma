@@ -16,9 +16,10 @@ model User {
   createdAt     DateTime
   updatedAt     DateTime
 
-  invoices Invoice[]
-  accounts Account[]
-  sessions Session[]
+  accounts     Account[]
+  sessions     Session[]
+  invoices     Invoice[]
+  transactions Transaction[]
 }
 
 model Account {
@@ -81,4 +82,19 @@ model Invoice {
   user User @relation(fields: [userId], references: [id])
 
   @@map("invoices")
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  name        String
+  createdAt   DateTime @default(now())
+  value       Float
+  category    String
+  installment Int
+  type        String // "deposit" | "Despesa" | "Investimento"
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@map("transactions")
 }

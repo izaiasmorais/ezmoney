@@ -39,7 +39,14 @@ export function useInvoicesSummary(): InvoicesSummaryData {
 			};
 		}
 
-		const total = invoices.reduce((sum, invoice) => sum + invoice.unitValue, 0);
+		const nonDraftInvoices = invoices.filter(
+			(invoice) => invoice.status !== "draft"
+		);
+
+		const total = nonDraftInvoices.reduce(
+			(sum, invoice) => sum + invoice.unitValue,
+			0
+		);
 
 		const paid = invoices
 			.filter((invoice) => invoice.status === "paid")
@@ -58,15 +65,19 @@ export function useInvoicesSummary(): InvoicesSummaryData {
 			.reduce((sum, invoice) => sum + invoice.unitValue, 0);
 
 		const totalCount = invoices.length;
+
 		const paidCount = invoices.filter(
 			(invoice) => invoice.status === "paid"
 		).length;
+
 		const pendingCount = invoices.filter(
 			(invoice) => invoice.status === "pending"
 		).length;
+
 		const overdueCount = invoices.filter(
 			(invoice) => invoice.status === "overdue"
 		).length;
+		
 		const draftCount = invoices.filter(
 			(invoice) => invoice.status === "draft"
 		).length;
