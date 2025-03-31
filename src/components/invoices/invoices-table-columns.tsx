@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
 	DropdownMenu,
@@ -130,7 +130,21 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	},
 	{
 		accessorKey: "installments",
-		header: "Parcelas",
+		header: ({ column }) => (
+			<Button
+				variant="ghost"
+				className="!p-0 hover:bg-transparent"
+				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+			>
+				Parcelas
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
+			</Button>
+		),
 		cell: ({ row }) => <div>{row.getValue("installments")}</div>,
 	},
 	{

@@ -36,6 +36,7 @@ import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options"
 import { useGetInvoices } from "@/hooks/use-get-invoices";
 import { InvoicesTableSkeleton } from "./invoices-table-item-skeleton";
 import { useRouter } from "next/navigation";
+import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -86,19 +87,36 @@ export function InvoicesTable() {
 					placeholder="Filtrar por status"
 					items={invoiceStatusOptions}
 					onChange={(value) => table.getColumn("status")?.setFilterValue(value)}
+					className="xl:w-[250px]"
 				/>
 
 				<Combobox
-					entity="type"
-					translatedEntity="Tipo"
+					entity="paymentType"
+					translatedEntity="Tipo de Pagamento"
 					emptyMessage="Nenhum tipo encontrado"
-					placeholder="Filtrar por tipo"
+					placeholder="Filtrar por tipo de pagamento"
 					items={invoicePaymentTypeOptions}
-					onChange={(value) => table.getColumn("type")?.setFilterValue(value)}
+					onChange={(value) =>
+						table.getColumn("paymentType")?.setFilterValue(value)
+					}
+					className="xl:w-[250px]"
 				/>
+
+				<Combobox
+					entity="category"
+					translatedEntity="Categoria"
+					emptyMessage="Nenhuma categoria encontrado"
+					placeholder="Filtrar por categoria"
+					items={invoiceCategoryOptions}
+					onChange={(value) =>
+						table.getColumn("category")?.setFilterValue(value)
+					}
+					className="xl:w-[250px]"
+				/>
+
 				<Button
-					variant="outline"
-					className="font-semibold "
+					variant="ghost"
+					className="font-semibold"
 					onClick={() => [table.resetSorting(), table.resetColumnFilters()]}
 				>
 					<X />

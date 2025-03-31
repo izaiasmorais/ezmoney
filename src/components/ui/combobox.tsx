@@ -24,6 +24,7 @@ interface ComboboxProps {
 	placeholder?: string;
 	emptyMessage?: string;
 	onChange?: (value: string) => void;
+	className?: string;
 }
 
 export function Combobox({
@@ -31,6 +32,8 @@ export function Combobox({
 	placeholder,
 	translatedEntity,
 	onChange,
+	emptyMessage,
+	className,
 }: ComboboxProps) {
 	const [open, setOpen] = React.useState(false);
 	const [value, setValue] = React.useState("");
@@ -42,7 +45,7 @@ export function Combobox({
 					variant="outline"
 					role="combobox"
 					aria-expanded={open}
-					className="justify-between"
+					className={cn("justify-between", className)}
 				>
 					{value
 						? items.find((item) => item.value === value)?.label
@@ -58,7 +61,9 @@ export function Combobox({
 						className="h-9"
 					/>
 					<CommandList>
-						<CommandEmpty>Nenhum ${translatedEntity} encontrado</CommandEmpty>
+						<CommandEmpty>
+							{emptyMessage || `Nenhum item encontrado`}
+						</CommandEmpty>
 
 						<CommandGroup>
 							{items.map((item) => (
