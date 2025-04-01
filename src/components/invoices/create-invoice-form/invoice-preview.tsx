@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { FileDown, Mail } from "lucide-react";
 import {
@@ -8,8 +9,11 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { useCreateInvoice } from "@/hooks/use-create-invoice";
 
 export function InvoicePreview() {
+	const { form } = useCreateInvoice();
+
 	return (
 		<div className="w-full lg:w-1/2 bg-slate-50 rounded-lg p-6">
 			<div className="flex justify-between items-center mb-6">
@@ -41,27 +45,33 @@ export function InvoicePreview() {
 								<TableHead className="text-right py-3 text-sm font-medium text-gray-700">
 									Valor Unitário
 								</TableHead>
+
 								<TableHead className="text-right py-3 text-sm font-medium text-gray-700">
 									Parcelas
 								</TableHead>
+
 								<TableHead className="text-right py-3 text-sm font-medium text-gray-700">
 									Valor Total
 								</TableHead>
 							</TableRow>
 						</TableHeader>
+
 						<TableBody>
 							<TableRow>
 								<TableCell className="py-3 text-gray-700">
-									Design Services
+									{form.watch("name")}
 								</TableCell>
+
 								<TableCell className="py-3 text-gray-700 text-right">
-									$50
+									R$ {form.watch("unitValue")}
 								</TableCell>
+
 								<TableCell className="py-3 text-gray-700 text-right">
-									10
+									{form.watch("installments")}
 								</TableCell>
+
 								<TableCell className="py-3 text-gray-700 text-right">
-									$500,00
+									R$ {form.watch("unitValue") * form.watch("installments")}
 								</TableCell>
 							</TableRow>
 						</TableBody>
@@ -71,7 +81,9 @@ export function InvoicePreview() {
 				<div className="flex justify-end mb-8">
 					<div className="text-right">
 						<p className="text-sm text-gray-600 mb-1">Total</p>
-						<p className="text-2xl font-bold text-gray-800">$5,000.00</p>
+						<p className="text-2xl font-bold text-gray-800">
+							R$ {form.watch("unitValue") * form.watch("installments")}
+						</p>
 					</div>
 				</div>
 

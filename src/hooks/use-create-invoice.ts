@@ -1,11 +1,16 @@
 "use client";
 import { useFormMutation } from "./use-form-mutation";
 import { createInvoice } from "@/api/invoices/create-invoice";
-import { queryClient } from "@/lib/react-query";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { createInvoiceRequestSchema } from "@/@types/invoice";
+import { createInvoiceRequestSchema, Invoice } from "@/@types/invoice";
+
+export type InvoiceWithDateObject = Omit<Invoice, "createdAt"> & {
+	createdAt: Date;
+};
+
+export type GetInvoicesQueryResult = InvoiceWithDateObject[];
 
 export function useCreateInvoice() {
 	const router = useRouter();
@@ -42,15 +47,13 @@ export function useCreateInvoice() {
 			mutationFn: createInvoice,
 			mutationKey: ["create-invoice"],
 			onSuccess: (response) => {
-				if (response.success) {
-					queryClient.invalidateQueries({
-						queryKey: ["get-invoices"],
-					});
-					router.push("/contas");
+				if (response.success === true) {
 					toast.success("Fatura criada com sucesso!");
-					form.reset();
+
+					router.push("/contas");
 					return;
 				}
+				toast.error(response.error);
 			},
 		});
 

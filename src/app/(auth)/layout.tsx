@@ -9,7 +9,7 @@ export default function AuthLayout({
 }) {
 	return (
 		<div className="flex w-full min-h-screen">
-			<div className="w-full md:w-1/2 p-6 md:p-12 flex items-center justify-center">
+			<div className="w-full md:w-1/2 md:p-12 flex items-center justify-center">
 				<div className="flex flex-col items-center justify-center gap-6 w-[500px]">
 					<span className="flex items-center gap-2 self-center font-medium">
 						<Image

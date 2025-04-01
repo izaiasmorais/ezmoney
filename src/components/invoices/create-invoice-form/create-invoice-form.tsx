@@ -23,9 +23,12 @@ import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options"
 import { FormCombobox } from "@/components/form/form-combobox";
 import { FormDatePicker } from "@/components/form/form-date-picker";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
+import { Button } from "@/components/ui/button";
+import { Loader } from "lucide-react";
+import Link from "next/link";
 
 export function CreateInvoiceForm() {
-	const { form } = useCreateInvoice();
+	const { form, isLoadingCreateInvoice } = useCreateInvoice();
 
 	const totalValue =
 		form.watch("unitValue") * form.watch("installments")
@@ -212,7 +215,25 @@ export function CreateInvoiceForm() {
 				</div>
 
 				<div className="flex justify-end">
-					<p className="text-lg font-semibold text-gray-700">Total: $0.00</p>
+					<div className="flex items-center gap-4">
+						<Link href="/contas" aria-disabled={isLoadingCreateInvoice}>
+							<Button variant="ghost" disabled={isLoadingCreateInvoice}>
+								Cancelar
+							</Button>
+						</Link>
+
+						<Button
+							type="submit"
+							form="create-invoice-form"
+							disabled={isLoadingCreateInvoice}
+							aria-disabled={isLoadingCreateInvoice}
+						>
+							{isLoadingCreateInvoice && (
+								<Loader className="mr-2 h-4 w-4 animate-spin" />
+							)}
+							Confirmar
+						</Button>
+					</div>
 				</div>
 			</form>
 		</Form>

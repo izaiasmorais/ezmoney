@@ -115,7 +115,7 @@ export function InvoicesTable() {
 				/>
 
 				<Button
-					variant="ghost"
+					variant="secondary"
 					className="font-semibold"
 					onClick={() => [table.resetSorting(), table.resetColumnFilters()]}
 				>
