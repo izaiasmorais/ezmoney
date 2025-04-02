@@ -88,7 +88,6 @@ export function InvoicesTable() {
 				<FormSelect
 					options={invoiceStatusOptions}
 					placeholder="Status"
-					className="md:w-[180px]"
 					onChange={(value) => [
 						table.getColumn("status")?.setFilterValue(value),
 					]}
@@ -97,7 +96,6 @@ export function InvoicesTable() {
 				<FormSelect
 					options={invoicePaymentTypeOptions}
 					placeholder="Tipo de Pagamento"
-					className="md:w-[180px]"
 					onChange={(value) =>
 						table.getColumn("paymentType")?.setFilterValue(value)
 					}
@@ -106,7 +104,6 @@ export function InvoicesTable() {
 				<FormSelect
 					options={invoiceCategoryOptions}
 					placeholder="Categoria"
-					className="md:w-[180px]"
 					onChange={(value) =>
 						table.getColumn("category")?.setFilterValue(value)
 					}
@@ -127,7 +124,7 @@ export function InvoicesTable() {
 							variant="outline"
 							className="font-semibold md:ml-auto w-full xl:w-[100px]"
 						>
-							<div className="flex items-center space-x-2">
+							<div className="flex items-center gap-2">
 								Colunas <ChevronDown />
 							</div>
 						</Button>

@@ -1,19 +1,26 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ArrowUpDown, MoreHorizontal } from "lucide-react";
+import {
+	ArrowDown,
+	ArrowUp,
+	ArrowUpDown,
+	Copy,
+	Eye,
+	MoreHorizontal,
+	SquarePen,
+} from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
 	DropdownMenu,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
-	DropdownMenuLabel,
 	DropdownMenuItem,
-	DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/@types/invoice";
 import { cn } from "@/lib/utils";
 import { InvoiceStatusSelect } from "./invoices-status-select";
+import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -241,16 +248,27 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 							<MoreHorizontal className="h-4 w-4" />
 						</Button>
 					</DropdownMenuTrigger>
+
 					<DropdownMenuContent align="end">
-						<DropdownMenuLabel>Ações</DropdownMenuLabel>
 						<DropdownMenuItem
 							onClick={() => navigator.clipboard.writeText(invoice.id)}
 						>
+							<Copy />
 							Copiar ID da fatura
 						</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>Ver detalhes</DropdownMenuItem>
-						<DropdownMenuItem>Editar</DropdownMenuItem>
+
+						<DropdownMenuItem>
+							<Eye />
+							Ver detalhes
+						</DropdownMenuItem>
+
+						<DropdownMenuItem>
+							<SquarePen />
+							Editar
+						</DropdownMenuItem>
+
+						<DeleteInvoiceDialog invoiceId={row.original.id} />
+						
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);

@@ -91,3 +91,66 @@ export async function PATCH(
 		});
 	}
 }
+
+export async function DELETE(
+	_request: NextRequest,
+	{ params }: { params: Promise<{ id: string }> }
+) {
+	try {
+		const { id } = await params;
+
+		const session = await auth.api.getSession({
+			headers: await headers(),
+		});
+
+		if (!session) {
+			return response.status(401).json({
+				success: false,
+				error: "Sem autorização",
+				data: null,
+			});
+		}
+
+		const userInfo = session.user;
+
+		const existingInvoice = await prisma.invoice.findUnique({
+			where: {
+				id,
+				userId: userInfo.id,
+			},
+		});
+
+		if (!existingInvoice) {
+			return response.status(404).json({
+				success: false,
+				error: "A conta não foi encontrada",
+				data: null,
+			});
+		}
+
+		// Deletar a fatura
+		await prisma.invoice.delete({
+			where: { id },
+		});
+
+		return response.status(200).json({
+			success: true,
+			error: null,
+			data: { id, deleted: true },
+		});
+	} catch (error) {
+		if (error instanceof Error) {
+			return response.status(500).json({
+				success: false,
+				error: error.message,
+				data: null,
+			});
+		}
+
+		return response.status(500).json({
+			success: false,
+			error: "Internal server error",
+			data: null,
+		});
+	}
+}
