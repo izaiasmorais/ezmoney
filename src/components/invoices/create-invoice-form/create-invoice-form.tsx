@@ -217,7 +217,11 @@ export function CreateInvoiceForm() {
 				<div className="flex justify-end">
 					<div className="flex items-center gap-4">
 						<Link href="/contas" aria-disabled={isLoadingCreateInvoice}>
-							<Button variant="ghost" disabled={isLoadingCreateInvoice}>
+							<Button
+								variant="ghost"
+								disabled={isLoadingCreateInvoice}
+								className="md:w-[150px]"
+							>
 								Cancelar
 							</Button>
 						</Link>
@@ -225,6 +229,7 @@ export function CreateInvoiceForm() {
 						<Button
 							type="submit"
 							form="create-invoice-form"
+							className="md:w-[150px]"
 							disabled={isLoadingCreateInvoice}
 							aria-disabled={isLoadingCreateInvoice}
 						>

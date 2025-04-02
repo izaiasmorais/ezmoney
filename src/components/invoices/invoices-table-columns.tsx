@@ -73,12 +73,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				month: "2-digit",
 				year: "numeric",
 			});
-			const formattedTime = date.toLocaleTimeString("pt-BR", {
-				hour: "2-digit",
-				minute: "2-digit",
-				hour12: false, // Formato 24h
-			});
-			return <div>{`${formattedDate} ${formattedTime}`}</div>;
+			return <div>{`${formattedDate}`}</div>;
 		},
 	},
 	{
@@ -100,12 +95,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				month: "2-digit",
 				year: "numeric",
 			});
-			const formattedTime = date.toLocaleTimeString("pt-BR", {
-				hour: "2-digit",
-				minute: "2-digit",
-				hour12: false, // Formato 24h
-			});
-			return <div>{`${formattedDate} ${formattedTime}`}</div>;
+			return <div>{`${formattedDate}`}</div>;
 		},
 	},
 	{
@@ -128,6 +118,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				})}
 			</div>
 		),
+		sortDescFirst: true,
 	},
 	{
 		accessorKey: "installments",

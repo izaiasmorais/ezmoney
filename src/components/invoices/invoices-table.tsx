@@ -29,17 +29,22 @@ import {
 } from "@/components/ui/table";
 import { invoicesTableColumns } from "./invoices-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
-import { translateInvoicesTableKeys } from "@/utils/translate-products-table-keys";
-import { Combobox } from "../ui/combobox";
 import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
 import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options";
 import { useGetInvoices } from "@/hooks/use-get-invoices";
 import { InvoicesTableSkeleton } from "./invoices-table-item-skeleton";
 import { useRouter } from "next/navigation";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
+import { FormSelect } from "../form/form-select";
+import { translateInvoicesTableKeys } from "@/utils/translate-invoices-table-keys";
 
 export function InvoicesTable() {
-	const [sorting, setSorting] = React.useState<SortingState>([]);
+	const [sorting, setSorting] = React.useState<SortingState>([
+		{
+			id: "unitValue",
+			desc: true,
+		},
+	]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
 		[]
 	);
@@ -80,38 +85,31 @@ export function InvoicesTable() {
 					}
 				/>
 
-				<Combobox
-					entity="status"
-					translatedEntity="Status"
-					emptyMessage="Nenhum status encontrado"
-					placeholder="Filtrar por status"
-					items={invoiceStatusOptions}
-					onChange={(value) => table.getColumn("status")?.setFilterValue(value)}
-					className="xl:w-[250px]"
+				<FormSelect
+					options={invoiceStatusOptions}
+					placeholder="Status"
+					className="md:w-[180px]"
+					onChange={(value) => [
+						table.getColumn("status")?.setFilterValue(value),
+					]}
 				/>
 
-				<Combobox
-					entity="paymentType"
-					translatedEntity="Tipo de Pagamento"
-					emptyMessage="Nenhum tipo encontrado"
-					placeholder="Filtrar por tipo de pagamento"
-					items={invoicePaymentTypeOptions}
+				<FormSelect
+					options={invoicePaymentTypeOptions}
+					placeholder="Tipo de Pagamento"
+					className="md:w-[180px]"
 					onChange={(value) =>
 						table.getColumn("paymentType")?.setFilterValue(value)
 					}
-					className="xl:w-[250px]"
 				/>
 
-				<Combobox
-					entity="category"
-					translatedEntity="Categoria"
-					emptyMessage="Nenhuma categoria encontrado"
-					placeholder="Filtrar por categoria"
-					items={invoiceCategoryOptions}
+				<FormSelect
+					options={invoiceCategoryOptions}
+					placeholder="Categoria"
+					className="md:w-[180px]"
 					onChange={(value) =>
 						table.getColumn("category")?.setFilterValue(value)
 					}
-					className="xl:w-[250px]"
 				/>
 
 				<Button
@@ -192,7 +190,7 @@ export function InvoicesTable() {
 						{!isLoadingGetInvoices &&
 							data &&
 							data.length > 0 &&
-							table.getRowModel().rows?.length &&
+							table.getRowModel().rows?.length > 0 &&
 							table.getRowModel().rows.map((row) => (
 								<TableRow
 									key={row.id}
@@ -210,16 +208,19 @@ export function InvoicesTable() {
 								</TableRow>
 							))}
 
-						{!isLoadingGetInvoices && (!data || data.length === 0) && (
-							<TableRow>
-								<TableCell
-									colSpan={invoicesTableColumns.length}
-									className="h-24 text-center"
-								>
-									Sem resultados
-								</TableCell>
-							</TableRow>
-						)}
+						{!isLoadingGetInvoices &&
+							(!data ||
+								data.length === 0 ||
+								table.getRowModel().rows?.length === 0) && (
+								<TableRow>
+									<TableCell
+										colSpan={invoicesTableColumns.length}
+										className="h-24 text-center"
+									>
+										Sem resultados
+									</TableCell>
+								</TableRow>
+							)}
 					</TableBody>
 				</Table>
 			</div>

@@ -12,10 +12,11 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { useQuery } from "@tanstack/react-query";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import { getSession } from "@/api/session/get-session";
 import { useEditProfile } from "@/hooks/use-update-profile";
 import { Skeleton } from "../ui/skeleton";
+import Image from "next/image";
 
 export function ProfileForm() {
 	const { form } = useEditProfile();
@@ -53,7 +54,15 @@ export function ProfileForm() {
 
 													{!isLoadingGetSession && data && (
 														<Avatar className="h-20 w-20">
-															<AvatarImage src={data.user.image} />
+															<Image
+																src={data.user.image}
+																alt="User profile picture"
+																className="rounded-full"
+																width={80}
+																height={80}
+																quality={100}
+																priority
+															/>
 
 															<AvatarFallback>
 																{data.user.name

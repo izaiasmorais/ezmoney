@@ -39,7 +39,7 @@ export function InvoiceStatusSelect({
 			<SelectTrigger
 				hasChevron={false}
 				className={`w-[140px] border-none max-w-max px-4 py-0.5 bg-muted/50 max-h-max justify-start
-			rounded-full text-xs ${
+			rounded-full text-xs hover:cursor-pointer hover:opacity-70 ${
 				status === "paid"
 					? "text-green-600 bg-green-50 hover:bg-green-50"
 					: status === "overdue"
