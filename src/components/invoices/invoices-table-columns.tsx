@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/@types/invoice";
 import { cn } from "@/lib/utils";
+import { InvoiceStatusSelect } from "./invoices-status-select";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -162,24 +163,10 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 		cell: ({ row }) => {
 			const status = row.getValue("status") as string;
 			return (
-				<Badge
-					className={`rounded-full shadow-none font-semibold px-2 capitalize ${
-						status === "paid"
-							? "text-green-600 bg-green-50 hover:bg-green-50"
-							: status === "overdue"
-							? "text-red-600 bg-red-50 hover:bg-red-50"
-							: status === "pending"
-							? "text-yellow-600 bg-yellow-50 hover:bg-yellow-50"
-							: status === "draft"
-							? "text-indigo-600 bg-indigo-50 hover:bg-indigo-50"
-							: "text-muted-foreground bg-muted hover:bg-muted"
-					}`}
-				>
-					{status === "paid" && "Pago"}
-					{status === "overdue" && "Atrasado"}
-					{status === "pending" && "Pendente"}
-					{status === "draft" && "Rascunho"}
-				</Badge>
+				<InvoiceStatusSelect
+					invoiceId={row.original.id}
+					status={status as Invoice["status"]} // Cast to Invoice["status"]
+				/>
 			);
 		},
 	},

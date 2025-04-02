@@ -42,3 +42,8 @@ export const createInvoiceRequestSchema = z.object({
 });
 
 export type CreateInvoiceRequest = z.infer<typeof createInvoiceRequestSchema>;
+
+export type UpdateInvoiceStatusRequest = {
+	invoiceId: string;
+	status: Invoice["status"];
+};

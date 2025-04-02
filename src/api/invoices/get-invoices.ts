@@ -3,9 +3,9 @@ import { AxiosError } from "axios";
 import { api } from "@/lib/axios";
 import { Invoice } from "@/@types/invoice";
 
-type GetInvoicesResult = HTTPSuccessResponse<Invoice[]> | HTTPErrorResponse;
+type GetInvoicesResponse = HTTPSuccessResponse<Invoice[]> | HTTPErrorResponse;
 
-export async function getInvoices(): Promise<GetInvoicesResult> {
+export async function getInvoices(): Promise<GetInvoicesResponse> {
 	try {
 		const response = await api.get<HTTPSuccessResponse<Invoice[]>>(
 			"/api/invoices/all"
