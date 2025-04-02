@@ -39,18 +39,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 								)}
 
 								{pathSegments.map((segment, index) => {
-									if (pathSegments.length === 1) {
-										return (
-											<BreadcrumbItem key={segment}>
-												<BreadcrumbPage>
-													<span className="capitalize">{segment}</span>
-												</BreadcrumbPage>
-											</BreadcrumbItem>
-										);
-									}
-
 									if (index === pathSegments.length - 1) {
-										// index = 1, pathSegments.length - 1 = 1
 										return (
 											<BreadcrumbItem key={segment}>
 												<BreadcrumbLink href={`${pathname}`}>
@@ -63,10 +52,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 									if (index !== pathSegments.length - 1)
 										return (
 											<div key={segment} className="flex items-center gap-4">
-												<BreadcrumbItem className="hidden md:block">
-													<BreadcrumbPage>
+												<BreadcrumbItem>
+													<BreadcrumbLink href={`/${segment}`}>
 														<span className="capitalize">{segment}</span>
-													</BreadcrumbPage>
+													</BreadcrumbLink>
 												</BreadcrumbItem>
 
 												<BreadcrumbSeparator

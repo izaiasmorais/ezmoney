@@ -21,6 +21,7 @@ import type { Invoice } from "@/@types/invoice";
 import { cn } from "@/lib/utils";
 import { InvoiceStatusSelect } from "./invoices-status-select";
 import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
+import Link from "next/link";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -240,6 +241,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 		enableHiding: false,
 		cell: ({ row }) => {
 			const invoice = row.original;
+
 			return (
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
@@ -257,9 +259,11 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 							Copiar ID da fatura
 						</DropdownMenuItem>
 
-						<DropdownMenuItem>
-							<Eye />
-							Ver detalhes
+						<DropdownMenuItem asChild>
+							<Link href={`/contas/${invoice.id}`}>
+								<Eye />
+								Ver detalhes
+							</Link>
 						</DropdownMenuItem>
 
 						<DropdownMenuItem>
@@ -267,8 +271,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 							Editar
 						</DropdownMenuItem>
 
-						<DeleteInvoiceDialog invoiceId={row.original.id} />
-						
+						<DeleteInvoiceDialog invoiceId={invoice.id} />
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);
