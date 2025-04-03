@@ -125,7 +125,7 @@ export function InvoicesTable() {
 							className="font-semibold md:ml-auto w-full xl:w-[100px]"
 						>
 							<div className="flex items-center gap-2">
-								Colunas <ChevronDown />
+								Exibir <ChevronDown />
 							</div>
 						</Button>
 					</DropdownMenuTrigger>

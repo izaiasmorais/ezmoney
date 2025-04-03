@@ -101,7 +101,7 @@ export function TransactionsTable() {
 					<DropdownMenuTrigger asChild>
 						<Button variant="outline" className="font-semibold md:ml-auto">
 							<div className="flex items-center space-x-2">
-								Colunas <ChevronDown />
+								Exibir <ChevronDown />
 							</div>
 						</Button>
 					</DropdownMenuTrigger>
