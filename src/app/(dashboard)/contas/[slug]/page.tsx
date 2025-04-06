@@ -8,14 +8,14 @@ export const metadata: Metadata = {
 	keywords: ["Detalhes da Conta", "EZMoney", "Finanças", "Controle Financeiro"],
 };
 
-export default function Page({
-	params,
-}: {
-	params: {
+interface InvoicePageProps {
+	params: Promise<{
 		slug: string;
-	};
-}) {
-	const { slug } = params;
+	}>;
+}
+
+export default async function InvoicePage({ params }: InvoicePageProps) {
+	const { slug } = await params;
 
 	return <InvoiceDetails invoiceId={slug} />;
 }
