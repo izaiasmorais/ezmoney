@@ -7,7 +7,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { useUpdateInvoiceStatus } from "@/hooks/use-update-invoice-status";
+import { useUpdateInvoice } from "@/hooks/invoices/use-update-invoice";
 import { toast } from "sonner";
 import { UpdateInvoiceStatusRequest } from "@/@types/invoice";
 import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
@@ -17,7 +17,7 @@ export function InvoiceStatusSelect({
 	status,
 }: UpdateInvoiceStatusRequest) {
 	const [selectedStatus, setSelectedStatus] = React.useState<string>(status);
-	const { updateInvoiceStatusFn } = useUpdateInvoiceStatus();
+	const { updateInvoiceFn } = useUpdateInvoice();
 
 	function handleUpdateInvoiceStatus(
 		newStatus: UpdateInvoiceStatusRequest["status"]
@@ -28,9 +28,11 @@ export function InvoiceStatusSelect({
 		}
 
 		setSelectedStatus(newStatus);
-		updateInvoiceStatusFn({
+		updateInvoiceFn({
 			invoiceId,
-			status: newStatus,
+			data: {
+				status: newStatus,
+			},
 		});
 	}
 

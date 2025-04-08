@@ -1,26 +1,31 @@
 import { HTTPSuccessResponse, HTTPErrorResponse } from "@/@types/http";
 import { AxiosError } from "axios";
 import { api } from "@/lib/axios";
-import { Invoice, UpdateInvoiceStatusRequest } from "@/@types/invoice";
+import { Invoice } from "@/@types/invoice";
 
-type UpdateInvoiceStatusResponse =
+export type UpdateInvoiceRequest = {
+	invoiceId: string;
+	data: Partial<Omit<Invoice, "createdAt">>; // All fields are optional, exclude createdAt
+};
+
+export type UpdateInvoiceResponse =
 	| HTTPSuccessResponse<Invoice>
 	| HTTPErrorResponse;
 
 /**
- * Updates the status of an existing invoice
+ * Updates any properties of an existing invoice
  * @param invoiceId The ID of the invoice to update
- * @param status The new status to set
+ * @param data The invoice properties to update
  * @returns Promise with the updated invoice or error
  */
-export async function updateInvoiceStatus({
+export async function updateInvoice({
 	invoiceId,
-	status,
-}: UpdateInvoiceStatusRequest): Promise<UpdateInvoiceStatusResponse> {
+	data,
+}: UpdateInvoiceRequest): Promise<UpdateInvoiceResponse> {
 	try {
-		const response = await api.patch<HTTPSuccessResponse<Invoice>>(
+		const response = await api.put<HTTPSuccessResponse<Invoice>>(
 			`/api/invoices/${invoiceId}`,
-			{ status }
+			data
 		);
 
 		return response.data;

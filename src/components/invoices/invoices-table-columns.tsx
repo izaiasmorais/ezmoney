@@ -4,7 +4,6 @@ import { ColumnDef } from "@tanstack/react-table";
 import {
 	ArrowDown,
 	ArrowUp,
-	ArrowUpDown,
 	Copy,
 	Eye,
 	MoreHorizontal,
@@ -18,10 +17,10 @@ import {
 	DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/@types/invoice";
-import { cn } from "@/lib/utils";
 import { InvoiceStatusSelect } from "./invoices-status-select";
 import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
 import Link from "next/link";
+import { InvoiceCategorySelect } from "./invoices-category-select";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -55,7 +54,12 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Nome
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => (
@@ -71,7 +75,12 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Criado em
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => {
@@ -93,7 +102,12 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Vencimento
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => {
@@ -103,8 +117,14 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				month: "2-digit",
 				year: "numeric",
 			});
-			return <div>{`${formattedDate}`}</div>;
+			const isOverdue = date < new Date();
+			return (
+				<div className={`${isOverdue && "text-red-500 font-medium"}`}>
+					{`${formattedDate}`}
+				</div>
+			);
 		},
+		sortingFn: "datetime",
 	},
 	{
 		accessorKey: "unitValue",
@@ -115,7 +135,12 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Valor
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => (
@@ -156,7 +181,12 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Status
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => {
@@ -178,41 +208,22 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Categoria
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => {
 			const category = row.getValue("category");
-			const baseStyle = "rounded-full shadow-none font-semibold px-2";
-
-			const categoryConfig = {
-				subscription: {
-					bg: "bg-indigo-50 hover:bg-indigo-50 text-indigo-600",
-					label: "Assinatura",
-				},
-				general: {
-					bg: "bg-red-50 hover:bg-red-50 text-red-600",
-					label: "Geral",
-				},
-				loan: {
-					bg: "bg-blue-50 hover:bg-blue-50 text-blue-600",
-					label: "Empréstimo",
-				},
-				purchase: {
-					bg: "bg-green-50 hover:bg-green-50 text-green-600",
-					label: "Compra",
-				},
-				streaming: {
-					bg: "bg-yellow-50 hover:bg-yellow-50 text-yellow-600",
-					label: "Streaming",
-				},
-			};
-
-			const config = categoryConfig[category as keyof typeof categoryConfig];
-
-			return config ? (
-				<Badge className={cn(baseStyle, config.bg)}>{config.label}</Badge>
-			) : null;
+			return (
+				<InvoiceCategorySelect
+					invoiceId={row.original.id}
+					category={category as Invoice["category"]} // Cast to Invoice["category"]
+				/>
+			);
 		},
 	},
 	{
@@ -224,7 +235,12 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Tipo de Pagamento
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => (

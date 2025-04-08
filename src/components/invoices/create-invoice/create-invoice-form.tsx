@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateInvoice } from "@/hooks/use-create-invoice";
+import { useCreateInvoice } from "@/hooks/invoices/use-create-invoice";
 import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
 import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options";
 import { FormCombobox } from "@/components/form/form-combobox";

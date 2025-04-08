@@ -14,7 +14,7 @@ import {
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useTransactions } from "@/hooks/use-transactions";
+import { useTransactions } from "@/hooks/transactions/use-transactions";
 import { useState } from "react";
 import { TrasanctionsBarChartLegendCard } from "./transactions-bar-chart.legend-card";
 import { TransactionsYearSelect } from "./transactions-year-select";

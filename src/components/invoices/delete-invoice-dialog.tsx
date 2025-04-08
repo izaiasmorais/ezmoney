@@ -7,7 +7,7 @@ import {
 	DialogTitle,
 } from "../ui/dialog";
 import { LoaderCircle, Trash2, TriangleAlert } from "lucide-react";
-import { useDeleteInvoice } from "@/hooks/use-delete-invoice";
+import { useDeleteInvoice } from "@/hooks/invoices/use-delete-invoice";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { DropdownMenuItem } from "../ui/dropdown-menu";
 

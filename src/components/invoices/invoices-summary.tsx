@@ -8,7 +8,7 @@ import {
 	FileText,
 } from "lucide-react";
 import { InvoicesSummaryItem } from "./invoices-summary-item";
-import { useInvoicesSummary } from "@/hooks/use-invoices-summary";
+import { useInvoicesSummary } from "@/hooks/invoices/use-invoices-summary";
 import { InvoicesSummarySkeleton } from "./invoices-summary-skeleton";
 
 export function InvoicesSummary() {

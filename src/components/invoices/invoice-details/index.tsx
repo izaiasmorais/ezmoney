@@ -1,5 +1,5 @@
 "use client";
-import { useGetInvoices } from "@/hooks/use-get-invoices";
+import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
 import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
 import { formatToBRL } from "@/utils/format-to-brl";
 import { SquarePen, Eye, Printer, Share } from "lucide-react";

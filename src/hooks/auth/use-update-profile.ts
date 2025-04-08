@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { useFormMutation } from "./use-form-mutation";
+import { useFormMutation } from "../use-form-mutation";
 
 const profileSchema = z.object({
 	avatarUrl: z.string().url({ message: "URL inválida" }),

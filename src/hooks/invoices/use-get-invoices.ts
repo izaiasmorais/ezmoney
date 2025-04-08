@@ -5,6 +5,9 @@ export function useGetInvoices() {
 	const { data: result, isLoading: isLoadingGetInvoices } = useQuery({
 		queryKey: ["invoices"],
 		queryFn: getInvoices,
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: false,
 	});
 
 	return {

@@ -1,4 +1,4 @@
-import { useTransactions } from "@/hooks/use-transactions";
+import { useTransactions } from "@/hooks/transactions/use-transactions";
 import { SummaryCard } from "./transactions-summary-card";
 
 export function Summary() {

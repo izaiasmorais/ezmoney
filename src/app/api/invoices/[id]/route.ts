@@ -4,8 +4,17 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { z } from "zod";
 
-const updateStatusSchema = z.object({
-	status: z.enum(["paid", "overdue", "draft", "pending"]),
+const updateInvoiceSchema = z.object({
+	name: z.string().optional(),
+	description: z.string().optional(),
+	dueDate: z.string().optional(),
+	unitValue: z.number().optional(),
+	installments: z.number().optional(),
+	status: z.enum(["paid", "overdue", "draft", "pending"]).optional(),
+	paymentType: z.enum(["unique", "recurring"]).optional(),
+	category: z
+		.enum(["subscription", "loan", "purchase", "general", "streaming"])
+		.optional(),
 });
 
 const response = {
@@ -16,7 +25,7 @@ const response = {
 	},
 };
 
-export async function PATCH(
+export async function PUT(
 	request: NextRequest,
 	{ params }: { params: Promise<{ id: string }> }
 ) {
@@ -24,7 +33,7 @@ export async function PATCH(
 		const { id } = await params;
 		const body = await request.json();
 
-		const { status } = updateStatusSchema.parse(body);
+		const updateData = updateInvoiceSchema.parse(body);
 
 		const session = await auth.api.getSession({
 			headers: await headers(),
@@ -54,10 +63,12 @@ export async function PATCH(
 				data: null,
 			});
 		}
+
+		// Add the updatedAt field to the update operation
 		const updatedInvoice = await prisma.invoice.update({
 			where: { id },
 			data: {
-				status,
+				...updateData,
 				updatedAt: new Date(),
 			},
 		});
@@ -128,7 +139,6 @@ export async function DELETE(
 			});
 		}
 
-		// Deletar a fatura
 		await prisma.invoice.delete({
 			where: { id },
 		});

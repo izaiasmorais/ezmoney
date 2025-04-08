@@ -9,7 +9,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { useCreateInvoice } from "@/hooks/use-create-invoice";
+import { useCreateInvoice } from "@/hooks/invoices/use-create-invoice";
 
 export function InvoicePreview() {
 	const { form } = useCreateInvoice();

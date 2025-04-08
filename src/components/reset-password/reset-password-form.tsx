@@ -18,7 +18,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { useResetPassword } from "@/hooks/use-reset-password";
+import { useResetPassword } from "@/hooks/auth/use-reset-password";
 
 export function ResetPasswordForm({
 	className,

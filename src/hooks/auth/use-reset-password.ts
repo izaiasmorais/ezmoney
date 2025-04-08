@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { useFormMutation } from "./use-form-mutation";
+import { useFormMutation } from "../use-form-mutation";
 
 const resetPasswordFormSchema = z.object({
 	email: z.string().email("Por favor, insira um email válido"),

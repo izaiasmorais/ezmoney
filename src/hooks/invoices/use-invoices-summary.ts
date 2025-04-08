@@ -77,7 +77,7 @@ export function useInvoicesSummary(): InvoicesSummaryData {
 		const overdueCount = invoices.filter(
 			(invoice) => invoice.status === "overdue"
 		).length;
-		
+
 		const draftCount = invoices.filter(
 			(invoice) => invoice.status === "draft"
 		).length;

@@ -1,15 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import { updateInvoiceStatus } from "@/api/invoices/update-invoice-status";
+import { updateInvoice } from "@/api/invoices/update-invoice";
 import { toast } from "sonner";
 import { queryClient } from "@/lib/react-query";
 
-export function useUpdateInvoiceStatus() {
+export function useUpdateInvoice() {
 	const {
-		mutateAsync: updateInvoiceStatusFn,
+		mutateAsync: updateInvoiceFn,
 		isPending: isLoadingUpdateInvoiceStatus,
 	} = useMutation({
 		mutationKey: ["update-invoice-status"],
-		mutationFn: updateInvoiceStatus,
+		mutationFn: updateInvoice,
 		onSuccess: (response) => {
 			if (response.success) {
 				queryClient.invalidateQueries({
@@ -24,7 +24,7 @@ export function useUpdateInvoiceStatus() {
 	});
 
 	return {
-		updateInvoiceStatusFn,
+		updateInvoiceFn,
 		isLoadingUpdateInvoiceStatus,
 	};
 }

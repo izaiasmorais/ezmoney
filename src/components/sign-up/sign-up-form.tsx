@@ -7,7 +7,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { useSignUp } from "@/hooks/use-sign-up";
+import { useSignUp } from "@/hooks/auth/use-sign-up";
 import {
 	Form,
 	FormControl,

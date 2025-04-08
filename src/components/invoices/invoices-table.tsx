@@ -31,7 +31,7 @@ import { invoicesTableColumns } from "./invoices-table-columns";
 import { SearchInput } from "@/components/ui/search-input";
 import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
 import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options";
-import { useGetInvoices } from "@/hooks/use-get-invoices";
+import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
 import { InvoicesTableSkeleton } from "./invoices-table-item-skeleton";
 import { useRouter } from "next/navigation";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";

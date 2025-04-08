@@ -1,5 +1,5 @@
 import { authClient } from "@/lib/auth-client";
-import { useFormMutation } from "./use-form-mutation";
+import { useFormMutation } from "../use-form-mutation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { z } from "zod";

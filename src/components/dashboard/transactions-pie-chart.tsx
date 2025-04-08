@@ -15,7 +15,7 @@ import {
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useTransactions } from "@/hooks/use-transactions";
+import { useTransactions } from "@/hooks/transactions/use-transactions";
 
 interface CustomChartConfig extends ChartConfig {
 	[key: string]: {

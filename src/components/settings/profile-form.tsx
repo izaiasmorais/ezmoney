@@ -14,7 +14,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { getSession } from "@/api/session/get-session";
-import { useEditProfile } from "@/hooks/use-update-profile";
+import { useEditProfile } from "@/hooks/auth/use-update-profile";
 import { Skeleton } from "../ui/skeleton";
 import Image from "next/image";
 
@@ -23,6 +23,9 @@ export function ProfileForm() {
 	const { data, isLoading: isLoadingGetSession } = useQuery({
 		queryKey: ["get-session"],
 		queryFn: getSession,
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: false,
 	});
 
 	return (
