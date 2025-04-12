@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import { TableCell, TableRow } from "../ui/table";
+import { TableCell, TableRow } from "../../ui/table";
 
 export function InvoicesTableItemSkeleton() {
 	return (

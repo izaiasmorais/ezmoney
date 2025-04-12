@@ -198,6 +198,11 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				/>
 			);
 		},
+		filterFn: (row, id, filterValue) => {
+			const status = row.getValue(id) as string;
+			// If filterValue is an array, check if it includes the status
+			return Array.isArray(filterValue) ? filterValue.includes(status) : true;
+		},
 	},
 	{
 		accessorKey: "category",

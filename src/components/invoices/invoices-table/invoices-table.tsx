@@ -35,8 +35,9 @@ import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
 import { InvoicesTableSkeleton } from "./invoices-table-item-skeleton";
 import { useRouter } from "next/navigation";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
-import { FormSelect } from "../form/form-select";
+import { FormSelect } from "../../form/form-select";
 import { translateInvoicesTableKeys } from "@/utils/translate-invoices-table-keys";
+import { FormMultiSelect } from "@/components/form/form-multi-select";
 
 export function InvoicesTable() {
 	const [sorting, setSorting] = React.useState<SortingState>([
@@ -85,12 +86,16 @@ export function InvoicesTable() {
 					}
 				/>
 
-				<FormSelect
+				<FormMultiSelect
 					options={invoiceStatusOptions}
 					placeholder="Status"
-					onChange={(value) => [
-						table.getColumn("status")?.setFilterValue(value),
-					]}
+					onChange={(value: string[]) => {
+						if (value.length === 0) {
+							table.getColumn("status")?.setFilterValue(undefined);
+						} else {
+							table.getColumn("status")?.setFilterValue(value);
+						}
+					}}
 				/>
 
 				<FormSelect

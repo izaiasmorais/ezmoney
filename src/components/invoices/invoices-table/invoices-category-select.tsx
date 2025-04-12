@@ -16,7 +16,6 @@ type InvoiceCategorySelectProps = {
 	category: Invoice["category"];
 };
 
-// Mock data for category options - typically this would be imported
 const invoiceCategoryOptions = [
 	{ value: "subscription", label: "Assinatura" },
 	{ value: "general", label: "Geral" },

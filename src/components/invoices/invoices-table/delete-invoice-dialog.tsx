@@ -1,15 +1,15 @@
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "../ui/dialog";
+} from "../../ui/dialog";
 import { LoaderCircle, Trash2, TriangleAlert } from "lucide-react";
 import { useDeleteInvoice } from "@/hooks/invoices/use-delete-invoice";
 import { DialogTrigger } from "@radix-ui/react-dialog";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
+import { DropdownMenuItem } from "../../ui/dropdown-menu";
 
 interface DeleteInvoiceDialogProps {
 	invoiceId: string;

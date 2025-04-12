@@ -1,5 +1,5 @@
-import { InvoicesSummary } from "@/components/invoices/invoices-summary";
-import { InvoicesTable } from "@/components/invoices/invoices-table";
+import { InvoicesSummary } from "@/components/invoices/invoices-summary/invoices-summary";
+import { InvoicesTable } from "@/components/invoices/invoices-table/invoices-table";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
