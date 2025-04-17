@@ -155,6 +155,11 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				</Badge>
 			);
 		},
+		filterFn: (row, id, filterValue) => {
+			const type = row.getValue(id) as string;
+
+			return Array.isArray(filterValue) ? filterValue.includes(type) : true;
+		},
 	},
 	{
 		id: "actions",

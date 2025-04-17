@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { ResetPasswordForm } from "@/components/reset-password/reset-password-form";
+import { ResetPasswordForm } from "@/components/password/reset-password-form";
 
 export const metadata: Metadata = {
 	title: "EZMoney - Resetar Senha",

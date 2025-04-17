@@ -1,8 +1,8 @@
 "use client";
 import { getSession } from "@/api/session/get-session";
-import { NavUser } from "./nav-user";
 import { NavUserSkeleton } from "./nav-user-skeleton";
 import { useQuery } from "@tanstack/react-query";
+import { NavUser } from "./nav-user";
 
 export function NavUserClient() {
 	const { data, isLoading: isLoadingGetSession } = useQuery({

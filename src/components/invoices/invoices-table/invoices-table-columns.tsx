@@ -12,9 +12,9 @@ import {
 import type { Invoice } from "@/@types/invoice";
 import { InvoiceStatusSelect } from "./invoices-status-select";
 import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
-import Link from "next/link";
 import { InvoiceCategorySelect } from "./invoices-category-select";
 import { EditInvoiceSheet } from "./edit-invoice-sheet";
+import Link from "next/link";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{

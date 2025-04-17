@@ -1,5 +1,5 @@
 "use client";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import { Separator } from "@radix-ui/react-separator";
 import {
 	Breadcrumb,

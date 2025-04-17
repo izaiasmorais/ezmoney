@@ -17,7 +17,7 @@ export const createTransactionSchema = z.object({
 		.number()
 		.refine((val) => val !== 0, "O valor da transação não pode ser zero"),
 	category: z.string().min(1, "A categoria é obrigatória"),
-	installment: z.coerce.number().int().positive().default(1),
+	installment: z.coerce.number().int().positive(),
 	type: z.enum(["deposit", "expense", "investment"], {
 		message: "O tipo da transação é inválido",
 	}),
