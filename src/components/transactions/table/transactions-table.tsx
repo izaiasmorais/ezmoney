@@ -28,10 +28,10 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { transactions } from "@/mocks/transactions";
-import { transactionsTableColumns } from "./transactions-table-columns";
-import { SearchInput } from "@/components/ui/search-input";
-import { Combobox } from "../ui/combobox";
 import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
+import { Combobox } from "@/components/ui/combobox";
+import { SearchInput } from "@/components/ui/search-input";
+import { transactionsTableColumns } from "./transactions-table-columns";
 
 const typeComboboxOptions = [
 	{ label: "Depósito", value: "deposit" },

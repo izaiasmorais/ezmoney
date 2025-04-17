@@ -11,6 +11,7 @@ export const transactions: Transaction[] = [
 		category: "Renda",
 		installment: 1,
 		type: "deposit",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -20,6 +21,7 @@ export const transactions: Transaction[] = [
 		category: "Utilidades",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -29,6 +31,7 @@ export const transactions: Transaction[] = [
 		category: "Alimentação",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -38,6 +41,7 @@ export const transactions: Transaction[] = [
 		category: "Entretenimento",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -47,6 +51,7 @@ export const transactions: Transaction[] = [
 		category: "Investimentos",
 		installment: 1,
 		type: "investment",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -56,6 +61,7 @@ export const transactions: Transaction[] = [
 		category: "Transporte",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -65,6 +71,7 @@ export const transactions: Transaction[] = [
 		category: "Moradia",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -74,6 +81,7 @@ export const transactions: Transaction[] = [
 		category: "Educação",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -83,6 +91,7 @@ export const transactions: Transaction[] = [
 		category: "Renda",
 		installment: 1,
 		type: "deposit",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -92,6 +101,7 @@ export const transactions: Transaction[] = [
 		category: "Transporte",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 
 	// Fevereiro
@@ -103,6 +113,7 @@ export const transactions: Transaction[] = [
 		category: "Renda",
 		installment: 1,
 		type: "deposit",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -112,6 +123,7 @@ export const transactions: Transaction[] = [
 		category: "Utilidades",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -121,6 +133,7 @@ export const transactions: Transaction[] = [
 		category: "Alimentação",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -130,6 +143,7 @@ export const transactions: Transaction[] = [
 		category: "Investimentos",
 		installment: 1,
 		type: "investment",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -139,6 +153,7 @@ export const transactions: Transaction[] = [
 		category: "Entretenimento",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -148,6 +163,7 @@ export const transactions: Transaction[] = [
 		category: "Saúde",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -157,6 +173,7 @@ export const transactions: Transaction[] = [
 		category: "Renda",
 		installment: 1,
 		type: "deposit",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -166,6 +183,7 @@ export const transactions: Transaction[] = [
 		category: "Vestuário",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -175,6 +193,7 @@ export const transactions: Transaction[] = [
 		category: "Lazer",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -184,6 +203,7 @@ export const transactions: Transaction[] = [
 		category: "Investimentos",
 		installment: 1,
 		type: "investment",
+		userId: "1",
 	},
 
 	// Março
@@ -195,6 +215,7 @@ export const transactions: Transaction[] = [
 		category: "Renda",
 		installment: 1,
 		type: "deposit",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -204,6 +225,7 @@ export const transactions: Transaction[] = [
 		category: "Utilidades",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -213,6 +235,7 @@ export const transactions: Transaction[] = [
 		category: "Alimentação",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -222,6 +245,7 @@ export const transactions: Transaction[] = [
 		category: "Investimentos",
 		installment: 1,
 		type: "investment",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -231,6 +255,7 @@ export const transactions: Transaction[] = [
 		category: "Casa",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -240,6 +265,7 @@ export const transactions: Transaction[] = [
 		category: "Entretenimento",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -249,6 +275,7 @@ export const transactions: Transaction[] = [
 		category: "Renda",
 		installment: 1,
 		type: "deposit",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -258,6 +285,7 @@ export const transactions: Transaction[] = [
 		category: "Impostos",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -267,6 +295,7 @@ export const transactions: Transaction[] = [
 		category: "Lazer",
 		installment: 1,
 		type: "expense",
+		userId: "1",
 	},
 	{
 		id: uuidv4(),
@@ -276,5 +305,6 @@ export const transactions: Transaction[] = [
 		category: "Investimentos",
 		installment: 1,
 		type: "investment",
+		userId: "1",
 	},
 ];

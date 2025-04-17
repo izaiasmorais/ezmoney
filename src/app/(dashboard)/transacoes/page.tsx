@@ -1,4 +1,5 @@
-import { TransactionsTable } from "@/components/transactions/transactions-table";
+import { TransactionsSummary } from "@/components/transactions/summary/transactions-summary";
+import { TransactionsTable } from "@/components/transactions/table/transactions-table";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<div className="w-full p-4">
+		<div className="w-full p-4 flex flex-col gap-4">
+			<TransactionsSummary />
 			<TransactionsTable />
 		</div>
 	);
