@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -14,13 +14,13 @@ const response = {
 };
 
 export async function PUT(
-	req: Request,
-	{ params }: { params: { id: string } }
+	req: NextRequest,
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
 		const body = await req.json();
 		const transactionData = updateTransactionSchema.parse(body);
-		const transactionId = params.id;
+		const transactionId = (await params).id;
 
 		const session = await auth.api.getSession({
 			headers: await headers(),
@@ -92,11 +92,11 @@ export async function PUT(
 }
 
 export async function DELETE(
-	req: Request,
-	{ params }: { params: { id: string } }
+	_request: NextRequest,
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
-		const transactionId = params.id;
+		const transactionId = (await params).id;
 
 		const session = await auth.api.getSession({
 			headers: await headers(),

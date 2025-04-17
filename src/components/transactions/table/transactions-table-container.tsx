@@ -19,7 +19,6 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
-import { Combobox } from "@/components/ui/combobox";
 import { SearchInput } from "@/components/ui/search-input";
 import { transactionsTableColumns } from "./transactions-table-columns";
 import { TransactionsTable } from "./transactions-table";
