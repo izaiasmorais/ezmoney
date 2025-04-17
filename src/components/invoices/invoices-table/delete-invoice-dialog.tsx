@@ -10,16 +10,17 @@ import { LoaderCircle, Trash2, TriangleAlert } from "lucide-react";
 import { useDeleteInvoice } from "@/hooks/invoices/use-delete-invoice";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { DropdownMenuItem } from "../../ui/dropdown-menu";
+import { Invoice } from "@/@types/invoice";
 
 interface DeleteInvoiceDialogProps {
-	invoiceId: string;
+	invoice: Invoice;
 }
 
-export function DeleteInvoiceDialog({ invoiceId }: DeleteInvoiceDialogProps) {
+export function DeleteInvoiceDialog({ invoice }: DeleteInvoiceDialogProps) {
 	const { deleteInvoiceFn, isLoadingDeleteInvoice } = useDeleteInvoice();
 
 	function handleDeleteInvoice() {
-		deleteInvoiceFn(invoiceId);
+		deleteInvoiceFn(invoice.id);
 	}
 
 	return (
@@ -43,8 +44,8 @@ export function DeleteInvoiceDialog({ invoiceId }: DeleteInvoiceDialogProps) {
 					<DialogTitle>Você tem certeza?</DialogTitle>
 
 					<DialogDescription className="text-center">
-						Tem certeza que quer excluir essa conta? Essa ação não pode ser
-						desfeita.
+						Tem certeza que quer excluir a conta <strong>{invoice.name}</strong>
+						? Essa ação não pode ser desfeita.
 					</DialogDescription>
 				</DialogHeader>
 

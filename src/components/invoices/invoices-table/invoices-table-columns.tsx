@@ -1,14 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import {
-	ArrowDown,
-	ArrowUp,
-	Copy,
-	Eye,
-	MoreHorizontal,
-	SquarePen,
-} from "lucide-react";
+import { ArrowDown, ArrowUp, Copy, Eye, MoreHorizontal } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
 	DropdownMenu,
@@ -21,6 +14,7 @@ import { InvoiceStatusSelect } from "./invoices-status-select";
 import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
 import Link from "next/link";
 import { InvoiceCategorySelect } from "./invoices-category-select";
+import { EditInvoiceSheet } from "./edit-invoice-sheet";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -117,7 +111,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				month: "2-digit",
 				year: "numeric",
 			});
-			const isOverdue = date < new Date();
+			const isOverdue = date < new Date() && row.original.status !== "paid";
 			return (
 				<div className={`${isOverdue && "text-red-500 font-medium"}`}>
 					{`${formattedDate}`}
@@ -194,13 +188,13 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 			return (
 				<InvoiceStatusSelect
 					invoiceId={row.original.id}
-					status={status as Invoice["status"]} // Cast to Invoice["status"]
+					status={status as Invoice["status"]}
 				/>
 			);
 		},
 		filterFn: (row, id, filterValue) => {
 			const status = row.getValue(id) as string;
-			// If filterValue is an array, check if it includes the status
+
 			return Array.isArray(filterValue) ? filterValue.includes(status) : true;
 		},
 	},
@@ -226,7 +220,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 			return (
 				<InvoiceCategorySelect
 					invoiceId={row.original.id}
-					category={category as Invoice["category"]} // Cast to Invoice["category"]
+					category={category as Invoice["category"]}
 				/>
 			);
 		},
@@ -287,12 +281,9 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 							</Link>
 						</DropdownMenuItem>
 
-						<DropdownMenuItem>
-							<SquarePen />
-							Editar
-						</DropdownMenuItem>
+						<EditInvoiceSheet invoice={invoice} />
 
-						<DeleteInvoiceDialog invoiceId={invoice.id} />
+						<DeleteInvoiceDialog invoice={invoice} />
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);

@@ -73,7 +73,7 @@ export function FormCombobox<TFieldValues extends FieldValues>({
 							</FormControl>
 						</PopoverTrigger>
 
-						<PopoverContent className="w-[400px] p-0">
+						<PopoverContent className="p-0">
 							<Command>
 								<CommandInput
 									placeholder={
