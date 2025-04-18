@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Settings() {
 	return (
-		<div className="container mx-auto p-6 space-y-10">
+		<div className="container mx-auto flex flex-col gap-6">
 			<ProfileForm />
 
 			<PasswordForm />

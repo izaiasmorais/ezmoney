@@ -16,7 +16,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="pt-br" className={GeistSans.className} suppressHydrationWarning>
+		<html
+			lang="pt-br"
+			className={GeistSans.className}
+			suppressHydrationWarning={true}
+		>
 			<head>
 				<link rel="icon" href="/ezmoney.svg" sizes="any" />
 			</head>

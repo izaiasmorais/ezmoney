@@ -77,8 +77,7 @@ export function TransactionsTableContainer() {
 				/>
 
 				<Button
-					variant="secondary"
-					className="font-semibold"
+					className="text-muted-foreground bg-sidebar hover:bg-sidebar/80"
 					onClick={() => [table.resetSorting(), table.resetColumnFilters()]}
 				>
 					<X />
@@ -86,7 +85,6 @@ export function TransactionsTableContainer() {
 				</Button>
 
 				<HideColumnsDropDown
-					className="w-full lg:w-[150px]"
 					table={table}
 					translateFunction={translateTransactionsTableKeys}
 				/>

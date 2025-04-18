@@ -43,13 +43,13 @@ export function InvoiceStatusSelect({
 				className={`w-[140px] border-none max-w-max px-4 py-0.5 bg-muted/50 max-h-max justify-start
 			rounded-full text-xs hover:cursor-pointer hover:opacity-70 ${
 				status === "paid"
-					? "text-green-600 bg-green-50 hover:bg-green-50"
+					? "text-green-600 bg-green-50 hover:bg-green-50 dark:text-green-300 dark:bg-green-900/20 dark:hover:bg-green-900/20"
 					: status === "overdue"
-					? "text-red-600 bg-red-50 hover:bg-red-50"
+					? "text-red-600 bg-red-50 hover:bg-red-50 dark:text-red-300 dark:bg-red-900/20 dark:hover:bg-red-900/20"
 					: status === "pending"
-					? "text-yellow-600 bg-yellow-50 hover:bg-yellow-50"
+					? "text-yellow-600 bg-yellow-50 hover:bg-yellow-50 dark:text-yellow-300 dark:bg-yellow-900/20 dark:hover:bg-yellow-900/20"
 					: status === "draft"
-					? "text-indigo-600 bg-indigo-50 hover:bg-indigo-50"
+					? "text-violet-600 bg-violet-50 hover:bg-violet-50 dark:text-violet-300 dark:bg-violet-900/20 dark:hover:bg-violet-900/20"
 					: "text-muted-foreground bg-muted hover:bg-muted"
 			}`}
 			>

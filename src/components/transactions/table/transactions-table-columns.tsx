@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { Transaction } from "@/@types/transaction";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
+import { Tag } from "@/components/ui/tag";
 
 export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	{
@@ -114,19 +114,12 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 			</Button>
 		),
 		cell: ({ row }) => (
-			<div className="capitalize">
-				<Badge className="rounded-full px-3 bg-muted text-foreground border border-zinc-300">
-					{invoiceCategoryOptions.find(
-						(c) => c.value === row.getValue("category")
-					)?.label || "Categoria"}
-				</Badge>
-			</div>
+			<Tag color="sidebar">
+				{invoiceCategoryOptions.find(
+					(c) => c.value === row.getValue("category")
+				)?.label || "Categoria"}
+			</Tag>
 		),
-	},
-	{
-		accessorKey: "installment",
-		header: "Parcelas",
-		cell: ({ row }) => <div>{row.getValue("installment")}</div>,
 	},
 	{
 		accessorKey: "type",
@@ -143,19 +136,15 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 		cell: ({ row }) => {
 			const type = row.getValue("type") as string;
 			return (
-				<Badge
-					className={`rounded-full shadow-none font-semibold px-2 capitalize ${
-						type === "deposit"
-							? "text-green-600 bg-green-50 hover:bg-green-50"
-							: type === "expense"
-							? "text-red-600 bg-red-50 hover:bg-red-50"
-							: "text-blue-600 bg-blue-50 hover:bg-blue-50"
-					}`}
+				<Tag
+					color={
+						type === "deposit" ? "green" : type === "expense" ? "red" : "blue"
+					}
 				>
 					{type === "deposit" && "Depósito"}
 					{type === "expense" && "Despesa"}
 					{type === "investment" && "Investimento"}
-				</Badge>
+				</Tag>
 			);
 		},
 		filterFn: (row, id, filterValue) => {
@@ -163,6 +152,11 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 
 			return Array.isArray(filterValue) ? filterValue.includes(type) : true;
 		},
+	},
+	{
+		accessorKey: "installment",
+		header: "Parcelas",
+		cell: ({ row }) => <div>{row.getValue("installment")}</div>,
 	},
 	{
 		id: "actions",

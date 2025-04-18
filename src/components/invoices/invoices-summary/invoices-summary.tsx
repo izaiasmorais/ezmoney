@@ -27,39 +27,49 @@ export function InvoicesSummary() {
 				title="Total"
 				amount={invoicesData.totalAmount}
 				description={`${invoicesData.totalCount} Contas`}
-				icon={<DollarSign className="h-5 w-5 text-blue-500" />}
-				backgroundColor="bg-blue-50"
+				icon={
+					<DollarSign className="h-5 w-5 text-blue-500 dark:text-blue-300" />
+				}
+				backgroundColor="bg-blue-50 dark:bg-blue-900/20"
 			/>
 
 			<SummaryCard
 				title="Paid"
 				amount={invoicesData.paidAmount}
 				description={`${invoicesData.paidCount} Contas`}
-				icon={<CheckCircle className="h-5 w-5 text-green-500" />}
-				backgroundColor="bg-green-50"
+				icon={
+					<CheckCircle className="h-5 w-5 text-green-500 dark:text-green-300" />
+				}
+				backgroundColor="bg-green-50 dark:bg-green-900/20"
 			/>
 
 			<SummaryCard
 				title="Pending"
 				amount={invoicesData.pendingAmount}
 				description={`${invoicesData.pendingCount} Contas`}
-				icon={<Clock className="h-5 w-5 text-yellow-500" />}
-				backgroundColor="bg-yellow-50"
+				icon={
+					<Clock className="h-5 w-5 text-yellow-500 dark:text-yellow-300" />
+				}
+				backgroundColor="bg-yellow-50 dark:bg-yellow-900/20"
 			/>
 
 			<SummaryCard
 				title="Overdue"
 				amount={invoicesData.overdueAmount}
 				description={`${invoicesData.overdueCount} Contas`}
-				icon={<AlertCircle className="h-5 w-5 text-red-500" />}
-				backgroundColor="bg-red-50"
+				icon={
+					<AlertCircle className="h-5 w-5 text-red-500 dark:text-red-300" />
+				}
+				backgroundColor="bg-red-50 dark:bg-red-900/20"
 			/>
 			<SummaryCard
 				title="Draft"
 				amount={invoicesData.draftAmount}
 				description={`${invoicesData.draftCount} Contas`}
-				icon={<FileText className="h-5 w-5 text-indigo-500" />}
-				backgroundColor="bg-indigo-50"
+				icon={
+					<FileText className="h-5 w-5 text-violet-500 dark:text-violet-300" />
+				}
+				backgroundColor="bg-violet-50 dark:bg-violet-900/20"
 			/>
 		</div>
 	);

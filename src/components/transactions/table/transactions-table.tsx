@@ -25,7 +25,7 @@ export function TransactionsTable({
 }: TransactionsTableProps) {
 	return (
 		<Table className="overflow-x-scroll">
-			<TableHeader className="bg-slate-50">
+			<TableHeader className="bg-slate-50 dark:bg-sidebar">
 				{table.getHeaderGroups().map((headerGroup) => (
 					<TableRow key={headerGroup.id} className="border-none">
 						{headerGroup.headers.map((header) => {

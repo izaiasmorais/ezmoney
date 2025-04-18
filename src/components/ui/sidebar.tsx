@@ -239,7 +239,7 @@ function Sidebar({
 			>
 				<div
 					data-sidebar="sidebar"
-					className="bg-slate-50/50 group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+					className="bg-slate-50/50 dark:bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
 				>
 					{children}
 				</div>
@@ -459,13 +459,17 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
 
 function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 	const { toggleSidebar } = useSidebar();
+	const { isMobile } = useSidebar();
+
 	return (
 		<li
 			data-slot="sidebar-menu-item"
 			data-sidebar="menu-item"
 			className={cn("group/menu-item relative", className)}
 			onClick={() => {
-				toggleSidebar();
+				if (isMobile) {
+					toggleSidebar();
+				}
 			}}
 			{...props}
 		/>

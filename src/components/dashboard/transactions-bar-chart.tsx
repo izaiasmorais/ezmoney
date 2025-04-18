@@ -46,7 +46,7 @@ export function TransactionsBarChart() {
 	}));
 
 	return (
-		<Card className="flex flex-col shadow-none col-span-2 border-muted">
+		<Card className="flex flex-col shadow-none border-muted bg-transparent">
 			<CardHeader>
 				<div className="flex justify-between items-center">
 					<div>

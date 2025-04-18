@@ -1,5 +1,5 @@
 import { InvoicesSummary } from "@/components/invoices/invoices-summary/invoices-summary";
-import { InvoicesTable } from "@/components/invoices/invoices-table/invoices-table";
+import { InvoicesTableContainer } from "@/components/invoices/invoices-table/invoices-table-container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<div className="w-full p-4 space-y-4">
+		<div className="w-full flex flex-col gap-4">
 			<InvoicesSummary />
-			<InvoicesTable />
+			<InvoicesTableContainer />
 		</div>
 	);
 }

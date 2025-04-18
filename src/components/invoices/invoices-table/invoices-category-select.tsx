@@ -41,11 +41,15 @@ export function InvoiceCategorySelect({
 	}
 
 	const categoryConfig = {
-		subscription: "text-indigo-600 bg-indigo-50 hover:bg-indigo-50",
-		general: "text-red-600 bg-red-50 hover:bg-red-50",
-		loan: "text-blue-600 bg-blue-50 hover:bg-blue-50",
-		purchase: "text-green-600 bg-green-50 hover:bg-green-50",
-		streaming: "text-yellow-600 bg-yellow-50 hover:bg-yellow-50",
+		subscription:
+			"text-violet-600 bg-violet-50 hover:bg-violet-50 dark:text-violet-300 dark:bg-violet-900/20 dark:hover:bg-violet-900/20",
+		general:
+			"text-red-600 bg-red-50 hover:bg-red-50 dark:text-red-300 dark:bg-red-900/20 dark:hover:bg-red-900/20",
+		loan: "text-blue-600 bg-blue-50 hover:bg-blue-50 dark:text-blue-300 dark:bg-blue-900/20 dark:hover:bg-blue-900/20",
+		purchase:
+			"text-green-600 bg-green-50 hover:bg-green-50 dark:text-green-300 dark:bg-green-900/20 dark:hover:bg-green-900/20",
+		streaming:
+			"text-yellow-600 bg-yellow-50 hover:bg-yellow-50 dark:text-yellow-300 dark:bg-yellow-900/20 dark:hover:bg-yellow-900/20",
 	};
 
 	return (

@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowDown, ArrowUp, Copy, Eye, MoreHorizontal } from "lucide-react";
@@ -15,6 +14,7 @@ import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
 import { InvoiceCategorySelect } from "./invoices-category-select";
 import { EditInvoiceSheet } from "./edit-invoice-sheet";
 import Link from "next/link";
+import { Tag } from "@/components/ui/tag";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -244,10 +244,10 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 		),
 		cell: ({ row }) => (
 			<div className="capitalize">
-				<Badge className="rounded-full px-3 bg-muted text-foregrou border border-zinc-300">
+				<Tag color="sidebar">
 					{row.getValue("paymentType") === "recurring" && "Recorrente"}
 					{row.getValue("paymentType") === "unique" && "Único"}
-				</Badge>
+				</Tag>
 			</div>
 		),
 	},

@@ -6,21 +6,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import { Transaction } from "@/@types/transaction";
 import { Table } from "@tanstack/react-table";
 import { cn } from "@/lib/utils";
 
-interface HideColumnsDropDownProps {
-	table: Table<Transaction>;
+interface HideColumnsDropDownProps<T> {
+	table: Table<T>;
 	translateFunction: (key: string) => string;
 	className?: string;
 }
 
-export function HideColumnsDropDown({
+export function HideColumnsDropDown<T>({
 	table,
 	translateFunction,
 	className,
-}: HideColumnsDropDownProps) {
+}: HideColumnsDropDownProps<T>) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -32,7 +31,7 @@ export function HideColumnsDropDown({
 				</Button>
 			</DropdownMenuTrigger>
 
-			<DropdownMenuContent align="end" className="w-full max-w-[150px]">
+			<DropdownMenuContent align="end" className="w-full lg:w-[150px]">
 				{table
 					.getAllColumns()
 					.filter((column) => column.getCanHide())
@@ -42,7 +41,8 @@ export function HideColumnsDropDown({
 								key={column.id}
 								className="capitalize"
 								checked={column.getIsVisible()}
-								onCheckedChange={(value) => column.toggleVisibility(!!value)}
+								onClick={(e) => e.preventDefault()}
+								onCheckedChange={(value) => [column.toggleVisibility(!!value)]}
 							>
 								{translateFunction(column.id)}
 							</DropdownMenuCheckboxItem>
