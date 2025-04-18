@@ -89,7 +89,7 @@ export function FormMultiSelect({
 					variant="outline"
 					role="combobox"
 					aria-expanded={open}
-					className={cn("w-full xl:w-[180px] justify-between", className)}
+					className={cn("justify-between", className)}
 				>
 					{selectedValues.length > 0 ? (
 						<div className="flex flex-wrap gap-1 max-w-full overflow-hidden">

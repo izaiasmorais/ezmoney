@@ -7,6 +7,7 @@ interface TransactionsSummaryData {
 		totalAmount: string;
 		depositAmount: string;
 		expenseAmount: string;
+		balance: string;
 		investmentAmount: string;
 		totalCount: number;
 		depositCount: number;
@@ -27,6 +28,7 @@ export function useTransactionsSummary(): TransactionsSummaryData {
 				totalAmount: "R$ 0,00",
 				depositAmount: "R$ 0,00",
 				expenseAmount: "R$ 0,00",
+				balance: "R$ 0,00",
 				investmentAmount: "R$ 0,00",
 				totalCount: 0,
 				depositCount: 0,
@@ -52,6 +54,8 @@ export function useTransactionsSummary(): TransactionsSummaryData {
 			.filter((transaction) => transaction.type === "investment")
 			.reduce((sum, transaction) => sum + transaction.value, 0);
 
+		const balance = deposit - expense - investment;
+
 		const totalCount = transactions.length;
 
 		const depositCount = transactions.filter(
@@ -73,6 +77,7 @@ export function useTransactionsSummary(): TransactionsSummaryData {
 			totalAmount: formatCurrency(total),
 			depositAmount: formatCurrency(deposit),
 			expenseAmount: formatCurrency(expense),
+			balance: formatCurrency(balance),
 			investmentAmount: formatCurrency(investment),
 			totalCount,
 			depositCount,

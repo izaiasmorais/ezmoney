@@ -10,21 +10,17 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { ChevronDown, PlusIcon, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
 import { SearchInput } from "@/components/ui/search-input";
 import { transactionsTableColumns } from "./transactions-table-columns";
 import { TransactionsTable } from "./transactions-table";
 import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
 import { transactionTypesOptions } from "@/mocks/transaction-types-options";
 import { FormMultiSelect } from "@/components/form/form-multi-select";
+import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
+import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
+import { CreateTransactionSheet } from "./create-transaction-sheet";
+import { X } from "lucide-react";
 
 export function TransactionsTableContainer() {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -57,9 +53,9 @@ export function TransactionsTableContainer() {
 
 	return (
 		<div className="w-full space-y-4">
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:flex items-center gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:flex items-center gap-4">
 				<SearchInput
-					className="w-[300px]"
+					className="w-full lg:w-[250px]"
 					placeholder="Pesquisar transações..."
 					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
 					onChange={(event) =>
@@ -68,6 +64,7 @@ export function TransactionsTableContainer() {
 				/>
 
 				<FormMultiSelect
+					className="w-full lg:w-[200px]"
 					options={transactionTypesOptions}
 					placeholder="Tipo"
 					onChange={(value: string[]) => {
@@ -80,7 +77,7 @@ export function TransactionsTableContainer() {
 				/>
 
 				<Button
-					variant="outline"
+					variant="secondary"
 					className="font-semibold"
 					onClick={() => [table.resetSorting(), table.resetColumnFilters()]}
 				>
@@ -88,42 +85,13 @@ export function TransactionsTableContainer() {
 					Limpar Filtros
 				</Button>
 
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Button variant="outline" className="font-semibold md:ml-auto">
-							<div className="flex items-center space-x-2">
-								Exibir <ChevronDown />
-							</div>
-						</Button>
-					</DropdownMenuTrigger>
+				<HideColumnsDropDown
+					className="w-full lg:w-[150px]"
+					table={table}
+					translateFunction={translateTransactionsTableKeys}
+				/>
 
-					<DropdownMenuContent align="end">
-						{table
-							.getAllColumns()
-							.filter((column) => column.getCanHide())
-							.map((column) => {
-								return (
-									<DropdownMenuCheckboxItem
-										key={column.id}
-										className="capitalize"
-										checked={column.getIsVisible()}
-										onCheckedChange={(value) =>
-											column.toggleVisibility(!!value)
-										}
-									>
-										{translateTransactionsTableKeys(column.id)}
-									</DropdownMenuCheckboxItem>
-								);
-							})}
-					</DropdownMenuContent>
-				</DropdownMenu>
-
-				<Button className="font-semibold" asChild>
-					<div className="flex items-center space-x-2">
-						<PlusIcon />
-						Adicionar Transação
-					</div>
-				</Button>
+				<CreateTransactionSheet />
 			</div>
 
 			<div>
@@ -137,7 +105,8 @@ export function TransactionsTableContainer() {
 			<div className="flex items-center justify-end space-x-2">
 				<div className="flex-1 text-sm text-muted-foreground">
 					{table.getFilteredSelectedRowModel().rows.length} de{" "}
-					{table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
+					{table.getFilteredRowModel().rows.length} linha(s){" "}
+					<span className="hidden sm:inline">selecionada(s)</span>.
 				</div>
 
 				<div className="space-x-2">

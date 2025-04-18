@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { createInvoiceRequestSchema, Invoice } from "@/@types/invoice";
+import { queryClient } from "@/lib/react-query";
 
 export type InvoiceWithDateObject = Omit<Invoice, "createdAt"> & {
 	createdAt: Date;
@@ -49,7 +50,8 @@ export function useCreateInvoice() {
 			onSuccess: (response) => {
 				if (response.success === true) {
 					toast.success("Fatura criada com sucesso!");
-
+					form.reset();
+					queryClient.invalidateQueries({ queryKey: ["invoices"] });
 					router.push("/contas");
 					return;
 				}

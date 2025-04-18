@@ -12,6 +12,7 @@ import {
 	DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import type { Transaction } from "@/@types/transaction";
+import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 
 export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	{
@@ -115,7 +116,9 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 		cell: ({ row }) => (
 			<div className="capitalize">
 				<Badge className="rounded-full px-3 bg-muted text-foreground border border-zinc-300">
-					{row.getValue("category")}
+					{invoiceCategoryOptions.find(
+						(c) => c.value === row.getValue("category")
+					)?.label || "Categoria"}
 				</Badge>
 			</div>
 		),

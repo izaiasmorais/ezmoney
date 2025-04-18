@@ -3,8 +3,9 @@ import { useFormMutation } from "../use-form-mutation";
 import { createTransaction } from "@/api/transactions/create-transaction";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { createTransactionSchema, Transaction } from "@/@types/transaction";
+import { useState } from "react";
+import { queryClient } from "@/lib/react-query";
 
 export type TransactionWithDateObject = Omit<Transaction, "createdAt"> & {
 	createdAt: Date;
@@ -13,7 +14,9 @@ export type TransactionWithDateObject = Omit<Transaction, "createdAt"> & {
 export type GetTransactionsQueryResult = TransactionWithDateObject[];
 
 export function useCreateTransaction() {
-	const router = useRouter();
+	const [isCreateTransactionSheetOpen, setIsCreateTransactionSheetOpen] =
+		useState(false);
+
 	const form = useFormMutation({
 		schema: createTransactionSchema,
 		defaultValues: {
@@ -22,6 +25,7 @@ export function useCreateTransaction() {
 			category: "",
 			installment: 1,
 			type: "expense",
+			createdAt: new Date().toISOString(),
 		},
 		onSubmit: (data) => {
 			createTransactionFn({
@@ -30,6 +34,7 @@ export function useCreateTransaction() {
 				category: data.category,
 				installment: data.installment,
 				type: data.type as "deposit" | "expense" | "investment",
+				createdAt: data.createdAt,
 			});
 		},
 	});
@@ -40,9 +45,10 @@ export function useCreateTransaction() {
 			mutationKey: ["create-transaction"],
 			onSuccess: (response) => {
 				if (response.success === true) {
+					queryClient.invalidateQueries({ queryKey: ["transactions"] });
 					toast.success("Transação criada com sucesso!");
-
-					router.push("/transacoes");
+					setIsCreateTransactionSheetOpen(false);
+					form.reset();
 					return;
 				}
 				toast.error(response.error);
@@ -52,5 +58,7 @@ export function useCreateTransaction() {
 	return {
 		form,
 		isLoadingCreateTransaction,
+		isCreateTransactionSheetOpen,
+		setIsCreateTransactionSheetOpen,
 	};
 }

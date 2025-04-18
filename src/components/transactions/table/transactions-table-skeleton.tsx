@@ -35,10 +35,6 @@ export function TransactionsTableItemSkeleton() {
 			<TableCell>
 				<Skeleton className="h-6 w-[50px] bg-slate-100 rounded" />
 			</TableCell>
-
-			<TableCell>
-				<Skeleton className="h-6 w-[50px] bg-slate-100 rounded" />
-			</TableCell>
 		</TableRow>
 	);
 }

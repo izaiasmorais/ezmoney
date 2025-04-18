@@ -37,7 +37,7 @@ export async function POST(req: Request) {
 			data: {
 				id: uuidv4(),
 				name: transactionData.name,
-				createdAt: new Date(),
+				createdAt: transactionData.createdAt,
 				value: transactionData.value,
 				category: transactionData.category,
 				installment: transactionData.installment,

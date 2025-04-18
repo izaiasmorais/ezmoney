@@ -17,10 +17,10 @@ export function TransactionsSummary() {
 	}
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
 			<SummaryCard
 				title="Saldo"
-				amount={transactionsData.totalAmount}
+				amount={transactionsData.balance}
 				description={"Saldo total disponível"}
 				icon={<DollarSign className="h-5 w-5 text-indigo-500" />}
 				backgroundColor="bg-indigo-50"

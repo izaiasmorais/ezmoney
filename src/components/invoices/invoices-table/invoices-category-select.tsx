@@ -10,19 +10,12 @@ import {
 import { useUpdateInvoice } from "@/hooks/invoices/use-update-invoice";
 import { toast } from "sonner";
 import { Invoice } from "@/@types/invoice";
+import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 
 type InvoiceCategorySelectProps = {
 	invoiceId: string;
 	category: Invoice["category"];
 };
-
-const invoiceCategoryOptions = [
-	{ value: "subscription", label: "Assinatura" },
-	{ value: "general", label: "Geral" },
-	{ value: "loan", label: "Empréstimo" },
-	{ value: "purchase", label: "Compra" },
-	{ value: "streaming", label: "Streaming" },
-];
 
 export function InvoiceCategorySelect({
 	invoiceId,
