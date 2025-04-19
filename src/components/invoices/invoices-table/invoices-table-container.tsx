@@ -18,13 +18,13 @@ import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options"
 import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
 import { useRouter } from "next/navigation";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
-import { FormSelect } from "../../form/form-select";
 import { translateInvoicesTableKeys } from "@/utils/translate-invoices-table-keys";
-import { FormMultiSelect } from "@/components/form/form-multi-select";
+import { TableMultiSelect } from "@/components/table/table-multi-select";
 import { InvoicesTable } from "./invoices-table";
 import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
 import { TablePagination } from "@/components/table/table-pagination";
 import { TableSearchInput } from "@/components/table/table-search-input";
+import { TableSelect } from "@/components/table/table-select";
 
 export function InvoicesTableContainer() {
 	const [sorting, setSorting] = React.useState<SortingState>([
@@ -66,7 +66,7 @@ export function InvoicesTableContainer() {
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:flex items-center gap-4">
 				<TableSearchInput table={table} placeholder="Pesquisar contas..." />
 
-				<FormMultiSelect
+				<TableMultiSelect
 					options={invoiceStatusOptions}
 					placeholder="Status"
 					onChange={(value: string[]) => {
@@ -78,7 +78,7 @@ export function InvoicesTableContainer() {
 					}}
 				/>
 
-				<FormSelect
+				<TableSelect
 					options={invoicePaymentTypeOptions}
 					placeholder="Tipo de Pagamento"
 					onChange={(value) =>
@@ -86,7 +86,7 @@ export function InvoicesTableContainer() {
 					}
 				/>
 
-				<FormSelect
+				<TableSelect
 					options={invoiceCategoryOptions}
 					placeholder="Categoria"
 					onChange={(value) =>
@@ -95,7 +95,7 @@ export function InvoicesTableContainer() {
 				/>
 
 				<Button
-					className="text-muted-foreground bg-sidebar hover:bg-sidebar/80"
+					className="text-muted-foreground bg-slate-50 hover:bg-slate-100 dark:bg-sidebar dark:hover:bg-sidebar/80"
 					onClick={() => [table.resetSorting(), table.resetColumnFilters()]}
 				>
 					<X />

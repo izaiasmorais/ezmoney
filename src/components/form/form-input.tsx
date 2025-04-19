@@ -33,7 +33,7 @@ export function FormInput<TFieldValues extends FieldValues>({
 			name={entity}
 			render={({ field }) => (
 				<FormItem className={`flex flex-col text-left ${className}`}>
-					<FormLabel>{label}</FormLabel>
+					{label && <FormLabel>{label}</FormLabel>}
 
 					<FormControl>
 						{type === "textarea" ? (

@@ -14,7 +14,7 @@ import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
 import { InvoiceCategorySelect } from "./invoices-category-select";
 import { EditInvoiceSheet } from "./edit-invoice-sheet";
 import Link from "next/link";
-import { Tag } from "@/components/ui/tag";
+import { InvoicePaymentTypeSelect } from "./invoices-payment-type-select";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -242,14 +242,15 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				)}
 			</Button>
 		),
-		cell: ({ row }) => (
-			<div className="capitalize">
-				<Tag color="sidebar">
-					{row.getValue("paymentType") === "recurring" && "Recorrente"}
-					{row.getValue("paymentType") === "unique" && "Único"}
-				</Tag>
-			</div>
-		),
+		cell: ({ row }) => {
+			const paymentType = row.getValue("paymentType");
+			return (
+				<InvoicePaymentTypeSelect
+					invoiceId={row.original.id}
+					paymentType={paymentType as Invoice["paymentType"]}
+				/>
+			);
+		},
 	},
 	{
 		id: "actions",

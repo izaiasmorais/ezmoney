@@ -26,6 +26,8 @@ import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
 import Link from "next/link";
+import { FormMoneyInput } from "@/components/form/form-money-input";
+import { FormInput } from "@/components/form/form-input";
 
 export function CreateInvoiceForm() {
 	const { form, isLoadingCreateInvoice } = useCreateInvoice();
@@ -135,44 +137,19 @@ export function CreateInvoiceForm() {
 							<TableBody>
 								<TableRow>
 									<TableCell className="p-3 align-top">
-										<FormField
-											control={form.control}
-											name="unitValue"
-											render={({ field }) => (
-												<FormItem className="m-0">
-													<FormControl>
-														<Input
-															type="number"
-															placeholder="Ex: R$ 1.000,00"
-															className="w-full"
-															{...field}
-														/>
-													</FormControl>
-
-													<FormMessage />
-												</FormItem>
-											)}
+										<FormMoneyInput
+											form={form}
+											entity="unitValue"
+											placeholder="Ex: R$ 1.000,00"
 										/>
 									</TableCell>
 
 									<TableCell className="p-3 h-full align-top">
-										<FormField
-											control={form.control}
-											name="installments"
-											render={({ field }) => (
-												<FormItem className="m-0">
-													<FormControl>
-														<Input
-															type="number"
-															placeholder="Ex: 12"
-															className="w-full"
-															{...field}
-														/>
-													</FormControl>
-
-													<FormMessage />
-												</FormItem>
-											)}
+										<FormInput
+											type="number"
+											form={form}
+											entity="installments"
+											placeholder="Ex: 12"
 										/>
 									</TableCell>
 
@@ -216,15 +193,17 @@ export function CreateInvoiceForm() {
 
 				<div className="flex justify-end">
 					<div className="flex items-center gap-4">
-						<Link href="/contas" aria-disabled={isLoadingCreateInvoice}>
-							<Button
-								variant="ghost"
-								disabled={isLoadingCreateInvoice}
-								className="md:w-[150px]"
-							>
+						<Button
+							variant="ghost"
+							disabled={isLoadingCreateInvoice}
+							className="md:w-[150px]"
+							asChild
+							onClick={() => form.reset()}
+						>
+							<Link href="/contas" aria-disabled={isLoadingCreateInvoice}>
 								Cancelar
-							</Button>
-						</Link>
+							</Link>
+						</Button>
 
 						<Button
 							type="submit"

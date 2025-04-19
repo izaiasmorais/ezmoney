@@ -54,7 +54,7 @@ export function InvoicesSummary() {
 			/>
 
 			<SummaryCard
-				title="Vencido"
+				title="Atrasado"
 				amount={invoicesData.overdueAmount}
 				description={`${invoicesData.overdueCount} Contas`}
 				icon={
@@ -67,9 +67,7 @@ export function InvoicesSummary() {
 				title="Rascunho"
 				amount={invoicesData.draftAmount}
 				description={`${invoicesData.draftCount} Contas`}
-				icon={
-					<FileText className="h-5 w-5 text-blue-500 dark:text-blue-300" />
-				}
+				icon={<FileText className="h-5 w-5 text-blue-500 dark:text-blue-300" />}
 				backgroundColor="bg-blue-50 dark:bg-blue-900/20"
 			/>
 		</div>

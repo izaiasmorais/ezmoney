@@ -1,19 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { ArrowUp, ArrowDown, Copy, MoreHorizontal } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
 	DropdownMenu,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
-	DropdownMenuLabel,
 	DropdownMenuItem,
-	DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import type { Transaction } from "@/@types/transaction";
-import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
-import { Tag } from "@/components/ui/tag";
-
+import { TransactionsCategorySelect } from "./transactions-category-select";
+import { TransactionsTypeSelect } from "./transactions-type-select";
+import { EditTransactionSheet } from "./edit-transaction-sheet";
 export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	{
 		id: "select",
@@ -46,7 +44,12 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Nome
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => (
@@ -62,7 +65,12 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Criado em
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => {
@@ -84,7 +92,12 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Valor
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => (
@@ -105,15 +118,19 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Categoria
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
 		cell: ({ row }) => (
-			<Tag color="sidebar">
-				{invoiceCategoryOptions.find(
-					(c) => c.value === row.getValue("category")
-				)?.label || "Categoria"}
-			</Tag>
+			<TransactionsCategorySelect
+				transactionId={row.original.id}
+				category={row.getValue("category") as Transaction["category"]}
+			/>
 		),
 	},
 	{
@@ -125,23 +142,20 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
 				Tipo
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+				{column.getIsSorted() !== "desc" && (
+					<ArrowUp className="ml-2 h-4 w-4" />
+				)}
+				{column.getIsSorted() === "desc" && (
+					<ArrowDown className="ml-2 h-4 w-4" />
+				)}
 			</Button>
 		),
-		cell: ({ row }) => {
-			const type = row.getValue("type") as string;
-			return (
-				<Tag
-					color={
-						type === "deposit" ? "green" : type === "expense" ? "red" : "blue"
-					}
-				>
-					{type === "deposit" && "Depósito"}
-					{type === "expense" && "Despesa"}
-					{type === "investment" && "Investimento"}
-				</Tag>
-			);
-		},
+		cell: ({ row }) => (
+			<TransactionsTypeSelect
+				transactionId={row.original.id}
+				type={row.getValue("type") as Transaction["type"]}
+			/>
+		),
 		filterFn: (row, id, filterValue) => {
 			const type = row.getValue(id) as string;
 
@@ -150,7 +164,7 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	},
 	{
 		accessorKey: "installment",
-		header: "Parcelas",
+		header: "Parcela",
 		cell: ({ row }) => <div>{row.getValue("installment")}</div>,
 	},
 	{
@@ -166,16 +180,16 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 							<MoreHorizontal className="h-4 w-4" />
 						</Button>
 					</DropdownMenuTrigger>
+
 					<DropdownMenuContent align="end">
-						<DropdownMenuLabel>Ações</DropdownMenuLabel>
 						<DropdownMenuItem
 							onClick={() => navigator.clipboard.writeText(transaction.id)}
 						>
+							<Copy />
 							Copiar ID da transação
 						</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>Ver detalhes</DropdownMenuItem>
-						<DropdownMenuItem>Editar</DropdownMenuItem>
+
+						<EditTransactionSheet transaction={transaction} />
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);

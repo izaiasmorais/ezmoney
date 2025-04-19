@@ -54,7 +54,7 @@ export function FormMoneyInput<TFieldValues extends FieldValues>(
 			render={({ field }) => {
 				return (
 					<FormItem className={cn("flex flex-col text-left", props.className)}>
-						<FormLabel>{props.label}</FormLabel>
+						{props.label && <FormLabel>{props.label}</FormLabel>}
 
 						<FormControl>
 							<Input

@@ -74,11 +74,11 @@ export function TransactionForm({
 					emptyMessage="Nenhum tipo encontrado."
 				/>
 
-				<div className="flex items-center gap-6 py-4 justify-end">
+				<div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 justify-end">
 					<Button
 						type="button"
 						variant="secondary"
-						className="md:w-[150px]"
+						className="w-full md:w-[150px]"
 						disabled={isLoadingCreateTransaction}
 						onClick={() => setIsCreateTransactionSheetOpen(false)}
 					>
@@ -88,7 +88,7 @@ export function TransactionForm({
 					<Button
 						type="submit"
 						disabled={isLoadingCreateTransaction}
-						className="md:w-[150px]"
+						className="w-full md:w-[150px]"
 					>
 						{isLoadingCreateTransaction && (
 							<Loader className="mr-2 h-4 w-4 animate-spin" />

@@ -60,7 +60,7 @@ export function FormCombobox<TFieldValues extends FieldValues>({
 									role="combobox"
 									aria-expanded={open}
 									className={cn(
-										"justify-between",
+										"justify-between text-base md:text-sm",
 										!field.value && "text-muted-foreground"
 									)}
 								>

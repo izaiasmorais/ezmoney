@@ -50,7 +50,7 @@ export function NavMain({
 
 	return (
 		<SidebarGroup>
-			<SidebarGroupLabel>Platform</SidebarGroupLabel>
+			<SidebarGroupLabel>GERAL</SidebarGroupLabel>
 
 			<SidebarMenu>
 				{items.map((item) => {

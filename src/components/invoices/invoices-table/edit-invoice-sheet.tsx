@@ -65,7 +65,7 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 		},
 	});
 
-	const { updateInvoiceFn, isLoadingUpdateInvoiceStatus } = useUpdateInvoice();
+	const { updateInvoiceFn, isLoadingUpdateInvoice } = useUpdateInvoice();
 
 	const handleSubmit = async (formData: CreateInvoiceRequest) => {
 		const updateRequest: UpdateInvoiceRequest = {
@@ -242,8 +242,10 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 											</TableCell>
 
 											<TableCell className="p-3 align-top">
-												<div className="h-9 min-w-[150px] rounded-md shadow-xs border p-2 pl-3
-												bg-slate-100 dark:bg-sidebar">
+												<div
+													className="h-9 min-w-[150px] rounded-md shadow-xs border p-2 pl-3
+												bg-slate-100 dark:bg-sidebar"
+												>
 													{`R$ ${totalValue}`}
 												</div>
 											</TableCell>
@@ -291,7 +293,7 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 								<Button
 									variant="outline"
 									className="w-full sm:w-[200px]"
-									disabled={isLoadingUpdateInvoiceStatus}
+									disabled={isLoadingUpdateInvoice}
 								>
 									Cancelar
 								</Button>
@@ -301,9 +303,9 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 								type="submit"
 								form="edit-invoice-form"
 								className="w-full sm:w-[200px]"
-								disabled={isLoadingUpdateInvoiceStatus}
+								disabled={isLoadingUpdateInvoice}
 							>
-								{isLoadingUpdateInvoiceStatus && (
+								{isLoadingUpdateInvoice && (
 									<Loader className="mr-2 h-4 w-4 animate-spin" />
 								)}
 								Salvar alterações

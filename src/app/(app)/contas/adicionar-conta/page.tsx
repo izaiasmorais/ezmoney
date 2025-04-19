@@ -14,9 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-	return (
-		<div>
-			<CreateInvoiceContainer />
-		</div>
-	);
+	return <CreateInvoiceContainer />;
 }

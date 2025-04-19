@@ -24,12 +24,18 @@ export function InvoicesTable({
 }: InvoicesTableProps) {
 	return (
 		<Table className="overflow-x-scroll">
-			<TableHeader className="bg-slate-50 dark:bg-sidebar">
+			<TableHeader>
 				{table.getHeaderGroups().map((headerGroup) => (
-					<TableRow key={headerGroup.id} className="border-none">
+					<TableRow
+						key={headerGroup.id}
+						className="border-none overflow-hidden"
+					>
 						{headerGroup.headers.map((header) => {
 							return (
-								<TableHead key={header.id}>
+								<TableHead
+									key={header.id}
+									className="bg-slate-50 dark:bg-sidebar first:rounded-l-lg last:rounded-r-lg"
+								>
 									{header.isPlaceholder
 										? null
 										: flexRender(

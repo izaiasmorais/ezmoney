@@ -15,7 +15,7 @@ import { transactionsTableColumns } from "./transactions-table-columns";
 import { TransactionsTable } from "./transactions-table";
 import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
 import { transactionTypesOptions } from "@/mocks/transaction-types-options";
-import { FormMultiSelect } from "@/components/form/form-multi-select";
+import { TableMultiSelect } from "@/components/table/table-multi-select";
 import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
 import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
 import { CreateTransactionSheet } from "./create-transaction-sheet";
@@ -62,7 +62,7 @@ export function TransactionsTableContainer() {
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:flex items-center gap-4">
 				<TableSearchInput table={table} placeholder="Pesquisar transações..." />
 
-				<FormMultiSelect
+				<TableMultiSelect
 					className="w-full lg:w-[200px]"
 					options={transactionTypesOptions}
 					placeholder="Tipo"

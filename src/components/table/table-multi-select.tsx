@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import { CirclePlus, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -19,7 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-interface FormMultiSelectProps {
+interface TableMultiSelectProps {
 	options: { label: string; value: string }[];
 	placeholder?: string;
 	onChange?: (value: string[]) => void;
@@ -27,13 +26,13 @@ interface FormMultiSelectProps {
 	defaultValues?: string[];
 }
 
-export function FormMultiSelect({
+export function TableMultiSelect({
 	options,
 	placeholder = "Selecionar opções...",
 	onChange,
 	className,
 	defaultValues = [],
-}: FormMultiSelectProps) {
+}: TableMultiSelectProps) {
 	const [open, setOpen] = React.useState(false);
 	const [selectedValues, setSelectedValues] =
 		React.useState<string[]>(defaultValues);

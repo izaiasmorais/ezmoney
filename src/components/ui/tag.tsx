@@ -11,7 +11,7 @@ const getColorClasses = (color: string) => {
 	const colorMap: Record<string, { light: string; dark: string }> = {
 		red: {
 			light: "text-red-600 bg-red-50",
-			dark: "dark:text-red-300 dark:!bg-red-900/20",
+			dark: "dark:text-red-400 dark:!bg-red-900/20",
 		},
 		blue: {
 			light: "text-blue-600 bg-blue-50",
@@ -19,7 +19,7 @@ const getColorClasses = (color: string) => {
 		},
 		green: {
 			light: "text-green-600 bg-green-50",
-			dark: "dark:text-green-300 dark:!bg-green-900/20",
+			dark: "dark:text-green-400 dark:!bg-green-900/20",
 		},
 		yellow: {
 			light: "text-yellow-600 bg-yellow-50",

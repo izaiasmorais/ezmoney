@@ -33,6 +33,7 @@ export const updateTransactionSchema = z.object({
 		.refine((val) => val !== 0, "O valor da transação não pode ser zero")
 		.optional(),
 	category: z.string().min(1, "A categoria é obrigatória").optional(),
+	createdAt: z.string().min(1, "A data da transação é obrigatória").optional(),
 	installment: z.coerce.number().int().positive().optional(),
 	type: z
 		.enum(["deposit", "expense", "investment"], {

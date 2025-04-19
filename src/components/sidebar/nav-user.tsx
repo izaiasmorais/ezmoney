@@ -19,6 +19,7 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { queryClient } from "@/lib/react-query";
+import Link from "next/link";
 
 export function NavUser({
 	user,
@@ -90,9 +91,11 @@ export function NavUser({
 						<DropdownMenuSeparator />
 
 						<DropdownMenuGroup>
-							<DropdownMenuItem>
-								<User />
-								Perfil
+							<DropdownMenuItem asChild>
+								<Link href="/configuracoes">
+									<User />
+									Perfil
+								</Link>
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+"use client";
 import {
 	Select,
 	SelectContent,
@@ -7,36 +7,58 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import {
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
+import { Control, FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-interface FormSelectProps {
+interface FormSelectProps<TFieldValues extends FieldValues> {
 	options: { label: string; value: string }[];
+	translatedEntity: string;
 	placeholder?: string;
-	onChange?: (value: string) => void;
-	className?: string;
+	entity: Path<TFieldValues>;
+	form: UseFormReturn<TFieldValues>;
 }
 
-export function FormSelect({
+export function FormSelect<TFieldValues extends FieldValues>({
 	options,
+	form,
+	entity,
+	translatedEntity,
 	placeholder,
-	onChange,
-	className,
-}: FormSelectProps) {
+}: FormSelectProps<TFieldValues>) {
 	return (
-		<Select onValueChange={onChange}>
-			<SelectTrigger className={cn(`w-full xl:w-[200px]`, className)}>
-				<SelectValue placeholder={placeholder} />
-			</SelectTrigger>
-
-			<SelectContent>
-				<SelectGroup>
-					{options.map((option) => (
-						<SelectItem key={option.value} value={option.value}>
-							{option.label}
-						</SelectItem>
-					))}
-				</SelectGroup>
-			</SelectContent>
-		</Select>
+		<FormField
+			control={form.control as Control<TFieldValues, any>}
+			name={entity}
+			render={({ field }) => (
+				<FormItem>
+					<FormLabel>{translatedEntity}</FormLabel>
+					<Select onValueChange={field.onChange} defaultValue={field.value}>
+						<FormControl>
+							<SelectTrigger>
+								<SelectValue
+									placeholder={placeholder || `Selecionar ${translatedEntity}`}
+								/>
+							</SelectTrigger>
+						</FormControl>
+						<SelectContent>
+							<SelectGroup>
+								{options.map((option) => (
+									<SelectItem key={option.value} value={option.value}>
+										{option.label}
+									</SelectItem>
+								))}
+							</SelectGroup>
+						</SelectContent>
+					</Select>
+					<FormMessage />
+				</FormItem>
+			)}
+		/>
 	);
 }

@@ -4,8 +4,8 @@ import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
 import { formatToBRL } from "@/utils/format-to-brl";
 import { SquarePen, Eye, Printer, Share } from "lucide-react";
 import { InvoiceDetailsTable } from "./invoice-details-table";
-import { FormSelect } from "@/components/form/form-select";
 import { InvoiceDetailsSkeleton } from "./invoice-details-skeleton";
+import { TableSelect } from "@/components/table/table-select";
 
 interface InvoiceDetailsProps {
 	invoiceId: string;
@@ -41,7 +41,7 @@ export function InvoiceDetails({ invoiceId }: InvoiceDetailsProps) {
 						<Share className="w-5 h-5 text-muted-foreground hover:text-black cursor-pointer" />
 					</div>
 
-					<FormSelect options={invoiceStatusOptions} placeholder="Status" />
+					<TableSelect options={invoiceStatusOptions} placeholder="Status" />
 				</div>
 
 				<div className="w-full flex items-center justify-between">

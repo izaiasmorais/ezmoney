@@ -11,7 +11,7 @@ export function translateTransactionsTableKeys(key: string): string {
 		createdAt: "Criado em",
 		value: "Valor",
 		category: "Categoria",
-		installment: "Parcelas",
+		installment: "Parcela",
 		type: "Tipo",
 		actions: "Ações",
 	};

@@ -39,7 +39,7 @@ export function CreateTransactionSheet({
 				</Button>
 			</SheetTrigger>
 
-			<SheetContent className="w-[500px]">
+			<SheetContent className="w-full md:max-w-[500px] outline-none">
 				<SheetHeader>
 					<SheetTitle>Criar Transação</SheetTitle>
 					<SheetDescription>Adicione uma nova transação.</SheetDescription>

@@ -6,16 +6,16 @@ import { queryClient } from "@/lib/react-query";
 export function useUpdateInvoice() {
 	const {
 		mutateAsync: updateInvoiceFn,
-		isPending: isLoadingUpdateInvoiceStatus,
+		isPending: isLoadingUpdateInvoice,
 	} = useMutation({
-		mutationKey: ["update-invoice-status"],
+		mutationKey: ["update-invoice"],
 		mutationFn: updateInvoice,
 		onSuccess: (response) => {
 			if (response.success) {
 				queryClient.invalidateQueries({
 					queryKey: ["invoices"],
 				});
-				toast.success("Status da fatura atualizado com sucesso!");
+				toast.success("Fatura atualizada com sucesso!");
 				return;
 			}
 
@@ -25,6 +25,6 @@ export function useUpdateInvoice() {
 
 	return {
 		updateInvoiceFn,
-		isLoadingUpdateInvoiceStatus,
+		isLoadingUpdateInvoice,
 	};
 }
