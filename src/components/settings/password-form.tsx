@@ -128,6 +128,7 @@ export function PasswordForm() {
 						<Button
 							type="submit"
 							onClick={passwordForm.handleSubmit(handleSubmit)}
+							disabled
 						>
 							Salvar
 						</Button>

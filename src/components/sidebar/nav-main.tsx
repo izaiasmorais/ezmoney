@@ -38,7 +38,7 @@ export function NavMain({
 
 	function isActive(url: string) {
 		return pathname.endsWith(url)
-			? "dark:!bg-violet-800/10 !text-violet-600 dark:!text-violet-400 hover:text-ingido-600/80 dark:text-violet-600 bg-violet-50 hover:bg-violet-50 dark:bg-violet-50/50"
+			? "dark:!bg-violet-800/10 active:!bg-violet-50 !text-violet-600 dark:!text-violet-400 hover:text-ingido-600/80 dark:text-violet-600 bg-violet-50 hover:bg-violet-50 dark:bg-violet-50/50"
 			: "text-muted-foreground";
 	}
 

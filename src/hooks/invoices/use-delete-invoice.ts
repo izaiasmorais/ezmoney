@@ -1,9 +1,13 @@
 import { deleteInvoice } from "@/api/invoices/delete-invoice";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export function useDeleteInvoice() {
 	const queryClient = useQueryClient();
+
+	const [isDeleteInvoiceDialogOpen, setIsDeleteInvoiceDialogOpen] =
+		useState(false);
 
 	const { mutate: deleteInvoiceFn, isPending: isLoadingDeleteInvoice } =
 		useMutation({
@@ -17,5 +21,10 @@ export function useDeleteInvoice() {
 			},
 		});
 
-	return { deleteInvoiceFn, isLoadingDeleteInvoice };
+	return {
+		deleteInvoiceFn,
+		isLoadingDeleteInvoice,
+		isDeleteInvoiceDialogOpen,
+		setIsDeleteInvoiceDialogOpen,
+	};
 }

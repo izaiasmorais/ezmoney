@@ -12,6 +12,7 @@ import type { Transaction } from "@/@types/transaction";
 import { TransactionsCategorySelect } from "./transactions-category-select";
 import { TransactionsTypeSelect } from "./transactions-type-select";
 import { EditTransactionSheet } from "./edit-transaction-sheet";
+import { DeleteTransactionDialog } from "./delete-transaction-dialog";
 export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	{
 		id: "select",
@@ -190,6 +191,8 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 						</DropdownMenuItem>
 
 						<EditTransactionSheet transaction={transaction} />
+
+						<DeleteTransactionDialog transaction={transaction} />
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);

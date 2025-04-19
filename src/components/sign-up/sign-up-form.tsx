@@ -35,7 +35,7 @@ export function SignUpForm({
 
 	return (
 		<div className={cn("flex flex-col gap-6", className)} {...props}>
-			<Card className="border-none shadow-none">
+			<Card className="border-none shadow-none bg-transparent">
 				<CardHeader className="text-center">
 					<CardTitle className="text-xl">Crie sua conta</CardTitle>
 					<CardDescription>Cadastre-se ou continue com Google</CardDescription>

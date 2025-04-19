@@ -17,14 +17,19 @@ interface DeleteInvoiceDialogProps {
 }
 
 export function DeleteInvoiceDialog({ invoice }: DeleteInvoiceDialogProps) {
-	const { deleteInvoiceFn, isLoadingDeleteInvoice } = useDeleteInvoice();
+	const {
+		deleteInvoiceFn,
+		isLoadingDeleteInvoice,
+		isDeleteInvoiceDialogOpen,
+		setIsDeleteInvoiceDialogOpen,
+	} = useDeleteInvoice();
 
 	function handleDeleteInvoice() {
 		deleteInvoiceFn(invoice.id);
 	}
 
 	return (
-		<Dialog>
+		<Dialog open={isDeleteInvoiceDialogOpen} onOpenChange={setIsDeleteInvoiceDialogOpen}>
 			<DialogTrigger className="w-full">
 				<DropdownMenuItem
 					className="text-red-500 focus:text-red-500 hover:text-red-500"

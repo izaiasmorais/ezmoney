@@ -143,7 +143,9 @@ export function ProfileForm() {
 					</CardContent>
 
 					<CardFooter className="bg-sidebar flex justify-end p-3">
-						<Button onClick={form.handleSubmitForm}>Salvar</Button>
+						<Button onClick={form.handleSubmitForm} disabled>
+							Salvar
+						</Button>
 					</CardFooter>
 				</Card>
 			</div>

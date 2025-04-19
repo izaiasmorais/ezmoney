@@ -35,7 +35,7 @@ export function SignInForm({
 
 	return (
 		<div className={cn("flex flex-col gap-6 w-full", className)} {...props}>
-			<Card className="border-none shadow-none">
+			<Card className="border-none shadow-none bg-transparent">
 				<CardHeader className="text-center">
 					<CardTitle className="text-xl">Bem-vindo</CardTitle>
 					<CardDescription>Faça login com sua conta Google</CardDescription>

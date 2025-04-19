@@ -2,8 +2,8 @@
 import { SummaryCard } from "@/components/card/summary-card";
 import { useTransactionsSummary } from "@/hooks/transactions/use-transactions-summary";
 import {
+	Banknote,
 	ChartNoAxesCombined,
-	DollarSign,
 	TrendingDown,
 	TrendingUp,
 } from "lucide-react";
@@ -23,7 +23,7 @@ export function TransactionsSummary() {
 				amount={transactionsData.balance}
 				description={"Saldo total disponível"}
 				icon={
-					<DollarSign className="h-5 w-5 text-violet-500 dark:text-violet-300" />
+					<Banknote className="h-5 w-5 text-violet-500 dark:text-violet-300" />
 				}
 				backgroundColor="bg-violet-50 dark:bg-violet-900/20"
 			/>

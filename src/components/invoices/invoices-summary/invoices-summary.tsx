@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import {
-	DollarSign,
 	CheckCircle,
 	Clock,
 	AlertCircle,
 	FileText,
+	Banknote,
 } from "lucide-react";
 import { useInvoicesSummary } from "@/hooks/invoices/use-invoices-summary";
 import { InvoicesSummarySkeleton } from "./invoices-summary-skeleton";
@@ -28,7 +28,7 @@ export function InvoicesSummary() {
 				amount={invoicesData.totalAmount}
 				description={`${invoicesData.totalCount} Contas`}
 				icon={
-					<DollarSign className="h-5 w-5 text-violet-500 dark:text-violet-300" />
+					<Banknote className="h-5 w-5 text-violet-500 dark:text-violet-300" />
 				}
 				backgroundColor="bg-violet-50 dark:bg-violet-900/20"
 			/>
