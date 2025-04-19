@@ -57,7 +57,7 @@ export function PasswordForm() {
 			</div>
 
 			<div className="col-span-1 md:col-span-2">
-				<Card className="border-muted rounded-lg overflow-auto shadow-none p-0">
+				<Card className="border-muted bg-transparent rounded-lg overflow-auto shadow-none p-0">
 					<CardContent className="space-y-6 mt-6">
 						<Form {...passwordForm}>
 							<form

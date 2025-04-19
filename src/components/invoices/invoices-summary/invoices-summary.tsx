@@ -28,13 +28,13 @@ export function InvoicesSummary() {
 				amount={invoicesData.totalAmount}
 				description={`${invoicesData.totalCount} Contas`}
 				icon={
-					<DollarSign className="h-5 w-5 text-blue-500 dark:text-blue-300" />
+					<DollarSign className="h-5 w-5 text-violet-500 dark:text-violet-300" />
 				}
-				backgroundColor="bg-blue-50 dark:bg-blue-900/20"
+				backgroundColor="bg-violet-50 dark:bg-violet-900/20"
 			/>
 
 			<SummaryCard
-				title="Paid"
+				title="Pago"
 				amount={invoicesData.paidAmount}
 				description={`${invoicesData.paidCount} Contas`}
 				icon={
@@ -44,7 +44,7 @@ export function InvoicesSummary() {
 			/>
 
 			<SummaryCard
-				title="Pending"
+				title="Pendente"
 				amount={invoicesData.pendingAmount}
 				description={`${invoicesData.pendingCount} Contas`}
 				icon={
@@ -54,7 +54,7 @@ export function InvoicesSummary() {
 			/>
 
 			<SummaryCard
-				title="Overdue"
+				title="Vencido"
 				amount={invoicesData.overdueAmount}
 				description={`${invoicesData.overdueCount} Contas`}
 				icon={
@@ -62,14 +62,15 @@ export function InvoicesSummary() {
 				}
 				backgroundColor="bg-red-50 dark:bg-red-900/20"
 			/>
+
 			<SummaryCard
-				title="Draft"
+				title="Rascunho"
 				amount={invoicesData.draftAmount}
 				description={`${invoicesData.draftCount} Contas`}
 				icon={
-					<FileText className="h-5 w-5 text-violet-500 dark:text-violet-300" />
+					<FileText className="h-5 w-5 text-blue-500 dark:text-blue-300" />
 				}
-				backgroundColor="bg-violet-50 dark:bg-violet-900/20"
+				backgroundColor="bg-blue-50 dark:bg-blue-900/20"
 			/>
 		</div>
 	);

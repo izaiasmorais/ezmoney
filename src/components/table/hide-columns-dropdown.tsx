@@ -25,13 +25,16 @@ export function HideColumnsDropDown<T>({
 			<DropdownMenuTrigger asChild>
 				<Button
 					variant="outline"
-					className={cn("font-semibold md:ml-auto", className)}
+					className={cn(
+						"font-semibold md:ml-auto w-full lg:w-[100px]",
+						className
+					)}
 				>
 					Exibir <ChevronDown />
 				</Button>
 			</DropdownMenuTrigger>
 
-			<DropdownMenuContent align="end" className="w-full lg:w-[150px]">
+			<DropdownMenuContent align="end">
 				{table
 					.getAllColumns()
 					.filter((column) => column.getCanHide())
@@ -41,7 +44,6 @@ export function HideColumnsDropDown<T>({
 								key={column.id}
 								className="capitalize"
 								checked={column.getIsVisible()}
-								onClick={(e) => e.preventDefault()}
 								onCheckedChange={(value) => [column.toggleVisibility(!!value)]}
 							>
 								{translateFunction(column.id)}

@@ -11,7 +11,6 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { SearchInput } from "@/components/ui/search-input";
 import { transactionsTableColumns } from "./transactions-table-columns";
 import { TransactionsTable } from "./transactions-table";
 import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
@@ -21,9 +20,16 @@ import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
 import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
 import { CreateTransactionSheet } from "./create-transaction-sheet";
 import { X } from "lucide-react";
+import { TablePagination } from "@/components/table/table-pagination";
+import { TableSearchInput } from "@/components/table/table-search-input";
 
 export function TransactionsTableContainer() {
-	const [sorting, setSorting] = React.useState<SortingState>([]);
+	const [sorting, setSorting] = React.useState<SortingState>([
+		{
+			id: "value",
+			desc: true,
+		},
+	]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
 		[]
 	);
@@ -54,14 +60,7 @@ export function TransactionsTableContainer() {
 	return (
 		<div className="w-full space-y-4">
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:flex items-center gap-4">
-				<SearchInput
-					className="w-full lg:w-[250px]"
-					placeholder="Pesquisar transações..."
-					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-					onChange={(event) =>
-						table.getColumn("name")?.setFilterValue(event.target.value)
-					}
-				/>
+				<TableSearchInput table={table} placeholder="Pesquisar transações..." />
 
 				<FormMultiSelect
 					className="w-full lg:w-[200px]"
@@ -92,41 +91,13 @@ export function TransactionsTableContainer() {
 				<CreateTransactionSheet />
 			</div>
 
-			<div>
-				<TransactionsTable
-					table={table}
-					isLoadingGetTransactions={isLoadingGetTransactions}
-					data={data}
-				/>
-			</div>
+			<TransactionsTable
+				table={table}
+				isLoadingGetTransactions={isLoadingGetTransactions}
+				data={data}
+			/>
 
-			<div className="flex items-center justify-end space-x-2">
-				<div className="flex-1 text-sm text-muted-foreground">
-					{table.getFilteredSelectedRowModel().rows.length} de{" "}
-					{table.getFilteredRowModel().rows.length} linha(s){" "}
-					<span className="hidden sm:inline">selecionada(s)</span>.
-				</div>
-
-				<div className="space-x-2">
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => table.previousPage()}
-						disabled={!table.getCanPreviousPage()}
-					>
-						Anterior
-					</Button>
-
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => table.nextPage()}
-						disabled={!table.getCanNextPage()}
-					>
-						Próximo
-					</Button>
-				</div>
-			</div>
+			<TablePagination table={table} />
 		</div>
 	);
 }

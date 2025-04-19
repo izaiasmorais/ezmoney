@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { X } from "lucide-react";
+import { CirclePlus, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
 	Command,
@@ -89,10 +89,12 @@ export function FormMultiSelect({
 					variant="outline"
 					role="combobox"
 					aria-expanded={open}
-					className={cn("justify-between", className)}
+					className={cn("w-full xl:w-[175px]", className)}
 				>
 					{selectedValues.length > 0 ? (
-						<div className="flex flex-wrap gap-1 max-w-full overflow-hidden">
+						<div className="flex items-center flex-wrap gap-2 max-w-full overflow-hidden">
+							<CirclePlus />
+
 							{selectedValues.length === 1 ? (
 								<span className="truncate">{selectedLabels[0]}</span>
 							) : (
@@ -100,7 +102,10 @@ export function FormMultiSelect({
 							)}
 						</div>
 					) : (
-						<span className="text-muted-foreground">{placeholder}</span>
+						<span className="text-muted-foreground flex items-center gap-2">
+							<CirclePlus />
+							{placeholder}
+						</span>
 					)}
 				</Button>
 			</PopoverTrigger>
@@ -217,10 +222,11 @@ export function FormMultiSelect({
 									);
 								})}
 							</div>
+
 							<Button
 								variant="outline"
 								size="sm"
-								className="w-full mt-1"
+								className="w-full mt-1 bg-muted"
 								onClick={(e) => {
 									e.preventDefault();
 									e.stopPropagation();

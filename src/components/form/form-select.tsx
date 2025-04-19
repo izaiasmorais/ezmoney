@@ -24,7 +24,7 @@ export function FormSelect({
 }: FormSelectProps) {
 	return (
 		<Select onValueChange={onChange}>
-			<SelectTrigger className={cn(`w-full xl:w-[180px]`, className)}>
+			<SelectTrigger className={cn(`w-full xl:w-[200px]`, className)}>
 				<SelectValue placeholder={placeholder} />
 			</SelectTrigger>
 

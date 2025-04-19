@@ -10,17 +10,9 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { ChevronDown, PlusIcon, X } from "lucide-react";
+import { PlusIcon, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
 import { invoicesTableColumns } from "./invoices-table-columns";
-import { SearchInput } from "@/components/ui/search-input";
 import { invoiceStatusOptions } from "@/mocks/invoice-status-options";
 import { invoicePaymentTypeOptions } from "@/mocks/invoice-payment-type-options";
 import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
@@ -31,6 +23,8 @@ import { translateInvoicesTableKeys } from "@/utils/translate-invoices-table-key
 import { FormMultiSelect } from "@/components/form/form-multi-select";
 import { InvoicesTable } from "./invoices-table";
 import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
+import { TablePagination } from "@/components/table/table-pagination";
+import { TableSearchInput } from "@/components/table/table-search-input";
 
 export function InvoicesTableContainer() {
 	const [sorting, setSorting] = React.useState<SortingState>([
@@ -70,13 +64,7 @@ export function InvoicesTableContainer() {
 	return (
 		<div className="w-full space-y-4">
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:flex items-center gap-4">
-				<SearchInput
-					placeholder="Pesquisar contas..."
-					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-					onChange={(event) =>
-						table.getColumn("name")?.setFilterValue(event.target.value)
-					}
-				/>
+				<TableSearchInput table={table} placeholder="Pesquisar contas..." />
 
 				<FormMultiSelect
 					options={invoiceStatusOptions}
@@ -114,39 +102,6 @@ export function InvoicesTableContainer() {
 					Limpar Filtros
 				</Button>
 
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Button
-							variant="outline"
-							className="font-semibold md:ml-auto w-full xl:w-[100px]"
-						>
-							<div className="flex items-center gap-2">
-								Exibir <ChevronDown />
-							</div>
-						</Button>
-					</DropdownMenuTrigger>
-
-					<DropdownMenuContent align="end">
-						{table
-							.getAllColumns()
-							.filter((column) => column.getCanHide())
-							.map((column) => {
-								return (
-									<DropdownMenuCheckboxItem
-										key={column.id}
-										className="capitalize"
-										checked={column.getIsVisible()}
-										onCheckedChange={(value) =>
-											column.toggleVisibility(!!value)
-										}
-									>
-										{translateInvoicesTableKeys(column.id)}
-									</DropdownMenuCheckboxItem>
-								);
-							})}
-					</DropdownMenuContent>
-				</DropdownMenu>
-
 				<HideColumnsDropDown
 					table={table}
 					translateFunction={translateInvoicesTableKeys}
@@ -161,40 +116,13 @@ export function InvoicesTableContainer() {
 				</Button>
 			</div>
 
-			<div>
-				<InvoicesTable
-					table={table}
-					isLoadingGetInvoices={isLoadingGetInvoices}
-					data={data}
-				/>
-			</div>
+			<InvoicesTable
+				table={table}
+				isLoadingGetInvoices={isLoadingGetInvoices}
+				data={data}
+			/>
 
-			<div className="flex items-center justify-end space-x-2">
-				<div className="flex-1 text-sm text-muted-foreground">
-					{table.getFilteredSelectedRowModel().rows.length} de{" "}
-					{table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
-				</div>
-
-				<div className="space-x-2">
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => table.previousPage()}
-						disabled={!table.getCanPreviousPage()}
-					>
-						Anterior
-					</Button>
-
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => table.nextPage()}
-						disabled={!table.getCanNextPage()}
-					>
-						Próximo
-					</Button>
-				</div>
-			</div>
+			<TablePagination table={table} />
 		</div>
 	);
 }

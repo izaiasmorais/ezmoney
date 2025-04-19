@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import Image from "next/image";
-import { ThemeSwitcher } from "./theme-switcher";
 
 export function TeamSwitcher({}: {
 	teams: {
@@ -27,8 +26,6 @@ export function TeamSwitcher({}: {
 
 				<span className="truncate text-xs">Ativo</span>
 			</div>
-
-			<ThemeSwitcher />
 		</div>
 	);
 }

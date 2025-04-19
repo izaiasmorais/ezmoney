@@ -72,12 +72,7 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				month: "2-digit",
 				year: "numeric",
 			});
-			const formattedTime = date.toLocaleTimeString("pt-BR", {
-				hour: "2-digit",
-				minute: "2-digit",
-				hour12: false, // Formato 24h
-			});
-			return <div>{`${formattedDate} ${formattedTime}`}</div>;
+			return <div>{`${formattedDate}`}</div>;
 		},
 	},
 	{
@@ -93,7 +88,7 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 			</Button>
 		),
 		cell: ({ row }) => (
-			<div>
+			<div className="font-semibold">
 				{Number(row.getValue("value")).toLocaleString("pt-BR", {
 					style: "currency",
 					currency: "BRL",

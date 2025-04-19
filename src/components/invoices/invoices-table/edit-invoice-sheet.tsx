@@ -45,7 +45,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UpdateInvoiceRequest } from "@/api/invoices/update-invoice";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
-
 interface EditInvoiceSheetProps {
 	invoice: Invoice;
 }
@@ -92,7 +91,7 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 			</SheetTrigger>
 
 			<SheetContent
-				className="w-full sm:min-w-[600px] md:min-w-[800px] overflow-y-auto gap-0
+				className="w-full sm:max-w-[600px] md:max-w-[800px] overflow-y-auto gap-0
 			outline-none"
 			>
 				<SheetHeader className="p-6">
@@ -243,7 +242,8 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 											</TableCell>
 
 											<TableCell className="p-3 align-top">
-												<div className="h-9 min-w-[150px] rounded-md shadow-xs border p-2 pl-3 bg-slate-100">
+												<div className="h-9 min-w-[150px] rounded-md shadow-xs border p-2 pl-3
+												bg-slate-100 dark:bg-sidebar">
 													{`R$ ${totalValue}`}
 												</div>
 											</TableCell>
@@ -265,6 +265,7 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 									<FormItem className="m-0">
 										<FormControl>
 											<Textarea
+												className="text-sm"
 												placeholder="Ex: Conta de energia referente ao mês de janeiro de 2024."
 												rows={3}
 												maxLength={250}
@@ -282,11 +283,14 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 							</div>
 						</div>
 
-						<SheetFooter className="flex p-0 mb-6 flex-row justify-end self-end items-center gap-4">
+						<SheetFooter
+							className="w-full flex p-0 mb-6 flex-row justify-end self-end items-center
+						gap-4 flex-wrap"
+						>
 							<SheetClose asChild>
 								<Button
 									variant="outline"
-									className="w-[200px]"
+									className="w-full sm:w-[200px]"
 									disabled={isLoadingUpdateInvoiceStatus}
 								>
 									Cancelar
@@ -296,7 +300,7 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 							<Button
 								type="submit"
 								form="edit-invoice-form"
-								className="w-[200px]"
+								className="w-full sm:w-[200px]"
 								disabled={isLoadingUpdateInvoiceStatus}
 							>
 								{isLoadingUpdateInvoiceStatus && (
