@@ -1,7 +1,7 @@
-import { FormCombobox } from "@/components/form/form-combobox";
 import { FormDatePicker } from "@/components/form/form-date-picker";
 import { FormInput } from "@/components/form/form-input";
 import { FormMoneyInput } from "@/components/form/form-money-input";
+import { FormSelect } from "@/components/form/form-select";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useFormMutation } from "@/hooks/use-form-mutation";
@@ -56,22 +56,20 @@ export function TransactionForm({
 					type="number"
 				/>
 
-				<FormCombobox
+				<FormSelect
 					form={form}
 					options={invoiceCategoryOptions}
 					entity="category"
 					translatedEntity="Categoria"
 					placeholder="Selecione a categoria"
-					emptyMessage="Nenhuma categoria encontrada."
 				/>
 
-				<FormCombobox
+				<FormSelect
 					form={form}
 					options={transactionTypesOptions}
 					entity="type"
 					translatedEntity="Tipo"
 					placeholder="Selecione o tipo"
-					emptyMessage="Nenhum tipo encontrado."
 				/>
 
 				<div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 justify-end">

@@ -40,12 +40,13 @@ export function FormSelect<TFieldValues extends FieldValues>({
 					<FormLabel>{translatedEntity}</FormLabel>
 					<Select onValueChange={field.onChange} defaultValue={field.value}>
 						<FormControl>
-							<SelectTrigger>
+							<SelectTrigger className="w-full text-base md:text-sm">
 								<SelectValue
 									placeholder={placeholder || `Selecionar ${translatedEntity}`}
 								/>
 							</SelectTrigger>
 						</FormControl>
+
 						<SelectContent>
 							<SelectGroup>
 								{options.map((option) => (
