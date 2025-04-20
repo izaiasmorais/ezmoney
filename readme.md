@@ -1,6 +1,6 @@
 # EZMoney
 
-![image](https://github.com/user-attachments/assets/63ea046e-37d9-4397-97fa-031cc2e7e256)
+![image](https://github.com/user-attachments/assets/c88210be-6100-49a2-ba4f-9c006ff2b710)
 
 ## Introdução
 
@@ -23,13 +23,15 @@ Um dashboard completo de controle de finanças que permite gerenciar transaçõe
 
 ## Funcionalidades
 
-- [ ] Autenticação via Clerk
-- [ ] Dashboard com gráficos detalhados.
-- [ ] Gerencimento de faturas.
-- [ ] Gerenciamento de transações.
+- [x] Autenticação via Better Auth.
+- [x] Modo noturno.
+- [x] Design responsivo.
+- [x] Dashboard com gráficos sobre transações.
+- [x] Gerencimento de faturas.
+- [x] Gerenciamento de transações.
 - [ ] Gerenciamento de contas bancárias.
 - [ ] Gerencimento de metas.
-- [ ] Calendário.
+- [ ] Calendário de pagamentos.
 
 ## Instalação
 
@@ -49,27 +51,29 @@ pnpm install
 Configure o arquivo .env com suas credenciais:
 
 ```env
-ENV=
+NODE_ENV=development
+
+DATABASE_URL=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+BETTER_AUTH_SECRET=0392er0iweed9083y2edd
 ```
 
 ## Executando o Projeto
 
-Inicie o servidor:
+Suba as migrações para o seu banco de dados:
+```bash
+pnpm migrate
+```
 
+Gere o schema do Prisma:
+```bash
+pnpm generate
+```
+
+Inicie o servidor:
 ```bash
 pnpm dev
-```
-
-## Executando testes
-
-Executar todos os testes no termial:
-
-```bash
-pnpm test
-```
-
-Executar todos os testes através da UI do Playwright:
-
-```bash
-pnpm play
 ```
