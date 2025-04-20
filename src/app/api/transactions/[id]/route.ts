@@ -36,7 +36,6 @@ export async function PUT(
 
 		const userInfo = session?.user;
 
-		// Check if transaction exists and belongs to user
 		const existingTransaction = await prisma.transaction.findUnique({
 			where: {
 				id: transactionId,
@@ -112,7 +111,6 @@ export async function DELETE(
 
 		const userInfo = session?.user;
 
-		// Check if transaction exists and belongs to user
 		const existingTransaction = await prisma.transaction.findUnique({
 			where: {
 				id: transactionId,

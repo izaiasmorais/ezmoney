@@ -23,7 +23,7 @@ export default function RootLayout({
 				<link rel="icon" href="/ezmoney.svg" sizes="any" />
 			</head>
 
-			<body>
+			<body cz-shortcut-listen="true">
 				<Providers>{children}</Providers>
 			</body>
 		</html>

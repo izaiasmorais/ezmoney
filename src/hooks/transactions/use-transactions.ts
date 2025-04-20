@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { transactions } from "@/mocks/transactions";
 import { formatToBRL } from "@/utils/format-to-brl";
+import { useGetTransactions } from "./use-get-transactions";
+import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 
 interface MonthlySummary {
 	[month: string]: {
@@ -22,9 +23,16 @@ interface TransactionsSummary {
 	monthlySummary: MonthlySummary;
 }
 
+const categoryTranslations = invoiceCategoryOptions.reduce((acc, option) => {
+	acc[option.value] = option.label;
+	return acc;
+}, {} as Record<string, string>);
+
 export function useTransactions(
 	selectedYear: number = new Date().getFullYear()
 ): TransactionsSummary {
+	const { data: transactions } = useGetTransactions();
+
 	const {
 		totalDeposits,
 		totalExpenses,
@@ -63,6 +71,16 @@ export function useTransactions(
 			};
 		}
 
+		if (!transactions || transactions.length === 0) {
+			return {
+				totalDeposits: 0,
+				totalExpenses: 0,
+				totalInvestments: 0,
+				expensesByCategory: [],
+				monthlySummary,
+			};
+		}
+
 		const totals = transactions.reduce(
 			(acc, transaction) => {
 				const transactionDate = new Date(transaction.createdAt);
@@ -87,14 +105,18 @@ export function useTransactions(
 						acc.totalExpenses += transaction.value;
 						acc.monthlySummary[monthName].totalExpenses += transaction.value;
 
+						const translatedCategory =
+							categoryTranslations[transaction.category] ||
+							transaction.category;
+
 						const categoryEntry = acc.expensesByCategory.find(
-							(entry) => entry.category === transaction.category
+							(entry) => entry.category === translatedCategory
 						);
 						if (categoryEntry) {
 							categoryEntry.value += transaction.value;
 						} else {
 							acc.expensesByCategory.push({
-								category: transaction.category,
+								category: translatedCategory,
 								value: transaction.value,
 								formattedValue: "",
 							});
@@ -125,7 +147,7 @@ export function useTransactions(
 		});
 
 		return totals;
-	}, [selectedYear]);
+	}, [selectedYear, transactions]);
 
 	return {
 		totalDeposits,

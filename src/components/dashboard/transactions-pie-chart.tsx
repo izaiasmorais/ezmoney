@@ -16,6 +16,8 @@ import {
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useTransactions } from "@/hooks/transactions/use-transactions";
+import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
+import { TransactionsChartSkeleton } from "./transactions-pie-chart-skeleton";
 
 interface CustomChartConfig extends ChartConfig {
 	[key: string]: {
@@ -81,6 +83,7 @@ const orderedColors = Object.values(chartConfig)
 
 export function TransactionsPieChart() {
 	const { expensesByCategory, totalExpenses } = useTransactions();
+	const { isLoadingGetTransactions } = useGetTransactions();
 
 	const sortedData = expensesByCategory
 		.map((entry) => ({
@@ -95,6 +98,10 @@ export function TransactionsPieChart() {
 		fill: orderedColors[index] || "hsl(var(--chart-12))",
 	}));
 
+	if (isLoadingGetTransactions) {
+		return <TransactionsChartSkeleton />;
+	}
+
 	return (
 		<Card className="flex flex-col lg:col-span-1 shadow-none border-muted pb-0 h-full bg-transparent">
 			<CardHeader className="pb-0">
@@ -104,10 +111,10 @@ export function TransactionsPieChart() {
 				</div>
 			</CardHeader>
 
-			<CardContent className="flex-1 p-0">
+			<CardContent className="flex-1 p-0 max-h-max">
 				<ChartContainer
 					config={chartConfig}
-					className="mx-auto aspect-square max-h-90"
+					className="mx-auto aspect-square max-h-90 p-0"
 				>
 					<PieChart>
 						<ChartTooltip
@@ -191,6 +198,7 @@ export function TransactionsPieChart() {
 									backgroundColor: orderedColors[index],
 								}}
 							/>
+
 							<span className="text-sm">{entry.category}</span>
 						</div>
 					))}

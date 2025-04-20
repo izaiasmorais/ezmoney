@@ -1,8 +1,8 @@
 "use client";
 import { getSession } from "@/api/session/get-session";
-import { NavUserSkeleton } from "./nav-user-skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { NavUser } from "./nav-user";
+import { NavUserSkeleton } from "./nav-user-skeleton";
 
 export function NavUserClient() {
 	const { data, isLoading: isLoadingGetSession } = useQuery({
@@ -10,15 +10,19 @@ export function NavUserClient() {
 		queryFn: getSession,
 	});
 
-	if (isLoadingGetSession) return <NavUserSkeleton />;
+	if (isLoadingGetSession) {
+		return <NavUserSkeleton />;
+	}
 
 	return (
-		<NavUser
-			user={{
-				name: data?.user.name ?? "",
-				email: data?.user.email ?? "",
-				avatar: data?.user.image ?? "",
-			}}
-		/>
+		<div>
+			<NavUser
+				user={{
+					name: data?.user.name ?? "",
+					email: data?.user.email ?? "",
+					avatar: data?.user.image ?? "",
+				}}
+			/>
+		</div>
 	);
 }

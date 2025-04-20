@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from "uuid";
 import type { Transaction } from "@/@types/transaction";
 
 export const transactions: Transaction[] = [
-	// Janeiro
 	{
 		id: uuidv4(),
 		name: "Salário Mensal",
@@ -103,8 +102,6 @@ export const transactions: Transaction[] = [
 		type: "expense",
 		userId: "1",
 	},
-
-	// Fevereiro
 	{
 		id: uuidv4(),
 		name: "Salário Mensal",
@@ -205,8 +202,6 @@ export const transactions: Transaction[] = [
 		type: "investment",
 		userId: "1",
 	},
-
-	// Março
 	{
 		id: uuidv4(),
 		name: "Salário Mensal",

@@ -24,9 +24,11 @@ export function TeamSwitcher({}: {
 			</div>
 
 			<div className="grid flex-1 text-left text-sm leading-tight">
-				<span className="truncate font-semibold">Workspace</span>
+				<span className="truncate font-semibold">EZMoney</span>
 
-				<span className="truncate text-xs">Ativo</span>
+				<span className="truncate text-xs text-muted-foreground">
+					Plano Pro
+				</span>
 			</div>
 		</div>
 	);

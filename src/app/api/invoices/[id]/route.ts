@@ -63,8 +63,7 @@ export async function PUT(
 				data: null,
 			});
 		}
-
-		// Add the updatedAt field to the update operation
+		
 		const updatedInvoice = await prisma.invoice.update({
 			where: { id },
 			data: {

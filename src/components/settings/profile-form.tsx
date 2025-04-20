@@ -17,6 +17,7 @@ import { getSession } from "@/api/session/get-session";
 import { useEditProfile } from "@/hooks/auth/use-update-profile";
 import { Skeleton } from "../ui/skeleton";
 import Image from "next/image";
+import { User } from "lucide-react";
 
 export function ProfileForm() {
 	const { form } = useEditProfile();
@@ -55,26 +56,36 @@ export function ProfileForm() {
 														<div className="w-20 h-20 rounded-full bg-muted" />
 													)}
 
-													{!isLoadingGetSession && data && (
-														<Avatar className="h-20 w-20">
-															<Image
-																src={data.user.image}
-																alt="User profile picture"
-																className="rounded-full"
-																width={80}
-																height={80}
-																quality={100}
-																priority
-															/>
+													{!isLoadingGetSession &&
+														data &&
+														data.user.image && (
+															<Avatar className="h-20 w-20">
+																<Image
+																	src={data.user.image}
+																	alt="User profile picture"
+																	className="rounded-full"
+																	width={80}
+																	height={80}
+																	quality={100}
+																	priority
+																/>
 
-															<AvatarFallback>
-																{data.user.name
-																	.split(" ")
-																	.map((n) => n[0])
-																	.join("")}
-															</AvatarFallback>
-														</Avatar>
-													)}
+																<AvatarFallback>
+																	{data.user.name
+																		.split(" ")
+																		.map((n) => n[0])
+																		.join("")}
+																</AvatarFallback>
+															</Avatar>
+														)}
+
+													{!isLoadingGetSession &&
+														data &&
+														!data.user.image && (
+															<div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center">
+																<User className="w-8 h-8 text-muted-foreground" />
+															</div>
+														)}
 												</div>
 											</FormControl>
 

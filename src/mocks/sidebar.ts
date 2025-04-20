@@ -54,17 +54,5 @@ export const sidebarData = {
 			isActive: false,
 			isPage: true,
 		},
-		// {
-		// 	title: "Marketing",
-		// 	url: "#",
-		// 	icon: Rocket,
-		// 	items: [
-		// 		{
-		// 			title: "WhatsApp Marketing",
-		// 			url: "/marketing/whatsapp",
-		// 			icon: Phone,
-		// 		},
-		// 	],
-		// },
 	],
 };

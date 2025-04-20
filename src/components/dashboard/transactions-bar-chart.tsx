@@ -18,6 +18,8 @@ import { useTransactions } from "@/hooks/transactions/use-transactions";
 import { useState } from "react";
 import { TrasanctionsBarChartLegendCard } from "./transactions-bar-chart.legend-card";
 import { TransactionsYearSelect } from "./transactions-year-select";
+import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
+import { TransactionsBarChartSkeleton } from "./transactions-bar-chart-skeleton";
 
 const chartConfig = {
 	totalDeposits: {
@@ -37,6 +39,7 @@ const chartConfig = {
 export function TransactionsBarChart() {
 	const [selectedYear, setSelectedYear] = useState(2025);
 	const { monthlySummary } = useTransactions(selectedYear);
+	const { isLoadingGetTransactions } = useGetTransactions();
 
 	const chartData = Object.entries(monthlySummary).map(([month, data]) => ({
 		month: month.charAt(0).toUpperCase() + month.slice(1),
@@ -44,6 +47,10 @@ export function TransactionsBarChart() {
 		totalExpenses: data.totalExpenses,
 		totalInvestments: data.totalInvestments,
 	}));
+
+	if (isLoadingGetTransactions) {
+		return <TransactionsBarChartSkeleton />;
+	}
 
 	return (
 		<Card className="flex flex-col shadow-none border-muted bg-transparent">
@@ -58,8 +65,8 @@ export function TransactionsBarChart() {
 				</div>
 			</CardHeader>
 
-			<CardContent>
-				<ChartContainer config={chartConfig} className="max-h-120 w-full">
+			<CardContent className="flex-1">
+				<ChartContainer config={chartConfig} className="w-full h-full">
 					<BarChart accessibilityLayer data={chartData}>
 						<CartesianGrid vertical={false} />
 

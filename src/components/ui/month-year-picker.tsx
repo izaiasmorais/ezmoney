@@ -54,24 +54,19 @@ export function MonthYearPicker({
 	monthLabel = "Month",
 	yearLabel = "Year",
 }: MonthYearPickerProps) {
-	// Get current date for defaults
-	const currentDate = new Date(2025, 2, 23); // March 23, 2025
+	const currentDate = new Date();
 
-	// Set default values
-	const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
+	const currentMonth = currentDate.getMonth() + 1;
 	const currentYear = currentDate.getFullYear();
 
-	// Calculate year range
 	const yearStart = startYear || currentYear - 10;
 	const yearEnd = endYear || currentYear + 10;
 
-	// Create years array
 	const years = Array.from({ length: yearEnd - yearStart + 1 }, (_, i) => ({
 		value: String(yearStart + i),
 		label: String(yearStart + i),
 	}));
 
-	// State for selected values
 	const [selectedMonth, setSelectedMonth] = React.useState<string>(
 		String(defaultMonth || currentMonth)
 	);
@@ -79,7 +74,6 @@ export function MonthYearPicker({
 		String(defaultYear || currentYear)
 	);
 
-	// Handle changes
 	const handleMonthChange = (value: string) => {
 		setSelectedMonth(value);
 		if (onChange) {
