@@ -1,6 +1,6 @@
 # EZMoney
 
-![image](https://github.com/user-attachments/assets/c88210be-6100-49a2-ba4f-9c006ff2b710)
+![image](https://github.com/user-attachments/assets/584b4da7-224d-4f4c-aec0-fae4388f59f8)
 
 ## Introdução
 
