@@ -1,7 +1,6 @@
 import { Mail } from "lucide-react";
 import { FileText } from "lucide-react";
 
-
 export function InvoiceExportButtons() {
 	return (
 		<div className="flex items-center gap-2">

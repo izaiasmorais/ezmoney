@@ -1,4 +1,4 @@
-import { CreateInvoiceContainer } from "@/components/invoices/create-invoice";
+import { CreateInvoiceContainer } from "@/components/invoices/create-invoice/create-invoice-container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -35,7 +35,7 @@ export function TransactionsTable({
 							return (
 								<TableHead
 									key={header.id}
-									className="dark:bg-sidebar first:rounded-l-lg last:rounded-r-lg"
+									className="bg-slate-50 dark:bg-sidebar first:rounded-l-lg last:rounded-r-lg"
 								>
 									{header.isPlaceholder
 										? null

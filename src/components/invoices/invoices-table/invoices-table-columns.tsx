@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/@types/invoice";
 import { InvoiceStatusSelect } from "./invoices-status-select";
-import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
+import { DeleteInvoiceDialog } from "../dialogs/delete-invoice-dialog";
 import { InvoiceCategorySelect } from "./invoices-category-select";
-import { UpdateInvoiceSheet } from "./update-invoice-sheet";
+import { UpdateInvoiceSheet } from "../dialogs/update-invoice-sheet";
 import { InvoicePaymentTypeSelect } from "./invoices-payment-type-select";
-import { InvoiceDetailsDialog } from "./invoice-details-dialog";
+import { InvoiceDetailsDialog } from "../dialogs/invoice-details-dialog";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{

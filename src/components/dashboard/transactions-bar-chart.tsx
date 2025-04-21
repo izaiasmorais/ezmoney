@@ -20,6 +20,7 @@ import { TrasanctionsBarChartLegendCard } from "./transactions-bar-chart.legend-
 import { TransactionsYearSelect } from "./transactions-year-select";
 import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
 import { TransactionsBarChartSkeleton } from "./transactions-bar-chart-skeleton";
+import { formatToBRL } from "@/utils/format-to-brl";
 
 const chartConfig = {
 	totalDeposits: {
@@ -53,7 +54,7 @@ export function TransactionsBarChart() {
 	}
 
 	return (
-		<Card className="flex flex-col shadow-none border-muted bg-transparent">
+		<Card className="flex flex-col shadow-none bg-transparent">
 			<CardHeader>
 				<div className="flex justify-between items-center">
 					<div>
@@ -91,7 +92,13 @@ export function TransactionsBarChart() {
 							}
 						/>
 
-						<ChartTooltip content={<ChartTooltipContent />} />
+						<ChartTooltip
+							content={
+								<ChartTooltipContent
+									formatValue={(value) => formatToBRL(Number(value))}
+								/>
+							}
+						/>
 
 						<Bar
 							dataKey="totalExpenses"
@@ -117,7 +124,7 @@ export function TransactionsBarChart() {
 				</ChartContainer>
 			</CardContent>
 
-			<CardFooter className="flex items-center justify-center gap-2 text-sm pt-4 border-t border-dashed">
+			<CardFooter className="flex items-center justify-center gap-6 text-sm pt-4 border-t border-dashed">
 				<TrasanctionsBarChartLegendCard
 					color={chartConfig.totalDeposits.color}
 					title="Entradas"

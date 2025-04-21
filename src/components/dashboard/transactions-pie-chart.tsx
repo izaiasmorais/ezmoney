@@ -103,7 +103,7 @@ export function TransactionsPieChart() {
 	}
 
 	return (
-		<Card className="flex flex-col lg:col-span-1 shadow-none border-muted pb-0 h-full bg-transparent">
+		<Card className="flex flex-col lg:col-span-1 shadow-none pb-0 h-full bg-transparent">
 			<CardHeader className="pb-0">
 				<div className="flex flex-col gap-1">
 					<CardTitle className="text-lg">Gastos</CardTitle>
