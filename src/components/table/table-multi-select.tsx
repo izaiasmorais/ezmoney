@@ -24,6 +24,7 @@ interface TableMultiSelectProps {
 	onChange?: (value: string[]) => void;
 	className?: string;
 	defaultValues?: string[];
+	showCommandInput?: boolean;
 }
 
 export function TableMultiSelect({
@@ -32,6 +33,7 @@ export function TableMultiSelect({
 	onChange,
 	className,
 	defaultValues = [],
+	showCommandInput = true,
 }: TableMultiSelectProps) {
 	const [open, setOpen] = React.useState(false);
 	const [selectedValues, setSelectedValues] =
@@ -111,7 +113,9 @@ export function TableMultiSelect({
 
 			<PopoverContent className="w-full p-0" align="start">
 				<Command>
-					<CommandInput placeholder="Buscar opção..." />
+					{showCommandInput && (
+						<CommandInput placeholder="Buscar opção..." />
+					)}
 
 					<CommandList>
 						<CommandEmpty>Nenhuma opção encontrada.</CommandEmpty>

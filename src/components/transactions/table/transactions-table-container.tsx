@@ -65,6 +65,7 @@ export function TransactionsTableContainer() {
 				<TableMultiSelect
 					className="w-full lg:w-[200px]"
 					options={transactionTypesOptions}
+					showCommandInput={false}
 					placeholder="Tipo"
 					onChange={(value: string[]) => {
 						if (value.length === 0) {

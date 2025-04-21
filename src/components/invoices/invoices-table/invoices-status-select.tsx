@@ -42,13 +42,13 @@ export function InvoiceStatusSelect({
 	}
 
 	const statusConfig = {
-		paid: "text-green-600 bg-green-50 hover:bg-green-50 dark:text-green-300 dark:bg-green-900/20 dark:hover:bg-green-900/20",
+		paid: "text-green-600 bg-green-50 hover:bg-green-50 dark:text-green-400 dark:bg-green-900/20 dark:hover:bg-green-900/20",
 		overdue:
-			"text-red-600 bg-red-50 hover:bg-red-50 dark:text-red-300 dark:bg-red-900/20 dark:hover:bg-red-900/20",
+			"text-red-600 bg-red-50 hover:bg-red-50 dark:text-red-400 dark:bg-red-900/20 dark:hover:bg-red-900/20",
 		pending:
-			"text-yellow-600 bg-yellow-50 hover:bg-yellow-50 dark:text-yellow-300 dark:bg-yellow-900/20 dark:hover:bg-yellow-900/20",
+			"text-yellow-600 bg-yellow-50 hover:bg-yellow-50 dark:text-yellow-400 dark:bg-yellow-900/20 dark:hover:bg-yellow-900/20",
 		draft:
-			"text-violet-600 bg-violet-50 hover:bg-violet-50 dark:text-violet-300 dark:bg-violet-900/20 dark:hover:bg-violet-900/20",
+			"text-violet-600 bg-violet-50 hover:bg-violet-50 dark:text-violet-400 dark:bg-violet-900/20 dark:hover:bg-violet-900/20",
 	};
 
 	return (

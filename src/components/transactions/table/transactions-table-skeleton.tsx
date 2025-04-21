@@ -4,36 +4,32 @@ import { TableCell, TableRow } from "../../ui/table";
 export function TransactionsTableItemSkeleton() {
 	return (
 		<TableRow className="border-none">
-			<TableCell>
-				<Skeleton className="h-4 w-[0px] rounded" />
+			<TableCell className="h-12">
+				<Skeleton className="h-5 w-[121px] rounded" />
 			</TableCell>
 
 			<TableCell>
-				<Skeleton className="h-5 w-[118px] rounded" />
+				<Skeleton className="h-5 w-[100px] rounded" />
 			</TableCell>
 
 			<TableCell>
-				<Skeleton className="h-5 w-[114px] rounded" />
+				<Skeleton className="h-5 w-[80px] rounded" />
 			</TableCell>
 
 			<TableCell>
-				<Skeleton className="h-5 w-[110px] rounded" />
+				<Skeleton className="h-5 w-[100px] rounded" />
 			</TableCell>
 
 			<TableCell>
-				<Skeleton className="h-5 w-[70px] rounded" />
+				<Skeleton className="h-5 w-[100px] rounded" />
 			</TableCell>
 
 			<TableCell>
-				<Skeleton className="h-5 w-[20px] rounded" />
+				<Skeleton className="h-6 w-[20px] rounded" />
 			</TableCell>
 
 			<TableCell>
-				<Skeleton className="h-6 w-[50px] rounded" />
-			</TableCell>
-
-			<TableCell>
-				<Skeleton className="h-6 w-[50px] rounded" />
+				<Skeleton className="h-6 w-[32px] rounded" />
 			</TableCell>
 		</TableRow>
 	);

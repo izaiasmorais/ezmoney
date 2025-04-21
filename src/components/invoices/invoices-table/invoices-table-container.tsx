@@ -69,6 +69,7 @@ export function InvoicesTableContainer() {
 				<TableMultiSelect
 					options={invoiceStatusOptions}
 					placeholder="Status"
+					showCommandInput={false}
 					onChange={(value: string[]) => {
 						if (value.length === 0) {
 							table.getColumn("status")?.setFilterValue(undefined);

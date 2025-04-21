@@ -41,11 +41,11 @@ export function TransactionsTypeSelect({
 
 	const typeConfig = {
 		deposit:
-			"text-green-600 bg-green-50 hover:bg-green-50 dark:text-green-300 dark:bg-green-900/20 dark:hover:bg-green-900/20",
+			"text-green-600 bg-green-50 hover:bg-green-50 dark:text-green-400 dark:bg-green-900/20 dark:hover:bg-green-900/20",
 		expense:
-			"text-red-600 bg-red-50 hover:bg-red-50 dark:text-red-300 dark:bg-red-900/20 dark:hover:bg-red-900/20",
+			"text-red-600 bg-red-50 hover:bg-red-50 dark:text-red-400 dark:bg-red-900/20 dark:hover:bg-red-900/20",
 		investment:
-			"text-blue-600 bg-blue-50 hover:bg-blue-50 dark:text-blue-300 dark:bg-blue-900/20 dark:hover:bg-blue-900/20",
+			"text-blue-600 bg-blue-50 hover:bg-blue-50 dark:text-blue-400 dark:bg-blue-900/20 dark:hover:bg-blue-900/20",
 	};
 
 	return (

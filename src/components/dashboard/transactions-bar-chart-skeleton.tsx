@@ -30,9 +30,9 @@ export function TransactionsBarChartSkeleton() {
 					))}
 				</div>
 
-				<div className={`flex-1 grid grid-cols-${currentMonth} gap-6`}>
+				<div className={`flex-1 flex gap-6 px-6`}>
 					{Array.from({ length: currentMonth }).map((_, index) => (
-						<Skeleton key={index} className="h-full rounded-sm" />
+						<Skeleton key={index} className="flex-1 rounded-sm" />
 					))}
 				</div>
 			</CardContent>

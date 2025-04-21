@@ -13,13 +13,13 @@ const getColorClasses = (color: string) => {
 			light: "text-red-600 bg-red-50",
 			dark: "dark:text-red-400 dark:!bg-red-900/20",
 		},
-		blue: {
-			light: "text-blue-600 bg-blue-50",
-			dark: "dark:text-blue-400 dark:!bg-blue-900/20",
-		},
 		green: {
 			light: "text-green-600 bg-green-50",
 			dark: "dark:text-green-400 dark:!bg-green-900/20",
+		},
+		blue: {
+			light: "text-blue-600 bg-blue-50",
+			dark: "dark:text-blue-400 dark:!bg-blue-900/20",
 		},
 		yellow: {
 			light: "text-yellow-600 bg-yellow-50",
