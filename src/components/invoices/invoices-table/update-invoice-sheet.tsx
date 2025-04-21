@@ -45,11 +45,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UpdateInvoiceRequest } from "@/api/invoices/update-invoice";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
-interface EditInvoiceSheetProps {
+interface UpdateInvoiceSheetProps {
 	invoice: Invoice;
 }
 
-export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
+export function UpdateInvoiceSheet({ invoice }: UpdateInvoiceSheetProps) {
 	const form = useForm<CreateInvoiceRequest>({
 		resolver: zodResolver(createInvoiceRequestSchema),
 		defaultValues: {
@@ -65,7 +65,12 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 		},
 	});
 
-	const { updateInvoiceFn, isLoadingUpdateInvoice } = useUpdateInvoice();
+	const {
+		updateInvoiceFn,
+		isLoadingUpdateInvoice,
+		isUpdateInvoiceDialogOpen,
+		setIsUpdateInvoiceDialogOpen,
+	} = useUpdateInvoice();
 
 	const handleSubmit = async (formData: CreateInvoiceRequest) => {
 		const updateRequest: UpdateInvoiceRequest = {
@@ -82,7 +87,10 @@ export function EditInvoiceSheet({ invoice }: EditInvoiceSheetProps) {
 			: 0;
 
 	return (
-		<Sheet>
+		<Sheet
+			open={isUpdateInvoiceDialogOpen}
+			onOpenChange={setIsUpdateInvoiceDialogOpen}
+		>
 			<SheetTrigger asChild>
 				<DropdownMenuItem onSelect={(e) => e.preventDefault()}>
 					<SquarePen />

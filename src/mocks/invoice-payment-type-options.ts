@@ -8,4 +8,5 @@ export interface InvoicePaymentTypeOption {
 export const invoicePaymentTypeOptions: InvoicePaymentTypeOption[] = [
 	{ label: "Único", value: "unique" },
 	{ label: "Recorrente", value: "recurring" },
+	{ label: "Fixo", value: "fixed" },
 ];

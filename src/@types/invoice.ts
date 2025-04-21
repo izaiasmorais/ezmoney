@@ -9,7 +9,7 @@ export type Invoice = {
 	unitValue: number;
 	installments: number;
 	status: "paid" | "overdue" | "draft" | "pending";
-	paymentType: "unique" | "recurring";
+	paymentType: "unique" | "recurring" | "fixed";
 	category: "subscription" | "loan" | "purchase" | "general" | "streaming";
 };
 
@@ -30,7 +30,7 @@ export const createInvoiceRequestSchema = z.object({
 	status: z.enum(["paid", "overdue", "draft", "pending"], {
 		message: "O status da fatura é inválido",
 	}),
-	paymentType: z.enum(["unique", "recurring"], {
+	paymentType: z.enum(["unique", "recurring", "fixed"], {
 		message: "O tipo de pagamento é inválido",
 	}),
 	category: z.enum(

@@ -36,11 +36,12 @@ export function FormSelect<TFieldValues extends FieldValues>({
 			control={form.control as Control<TFieldValues, any>}
 			name={entity}
 			render={({ field }) => (
-				<FormItem>
+				<FormItem className="flex flex-col items-start">
 					<FormLabel>{translatedEntity}</FormLabel>
+
 					<Select onValueChange={field.onChange} defaultValue={field.value}>
 						<FormControl>
-							<SelectTrigger className="w-full text-base md:text-sm">
+							<SelectTrigger className="w-full text-base md:text-sm hover:bg-accent">
 								<SelectValue
 									placeholder={placeholder || `Selecionar ${translatedEntity}`}
 								/>

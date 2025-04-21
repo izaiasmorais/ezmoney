@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, Copy, Eye, MoreHorizontal } from "lucide-react";
+import { ArrowDown, ArrowUp, Copy, MoreHorizontal } from "lucide-react";
 import {
 	DropdownMenu,
 	DropdownMenuTrigger,
@@ -11,9 +11,9 @@ import type { Invoice } from "@/@types/invoice";
 import { InvoiceStatusSelect } from "./invoices-status-select";
 import { DeleteInvoiceDialog } from "./delete-invoice-dialog";
 import { InvoiceCategorySelect } from "./invoices-category-select";
-import { EditInvoiceSheet } from "./edit-invoice-sheet";
-import Link from "next/link";
+import { UpdateInvoiceSheet } from "./update-invoice-sheet";
 import { InvoicePaymentTypeSelect } from "./invoices-payment-type-select";
+import { InvoiceDetailsDialog } from "./invoice-details-dialog";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 	{
@@ -105,7 +105,7 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				className="!p-0 hover:bg-transparent"
 				onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 			>
-				Valor
+				Valor Unitário
 				{column.getIsSorted() !== "desc" && (
 					<ArrowUp className="ml-2 h-4 w-4" />
 				)}
@@ -252,14 +252,9 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 							Copiar ID da fatura
 						</DropdownMenuItem>
 
-						<DropdownMenuItem asChild>
-							<Link href={`/contas/${invoice.id}`}>
-								<Eye />
-								Ver detalhes
-							</Link>
-						</DropdownMenuItem>
+						<InvoiceDetailsDialog invoice={invoice} />
 
-						<EditInvoiceSheet invoice={invoice} />
+						<UpdateInvoiceSheet invoice={invoice} />
 
 						<DeleteInvoiceDialog invoice={invoice} />
 					</DropdownMenuContent>

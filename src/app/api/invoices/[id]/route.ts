@@ -11,7 +11,7 @@ const updateInvoiceSchema = z.object({
 	unitValue: z.number().optional(),
 	installments: z.number().optional(),
 	status: z.enum(["paid", "overdue", "draft", "pending"]).optional(),
-	paymentType: z.enum(["unique", "recurring"]).optional(),
+	paymentType: z.enum(["unique", "recurring", "fixed"]).optional(),
 	category: z
 		.enum(["subscription", "loan", "purchase", "general", "streaming"])
 		.optional(),
@@ -63,7 +63,7 @@ export async function PUT(
 				data: null,
 			});
 		}
-		
+
 		const updatedInvoice = await prisma.invoice.update({
 			where: { id },
 			data: {
