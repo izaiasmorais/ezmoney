@@ -2,7 +2,17 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { Transaction } from "@prisma/client";
+
+type Transaction = {
+	id: string;
+	name: string;
+	createdAt: Date;
+	userId: string;
+	value: number;
+	category: string;
+	installment: number;
+	type: string;
+};
 
 const response = {
 	status(code: number) {
