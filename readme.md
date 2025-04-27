@@ -51,8 +51,6 @@ pnpm install
 Configure o arquivo .env com suas credenciais:
 
 ```env
-NODE_ENV=development
-
 DATABASE_URL=
 
 GOOGLE_CLIENT_ID=
