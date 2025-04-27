@@ -12,7 +12,7 @@ export function TableSearchInput<T>({
 }: TableSearchInputProps<T>) {
 	return (
 		<SearchInput
-			className="w-full lg:w-[250px]"
+			className="w-full xl:w-[250px]"
 			placeholder={placeholder}
 			value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
 			onChange={(event) =>

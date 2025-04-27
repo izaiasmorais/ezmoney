@@ -26,7 +26,7 @@ export function HideColumnsDropDown<T>({
 				<Button
 					variant="outline"
 					className={cn(
-						"font-semibold md:ml-auto w-full lg:w-[100px]",
+						"font-semibold md:ml-auto w-full xl:w-[100px]",
 						className
 					)}
 				>

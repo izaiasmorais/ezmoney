@@ -2,15 +2,21 @@
 	"name": "ezmoney",
 	"version": "0.1.0",
 	"private": true,
+	"license": "MIT",
+	"engines": {
+		"node": ">=20.18.1"
+	},
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
 		"migrate": "pnpm prisma migrate dev",
-		"reset": "pnpm prisma migrate reset",
 		"generate": "pnpm prisma generate",
 		"studio": "pnpm prisma studio -b chrome -p 5174"
+	},
+	"prisma": {
+		"seed": "ts-node --project tsconfig-seed.json prisma/mocks/seed.ts"
 	},
 	"dependencies": {
 		"@better-fetch/fetch": "^1.1.18",
@@ -82,10 +88,12 @@
 		"eslint-config-next": "15.2.2-canary.6",
 		"prisma": "^6.6.0",
 		"tailwindcss": "^4",
+		"ts-node": "^10.9.2",
 		"typescript": "^5"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
+			"@prisma/client",
 			"sharp"
 		]
 	}

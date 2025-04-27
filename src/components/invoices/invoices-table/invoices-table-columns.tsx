@@ -8,11 +8,11 @@ import {
 	DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/@types/invoice";
-import { InvoiceStatusSelect } from "./invoices-status-select";
+import { InvoiceStatusSelect } from "../filters/invoices-status-select";
 import { DeleteInvoiceDialog } from "../dialogs/delete-invoice-dialog";
-import { InvoiceCategorySelect } from "./invoices-category-select";
+import { InvoiceCategorySelect } from "../filters/invoices-category-select";
 import { UpdateInvoiceSheet } from "../dialogs/update-invoice-sheet";
-import { InvoicePaymentTypeSelect } from "./invoices-payment-type-select";
+import { InvoicePaymentTypeSelect } from "../filters/invoices-payment-type-select";
 import { InvoiceDetailsDialog } from "../dialogs/invoice-details-dialog";
 
 export const invoicesTableColumns: ColumnDef<Invoice>[] = [
@@ -95,7 +95,6 @@ export const invoicesTableColumns: ColumnDef<Invoice>[] = [
 				</div>
 			);
 		},
-		sortingFn: "datetime",
 	},
 	{
 		accessorKey: "unitValue",

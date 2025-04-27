@@ -41,6 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 # Prisma
-
 prisma/mocks
-prisma/seed.ts
+tsconfig-seed.json

@@ -25,6 +25,7 @@ import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
 import { TablePagination } from "@/components/table/table-pagination";
 import { TableSearchInput } from "@/components/table/table-search-input";
 import { TableSelect } from "@/components/table/table-select";
+import { InvoicesDueDateFilter } from "../filters/invoices-due-date-filter";
 
 export function InvoicesTableContainer() {
 	const [sorting, setSorting] = React.useState<SortingState>([
@@ -78,6 +79,8 @@ export function InvoicesTableContainer() {
 						}
 					}}
 				/>
+
+				<InvoicesDueDateFilter />
 
 				<TableSelect
 					options={invoicePaymentTypeOptions}

@@ -17,7 +17,7 @@ export async function getInvoices(
 		const response = await api.get<HTTPSuccessResponse<Invoice[]>>(
 			"/api/invoices/all",
 			{
-				params,
+				params: params,
 			}
 		);
 
