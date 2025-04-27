@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { Transaction } from "@prisma/client";
 
 const response = {
 	status(code: number) {
@@ -46,7 +47,7 @@ export async function GET() {
 
 		const csvHeaders = Object.keys(transactions[0]).join(",");
 
-		const rows = transactions.map((transaction) =>
+		const rows = transactions.map((transaction: Transaction) =>
 			Object.values(transaction)
 				.map((value) => {
 					if (value === null || value === undefined) return "";
