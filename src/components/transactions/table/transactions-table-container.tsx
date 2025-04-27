@@ -22,6 +22,8 @@ import { CreateTransactionSheet } from "./create-transaction-sheet";
 import { X } from "lucide-react";
 import { TablePagination } from "@/components/table/table-pagination";
 import { TableSearchInput } from "@/components/table/table-search-input";
+import { useExportTransactions } from "@/hooks/transactions/use-export-transactions";
+import { TableExportButton } from "@/components/table/table-export-button";
 
 export function TransactionsTableContainer() {
 	const [sorting, setSorting] = React.useState<SortingState>([
@@ -37,6 +39,8 @@ export function TransactionsTableContainer() {
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
 	const { data, isLoadingGetTransactions } = useGetTransactions();
+	const { exportTransactionsFn, isLoadingExportTransactions } =
+		useExportTransactions();
 
 	const table = useReactTable({
 		data: data,
@@ -74,6 +78,11 @@ export function TransactionsTableContainer() {
 							table.getColumn("type")?.setFilterValue(value);
 						}
 					}}
+				/>
+
+				<TableExportButton
+					exportFuntion={exportTransactionsFn}
+					isLoading={isLoadingExportTransactions}
 				/>
 
 				<Button
