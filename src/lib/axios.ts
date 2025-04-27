@@ -26,7 +26,8 @@ api.interceptors.response.use(
 	(response) => response,
 	(error) => {
 		if (error.response?.status === 401) {
-			console.error("Sessão expirada ou inválida");
+			Cookies.remove("better-auth.session_token");
+			window.location.href = "/entrar";
 		}
 
 		return Promise.reject(error);

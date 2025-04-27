@@ -11,7 +11,7 @@ const response = {
 	},
 };
 
-export async function GET() {
+export async function GET(request: Request) {
 	const session = await auth.api.getSession({
 		headers: await headers(),
 	});
@@ -25,13 +25,32 @@ export async function GET() {
 	}
 
 	const userInfo = session?.user;
+	const { searchParams } = new URL(request.url);
+	const startDate = searchParams.get("startDate");
+	const endDate = searchParams.get("endDate");
+
+	const where: any = {
+		userId: userInfo.id,
+	};
+
+	if (startDate) {
+		where.dueDate = {
+			...where.dueDate,
+			gte: new Date(startDate),
+		};
+	}
+
+	if (endDate) {
+		where.dueDate = {
+			...where.dueDate,
+			lte: new Date(endDate),
+		};
+	}
 
 	const invoices = await prisma.invoice.findMany({
-		where: {
-			userId: userInfo.id,
-		},
+		where,
 		orderBy: {
-			createdAt: "desc",
+			dueDate: "desc",
 		},
 	});
 

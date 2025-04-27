@@ -13,6 +13,13 @@ export type Invoice = {
 	category: "subscription" | "loan" | "purchase" | "general" | "streaming";
 };
 
+export const getInvoicesRequestParams = z.object({
+	startDate: z.string().optional(),
+	endDate: z.string().optional(),
+});
+
+export type GetInvoicesRequest = z.infer<typeof getInvoicesRequestParams>;
+
 export const createInvoiceRequestSchema = z.object({
 	name: z.string().min(1, "O nome da fatura é obrigatório"),
 	description: z.string().optional(),

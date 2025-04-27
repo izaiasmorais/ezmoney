@@ -12,14 +12,14 @@ export function TransactionsBarChartSkeleton() {
 	const currentMonth = currentDate.getMonth() + 1;
 
 	return (
-		<Card className="flex-1 h-full flex flex-col shadow-none border-muted bg-transparent">
+		<Card className="flex-1 h-full flex flex-col shadow-none bg-transparent">
 			<CardHeader>
 				<div className="flex justify-between items-center">
 					<div>
-						<Skeleton className="h-6 w-full min-w-36 max-w-56" />
+						<Skeleton className="h-6 w-44" />
 						<Skeleton className="h-4 w-full min-w-16 max-w-16 mt-1" />
 					</div>
-					<Skeleton className="h-9 w-24" />
+					<Skeleton className="h-9 w-45" />
 				</div>
 			</CardHeader>
 
@@ -42,7 +42,7 @@ export function TransactionsBarChartSkeleton() {
 					.fill(0)
 					.map((_, index) => (
 						<div key={index} className="flex items-center gap-2">
-							<Skeleton className="w-4 h-4 rounded-sm" />
+							<Skeleton className="w-4 h-4 rounded-full" />
 							<Skeleton className="h-4 w-16" />
 						</div>
 					))}

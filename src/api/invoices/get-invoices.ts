@@ -1,14 +1,24 @@
 import { HTTPSuccessResponse, HTTPErrorResponse } from "@/@types/http";
 import { AxiosError } from "axios";
 import { api } from "@/lib/axios";
-import { Invoice } from "@/@types/invoice";
+import { GetInvoicesRequest, Invoice } from "@/@types/invoice";
 
 type GetInvoicesResponse = HTTPSuccessResponse<Invoice[]> | HTTPErrorResponse;
 
-export async function getInvoices(): Promise<GetInvoicesResponse> {
+/**
+ * Get invoices
+ * @param GetInvoicesRequest The params to filter the invoices
+ * @returns Promise with the invoices or error
+ */
+export async function getInvoices(
+	params?: GetInvoicesRequest
+): Promise<GetInvoicesResponse> {
 	try {
 		const response = await api.get<HTTPSuccessResponse<Invoice[]>>(
-			"/api/invoices/all"
+			"/api/invoices/all",
+			{
+				params,
+			}
 		);
 
 		return response.data;

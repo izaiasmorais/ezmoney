@@ -4,7 +4,7 @@ import { getInvoices } from "@/api/invoices/get-invoices";
 export function useGetInvoices() {
 	const { data: result, isLoading: isLoadingGetInvoices } = useQuery({
 		queryKey: ["invoices"],
-		queryFn: getInvoices,
+		queryFn: () => getInvoices(),
 	});
 
 	return {

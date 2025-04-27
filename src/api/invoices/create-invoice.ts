@@ -5,11 +5,11 @@ import { CreateInvoiceRequest, Invoice } from "@/@types/invoice";
 
 type CreateInvoiceResponse = HTTPSuccessResponse<Invoice> | HTTPErrorResponse;
 
-/**
- * Creates a new invoice
- * @param createInvoiceRequest The invoice data to create
- * @returns Promise with the created invoice or error
- */
+	/**
+	 * Creates a new invoice
+	 * @param createInvoiceRequest The invoice data to create
+	 * @returns Promise with the created invoice or error
+	 */
 export async function createInvoice(
 	createInvoiceRequest: CreateInvoiceRequest
 ): Promise<CreateInvoiceResponse> {
