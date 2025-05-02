@@ -81,6 +81,8 @@ model Invoice {
 
   user User @relation(fields: [userId], references: [id])
 
+  transactions Transaction[]
+
   @@map("invoices")
 }
 
@@ -91,10 +93,13 @@ model Transaction {
   value       Float
   category    String
   installment Int
-  type        String // "deposit" | "Despesa" | "Investimento"
+  type        String // "deposit" | "expense" | "investment"
 
   userId String
   user   User   @relation(fields: [userId], references: [id])
+
+  invoiceId String?
+  invoice   Invoice? @relation(fields: [invoiceId], references: [id])
 
   @@map("transactions")
 }

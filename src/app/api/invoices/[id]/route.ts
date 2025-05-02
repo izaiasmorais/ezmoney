@@ -64,6 +64,31 @@ export async function PUT(
 			});
 		}
 
+		if (updateData.status) {
+			if (updateData.status === "paid" && existingInvoice.status !== "paid") {
+				await prisma.transaction.create({
+					data: {
+						name: existingInvoice.name,
+						value: existingInvoice.unitValue,
+						category: existingInvoice.category,
+						installment: 1,
+						type: "expense",
+						userId: userInfo.id,
+						invoiceId: id,
+					},
+				});
+			} else if (
+				updateData.status !== "paid" &&
+				existingInvoice.status === "paid"
+			) {
+				await prisma.transaction.deleteMany({
+					where: {
+						invoiceId: id,
+					},
+				});
+			}
+		}
+
 		const updatedInvoice = await prisma.invoice.update({
 			where: { id },
 			data: {

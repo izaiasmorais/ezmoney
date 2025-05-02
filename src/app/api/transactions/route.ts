@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { v4 as uuidv4 } from "uuid";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -35,14 +34,13 @@ export async function POST(req: Request) {
 
 		const transaction = await prisma.transaction.create({
 			data: {
-				id: uuidv4(),
 				name: transactionData.name,
-				createdAt: transactionData.createdAt,
 				value: transactionData.value,
 				category: transactionData.category,
 				installment: transactionData.installment,
 				type: transactionData.type,
 				userId: userInfo.id,
+				createdAt: transactionData.createdAt,
 			},
 		});
 
