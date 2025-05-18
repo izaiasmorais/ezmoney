@@ -13,17 +13,16 @@ import { Transaction } from "@/@types/transaction";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 
 type TransactionsCategorySelectProps = {
-	transactionId: string;
-	category: Transaction["category"];
+	transaction: Transaction;
 };
 
 export function TransactionsCategorySelect({
-	transactionId,
-	category,
+	transaction,
 }: TransactionsCategorySelectProps) {
-	const [selectedCategory, setSelectedCategory] =
-		React.useState<string>(category);
-	const { updateTransactionFn } = useUpdateTransaction();
+	const [selectedCategory, setSelectedCategory] = React.useState<string>(
+		transaction.category
+	);
+	const { updateTransactionFn } = useUpdateTransaction(transaction);
 
 	function handleUpdateTransactionCategory(
 		newCategory: Transaction["category"]
@@ -35,8 +34,9 @@ export function TransactionsCategorySelect({
 
 		setSelectedCategory(newCategory);
 		updateTransactionFn({
-			transactionId,
+			transactionId: transaction.id,
 			data: {
+				...transaction,
 				category: newCategory,
 			},
 		});

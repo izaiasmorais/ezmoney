@@ -18,20 +18,15 @@ import { transactionTypesOptions } from "@/mocks/transaction-types-options";
 import { TableMultiSelect } from "@/components/table/table-multi-select";
 import { HideColumnsDropDown } from "@/components/table/hide-columns-dropdown";
 import { translateTransactionsTableKeys } from "@/utils/translate-transactions-table-keys";
-import { CreateTransactionSheet } from "./create-transaction-sheet";
-import { X } from "lucide-react";
+import { CreateTransactionSheet } from "../modals/create-transaction-sheet";
 import { TablePagination } from "@/components/table/table-pagination";
 import { TableSearchInput } from "@/components/table/table-search-input";
 import { useExportTransactions } from "@/hooks/transactions/use-export-transactions";
 import { TableExportButton } from "@/components/table/table-export-button";
+import { X } from "lucide-react";
 
 export function TransactionsTableContainer() {
-	const [sorting, setSorting] = React.useState<SortingState>([
-		{
-			id: "value",
-			desc: true,
-		},
-	]);
+	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
 		[]
 	);

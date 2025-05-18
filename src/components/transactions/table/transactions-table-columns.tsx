@@ -10,8 +10,8 @@ import {
 import type { Transaction } from "@/@types/transaction";
 import { TransactionsCategorySelect } from "./transactions-category-select";
 import { TransactionsTypeSelect } from "./transactions-type-select";
-import { EditTransactionSheet } from "./edit-transaction-sheet";
-import { DeleteTransactionDialog } from "./delete-transaction-dialog";
+import { EditTransactionSheet } from "../modals/edit-transaction-sheet";
+import { DeleteTransactionDialog } from "../modals/delete-transaction-dialog";
 export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 	{
 		accessorKey: "name",
@@ -104,12 +104,15 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				)}
 			</Button>
 		),
-		cell: ({ row }) => (
-			<TransactionsCategorySelect
-				transactionId={row.original.id}
-				category={row.getValue("category") as Transaction["category"]}
-			/>
-		),
+		cell: ({ row }) => {
+			const transaction = row.original;
+
+			return (
+				<TransactionsCategorySelect
+					transaction={transaction}
+				/>
+			);
+		},
 	},
 	{
 		accessorKey: "type",
@@ -128,12 +131,11 @@ export const transactionsTableColumns: ColumnDef<Transaction>[] = [
 				)}
 			</Button>
 		),
-		cell: ({ row }) => (
-			<TransactionsTypeSelect
-				transactionId={row.original.id}
-				type={row.getValue("type") as Transaction["type"]}
-			/>
-		),
+		cell: ({ row }) => {
+			const transaction = row.original;
+
+			return <TransactionsTypeSelect transaction={transaction} />;
+		},
 		filterFn: (row, id, filterValue) => {
 			const type = row.getValue(id) as string;
 

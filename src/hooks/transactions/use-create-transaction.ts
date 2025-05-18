@@ -3,9 +3,13 @@ import { useFormMutation } from "../use-form-mutation";
 import { createTransaction } from "@/api/transactions/create-transaction";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createTransactionSchema, Transaction } from "@/@types/transaction";
 import { useState } from "react";
 import { queryClient } from "@/lib/react-query";
+import {
+	transactionRequestSchema,
+	TransactionRequest,
+} from "@/@schemas/transaction";
+import { Transaction } from "@/@types/transaction";
 
 export type TransactionWithDateObject = Omit<Transaction, "createdAt"> & {
 	createdAt: Date;
@@ -17,8 +21,8 @@ export function useCreateTransaction() {
 	const [isCreateTransactionSheetOpen, setIsCreateTransactionSheetOpen] =
 		useState(false);
 
-	const form = useFormMutation({
-		schema: createTransactionSchema,
+	const form = useFormMutation<TransactionRequest>({
+		schema: transactionRequestSchema,
 		defaultValues: {
 			name: "",
 			value: 0,
@@ -33,7 +37,7 @@ export function useCreateTransaction() {
 				value: data.value,
 				category: data.category,
 				installment: data.installment,
-				type: data.type as "deposit" | "expense" | "investment",
+				type: data.type,
 				createdAt: data.createdAt,
 			});
 		},
@@ -44,8 +48,8 @@ export function useCreateTransaction() {
 			mutationFn: createTransaction,
 			mutationKey: ["create-transaction"],
 			onSuccess: (response) => {
-				if (response.success === true) {
-					queryClient.invalidateQueries({ queryKey: ["transactions"] });
+				if (response.success) {
+					queryClient.invalidateQueries({ queryKey: ["get-transactions"] });
 					toast.success("Transação criada com sucesso!");
 					setIsCreateTransactionSheetOpen(false);
 					form.reset();

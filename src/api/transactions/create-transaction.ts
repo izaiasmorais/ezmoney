@@ -1,7 +1,8 @@
 import { HTTPSuccessResponse, HTTPErrorResponse } from "@/@types/http";
 import { AxiosError } from "axios";
 import { api } from "@/lib/axios";
-import { CreateTransactionRequest, Transaction } from "@/@types/transaction";
+import { Transaction } from "@/@types/transaction";
+import { TransactionRequest } from "@/@schemas/transaction";
 
 type CreateTransactionResponse =
 	| HTTPSuccessResponse<Transaction>
@@ -13,18 +14,20 @@ type CreateTransactionResponse =
  * @returns Promise with the created transaction or error
  */
 export async function createTransaction(
-	createTransactionRequest: CreateTransactionRequest
+	createTransactionRequest: TransactionRequest
 ): Promise<CreateTransactionResponse> {
 	try {
 		const response = await api.post<HTTPSuccessResponse<Transaction>>(
 			"/api/transactions",
 			createTransactionRequest
 		);
+
 		return response.data;
 	} catch (error) {
 		if (error instanceof AxiosError && error.response?.data) {
 			return error.response.data;
 		}
+
 		return {
 			success: false,
 			error: "Erro desconhecido",

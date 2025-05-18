@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { updateTransactionSchema } from "@/@types/transaction";
 import { z } from "zod";
+import { transactionRequestSchema } from "@/@schemas/transaction";
 
 const response = {
 	status(code: number) {
@@ -19,7 +19,7 @@ export async function PUT(
 ) {
 	try {
 		const body = await req.json();
-		const transactionData = updateTransactionSchema.parse(body);
+		const transactionData = transactionRequestSchema.parse(body);
 		const transactionId = (await params).id;
 
 		const session = await auth.api.getSession({

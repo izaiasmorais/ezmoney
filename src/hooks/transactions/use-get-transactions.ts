@@ -3,7 +3,7 @@ import { getTransactions } from "@/api/transactions/get-transactions";
 
 export function useGetTransactions() {
 	const { data: result, isLoading: isLoadingGetTransactions } = useQuery({
-		queryKey: ["transactions"],
+		queryKey: ["get-transactions"],
 		queryFn: getTransactions,
 	});
 

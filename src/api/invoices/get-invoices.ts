@@ -26,6 +26,7 @@ export async function getInvoices(
 		if (error instanceof AxiosError && error.response?.data) {
 			return error.response.data;
 		}
+
 		return {
 			success: false,
 			error: "Erro desconhecido",

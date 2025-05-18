@@ -30,26 +30,21 @@ export async function GET(request: Request) {
 		const startDate = searchParams.get("startDate");
 		const endDate = searchParams.get("endDate");
 
-		const where: any = {
-			userId: userInfo.id,
-		};
+		const now = new Date();
+		const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+		firstDayOfMonth.setHours(0, 0, 0, 0);
 
-		if (startDate) {
-			where.createdAt = {
-				...where.createdAt,
-				gte: new Date(startDate),
-			};
-		}
-
-		if (endDate) {
-			where.createdAt = {
-				...where.createdAt,
-				lte: new Date(endDate),
-			};
-		}
+		const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+		lastDayOfMonth.setHours(23, 59, 59, 999);
 
 		const transactions = await prisma.transaction.findMany({
-			where,
+			where: {
+				userId: userInfo.id,
+				createdAt: {
+					gte: startDate ? new Date(startDate) : firstDayOfMonth,
+					lte: endDate ? new Date(endDate) : lastDayOfMonth,
+				},
+			},
 			orderBy: {
 				createdAt: "desc",
 			},

@@ -65,12 +65,10 @@ model Verification {
 }
 
 model Invoice {
-  id           String    @id @default(uuid())
+  id           String   @id @default(uuid())
   name         String
   description  String?
-  createdAt    DateTime  @default(now())
   dueDate      DateTime
-  updatedAt    DateTime? @updatedAt
   unitValue    Float
   installments Int
   status       String // "paid" | "overdue" | "draft" | "pending"
@@ -78,18 +76,19 @@ model Invoice {
   category     String // "subscription" | "loan" | "purchase" | "general" | "streaming"
 
   userId String
-
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   transactions Transaction[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 
   @@map("invoices")
 }
 
 model Transaction {
-  id          String   @id @default(uuid())
+  id          String @id @default(uuid())
   name        String
-  createdAt   DateTime @default(now())
   value       Float
   category    String
   installment Int
@@ -100,6 +99,9 @@ model Transaction {
 
   invoiceId String?
   invoice   Invoice? @relation(fields: [invoiceId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 
   @@map("transactions")
 }

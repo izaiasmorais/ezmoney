@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { createTransactionSchema } from "@/@types/transaction";
+import { transactionRequestSchema } from "@/@schemas/transaction";
 import { z } from "zod";
 
 const response = {
@@ -16,7 +16,7 @@ const response = {
 export async function POST(req: Request) {
 	try {
 		const body = await req.json();
-		const transactionData = createTransactionSchema.parse(body);
+		const transactionData = transactionRequestSchema.parse(body);
 
 		const session = await auth.api.getSession({
 			headers: await headers(),
@@ -34,13 +34,8 @@ export async function POST(req: Request) {
 
 		const transaction = await prisma.transaction.create({
 			data: {
-				name: transactionData.name,
-				value: transactionData.value,
-				category: transactionData.category,
-				installment: transactionData.installment,
-				type: transactionData.type,
+				...transactionData,
 				userId: userInfo.id,
-				createdAt: transactionData.createdAt,
 			},
 		});
 

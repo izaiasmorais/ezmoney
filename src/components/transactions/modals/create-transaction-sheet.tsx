@@ -20,10 +20,10 @@ export function CreateTransactionSheet({
 	className,
 }: CreateTransactionSheetProps) {
 	const {
-		isCreateTransactionSheetOpen,
-		setIsCreateTransactionSheetOpen,
 		form,
 		isLoadingCreateTransaction,
+		isCreateTransactionSheetOpen,
+		setIsCreateTransactionSheetOpen,
 	} = useCreateTransaction();
 
 	return (
@@ -47,8 +47,8 @@ export function CreateTransactionSheet({
 
 				<TransactionForm
 					form={form}
-					isLoadingCreateTransaction={isLoadingCreateTransaction}
-					setIsCreateTransactionSheetOpen={setIsCreateTransactionSheetOpen}
+					isLoading={isLoadingCreateTransaction}
+					setIsFormOpen={setIsCreateTransactionSheetOpen}
 				/>
 			</SheetContent>
 		</Sheet>

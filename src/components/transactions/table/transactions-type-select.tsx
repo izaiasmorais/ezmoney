@@ -13,16 +13,16 @@ import { Transaction } from "@/@types/transaction";
 import { transactionTypesOptions } from "@/mocks/transaction-types-options";
 
 type TransactionsTypeSelectProps = {
-	transactionId: string;
-	type: Transaction["type"];
+	transaction: Transaction;
 };
 
 export function TransactionsTypeSelect({
-	transactionId,
-	type,
+	transaction,
 }: TransactionsTypeSelectProps) {
-	const [selectedType, setSelectedType] = React.useState<string>(type);
-	const { updateTransactionFn } = useUpdateTransaction();
+	const [selectedType, setSelectedType] = React.useState<string>(
+		transaction.type
+	);
+	const { updateTransactionFn } = useUpdateTransaction(transaction);
 
 	function handleUpdateTransactionType(newType: Transaction["type"]) {
 		if (newType === selectedType) {
@@ -32,8 +32,9 @@ export function TransactionsTypeSelect({
 
 		setSelectedType(newType);
 		updateTransactionFn({
-			transactionId,
+			transactionId: transaction.id,
 			data: {
+				...transaction,
 				type: newType,
 			},
 		});

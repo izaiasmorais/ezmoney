@@ -1,11 +1,12 @@
 import { HTTPSuccessResponse, HTTPErrorResponse } from "@/@types/http";
 import { AxiosError } from "axios";
 import { api } from "@/lib/axios";
-import { Transaction, UpdateTransactionRequest } from "@/@types/transaction";
+import { Transaction } from "@/@types/transaction";
+import { TransactionRequest } from "@/@schemas/transaction";
 
 export type UpdateTransactionParams = {
 	transactionId: string;
-	data: UpdateTransactionRequest;
+	data: TransactionRequest;
 };
 
 export type UpdateTransactionResponse =

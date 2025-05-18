@@ -24,31 +24,27 @@ export async function GET(request: Request) {
 		});
 	}
 
-	const userInfo = session?.user;
 	const { searchParams } = new URL(request.url);
+	const userInfo = session.user;
+
 	const startDate = searchParams.get("startDate");
 	const endDate = searchParams.get("endDate");
 
-	const where: any = {
-		userId: userInfo.id,
-	};
+	const now = new Date();
+	const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+	firstDayOfMonth.setHours(0, 0, 0, 0);
 
-	if (startDate) {
-		where.dueDate = {
-			...where.dueDate,
-			gte: new Date(startDate),
-		};
-	}
-
-	if (endDate) {
-		where.dueDate = {
-			...where.dueDate,
-			lte: new Date(endDate),
-		};
-	}
+	const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+	lastDayOfMonth.setHours(23, 59, 59, 999);
 
 	const invoices = await prisma.invoice.findMany({
-		where,
+		where: {
+			userId: userInfo.id,
+			dueDate: {
+				gte: startDate ? new Date(startDate) : firstDayOfMonth,
+				lte: endDate ? new Date(endDate) : lastDayOfMonth,
+			},
+		},
 		orderBy: {
 			dueDate: "desc",
 		},

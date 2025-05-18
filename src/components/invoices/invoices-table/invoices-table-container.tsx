@@ -28,12 +28,7 @@ import { TableSelect } from "@/components/table/table-select";
 import { InvoicesDueDateFilter } from "../filters/invoices-due-date-filter";
 
 export function InvoicesTableContainer() {
-	const [sorting, setSorting] = React.useState<SortingState>([
-		{
-			id: "unitValue",
-			desc: true,
-		},
-	]);
+	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
 		[]
 	);

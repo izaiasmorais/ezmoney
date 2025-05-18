@@ -4,21 +4,24 @@ import { FormMoneyInput } from "@/components/form/form-money-input";
 import { FormSelect } from "@/components/form/form-select";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useFormMutation } from "@/hooks/use-form-mutation";
 import { invoiceCategoryOptions } from "@/mocks/invoice-category-options";
 import { transactionTypesOptions } from "@/mocks/transaction-types-options";
 import { Loader } from "lucide-react";
+import { UseFormReturn } from "react-hook-form";
+import { TransactionRequest } from "@/@schemas/transaction";
 
 interface TransactionFormProps {
-	form: ReturnType<typeof useFormMutation<any>>;
-	isLoadingCreateTransaction: boolean;
-	setIsCreateTransactionSheetOpen: (open: boolean) => void;
+	form: UseFormReturn<TransactionRequest> & {
+		handleSubmitForm: () => void;
+	};
+	setIsFormOpen: (open: boolean) => void;
+	isLoading: boolean;
 }
 
 export function TransactionForm({
 	form,
-	isLoadingCreateTransaction,
-	setIsCreateTransactionSheetOpen,
+	isLoading,
+	setIsFormOpen,
 }: TransactionFormProps) {
 	return (
 		<Form {...form}>
@@ -77,20 +80,18 @@ export function TransactionForm({
 						type="button"
 						variant="secondary"
 						className="w-full md:w-[150px]"
-						disabled={isLoadingCreateTransaction}
-						onClick={() => setIsCreateTransactionSheetOpen(false)}
+						disabled={isLoading}
+						onClick={() => setIsFormOpen(false)}
 					>
 						Cancelar
 					</Button>
 
 					<Button
 						type="submit"
-						disabled={isLoadingCreateTransaction}
+						disabled={isLoading}
 						className="w-full md:w-[150px]"
 					>
-						{isLoadingCreateTransaction && (
-							<Loader className="mr-2 h-4 w-4 animate-spin" />
-						)}
+						{isLoading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
 						Confirmar
 					</Button>
 				</div>
