@@ -13,16 +13,14 @@
 		"lint": "next lint",
 		"migrate": "pnpm prisma migrate dev",
 		"generate": "pnpm prisma generate",
-		"studio": "pnpm prisma studio -b chrome -p 5174"
-	},
-	"prisma": {
-		"seed": "ts-node --project tsconfig-seed.json prisma/mocks/seed.ts"
+		"studio": "pnpm prisma studio -b chrome -p 5174",
+		"health": "pnpm lint && pnpm tsc --noEmit"
 	},
 	"dependencies": {
 		"@better-fetch/fetch": "^1.1.18",
 		"@hookform/resolvers": "^4.1.3",
 		"@next/eslint-plugin-next": "^15.2.4",
-		"@prisma/client": "^6.7.0",
+		"@prisma/client": "^6.10.1",
 		"@radix-ui/react-alert-dialog": "^1.1.6",
 		"@radix-ui/react-avatar": "^1.1.3",
 		"@radix-ui/react-checkbox": "^1.1.4",
@@ -86,7 +84,7 @@
 		"@types/react-dom": "^19",
 		"eslint": "^9",
 		"eslint-config-next": "15.2.2-canary.6",
-		"prisma": "^6.7.0",
+		"prisma": "^6.10.1",
 		"tailwindcss": "^4",
 		"ts-node": "^10.9.2",
 		"typescript": "^5"
@@ -94,6 +92,10 @@
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"@prisma/client",
+			"@prisma/engines",
+			"better-sqlite3",
+			"esbuild",
+			"prisma",
 			"sharp"
 		]
 	}
