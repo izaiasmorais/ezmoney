@@ -1,12 +1,12 @@
 # EZMoney
 
-![image](https://github.com/user-attachments/assets/c51c53e7-15c5-492d-836a-a08c2fb6ef69)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/814904bc-0497-4a42-897a-954325af0d31" />
 
 ## Introdução
 
 Um dashboard completo de controle de finanças que permite gerenciar transações, contas à pagar e orçamentos com facilidade, oferecendo relatórios detalhados e ferramentas intuitivas para organizar sua vida financeira em um só lugar.
 
-<img src="https://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=A855F7&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=NODE&message=V20.18.1&color=A855F7&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=A855F7&style=for-the-badge"/>
+<img src="https://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=151515&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=NODE&message=V20.18.1&color=151515&style=for-the-badge"/> <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=151515&style=for-the-badge"/>
 
 ## Tecnologias
 
