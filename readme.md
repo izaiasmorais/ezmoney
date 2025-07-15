@@ -23,14 +23,15 @@ Um dashboard completo de controle de finanças que permite gerenciar transaçõe
 
 ## Funcionalidades
 
-- [x] Autenticação via Better Auth.
-- [x] Modo noturno.
-- [x] Design responsivo.
-- [x] Dashboard com gráficos sobre transações.
-- [x] Gerencimento de faturas.
-- [x] Gerenciamento de transações.
-- [ ] Gerenciamento de contas bancárias.
-- [ ] Gerencimento de metas.
+- [ ] Autenticação com email e senha.
+- [ ] Autenticação com Google.
+- [ ] Modo noturno.
+- [ ] Design responsivo.
+- [ ] Dashboard com gráficos gerais sobre suas finanças.
+- [ ] Gerencimento completo de faturas.
+- [ ] Gerenciamento completo de transações.
+- [ ] Gerenciamento completo de orçamentos.
+- [ ] Gerenciamento completo de contas bancárias.
 - [ ] Calendário de pagamentos.
 
 ## Instalação
@@ -52,24 +53,10 @@ Configure o arquivo .env com suas credenciais:
 
 ```env
 DATABASE_URL=
-
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-
 BETTER_AUTH_SECRET=
 ```
 
 ## Executando o Projeto
-
-Suba as migrações para o seu banco de dados:
-```bash
-pnpm migrate
-```
-
-Gere o schema do Prisma:
-```bash
-pnpm generate
-```
 
 Inicie o servidor:
 ```bash
