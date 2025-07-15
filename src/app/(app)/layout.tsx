@@ -1,17 +1,20 @@
 import { Header } from "@/components/header/header";
-import { AppSidebar } from "@/components/sidebar/app-sidebar";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { Sidebar } from "@/components/sidebar/sidebar";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
 	return (
-		<SidebarProvider>
-			<AppSidebar />
+		<div className="w-full grid grid-cols-[272px_1fr] h-screen bg-[#111111]">
+			<Sidebar />
 
-			<SidebarInset>
+			<main className="w-full h-full flex flex-col gap-0">
 				<Header />
 
-				<div className="p-4 flex-1">{children}</div>
-			</SidebarInset>
-		</SidebarProvider>
+				<div className="w-full flex-1 p-6">{children}</div>
+			</main>
+		</div>
 	);
 }

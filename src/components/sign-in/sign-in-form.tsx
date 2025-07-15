@@ -1,150 +1,73 @@
 "use client";
-import { cn } from "@/lib/utils";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { useSignIn } from "@/hooks/auth/use-sign-in";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "../ui/form";
-import { LoaderCircle } from "lucide-react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { FormInput } from "../form/form-input";
+import { Button } from "../ui/button";
+import { Form } from "../ui/form";
 
-export function SignInForm({
-	className,
-	...props
-}: React.ComponentPropsWithoutRef<"div">) {
-	const {
-		form,
-		isLoadingSignIn,
-		isLoadingSignInWithGoogle,
-		handleSignInWithGoogle,
-	} = useSignIn();
+export const signInSchema = z.object({
+	email: z.string().email("Email inválido"),
+	password: z.string().min(8, "Senha deve ter pelo menos 8 caracteres"),
+});
+
+export function SignInForm() {
+	const form = useForm({
+		resolver: zodResolver(signInSchema),
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+	});
+
+	const onSubmit = (data: z.infer<typeof signInSchema>) => {
+		console.log(data);
+	};
 
 	return (
-		<div className={cn("flex flex-col gap-6 w-full", className)} {...props}>
-			<Card className="border-none shadow-none bg-transparent">
-				<CardHeader className="text-center">
-					<CardTitle className="text-xl">Bem-vindo</CardTitle>
-					<CardDescription>Faça login com sua conta Google</CardDescription>
-				</CardHeader>
-
-				<CardContent>
-					<Form {...form}>
-						<form onSubmit={form.handleSubmitForm} className="space-y-6">
-							<div className="flex flex-col gap-4">
-								<Button
-									type="button"
-									variant="outline"
-									className="w-full"
-									onClick={handleSignInWithGoogle}
-									disabled={isLoadingSignInWithGoogle}
-									aria-label="Entrar com o Google"
-									aria-disabled={isLoadingSignInWithGoogle}
-									aria-busy={isLoadingSignInWithGoogle}
-								>
-									{!isLoadingSignInWithGoogle && (
-										<Image
-											src={"/google_logo.png"}
-											alt="Google Logo"
-											width={16}
-											height={16}
-											quality={100}
-											priority
-										/>
-									)}
-									{isLoadingSignInWithGoogle && (
-										<LoaderCircle className="animate-spin" />
-									)}
-									Entrar com o Google
-								</Button>
-							</div>
-
-							<div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-								<span className="relative z-10 bg-background px-2 text-muted-foreground">
-									Ou continue com seu email
-								</span>
-							</div>
-
-							<FormField
-								control={form.control}
-								name="email"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Email</FormLabel>
-										<FormControl>
-											<Input
-												type="email"
-												placeholder="Digite seu email"
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-
-							<FormField
-								control={form.control}
-								name="password"
-								render={({ field }) => (
-									<FormItem>
-										<div className="flex items-center justify-between">
-											<FormLabel>Senha</FormLabel>
-											<Link
-												href="/resetar-senha"
-												className="text-sm hover:underline underline-offset-4"
-											>
-												Esqueceu sua senha?
-											</Link>
-										</div>
-
-										<FormControl>
-											<Input
-												type="password"
-												placeholder="Digite sua senha"
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-
-							<Button
-								type="submit"
-								className="w-full"
-								disabled={isLoadingSignIn}
-							>
-								{isLoadingSignIn && <LoaderCircle className="animate-spin" />}
-								Entrar
-							</Button>
-
-							<div className="text-center text-sm">
-								Não tem uma conta?{" "}
-								<Link
-									href="/cadastro "
-									className="underline underline-offset-4"
-								>
+		<div className="w-[400px]">
+			<Form {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+					<div className="flex flex-col">
+						<h1 className="text-2xl font-bold">Conecte-se</h1>
+						<span className="text-muted-foreground text-sm font-medium">
+							Novo por aqui?{" "}
+							<Button variant="link" className="p-0" asChild>
+								<Link href="/cadastrar" className="text-black font-medium">
 									Cadastre-se
 								</Link>
-							</div>
-						</form>
-					</Form>
-				</CardContent>
-			</Card>
+							</Button>
+						</span>
+					</div>
+
+					<FormInput
+						form={form}
+						entity="email"
+						label="Email"
+						placeholder="Digite seu email"
+						type="email"
+					/>
+
+					<FormInput
+						form={form}
+						entity="password"
+						label="Senha"
+						placeholder="Digite sua senha"
+						type="password"
+					/>
+
+					<Button type="submit" className="w-full">
+						Entrar
+					</Button>
+
+					<Button className="w-full" variant="outline">
+						<Image src="/google.svg" alt="Google" width={20} height={20} />
+						Entrar com Google
+					</Button>
+				</form>
+			</Form>
 		</div>
 	);
 }

@@ -1,5 +1,5 @@
-import { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
 import Providers from "./providers";
 import "./globals.css";
 
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html
-			lang="pt-br"
+			lang="pt-BR"
 			className={GeistSans.className}
 			suppressHydrationWarning={true}
 		>
