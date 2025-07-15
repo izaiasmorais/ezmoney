@@ -7,15 +7,15 @@ interface InvoiceStatusProps {
 function getStatusStyles(status: string) {
 	switch (status) {
 		case "pending":
-			return "bg-yellow-950/20 border-yellow-950/70 text-yellow-500";
+			return "bg-yellow-950/20 border-yellow-950/70 text-yellow-400";
 		case "paid":
-			return "bg-green-950/20 border-green-950/70 text-green-500";
+			return "bg-green-950/20 border-green-950/70 text-green-400";
 		case "overdue":
-			return "bg-red-950/20 border-red-950/70 text-red-500";
+			return "bg-red-950/20 border-red-950/70 text-red-400";
 		case "draft":
-			return "bg-purple-950/20 border-purple-950/70 text-purple-500";
+			return "bg-purple-950/20 border-purple-950/70 text-purple-400";
 		default:
-			return "bg-yellow-950/20 border-yellow-950/70 text-yellow-500";
+			return "bg-yellow-950/20 border-yellow-950/70 text-yellow-400";
 	}
 }
 
@@ -36,7 +36,9 @@ function getStatusLabel(status: string) {
 
 export function InvoiceStatus({ status }: InvoiceStatusProps) {
 	return (
-		<Badge className={`py-1 px-4 rounded-full w-[90px] ${getStatusStyles(status)}`}>
+		<Badge
+			className={`py-1 px-4 rounded-full w-[90px] ${getStatusStyles(status)}`}
+		>
 			{getStatusLabel(status)}
 		</Badge>
 	);

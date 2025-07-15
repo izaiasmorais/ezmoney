@@ -1,7 +1,7 @@
 import { GeistMono } from "geist/font/mono";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { SearchInput } from "../ui/search-input";
 import { Navbar } from "./navbar";
-import { ThemeSwitcher } from "./theme-switcher";
 
 export function Sidebar() {
 	return (
@@ -9,6 +9,11 @@ export function Sidebar() {
 			<div className="flex items-center gap-2">
 				<span className={GeistMono.className}>EZMoney</span>
 			</div>
+
+			<SearchInput
+				placeholder="Pesquisar..."
+				className="bg-dark-card border-dark-border"
+			/>
 
 			<Navbar />
 
@@ -30,8 +35,6 @@ export function Sidebar() {
 							</span>
 						</div>
 					</div>
-
-					<ThemeSwitcher />
 				</div>
 			</div>
 		</aside>

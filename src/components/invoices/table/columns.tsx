@@ -4,6 +4,7 @@ import { TableSort } from "@/components/table/table-sort";
 import { Button } from "@/components/ui/button";
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { formatDate } from "@/utils/format-date";
+import { formatToBRL } from "@/utils/format-to-brl";
 import { InvoiceCategory } from "./category";
 import { InvoiceStatus } from "./status";
 
@@ -23,12 +24,12 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 			<TableSort column={column}>Valor Unitário</TableSort>
 		),
 		cell: ({ row }) => {
-			return <div>{row.getValue("unitValue")}</div>;
+			return <div>{formatToBRL(row.getValue("unitValue"))}</div>;
 		},
 	},
 	{
 		accessorKey: "installments",
-		header: ({ column }) => <TableSort column={column}>Valor</TableSort>,
+		header: ({ column }) => <TableSort column={column}>Parcelas</TableSort>,
 		cell: ({ row }) => <div>{row.getValue("installments")}</div>,
 	},
 	{
@@ -42,23 +43,17 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 		accessorKey: "category",
 		header: ({ column }) => <TableSort column={column}>Categoria</TableSort>,
 		cell: ({ row }) => (
-			<div>
-				<InvoiceCategory>{row.getValue("category")}</InvoiceCategory>
-			</div>
+			<InvoiceCategory>{row.getValue("category")}</InvoiceCategory>
 		),
 	},
 	{
 		accessorKey: "status",
 		header: ({ column }) => <TableSort column={column}>Status</TableSort>,
-		cell: ({ row }) => (
-			<div>
-				<InvoiceStatus status={row.getValue("status")} />
-			</div>
-		),
+		cell: ({ row }) => <InvoiceStatus status={row.getValue("status")} />,
 	},
 	{
 		accessorKey: "actions",
-		header: ({ column }) => <TableSort column={column}>Status</TableSort>,
+		header: ({ column }) => <TableSort column={column}>Ações</TableSort>,
 		cell: () => (
 			<div>
 				<Button size="icon" variant="ghost">
