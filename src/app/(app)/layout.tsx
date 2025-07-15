@@ -7,13 +7,15 @@ export default function AppLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="w-full grid grid-cols-[272px_1fr] h-screen bg-[#111111]">
-			<Sidebar />
+		<div className="fixed inset-0 w-screen h-screen bg-[#111111] flex">
+			<aside className="w-[272px] h-full">
+				<Sidebar />
+			</aside>
 
-			<main className="w-full h-full flex flex-col gap-0">
+			<main className="flex-1 flex flex-col h-full overflow-hidden">
 				<Header />
-
-				<div className="w-full flex-1 p-6">{children}</div>
+				
+				<div className="w-full flex-1 px-6 flex overflow-auto">{children}</div>
 			</main>
 		</div>
 	);

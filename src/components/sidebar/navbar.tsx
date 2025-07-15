@@ -1,10 +1,13 @@
 "use client";
 import {
-	FileText,
-	FolderOpen,
-	HelpCircle,
+	Calendar,
+	CreditCard,
 	LayoutDashboard,
-	MessageSquare,
+	ReceiptText,
+	Settings,
+	Tag,
+	Users,
+	Wallet,
 } from "lucide-react";
 import { NavbarItem } from "./navbar-item";
 
@@ -15,24 +18,40 @@ const navigationItems = [
 		label: "Dashboard",
 	},
 	{
-		href: "/transcricao",
-		icon: FileText,
-		label: "Transcrição",
+		href: "/contas",
+		icon: ReceiptText,
+		label: "Contas",
 	},
 	{
-		href: "/chat-bot",
-		icon: MessageSquare,
-		label: "Chat Bot",
+		href: "/transacoes",
+		icon: CreditCard,
+		label: "Transações",
 	},
 	{
-		href: "/documentos",
-		icon: FolderOpen,
-		label: "Documentos",
+		href: "/categorias",
+		icon: Tag,
+		label: "Categorias",
 	},
 	{
-		href: "/ajuda-suporte",
-		icon: HelpCircle,
-		label: "Ajuda e Suporte",
+		href: "/orcamentos",
+		icon: Wallet,
+		label: "Orçamentos",
+	},
+	{
+		href: "/calendario",
+		icon: Calendar,
+		label: "Calendário",
+	},
+	{
+		href: "/clientes",
+		icon: Users,
+		label: "Clientes",
+	},
+
+	{
+		href: "/configuracoes",
+		icon: Settings,
+		label: "Configurações",
 	},
 ];
 

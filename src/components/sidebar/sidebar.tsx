@@ -5,7 +5,7 @@ import { ThemeSwitcher } from "./theme-switcher";
 
 export function Sidebar() {
 	return (
-		<aside className="h-full flex flex-col gap-6 p-4 border-r">
+		<aside className="h-full flex flex-col gap-6 p-4 border-r border-border">
 			<div className="flex items-center gap-2">
 				<span className={GeistMono.className}>EZMoney</span>
 			</div>

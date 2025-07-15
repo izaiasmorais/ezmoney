@@ -8,10 +8,6 @@
 export function formatDate(isoDate: string | Date): string {
 	const date = typeof isoDate === "string" ? new Date(isoDate) : isoDate;
 
-	if (isNaN(date.getTime())) {
-		throw new Error("Data inválida");
-	}
-
 	const day = String(date.getUTCDate()).padStart(2, "0");
 	const month = String(date.getUTCMonth() + 1).padStart(2, "0");
 	const year = date.getUTCFullYear();

@@ -6,6 +6,9 @@
 
 @theme inline {
 	--color-dark: #17181d;
+	--color-back: #121212;
+	--color-dark-card: #151515;
+	--color-dark-border: #181818;
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
