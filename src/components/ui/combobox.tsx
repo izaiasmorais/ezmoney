@@ -1,7 +1,6 @@
 "use client";
-import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import * as React from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Command,
@@ -16,6 +15,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 interface ComboboxProps {
 	items: { label: string; value: string }[];
@@ -43,7 +43,6 @@ export function Combobox({
 			<PopoverTrigger asChild>
 				<Button
 					variant="outline"
-					role="combobox"
 					aria-expanded={open}
 					className={cn("justify-between", className)}
 				>
@@ -70,7 +69,7 @@ export function Combobox({
 								<CommandItem
 									key={item.value}
 									value={item.value}
-									onSelect={(currentValue) => {
+									onSelect={(currentValue: string) => {
 										setValue(currentValue === value ? "" : currentValue);
 										setOpen(false);
 										onChange?.(currentValue);

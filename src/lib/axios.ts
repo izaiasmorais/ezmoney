@@ -7,26 +7,11 @@ export const api = axios.create({
 	},
 });
 
-api.interceptors.request.use(
-	(config) => {
-		const authCookie = Cookies.get("better-auth.session_token");
-
-		if (authCookie) {
-			config.headers.Cookie = `better-auth.session_token=${authCookie}`;
-		}
-
-		return config;
-	},
-	(error) => {
-		return Promise.reject(error);
-	}
-);
-
 api.interceptors.response.use(
 	(response) => response,
 	(error) => {
 		if (error.response?.status === 401) {
-			Cookies.remove("better-auth.session_token");
+			Cookies.remove("ezmoney:access_token");
 			window.location.href = "/entrar";
 		}
 
