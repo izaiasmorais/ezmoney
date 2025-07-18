@@ -35,7 +35,7 @@ export function SignInForm() {
 						<span className="text-muted-foreground text-sm font-medium">
 							Novo por aqui?{" "}
 							<Button variant="link" className="p-0" asChild>
-								<Link href="/cadastrar" className="text-black font-medium">
+								<Link href="/cadastro" className="text-black font-medium">
 									Cadastre-se
 								</Link>
 							</Button>

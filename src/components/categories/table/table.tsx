@@ -22,7 +22,7 @@ export function CategoriesTable({
 	table,
 	isLoading,
 	data,
-	widths = ["w-[200px]", "w-[100px]", "w-[100px]", "w-[100px]", "w-[100px]"],
+	widths = ["w-[200px]", "w-[200px]", "w-[200px]", "w-[50px]"],
 }: CategoriesTableProps) {
 	return (
 		<Table>

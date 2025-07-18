@@ -4,7 +4,6 @@ import { TableSort } from "@/components/table/table-sort";
 import { Button } from "@/components/ui/button";
 import type { Category } from "@/hooks/categories/use-get-categories";
 import { formatDate } from "@/utils/format-date";
-import { CategoryTag } from "./tag";
 
 type CategoryColumnDef = ColumnDef<Category> & {
 	accessorKey: keyof Category | "actions";
@@ -12,36 +11,22 @@ type CategoryColumnDef = ColumnDef<Category> & {
 
 export const CategoriesTableColumns: CategoryColumnDef[] = [
 	{
-		accessorKey: "name",
-		header: ({ column }) => <TableSort column={column}>Nome</TableSort>,
-		cell: ({ row }) => <div>{row.getValue("name")}</div>,
-	},
-	{
-		accessorKey: "invoicesCount",
-		header: ({ column }) => <TableSort column={column}>Faturas</TableSort>,
+		accessorKey: "color",
+		header: ({ column }) => <TableSort column={column}>Cor</TableSort>,
 		cell: ({ row }) => {
 			return (
-				<div>
-					<CategoryTag
-						value={row.getValue("invoicesCount")}
-						label="Faturas"
-					/>
-				</div>
+				<div
+					className="w-3 h-3 rounded-full"
+					style={{ backgroundColor: row.getValue("color") }}
+				/>
 			);
 		},
 	},
 	{
-		accessorKey: "transactionsCount",
-		header: ({ column }) => <TableSort column={column}>Transações</TableSort>,
+		accessorKey: "name",
+		header: ({ column }) => <TableSort column={column}>Nome</TableSort>,
 		cell: ({ row }) => {
-			return (
-				<div>
-					<CategoryTag
-						value={row.getValue("transactionsCount")}
-						label="Transações"
-					/>
-				</div>
-			);
+			return <div>{row.getValue("name")}</div>;
 		},
 	},
 	{

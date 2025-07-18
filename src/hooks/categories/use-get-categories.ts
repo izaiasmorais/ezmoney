@@ -1,12 +1,45 @@
+import { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
+import { api } from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 
 export const categorySchema = z.object({
 	id: z.string().uuid(),
-	name: z.string().min(1),
-	invoicesCount: z.number().int().positive(),
-	transactionsCount: z.number().int().positive(),
+	name: z.string(),
+	color: z.string(),
 	createdAt: z.date(),
-	updatedAt: z.date(),
 });
 
 export type Category = z.infer<typeof categorySchema>;
+
+type GetCategoriesResponse =
+	| HTTPSuccessResponse<{
+			categories: Category[];
+	  }>
+	| HTTPErrorResponse;
+
+export async function getCategories(): Promise<GetCategoriesResponse> {
+	const response = await api.get<GetCategoriesResponse>("/categories");
+
+	if (response.data.success) {
+		return response.data;
+	}
+
+	return {
+		success: false,
+		errors: response.data.errors,
+		data: null,
+	};
+}
+
+export function useGetCategories() {
+	const { data, isLoading: isLoadingGetCategories } = useQuery({
+		queryKey: ["get-categories"],
+		queryFn: getCategories,
+	});
+
+	return {
+		categories: data?.data?.categories ?? [],
+		isLoadingGetCategories,
+	};
+}

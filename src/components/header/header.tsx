@@ -19,7 +19,7 @@ export function Header() {
 			<div className="flex items-center gap-4 ml-auto">
 				<ThemeSwitcher />
 
-				<Button variant="outline" size="icon" className="bg-dark-card ">
+				<Button variant="outline" size="icon">
 					<Bell />
 				</Button>
 			</div>

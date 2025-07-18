@@ -28,7 +28,6 @@ export function ThemeSwitcher() {
 			variant="outline"
 			size="icon"
 			onClick={cycleTheme}
-			className="bg-dark-card"
 			aria-label="Toggle theme"
 		>
 			{theme === "light" ? (

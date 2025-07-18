@@ -2,8 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { TableCell, TableRow } from "@/components/ui/table";
 
 export function CategoriesTableSkeleton() {
-	const columns = Array.from({ length: 5 }, () => crypto.randomUUID());
 	const rows = Array.from({ length: 10 }, () => crypto.randomUUID());
+	const columns = Array.from({ length:4 }, () => crypto.randomUUID());
 
 	return (
 		<>

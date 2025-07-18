@@ -14,7 +14,8 @@ import React from "react";
 import { TablePagination } from "@/components/table/table-pagination";
 import { Button } from "@/components/ui/button";
 import { SearchInput } from "@/components/ui/search-input";
-import { categories } from "@/mocks/categories";
+import { useGetCategories } from "@/hooks/categories/use-get-categories";
+import { CreateCategoryForm } from "../form/create-category-form";
 import { CategoriesTableColumns } from "./columns";
 import { CategoriesTable } from "./table";
 
@@ -26,6 +27,8 @@ export function CategoriesTableContainer() {
 	const [columnVisibility, setColumnVisibility] =
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
+
+	const { categories, isLoadingGetCategories } = useGetCategories();
 
 	const table = useReactTable({
 		data: categories,
@@ -52,18 +55,24 @@ export function CategoriesTableContainer() {
 				<SearchInput
 					className="!w-[400px] border-dark-border"
 					placeholder="Pesquisar categorias..."
+					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+					onChange={(event) =>
+						table.getColumn("name")?.setFilterValue(event.target.value)
+					}
 				/>
 
-				<Button
-					size="icon"
-					variant="outline"
-					className="bg-dark-card	border-dark-border"
-				>
+				<Button size="icon" variant="outline">
 					<Filter />
 				</Button>
+
+				<CreateCategoryForm />
 			</div>
 
-			<CategoriesTable table={table} isLoading={false} data={categories} />
+			<CategoriesTable
+				table={table}
+				isLoading={isLoadingGetCategories}
+				data={categories}
+			/>
 
 			<TablePagination table={table} />
 		</div>
