@@ -1,37 +1,18 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useSignUp } from "@/hooks/auth/use-sign-up";
 import { FormInput } from "../form/form-input";
 import { Button } from "../ui/button";
 import { Form } from "../ui/form";
 
-export const signUpSchema = z.object({
-	name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
-	email: z.string().email("Email inválido"),
-	password: z.string().min(8, "Senha deve ter pelo menos 8 caracteres"),
-});
-
 export function SignUpForm() {
-	const form = useForm({
-		resolver: zodResolver(signUpSchema),
-		defaultValues: {
-			name: "",
-			email: "",
-			password: "",
-		},
-	});
-
-	const onSubmit = (data: z.infer<typeof signUpSchema>) => {
-		console.log(data);
-	};
+	const { form, isLoadingSignUp } = useSignUp();
 
 	return (
 		<div className="w-[400px]">
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+				<form onSubmit={form.handleSubmitForm} className="space-y-6">
 					<div className="flex flex-col">
 						<h1 className="text-2xl font-bold">Criar conta</h1>
 						<span className="text-muted-foreground text-sm font-medium">
@@ -68,7 +49,7 @@ export function SignUpForm() {
 						type="password"
 					/>
 
-					<Button type="submit" className="w-full">
+					<Button type="submit" className="w-full" isLoading={isLoadingSignUp}>
 						Criar conta
 					</Button>
 

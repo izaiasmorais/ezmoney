@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
 
 interface AuthState {
 	accessToken: string | null;
@@ -9,42 +8,29 @@ interface AuthState {
 	logout: () => void;
 }
 
-export const useAuthStore = create<AuthState>()(
-	persist(
-		(set) => ({
+export const useAuthStore = create<AuthState>()((set) => ({
+	accessToken: null,
+	isAuthenticated: false,
+	authenticate: (token: string) => {
+		// Store token in cookie
+		Cookies.set("ezmoney-access-token", token, {
+			expires: 1,
+			secure: process.env.NODE_ENV === "production",
+			sameSite: "strict",
+		});
+
+		set({
+			accessToken: token,
+			isAuthenticated: true,
+		});
+	},
+	logout: () => {
+		// Remove token from cookie
+		Cookies.remove("ezmoney-access-token");
+
+		set({
 			accessToken: null,
 			isAuthenticated: false,
-			authenticate: (token: string) => {
-				set({
-					accessToken: token,
-					isAuthenticated: true,
-				});
-			},
-			logout: () => {
-				set({
-					accessToken: null,
-					isAuthenticated: false,
-				});
-			},
-		}),
-		{
-			name: "ezmoney:access_token",
-			storage: createJSONStorage(() => ({
-				getItem: (key) => {
-					const value = Cookies.get(key);
-					return value ? JSON.parse(value) : null;
-				},
-				setItem: (key, value) => {
-					Cookies.set(key, JSON.stringify(value), {
-						expires: 1,
-						secure: process.env.NODE_ENV === "production",
-						sameSite: "strict",
-					});
-				},
-				removeItem: (key) => {
-					Cookies.remove(key);
-				},
-			})),
-		}
-	)
-);
+		});
+	},
+}));

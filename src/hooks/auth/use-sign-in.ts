@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { z } from "zod";
 import type { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
@@ -8,8 +9,8 @@ import { useAuthStore } from "@/stores/auth";
 import { useFormMutation } from "../form/use-form-mutation";
 
 export const signInRequestSchema = z.object({
-	email: z.string().email(),
-	password: z.string().min(1),
+	email: z.string().email("O E-mail inválido"),
+	password: z.string().min(8, "A Senha deve ter pelo menos 8 caracteres"),
 });
 
 export const signInResponseSchema = z.object({
@@ -43,6 +44,8 @@ export async function signIn(data: SignInRequest): Promise<SignInApiResponse> {
 }
 
 export function useSignIn() {
+	const router = useRouter();
+
 	const authenticate = useAuthStore((state) => state.authenticate);
 
 	const form = useFormMutation({
@@ -63,6 +66,7 @@ export function useSignIn() {
 			if (response.success) {
 				form.reset();
 				authenticate(response.data.accessToken);
+				router.push("/");
 				return;
 			}
 
@@ -74,7 +78,6 @@ export function useSignIn() {
 
 	return {
 		form,
-		signIn: signInFn,
-		isLoading: isLoadingSignIn,
+		isLoadingSignIn,
 	};
 }

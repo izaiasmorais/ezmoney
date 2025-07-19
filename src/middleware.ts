@@ -1,11 +1,11 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
-	const sessionCookie = request.cookies.get("ezmoney:access_token")?.value;
+	const accessToken = request.cookies.get("ezmoney-access-token")?.value;
 	const { pathname } = request.nextUrl;
 	const url = request.nextUrl.clone();
 
-	const isUserAuthenticated = !!sessionCookie;
+	const isUserAuthenticated = !!accessToken;
 	const publicRoutes = ["/entrar", "/cadastro"];
 
 	if (!isUserAuthenticated) {

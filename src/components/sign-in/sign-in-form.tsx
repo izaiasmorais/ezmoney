@@ -1,9 +1,8 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useSignIn } from "@/hooks/auth/use-sign-in";
 import { FormInput } from "../form/form-input";
 import { Button } from "../ui/button";
 import { Form } from "../ui/form";
@@ -14,22 +13,12 @@ export const signInSchema = z.object({
 });
 
 export function SignInForm() {
-	const form = useForm({
-		resolver: zodResolver(signInSchema),
-		defaultValues: {
-			email: "",
-			password: "",
-		},
-	});
-
-	const onSubmit = (data: z.infer<typeof signInSchema>) => {
-		console.log(data);
-	};
+	const { form, isLoadingSignIn } = useSignIn();
 
 	return (
 		<div className="w-[400px]">
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+				<form onSubmit={form.handleSubmitForm} className="space-y-6">
 					<div className="flex flex-col">
 						<h1 className="text-2xl font-bold">Conecte-se</h1>
 						<span className="text-muted-foreground text-sm font-medium">
@@ -58,7 +47,7 @@ export function SignInForm() {
 						type="password"
 					/>
 
-					<Button type="submit" className="w-full">
+					<Button type="submit" className="w-full" isLoading={isLoadingSignIn}>
 						Entrar
 					</Button>
 

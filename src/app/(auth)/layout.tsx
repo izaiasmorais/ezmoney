@@ -6,8 +6,11 @@ export default function AuthLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="w-full h-screen grid grid-cols-2">
-			<div className="bg-dark-card flex flex-col items-center justify-center">
+		<div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
+			<div
+				className="bg-dark-card md:flex flex-col items-center justify-
+			hidden "
+			>
 				<div className="w-full p-4">
 					<Image src="/ezmoney.svg" alt="EZMoney Logo" width={40} height={40} />
 				</div>
@@ -23,7 +26,7 @@ export default function AuthLayout({
 				</div>
 			</div>
 
-			<div className="flex items-center justify-center">{children}</div>
+			<div className="flex items-center justify-center px-4">{children}</div>
 		</div>
 	);
 }
