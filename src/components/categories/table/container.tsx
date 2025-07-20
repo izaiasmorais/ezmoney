@@ -53,7 +53,7 @@ export function CategoriesTableContainer() {
 		<div className="w-full space-y-4 rounded-lg">
 			<div className="flex items-center gap-4">
 				<SearchInput
-					className="!w-[400px] border-dark-border"
+					className="!w-[400px]"
 					placeholder="Pesquisar categorias..."
 					value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
 					onChange={(event) =>

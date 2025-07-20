@@ -16,7 +16,7 @@ const SearchInput = React.forwardRef<
 			/>
 
 			<input
-				className={`pl-9 w-full flex h-9 rounded-md border bg-dark-card
+				className={`pl-9 w-full flex h-9 rounded-md border bg-card
 			  px-3 py-1 text-base shadow-xs transition-colors file:border-0
 				file:bg-transparent file:text-sm file:font-medium	file:text-foreground
 				placeholder:text-muted-foreground focus-visible:outline-none

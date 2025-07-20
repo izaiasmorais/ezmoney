@@ -1,12 +1,12 @@
 "use client";
+import type { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import {
+	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-	FormControl,
 	FormMessage,
 } from "@/components/ui/form";
-import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 

@@ -7,7 +7,7 @@ export default function AppLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="fixed inset-0 w-screen h-screen bg-[#111111] flex">
+		<div className="fixed inset-0 w-screen h-screen dark:bg-[#111111] flex">
 			<aside className="w-[272px] h-full">
 				<Sidebar />
 			</aside>
