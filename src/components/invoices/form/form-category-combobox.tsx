@@ -31,7 +31,7 @@ import {
 import { cn } from "@/lib/utils";
 
 interface ComboboxProps<TFieldValues extends FieldValues> {
-	options: { label: string; value: string }[];
+	options: { label: string; value: string; color: string }[];
 	translatedEntity: string;
 	placeholder?: string;
 	emptyMessage?: string;
@@ -39,7 +39,7 @@ interface ComboboxProps<TFieldValues extends FieldValues> {
 	form: UseFormReturn<TFieldValues>;
 }
 
-export function FormCombobox<TFieldValues extends FieldValues>({
+export function FormCategoryCombobox<TFieldValues extends FieldValues>({
 	options,
 	form,
 	entity,
@@ -64,14 +64,26 @@ export function FormCombobox<TFieldValues extends FieldValues>({
 									variant="outline"
 									aria-expanded={open}
 									className={cn(
-										"justify-between text-base md:text-sm",
+										"justify-between text-base md:text-sm bg-transparent",
 										!field.value && "text-muted-foreground"
 									)}
 								>
-									{field.value
-										? options.find((option) => option.value === field.value)
-												?.label
-										: `Selecionar ${translatedEntity}`}
+									<div className="flex items-center gap-2">
+										{field.value && (
+											<div
+												className="w-3 h-3 rounded-full"
+												style={{
+													backgroundColor: options.find(
+														(option) => option.value === field.value
+													)?.color,
+												}}
+											/>
+										)}
+										{field.value
+											? options.find((option) => option.value === field.value)
+													?.label
+											: `Selecionar ${translatedEntity}`}
+									</div>
 									<ChevronsUpDown className="opacity-50" size={16} />
 								</Button>
 							</FormControl>
@@ -99,6 +111,10 @@ export function FormCombobox<TFieldValues extends FieldValues>({
 													setOpen(false);
 												}}
 											>
+												<div
+													className="w-3 h-3 rounded-full"
+													style={{ backgroundColor: option.color }}
+												/>
 												{option.label}
 												<Check
 													className={cn(

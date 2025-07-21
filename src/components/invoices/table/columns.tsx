@@ -4,7 +4,7 @@ import { TableSort } from "@/components/table/table-sort";
 import { Button } from "@/components/ui/button";
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { formatDate } from "@/utils/format-date";
-import { formatToBRL } from "@/utils/format-to-brl";
+import { formatCurrency } from "@/utils/format-currency";
 import { InvoiceCategory } from "./category";
 import { InvoiceStatus } from "./status";
 
@@ -24,7 +24,7 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 			<TableSort column={column}>Valor Unitário</TableSort>
 		),
 		cell: ({ row }) => {
-			return <div>{formatToBRL(row.getValue("unitValue"))}</div>;
+			return <div>{formatCurrency(row.getValue("unitValue"))}</div>;
 		},
 	},
 	{

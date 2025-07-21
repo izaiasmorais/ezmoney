@@ -1,8 +1,8 @@
 "use client";
 import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
-import { UseFormReturn } from "react-hook-form";
-import { cn } from "@/lib/utils";
+import type { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -17,8 +17,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
-import { FieldValues, Path } from "react-hook-form";
-import { ptBR } from "date-fns/locale";
+import { cn } from "@/lib/utils";
 
 interface FormDatePickerProps<TFieldValues extends FieldValues> {
 	form: UseFormReturn<TFieldValues>;
@@ -47,7 +46,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
 								<Button
 									variant={"outline"}
 									className={cn(
-										"pl-3 text-left font-normal",
+										"pl-3 text-left font-normal bg-transparent",
 										!field.value && "text-muted-foreground"
 									)}
 								>

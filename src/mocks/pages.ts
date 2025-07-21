@@ -16,9 +16,9 @@ export const pages = [
 		label: "Dashboard",
 	},
 	{
-		href: "/contas",
+		href: "/faturas",
 		icon: ReceiptText,
-		label: "Contas",
+		label: "Faturas",
 	},
 	{
 		href: "/transacoes",

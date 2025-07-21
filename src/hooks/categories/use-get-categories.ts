@@ -1,7 +1,7 @@
-import { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
-import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
+import type { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
+import { api } from "@/lib/axios";
 
 export const categorySchema = z.object({
 	id: z.string().uuid(),

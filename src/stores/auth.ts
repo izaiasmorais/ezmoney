@@ -13,7 +13,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
 	isAuthenticated: false,
 	authenticate: (token: string) => {
 		Cookies.set("ezmoney-access-token", token, {
-			expires: 1,
+			expires: 1 / 24,
 			secure: process.env.NODE_ENV === "production",
 			sameSite: "strict",
 		});

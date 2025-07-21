@@ -7,7 +7,7 @@ export default function AuthLayout({
 }) {
 	return (
 		<div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
-			<div className="bg-card md:flex flex-col items-center justify-center hidden">
+			<div className="bg-[#151515] md:flex flex-col items-center justify-center hidden">
 				<div className="w-full p-4">
 					<Image src="/ezmoney.svg" alt="EZMoney Logo" width={40} height={40} />
 				</div>

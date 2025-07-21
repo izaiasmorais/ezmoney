@@ -8,11 +8,11 @@ export default function AppLayout({
 }>) {
 	return (
 		<div className="fixed inset-0 w-screen h-screen dark:bg-[#111111] flex">
-			<aside className="w-[272px] h-full">
+			<aside className="w-[230px] h-full">
 				<Sidebar />
 			</aside>
 
-			<main className="flex-1 flex flex-col h-full overflow-hidden">
+			<main className="flex-1 flex flex-col h-full overflow-hidden pb-6">
 				<Header />
 
 				<div className="w-full flex-1 py-1 px-6 flex overflow-auto">{children}</div>

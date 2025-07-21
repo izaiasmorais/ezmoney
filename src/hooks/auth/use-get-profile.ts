@@ -34,13 +34,13 @@ export async function getProfile(): Promise<GetProfileResponse> {
 }
 
 export function useGetProfile() {
-	const { data: result, isLoading: isLoadingGetProfile } = useQuery({
+	const { data, isLoading: isLoadingGetProfile } = useQuery({
 		queryKey: ["get-profile"],
 		queryFn: getProfile,
 	});
 
 	return {
-		profile: result?.success ? result.data : null,
-		isLoading: isLoadingGetProfile,
+		profile: data?.success ? data.data : null,
+		isLoadingGetProfile,
 	};
 }
