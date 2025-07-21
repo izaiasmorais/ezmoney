@@ -68,6 +68,7 @@ export function useCreateInvoice() {
 					queryClient.invalidateQueries({ queryKey: ["get-invoices"] });
 					setIsCreateInvoiceSheetOpen(false);
 					toast.success("Fatura criada com sucesso");
+					form.reset();
 					return;
 				}
 

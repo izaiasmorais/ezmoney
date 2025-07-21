@@ -3,11 +3,10 @@ import { Ellipsis } from "lucide-react";
 import { TableSort } from "@/components/table/table-sort";
 import { Button } from "@/components/ui/button";
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
-import { formatDate } from "@/utils/format-date";
+import { formatFromNow } from "@/utils/form-from-now";
 import { formatCurrency } from "@/utils/format-currency";
 import { InvoiceCategory } from "./category";
 import { InvoiceStatus } from "./status";
-import { formatFromNow } from "@/utils/form-from-now";
 
 type InvoiceColumnDef = ColumnDef<Invoice> & {
 	accessorKey: keyof Invoice | "actions";
@@ -53,9 +52,7 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 		cell: ({ row }) => {
 			const category = row.original.category;
 
-			return (
-				<InvoiceCategory label={category.label} color={category.color} />
-			);
+			return <InvoiceCategory label={category.label} color={category.color} />;
 		},
 	},
 	{

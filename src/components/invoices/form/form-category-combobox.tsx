@@ -1,6 +1,6 @@
 "use client";
-import { Check, ChevronsUpDown } from "lucide-react";
-import { useState } from "react";
+import { Check, ChevronsUpDown, Loader } from "lucide-react";
+import { useEffect, useState } from "react";
 import type {
 	Control,
 	FieldValues,
@@ -28,7 +28,9 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { useCreateCategory } from "@/hooks/categories/use-create-category";
 import { cn } from "@/lib/utils";
+import { generateHexColor } from "@/utils/generate-hex-color";
 
 interface ComboboxProps<TFieldValues extends FieldValues> {
 	options: { label: string; value: string; color: string }[];
@@ -44,10 +46,31 @@ export function FormCategoryCombobox<TFieldValues extends FieldValues>({
 	form,
 	entity,
 	translatedEntity,
-	emptyMessage = "Nenhum item encontrado.",
 	placeholder,
 }: ComboboxProps<TFieldValues>) {
 	const [open, setOpen] = useState(false);
+	const [search, setSearch] = useState("");
+	const [hasRequestedCreate, setHasRequestedCreate] = useState(false);
+
+	const { createCategory, isLoadingCreateCategory } = useCreateCategory();
+
+	const color = generateHexColor();
+
+	function handleCreateCategory() {
+		setHasRequestedCreate(true);
+		createCategory({
+			name: search,
+			color,
+		});
+	}
+
+	useEffect(() => {
+		if (hasRequestedCreate && !isLoadingCreateCategory) {
+			setOpen(false);
+			setHasRequestedCreate(false);
+			setSearch(""); // opcional: limpa o campo de busca
+		}
+	}, [isLoadingCreateCategory, hasRequestedCreate]);
 
 	return (
 		<FormField
@@ -92,6 +115,8 @@ export function FormCategoryCombobox<TFieldValues extends FieldValues>({
 						<PopoverContent className="p-0">
 							<Command>
 								<CommandInput
+									value={search}
+									onValueChange={setSearch}
 									placeholder={
 										placeholder ||
 										`Pesquisar ${translatedEntity.toLocaleLowerCase()}...`
@@ -99,7 +124,30 @@ export function FormCategoryCombobox<TFieldValues extends FieldValues>({
 									className="h-9"
 								/>
 								<CommandList>
-									<CommandEmpty>{emptyMessage}</CommandEmpty>
+									<CommandEmpty className="p-0" onClick={handleCreateCategory}>
+										<div
+											className="flex items-center gap-2 hover:bg-muted cursor-pointer
+										px-4 py-2 h-8"
+										>
+											{isLoadingCreateCategory && (
+												<Loader className="animate-spin mx-auto w-3 h-3" />
+											)}
+
+											{!isLoadingCreateCategory && (
+												<>
+													<div
+														className="w-3 h-3 rounded-full"
+														style={{
+															backgroundColor: color,
+														}}
+													/>
+													<span className="text-sm">
+														Criar a categoria <strong>{search}</strong>
+													</span>
+												</>
+											)}
+										</div>
+									</CommandEmpty>
 
 									<CommandGroup>
 										{options.map((option) => (

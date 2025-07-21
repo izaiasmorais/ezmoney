@@ -23,13 +23,13 @@ export function InvoicesTable({
 	isLoading,
 	data,
 	widths = [
-		"w-[200px]",
-		"w-[100px]",
-		"w-[100px]",
-		"w-[100px]",
-		"w-[100px]",
-		"w-[100px]",
-		"w-[100px]",
+		"min-w-[270px]",
+		"min-w-[150px]",
+		"min-w-[100px]",
+		"min-w-[170px]",
+		"min-w-[170px]",
+		"min-w-[170px]",
+		"min-w-[170px]",
 	],
 }: InvoicesTableProps) {
 	return (
