@@ -72,12 +72,21 @@ export function CreateInvoiceForm() {
 							placeholder="Descrição da fatura"
 						/>
 
-						<FormDatePicker
-							form={form}
-							entity="issueDate"
-							label="Data de emissão"
-							placeholder="Data de emissão"
-						/>
+						<div className="grid grid-cols-2 gap-2">
+							<FormDatePicker
+								form={form}
+								entity="issueDate"
+								label="Data de emissão"
+								placeholder="Data de emissão"
+							/>
+
+							<FormDatePicker
+								form={form}
+								entity="dueDate"
+								label="Data de vencimento"
+								placeholder="Data de vencimento"
+							/>
+						</div>
 
 						<div className="grid grid-cols-3 gap-2">
 							<FormMoneyInput

@@ -7,6 +7,7 @@ import { formatDate } from "@/utils/format-date";
 import { formatCurrency } from "@/utils/format-currency";
 import { InvoiceCategory } from "./category";
 import { InvoiceStatus } from "./status";
+import { formatFromNow } from "@/utils/form-from-now";
 
 type InvoiceColumnDef = ColumnDef<Invoice> & {
 	accessorKey: keyof Invoice | "actions";
@@ -28,23 +29,34 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 		},
 	},
 	{
-		accessorKey: "installments",
+		accessorKey: "totalInstallments",
 		header: ({ column }) => <TableSort column={column}>Parcelas</TableSort>,
-		cell: ({ row }) => <div>{row.getValue("installments")}</div>,
+		cell: ({ row }) => <div>{row.getValue("totalInstallments")}</div>,
 	},
 	{
 		accessorKey: "dueDate",
 		header: ({ column }) => <TableSort column={column}>Vencimento</TableSort>,
 		cell: ({ row }) => {
-			return <div>{formatDate(row.getValue("dueDate"))}</div>;
+			return (
+				<div className="flex flex-col gap-1">
+					<span>{formatFromNow(row.getValue("dueDate")).date}</span>
+					<span className="text-xs text-zinc-500">
+						{formatFromNow(row.getValue("dueDate")).due}
+					</span>
+				</div>
+			);
 		},
 	},
 	{
 		accessorKey: "category",
 		header: ({ column }) => <TableSort column={column}>Categoria</TableSort>,
-		cell: ({ row }) => (
-			<InvoiceCategory>{row.getValue("category")}</InvoiceCategory>
-		),
+		cell: ({ row }) => {
+			const category = row.original.category;
+
+			return (
+				<InvoiceCategory label={category.label} color={category.color} />
+			);
+		},
 	},
 	{
 		accessorKey: "status",

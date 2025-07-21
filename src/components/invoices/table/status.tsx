@@ -1,18 +1,18 @@
 import { Badge } from "@/components/ui/badge";
 
 interface InvoiceStatusProps {
-	status: "pending" | "paid" | "overdue" | "draft";
+	status: "PENDING" | "PAID" | "OVERDUE" | "DRAFT";
 }
 
 function getStatusStyles(status: string) {
 	switch (status) {
-		case "pending":
+		case "PENDING":
 			return "bg-yellow-50 border-yellow-200 text-yellow-700 dark:bg-yellow-950/20 dark:border-yellow-950/70 dark:text-yellow-400";
-		case "paid":
+		case "PAID":
 			return "bg-green-50 border-green-200 text-green-700 dark:bg-green-950/20 dark:border-green-950/70 dark:text-green-400";
-		case "overdue":
+		case "OVERDUE":
 			return "bg-red-50 border-red-200 text-red-700 dark:bg-red-950/20 dark:border-red-950/70 dark:text-red-400";
-		case "draft":
+		case "DRAFT":
 			return "bg-purple-50 border-purple-200 text-purple-700 dark:bg-purple-950/20 dark:border-purple-950/70 dark:text-purple-400";
 		default:
 			return "bg-yellow-50 border-yellow-200 text-yellow-700 dark:bg-yellow-950/20 dark:border-yellow-950/70 dark:text-yellow-400";
@@ -21,13 +21,13 @@ function getStatusStyles(status: string) {
 
 function getStatusLabel(status: string) {
 	switch (status) {
-		case "pending":
+		case "PENDING":
 			return "Pendente";
-		case "paid":
+		case "PAID":
 			return "Pago";
-		case "overdue":
+		case "OVERDUE":
 			return "Vencido";
-		case "draft":
+		case "DRAFT":
 			return "Rascunho";
 		default:
 			return "Pendente";

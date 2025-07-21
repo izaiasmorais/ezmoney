@@ -14,7 +14,7 @@ import React from "react";
 import { TablePagination } from "@/components/table/table-pagination";
 import { Button } from "@/components/ui/button";
 import { SearchInput } from "@/components/ui/search-input";
-import { invoices } from "@/mocks/invoices";
+import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
 import { CreateInvoiceForm } from "../form/create-invoice-form";
 import { InvoicesTableColumns } from "./columns";
 import { InvoicesTable } from "./table";
@@ -33,6 +33,8 @@ export function InvoicesTableContainer({
 	const [columnVisibility, setColumnVisibility] =
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
+
+	const { invoices, isLoadingGetInvoices } = useGetInvoices();
 
 	const table = useReactTable({
 		data: invoices,
@@ -83,7 +85,11 @@ export function InvoicesTableContainer({
 				</div>
 			)}
 
-			<InvoicesTable table={table} isLoading={false} data={invoices} />
+			<InvoicesTable
+				table={table}
+				isLoading={isLoadingGetInvoices}
+				data={invoices}
+			/>
 
 			<TablePagination table={table} />
 		</div>

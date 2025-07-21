@@ -11,9 +11,12 @@ export const createInvoiceSchema = z.object({
 	name: z.string().min(1, "O nome é obrigatório"),
 	description: z.string().min(1, "A descrição é obrigatória"),
 	issueDate: z.string().min(1, "A data de emissão é obrigatória"),
-	unitValue: z.coerce.number().min(0.01, "O valor unitário deve ser maior que 0"),
-	totalInstallments: z
-		.coerce.number()
+	dueDate: z.string().min(1, "A data de vencimento é obrigatória"),
+	unitValue: z.coerce
+		.number()
+		.min(0.01, "O valor unitário deve ser maior que 0"),
+	totalInstallments: z.coerce
+		.number()
 		.min(1, "O número de parcelas deve ser maior que 0"),
 	categoryId: z.string().min(1, "A categoria é obrigatória"),
 });
@@ -46,7 +49,8 @@ export function useCreateInvoice() {
 		defaultValues: {
 			name: "",
 			description: "",
-			issueDate: "",
+			issueDate: new Date().toISOString(),
+			dueDate: "",
 			unitValue: 0,
 			totalInstallments: 1,
 			categoryId: "",
