@@ -11,34 +11,44 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useGetProfile } from "@/hooks/auth/use-get-profile";
 import { useAuthStore } from "@/stores/auth";
+import { MenuSkeleton } from "./menu-skeleton";
 
 export function Menu() {
 	const router = useRouter();
 	const logout = useAuthStore((state) => state.logout);
 
+	const { profile, isLoadingGetProfile } = useGetProfile();
+
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<div
-					className="flex items-center gap-2 w-full p-2 cursor-pointer hover:bg-card
-				rounded-md transition-colors"
-				>
-					<Avatar className="w-8 h-8 cursor-pointer">
-						<AvatarFallback>IZ</AvatarFallback>
-						<AvatarImage
-							src="https://github.com/izaiasmorais.png"
-							alt="Avatar do Usuário"
-						/>
-					</Avatar>
+			<DropdownMenuTrigger>
+				{isLoadingGetProfile && <MenuSkeleton />}
 
-					<div className="flex flex-col text-xs max-w-[150px]">
-						<strong>Izaías Lima</strong>
-						<span className="text-muted-foreground truncate">
-							izaiaslima356@gmail.com
-						</span>
+				{!isLoadingGetProfile && profile && (
+					<div
+						className="flex items-center gap-2 w-full p-2 cursor-pointer hover:bg-card
+				rounded-md transition-colors"
+					>
+						<Avatar className="w-8 h-8 cursor-pointer">
+							<AvatarFallback>IZ</AvatarFallback>
+
+							<AvatarImage
+								src={profile.avatarUrl ?? ""}
+								alt="Avatar do Usuário"
+							/>
+						</Avatar>
+
+						<div className="flex flex-col gap-1 text-xs max-w-[150px] items-start">
+							<strong>{profile.name}</strong>
+
+							<span className="text-muted-foreground truncate max-w-[155px]">
+								{profile.email}
+							</span>
+						</div>
 					</div>
-				</div>
+				)}
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent className="w-56" align="end">

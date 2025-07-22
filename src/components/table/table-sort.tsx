@@ -16,9 +16,13 @@ export function TableSort<T>({ column, children }: TableSortProps<T>) {
 			onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 		>
 			{children}
-			{column.getIsSorted() !== "desc" && <ArrowUp className="ml-2 h-2 w-2" />}
+
+			{column.getIsSorted() !== "desc" && (
+				<ArrowUp className="ml-2 !w-4 !h-4" />
+			)}
+
 			{column.getIsSorted() === "desc" && (
-				<ArrowDown className="ml-2 h-2 w-2" />
+				<ArrowDown className="ml-2  !w-4 !h-4" />
 			)}
 		</Button>
 	);

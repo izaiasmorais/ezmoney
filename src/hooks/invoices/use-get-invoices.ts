@@ -13,7 +13,7 @@ export const invoiceSchema = z.object({
 		label: z.string(),
 		color: z.string(),
 	}),
-	status: z.string(),
+	status: z.enum(["PENDING", "PAID", "OVERDUE", "DRAFT"]),
 });
 
 export type Invoice = z.infer<typeof invoiceSchema>;

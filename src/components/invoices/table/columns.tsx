@@ -1,11 +1,10 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { Ellipsis } from "lucide-react";
 import { TableSort } from "@/components/table/table-sort";
-import { Button } from "@/components/ui/button";
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { formatFromNow } from "@/utils/form-from-now";
 import { formatCurrency } from "@/utils/format-currency";
 import { InvoiceCategory } from "./category";
+import { InvoiceActions } from "./menu";
 import { InvoiceStatus } from "./status";
 
 type InvoiceColumnDef = ColumnDef<Invoice> & {
@@ -63,12 +62,6 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 	{
 		accessorKey: "actions",
 		header: ({ column }) => <TableSort column={column}>Ações</TableSort>,
-		cell: () => (
-			<div>
-				<Button size="icon" variant="ghost">
-					<Ellipsis />
-				</Button>
-			</div>
-		),
+		cell: ({ row }) => <InvoiceActions invoice={row.original} />,
 	},
 ];

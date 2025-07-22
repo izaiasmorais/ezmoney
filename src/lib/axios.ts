@@ -16,9 +16,7 @@ api.interceptors.request.use(async (config) => {
 	}
 
 	if (process.env.NEXT_PUBLIC_AXIOS_DELAY) {
-		await new Promise((resolve) =>
-			setTimeout(resolve, Number(process.env.NEXT_PUBLIC_AXIOS_DELAY))
-		);
+		await new Promise((resolve) => setTimeout(resolve, 3000));
 	}
 
 	return config;

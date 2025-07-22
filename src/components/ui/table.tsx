@@ -23,7 +23,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
 	return (
 		<thead
 			data-slot="table-header"
-			className={className}
+			className={cn("bg-card", className)}
 			{...props}
 		/>
 	);
@@ -44,7 +44,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
 		<tfoot
 			data-slot="table-footer"
 			className={cn(
-				"bg-muted/50 border-t font-medium [&>tr]:last:border-b-0",
+				"bg-muted border-t font-medium [&>tr]:last:border-b-0",
 				className
 			)}
 			{...props}
@@ -57,7 +57,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
 		<tr
 			data-slot="table-row"
 			className={cn(
-				"hover:bg-muted/50 data-[state=selected]:bg-muted transition-colors",
+				"data-[state=selected]:bg-muted transition-colors",
 				className
 			)}
 			{...props}
@@ -70,7 +70,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
 		<th
 			data-slot="table-head"
 			className={cn(
-				"bg-card text-muted-foreground !h-12 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+				"text-muted-foreground !h-12 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 				"first:rounded-l-lg last:rounded-r-lg",
 				className
 			)}
