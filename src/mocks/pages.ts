@@ -1,12 +1,13 @@
 import {
 	Calendar,
 	CreditCard,
+	Landmark,
 	LayoutDashboard,
+	PiggyBank,
 	ReceiptText,
 	Settings,
 	Tag,
 	Users,
-	Wallet,
 } from "lucide-react";
 
 export const pages = [
@@ -31,8 +32,13 @@ export const pages = [
 		label: "Categorias",
 	},
 	{
+		href: "/contas",
+		icon: Landmark,
+		label: "Contas",
+	},
+	{
 		href: "/orcamentos",
-		icon: Wallet,
+		icon: PiggyBank,
 		label: "Orçamentos",
 	},
 	{
