@@ -27,14 +27,14 @@ export const pages = [
 		label: "Transações",
 	},
 	{
-		href: "/categorias",
-		icon: Tag,
-		label: "Categorias",
-	},
-	{
 		href: "/contas",
 		icon: Landmark,
 		label: "Contas",
+	},
+	{
+		href: "/categorias",
+		icon: Tag,
+		label: "Categorias",
 	},
 	{
 		href: "/orcamentos",
