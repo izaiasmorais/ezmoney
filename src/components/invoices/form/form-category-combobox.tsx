@@ -68,7 +68,7 @@ export function FormCategoryCombobox<TFieldValues extends FieldValues>({
 		if (hasRequestedCreate && !isLoadingCreateCategory) {
 			setOpen(false);
 			setHasRequestedCreate(false);
-			setSearch(""); // opcional: limpa o campo de busca
+			setSearch("");
 		}
 	}, [isLoadingCreateCategory, hasRequestedCreate]);
 
@@ -88,6 +88,7 @@ export function FormCategoryCombobox<TFieldValues extends FieldValues>({
 									aria-expanded={open}
 									className={cn(
 										"justify-between text-base md:text-sm bg-transparent",
+										"!bg-card dark:!border-zinc-800/50 dark:focus-visible:!border-zinc-800",
 										!field.value && "text-muted-foreground"
 									)}
 								>

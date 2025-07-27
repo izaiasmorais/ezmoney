@@ -1,7 +1,9 @@
-import { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
-import { formatCurrency } from "@/utils/format-currency";
+import { GeistMono } from "geist/font/mono";
 import { Ellipsis, Landmark } from "lucide-react";
-import { Button } from "../ui/button";
+import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
+import { formatCurrency } from "@/utils/format-currency";
+import { Button } from "../../ui/button";
+import { CreateBankAccountForm } from "../create-bank-account-sheet";
 
 interface BankAccountsProps {
 	bankAccounts: BankAccount[];
@@ -10,8 +12,10 @@ interface BankAccountsProps {
 export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 	return (
 		<div className="flex flex-col gap-4">
-			<div>
+			<div className="flex justify-between items-center">
 				<h1 className="text-lg">Contas Bancárias</h1>
+
+				<CreateBankAccountForm />
 			</div>
 
 			<div className="gap-4 grid grid-cols-3">
@@ -23,13 +27,13 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 						<div className="flex items-start justify-between">
 							<div className="flex items-center gap-4">
 								<div
-									className="w-14 h-14 rounded-full bg-background flex items-center
+									className="w-12 h-12 rounded-full bg-background flex items-center
 						justify-center"
 								>
 									<Landmark size={24} style={{ color: bankAccount.color }} />
 								</div>
 
-								<h1 className="text-lg font-medium">{bankAccount.name}</h1>
+								<h1 className="text-lg font-semibold">{bankAccount.name}</h1>
 							</div>
 
 							<Button variant="ghost" size="icon">
@@ -42,9 +46,11 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 								Saldo Disponível
 							</span>
 
-							<strong className="text-2xl font-bold">
+							<span
+								className={`text-2xl font-semibold ${GeistMono.className}`}
+							>
 								{formatCurrency(bankAccount.balance)}
-							</strong>
+							</span>
 						</div>
 					</div>
 				))}

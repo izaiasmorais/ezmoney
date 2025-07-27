@@ -15,9 +15,9 @@ api.interceptors.request.use(async (config) => {
 		config.headers.Authorization = `Bearer ${accessToken}`;
 	}
 
-	// if (process.env.NEXT_PUBLIC_AXIOS_DELAY === "true") {
-	// 	await new Promise((resolve) => setTimeout(resolve, 3000));
-	// }
+	if (process.env.NEXT_PUBLIC_AXIOS_DELAY === "true") {
+		await new Promise((resolve) => setTimeout(resolve, 3000));
+	}
 
 	return config;
 });

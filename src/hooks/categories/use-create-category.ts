@@ -53,6 +53,7 @@ export function useCreateCategory() {
 				if (response.success) {
 					queryClient.invalidateQueries({ queryKey: ["get-categories"] });
 					setIsCreateCategorySheetOpen(false);
+					form.reset();
 					toast.success("Categoria criada com sucesso");
 					return;
 				}

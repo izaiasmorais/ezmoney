@@ -65,6 +65,7 @@ export function FormCombobox<TFieldValues extends FieldValues>({
 									aria-expanded={open}
 									className={cn(
 										"justify-between text-base md:text-sm",
+										"!bg-card dark:!border-zinc-800/50 dark:focus-visible:!border-zinc-800",
 										!field.value && "text-muted-foreground"
 									)}
 								>

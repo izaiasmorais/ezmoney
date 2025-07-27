@@ -17,6 +17,8 @@ interface FormInputProps<TFieldValues extends FieldValues> {
 	placeholder?: string;
 	type?: "text" | "password" | "email" | "number" | "textarea";
 	className?: string;
+	min?: number;
+	max?: number;
 }
 
 export function FormInput<TFieldValues extends FieldValues>({
@@ -26,6 +28,8 @@ export function FormInput<TFieldValues extends FieldValues>({
 	type = "text",
 	placeholder,
 	className = "",
+	min = undefined,
+	max = undefined
 }: FormInputProps<TFieldValues>) {
 	return (
 		<FormField
@@ -48,6 +52,8 @@ export function FormInput<TFieldValues extends FieldValues>({
 							<Input
 								type={type}
 								id={entity}
+								min={min}
+								max={max}
 								placeholder={
 									placeholder || `Digite ${entity ? `o ${entity}` : ""}`
 								}

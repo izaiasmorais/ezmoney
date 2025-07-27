@@ -20,7 +20,7 @@ export function ThemeSwitcher() {
 	};
 
 	if (!mounted) {
-		return <Skeleton className="w-10 h-10 ml-auto" />;
+		return <Skeleton className="w-8 h-8 ml-auto" />;
 	}
 
 	return (
