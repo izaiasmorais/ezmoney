@@ -13,6 +13,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
 
 interface FormToggleGroupProps<TFieldValues extends FieldValues> {
 	options: { label: string; value: string; icon?: React.ReactNode }[];
@@ -22,6 +23,7 @@ interface FormToggleGroupProps<TFieldValues extends FieldValues> {
 	type?: "single" | "multiple";
 	className?: string;
 	alwaysSelected?: boolean;
+	onChange?: () => void;
 }
 
 export function FormToggleGroup<TFieldValues extends FieldValues>({
@@ -32,6 +34,7 @@ export function FormToggleGroup<TFieldValues extends FieldValues>({
 	className,
 	type = "single",
 	alwaysSelected = false,
+	onChange,
 }: FormToggleGroupProps<TFieldValues>) {
 	return (
 		<FormField
@@ -49,9 +52,12 @@ export function FormToggleGroup<TFieldValues extends FieldValues>({
 								if (alwaysSelected && type === "single" && !value) {
 									return;
 								}
+								if (onChange) {
+									onChange();
+								}
 								field.onChange(value);
 							}}
-							className={className}
+							className={cn(className, "border")}
 						>
 							{options.map((option) => (
 								<ToggleGroupItem
@@ -60,7 +66,7 @@ export function FormToggleGroup<TFieldValues extends FieldValues>({
 									aria-label={`Toggle ${option.label}`}
 									className={
 										field.value === option.value
-											? "!bg-border border border-zinc-800/50"
+											? "!bg-border dark:!border dark:border-zinc-800/50"
 											: ""
 									}
 								>

@@ -15,7 +15,7 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 			<div className="flex justify-between items-center">
 				<h1 className="text-lg">Cartões de Crédito</h1>
 
-				
+
 			</div>
 
 			<div className="gap-4 grid grid-cols-3">
@@ -33,7 +33,7 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 									<CreditCard size={24} style={{ color: creditCard.color }} />
 								</div>
 
-								<h1 className="text-lg font-medium">{creditCard.name}</h1>
+								<h1 className="text-lg">{creditCard.name}</h1>
 							</div>
 
 							<Button variant="ghost" size="icon">

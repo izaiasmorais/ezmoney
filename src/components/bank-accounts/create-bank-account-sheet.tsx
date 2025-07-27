@@ -3,7 +3,6 @@ import { Plus } from "lucide-react";
 import { FormColorPicker } from "@/components/form/form-color-picker";
 import { FormInput } from "@/components/form/form-input";
 import { FormMoneyInput } from "@/components/form/form-money-input";
-import { SubmitButton } from "@/components/form/form-submit-button";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import {
@@ -25,26 +24,35 @@ const accountTypeOptions = [
 ];
 
 export function CreateBankAccountForm() {
-	const { form, isLoadingCreateBankAccount } = useCreateBankAccount();
+	const {
+		form,
+		isLoadingCreateBankAccount,
+		isCreateBankAccountSheetOpen,
+		setIsCreateBankAccountSheetOpen,
+	} = useCreateBankAccount();
 
 	const accountType = form.watch("type");
 
 	const isCredit = accountType === "CREDIT_CARD";
 
 	return (
-		<Sheet>
+		<Sheet
+			open={isCreateBankAccountSheetOpen}
+			onOpenChange={setIsCreateBankAccountSheetOpen}
+		>
 			<SheetTrigger asChild>
 				<Button className="ml-auto" variant="outline">
 					<Plus />
-					Criar Conta Bancária
+					Adicionar Conta Bancária
 				</Button>
 			</SheetTrigger>
 
 			<SheetContent className="w-[500px]">
 				<SheetHeader>
-					<SheetTitle>Criar Conta Bancária</SheetTitle>
+					<SheetTitle>Adicionar Conta Bancária</SheetTitle>
 					<SheetDescription>
-						Crie uma nova conta bancária para organizar suas finanças.
+						Adicione uma nova conta bancária para organizar suas finanças. Ela
+						pode ser uma conta bancária ou um cartão de crédito.
 					</SheetDescription>
 				</SheetHeader>
 
@@ -57,7 +65,7 @@ export function CreateBankAccountForm() {
 							form={form}
 							entity="name"
 							label="Nome"
-							placeholder="Nome da conta"
+							placeholder="Ex: Banco do Brasil"
 						/>
 
 						<FormToggleGroup
@@ -67,21 +75,16 @@ export function CreateBankAccountForm() {
 							options={accountTypeOptions}
 							className="w-full"
 							alwaysSelected={true}
+							onChange={() => form.clearErrors()}
 						/>
 
-						<FormColorPicker
-							form={form}
-							entity="color"
-							label="Cor"
-							placeholder="Selecione uma cor"
-						/>
+						<FormColorPicker form={form} entity="color" label="Cor" />
 
 						{!isCredit && (
 							<FormMoneyInput
 								form={form}
 								entity="balance"
 								label="Saldo inicial"
-								placeholder="Saldo inicial da conta bancária"
 							/>
 						)}
 
@@ -90,7 +93,7 @@ export function CreateBankAccountForm() {
 								form={form}
 								entity="creditLimit"
 								label="Limite de crédito"
-								placeholder="Limite do cartão de crédito"
+								placeholder="Ex: R$ 1.000,00"
 							/>
 						)}
 
@@ -101,7 +104,7 @@ export function CreateBankAccountForm() {
 									type="number"
 									entity="closingDay"
 									label="Dia do fechamento"
-									placeholder="Dia do fechamento (1-31)"
+									placeholder="Um dia entre 1 e 31"
 									min={0}
 									max={31}
 								/>
@@ -111,7 +114,7 @@ export function CreateBankAccountForm() {
 									type="number"
 									entity="dueDay"
 									label="Dia do vencimento"
-									placeholder="Dia do vencimento (1-31)"
+									placeholder="Um dia entre 1 e 31"
 									min={0}
 									max={31}
 								/>
@@ -123,9 +126,12 @@ export function CreateBankAccountForm() {
 								<Button variant="outline">Cancelar</Button>
 							</SheetClose>
 
-							<SubmitButton isLoading={isLoadingCreateBankAccount}>
+							<Button
+								isLoading={isLoadingCreateBankAccount}
+								disabled={isLoadingCreateBankAccount}
+							>
 								Confirmar
-							</SubmitButton>
+							</Button>
 						</SheetFooter>
 					</form>
 				</Form>

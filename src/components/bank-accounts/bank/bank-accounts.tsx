@@ -33,7 +33,7 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 									<Landmark size={24} style={{ color: bankAccount.color }} />
 								</div>
 
-								<h1 className="text-lg font-semibold">{bankAccount.name}</h1>
+								<h1 className="text-lg">{bankAccount.name}</h1>
 							</div>
 
 							<Button variant="ghost" size="icon">

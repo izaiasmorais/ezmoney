@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import type { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
@@ -16,26 +17,13 @@ export const createBankAccountRequestSchema = z
 				/^#[0-9A-F]{6}$/i,
 				"Cor deve estar no formato hexadecimal (#FFFFFF)"
 			),
-		balance: z.number().min(0).optional(),
-		creditLimit: z.number().min(0).optional(),
-		closingDay: z.coerce
+		balance: z.coerce.number().min(0).optional(),
+		creditLimit: z.coerce
 			.number()
-			.min(1, {
-				message: "O dia de fechamento deve ser maior que 1",
-			})
-			.max(31, {
-				message: "O dia de fechamento deve ser menor que 31",
-			})
+			.min(0, "O Limite de crédito deve ser maior que 0")
 			.optional(),
-		dueDay: z.coerce
-			.number()
-			.min(1, {
-				message: "O dia de fechamento deve ser maior que 1",
-			})
-			.max(31, {
-				message: "O dia de fechamento deve ser menor que 31",
-			})
-			.optional(),
+		closingDay: z.coerce.number().min(0).max(31).optional(),
+		dueDay: z.coerce.number().min(0).max(31).optional(),
 	})
 	.superRefine((data, ctx) => {
 		if (data.type === "BANK") {
@@ -76,7 +64,7 @@ export const createBankAccountRequestSchema = z
 			if (
 				data.dueDay === undefined ||
 				data.dueDay === null ||
-				data.closingDay === 0
+				data.dueDay === 0
 			) {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
@@ -117,6 +105,9 @@ export async function createBankAccount(
 }
 
 export function useCreateBankAccount() {
+	const [isCreateBankAccountSheetOpen, setIsCreateBankAccountSheetOpen] =
+		useState(false);
+
 	const queryClient = useQueryClient();
 
 	const form = useFormMutation({
@@ -131,7 +122,24 @@ export function useCreateBankAccount() {
 			dueDay: 0,
 		},
 		onSubmit: (data) => {
-			console.log(data);
+			if (data.type === "BANK") {
+				createBankAccountFn({
+					name: data.name,
+					type: data.type,
+					color: data.color,
+					balance: data.balance,
+				});
+				return;
+			}
+
+			createBankAccountFn({
+				name: data.name,
+				type: data.type,
+				color: data.color,
+				creditLimit: data.creditLimit,
+				closingDay: data.closingDay,
+				dueDay: data.dueDay,
+			});
 		},
 	});
 
@@ -143,11 +151,9 @@ export function useCreateBankAccount() {
 		mutationFn: createBankAccount,
 		onSuccess: (response) => {
 			if (response.success) {
+				queryClient.invalidateQueries({ queryKey: ["get-bank-accounts"] });
+				setIsCreateBankAccountSheetOpen(false);
 				toast.success("Conta bancária criada com sucesso!");
-
-				// Invalida a query das contas bancárias para atualizar a lista
-				queryClient.invalidateQueries({ queryKey: ["bank-accounts"] });
-
 				form.reset();
 				return;
 			}
@@ -165,5 +171,7 @@ export function useCreateBankAccount() {
 		form,
 		isLoadingCreateBankAccount,
 		createBankAccount: createBankAccountFn,
+		isCreateBankAccountSheetOpen,
+		setIsCreateBankAccountSheetOpen,
 	};
 }
