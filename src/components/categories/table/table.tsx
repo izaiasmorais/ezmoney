@@ -10,6 +10,7 @@ import {
 import type { Category } from "@/hooks/categories/use-get-categories";
 import { CategoriesTableColumns } from "./columns";
 import { CategoriesTableSkeleton } from "./skeleton";
+import { TableEmpty } from "@/components/table/table-empty";
 
 interface CategoriesTableProps {
 	table: TableType<Category>;
@@ -77,7 +78,10 @@ export function CategoriesTable({
 								colSpan={CategoriesTableColumns.length}
 								className="h-24 text-center"
 							>
-								Sem resultados
+								<TableEmpty
+									message="Você não possui categorias"
+									description="Adicione uma categoria para começar."
+								/>
 							</TableCell>
 						</TableRow>
 					)}

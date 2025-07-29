@@ -1,3 +1,5 @@
+import { BudgetsTableContainer } from "@/components/budgets/table/budgets-container";
+
 export default function Orcamentos() {
-	return <div></div>;
+	return <BudgetsTableContainer />;
 }

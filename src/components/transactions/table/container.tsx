@@ -15,6 +15,7 @@ import { TablePagination } from "@/components/table/table-pagination";
 import { Button } from "@/components/ui/button";
 import { SearchInput } from "@/components/ui/search-input";
 import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
+import { CreateTransactionSheet } from "../form/create-transaction-sheet";
 import { TransactionsTableColumns } from "./columns";
 import { TransactionTable } from "./table";
 
@@ -82,9 +83,7 @@ export function TransactionsTableContainer({
 						<Filter />
 					</Button>
 
-					<Button variant="outline" className="ml-auto">
-						Nova Transação
-					</Button>
+					<CreateTransactionSheet />
 				</div>
 			)}
 

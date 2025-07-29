@@ -41,13 +41,13 @@ export function CreateInvoiceForm() {
 			<SheetTrigger asChild>
 				<Button className="ml-auto" variant="outline">
 					<Plus />
-					Criar Fatura
+					Adicionar Fatura
 				</Button>
 			</SheetTrigger>
 
 			<SheetContent className="w-[700px]">
 				<SheetHeader>
-					<SheetTitle>Criar Fatura</SheetTitle>
+					<SheetTitle>Adicionar Fatura</SheetTitle>
 					<SheetDescription>
 						Crie uma nova fatura para organizar suas finanças.
 					</SheetDescription>

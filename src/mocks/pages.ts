@@ -1,5 +1,4 @@
 import {
-	Calendar,
 	CreditCard,
 	Landmark,
 	LayoutDashboard,
@@ -40,11 +39,6 @@ export const pages = [
 		href: "/orcamentos",
 		icon: PiggyBank,
 		label: "Orçamentos",
-	},
-	{
-		href: "/calendario",
-		icon: Calendar,
-		label: "Calendário",
 	},
 	{
 		href: "/clientes",

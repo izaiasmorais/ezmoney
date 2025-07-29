@@ -1,12 +1,14 @@
 "use client";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import { Next13ProgressBar } from "next13-progressbar";
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
 import { queryClient } from "../lib/react-query";
 
 export default function Providers({ children }: { children: ReactNode }) {
+	const { resolvedTheme } = useTheme();
+
 	return (
 		<>
 			<ThemeProvider
@@ -22,7 +24,8 @@ export default function Providers({ children }: { children: ReactNode }) {
 
 			<Next13ProgressBar
 				height="4px"
-				color="#17181D"
+				enableSystem={true}
+				color={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
 				showOnShallow
 				options={{ showSpinner: false }}
 			/>

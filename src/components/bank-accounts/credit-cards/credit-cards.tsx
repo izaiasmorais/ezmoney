@@ -1,9 +1,10 @@
 import { GeistMono } from "geist/font/mono";
-import { CreditCard, Ellipsis } from "lucide-react";
+import { CreditCard } from "lucide-react";
 import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
 import { formatCurrency } from "@/utils/format-currency";
-import { Button } from "../../ui/button";
 import { Progress } from "../../ui/progress";
+import { CreditCardMenu } from "./menu";
+import { TableEmpty } from "@/components/table/table-empty";
 
 interface CreditCardsProps {
 	creditCards: BankAccount[];
@@ -14,15 +15,13 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 		<div className="flex flex-col gap-4">
 			<div className="flex justify-between items-center">
 				<h1 className="text-lg">Cartões de Crédito</h1>
-
-
 			</div>
 
 			<div className="gap-4 grid grid-cols-3">
 				{creditCards.map((creditCard) => (
 					<div
 						key={creditCard.id}
-						className="bg-card p-6 border border-border rounded-lg space-y-4"
+						className="dark:bg-card p-6 border border-border rounded-lg space-y-4"
 					>
 						<div className="flex items-start justify-between">
 							<div className="flex items-center gap-4">
@@ -36,9 +35,7 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 								<h1 className="text-lg">{creditCard.name}</h1>
 							</div>
 
-							<Button variant="ghost" size="icon">
-								<Ellipsis />
-							</Button>
+							<CreditCardMenu creditCardId={creditCard.id} />
 						</div>
 
 						<div className="flex items-center justify-between">
@@ -91,6 +88,15 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 					</div>
 				))}
 			</div>
+
+			{creditCards.length === 0 && (
+				<div className="flex flex-col gap-4">
+					<TableEmpty
+						message="Você não possui cartões de crédito"
+						description="Adicione um cartão de crédito para começar."
+					/>
+				</div>
+			)}
 		</div>
 	);
 }

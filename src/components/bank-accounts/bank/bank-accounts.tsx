@@ -1,9 +1,10 @@
 import { GeistMono } from "geist/font/mono";
-import { Ellipsis, Landmark } from "lucide-react";
+import { Landmark } from "lucide-react";
 import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
 import { formatCurrency } from "@/utils/format-currency";
-import { Button } from "../../ui/button";
 import { CreateBankAccountForm } from "../create-bank-account-sheet";
+import { BankAccountMenu } from "./menu";
+import { TableEmpty } from "@/components/table/table-empty";
 
 interface BankAccountsProps {
 	bankAccounts: BankAccount[];
@@ -22,7 +23,7 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 				{bankAccounts.map((bankAccount) => (
 					<div
 						key={bankAccount.id}
-						className="bg-card p-6 border border-border rounded-lg space-y-4"
+						className="dark:bg-card p-6 border border-border rounded-lg space-y-4"
 					>
 						<div className="flex items-start justify-between">
 							<div className="flex items-center gap-4">
@@ -36,9 +37,7 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 								<h1 className="text-lg">{bankAccount.name}</h1>
 							</div>
 
-							<Button variant="ghost" size="icon">
-								<Ellipsis />
-							</Button>
+							<BankAccountMenu bankAccountId={bankAccount.id} />
 						</div>
 
 						<div className="flex flex-col gap-2">
@@ -46,15 +45,22 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 								Saldo Disponível
 							</span>
 
-							<span
-								className={`text-2xl font-semibold ${GeistMono.className}`}
-							>
+							<span className={`text-2xl font-semibold ${GeistMono.className}`}>
 								{formatCurrency(bankAccount.balance)}
 							</span>
 						</div>
 					</div>
 				))}
 			</div>
+
+			{bankAccounts.length === 0 && (
+				<div className="flex flex-col gap-4">
+					<TableEmpty
+						message="Você não possui contas bancárias"
+						description="Adicione uma conta bancária para começar."
+					/>
+				</div>
+			)}
 		</div>
 	);
 }

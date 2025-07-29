@@ -10,6 +10,7 @@ import {
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { InvoicesTableColumns } from "./columns";
 import { InvoicesTableSkeleton } from "./skeleton";
+import { TableEmpty } from "@/components/table/table-empty";
 
 interface InvoicesTableProps {
 	table: TableType<Invoice>;
@@ -83,9 +84,12 @@ export function InvoicesTable({
 						<TableRow>
 							<TableCell
 								colSpan={InvoicesTableColumns.length}
-								className="h-24 text-center"
+								className="h-24 p-4"
 							>
-								Sem resultados
+								<TableEmpty
+									message="Você não possui faturas"
+									description="Adicione uma fatura para começar."
+								/>
 							</TableCell>
 						</TableRow>
 					)}

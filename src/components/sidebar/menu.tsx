@@ -1,5 +1,5 @@
 "use client";
-import { Bell, HelpCircle, LogOut, Settings, User } from "lucide-react";
+import { Bell, HelpCircle, LogOut, MessageSquare, Settings, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -28,11 +28,13 @@ export function Menu() {
 
 				{!isLoadingGetProfile && profile && (
 					<div
-						className="flex items-center gap-2 w-full p-2 cursor-pointer hover:bg-card
-				rounded-md transition-colors"
+						className="flex items-center gap-3 w-full p-2 cursor-pointer hover:bg-card
+				rounded-xl transition-colors"
 					>
-						<Avatar className="w-8 h-8 cursor-pointer">
-							<AvatarFallback>IZ</AvatarFallback>
+						<Avatar className="w-9 h-9 cursor-pointer">
+							<AvatarFallback>
+								{profile.name.charAt(0)}
+							</AvatarFallback>
 
 							<AvatarImage
 								src={profile.avatarUrl ?? ""}
@@ -75,6 +77,11 @@ export function Menu() {
 					<DropdownMenuItem>
 						<HelpCircle className="mr-2 h-4 w-4" />
 						Suporte
+					</DropdownMenuItem>
+
+					<DropdownMenuItem>
+						<MessageSquare className="mr-2 h-4 w-4" />
+						Deixe uma sugestão
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
 

@@ -1,5 +1,5 @@
 "use client";
-import { DollarSign, TrendingDown, TrendingUp } from "lucide-react";
+import { ArrowBigDownDash, ArrowBigUpDash, DollarSign } from "lucide-react";
 import { useGetTransactionsSummary } from "@/hooks/transactions/use-get-transactions-summary";
 import { TransactionsSummaryCard } from "./summary-card";
 import { TransactionsSummarySkeleton } from "./summary-skeleton";
@@ -21,17 +21,17 @@ export function TransactionsSummary() {
 			/>
 
 			<TransactionsSummaryCard
-				label="Receitas"
+				label="Entradas"
 				value={summary.income.value}
 				transactions={summary.income.count}
-				Icon={TrendingUp}
+				Icon={ArrowBigDownDash}
 			/>
 
 			<TransactionsSummaryCard
-				label="Despesas"
+				label="Saídas"
 				value={summary.expense.value}
 				transactions={summary.expense.count}
-				Icon={TrendingDown}
+				Icon={ArrowBigUpDash}
 			/>
 		</div>
 	);

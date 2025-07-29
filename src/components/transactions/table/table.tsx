@@ -10,6 +10,7 @@ import {
 import type { Transaction } from "@/hooks/transactions/use-get-transactions";
 import { TransactionsTableColumns } from "./columns";
 import { TransactionTableSkeleton } from "./skeleton";
+import { TableEmpty } from "@/components/table/table-empty";
 
 interface TransactionTableProps {
 	table: TableType<Transaction>;
@@ -85,7 +86,10 @@ export function TransactionTable({
 								colSpan={TransactionsTableColumns.length}
 								className="h-24 text-center"
 							>
-								Sem resultados
+								<TableEmpty
+									message="Você não possui transações"
+									description="Adicione uma transação para começar."
+								/>
 							</TableCell>
 						</TableRow>
 					)}

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Plus } from "lucide-react";
 
 interface BankAccountSkeletonProps {
 	count?: number;
@@ -16,6 +17,7 @@ export function BankAccountSkeleton({ count = 3 }: BankAccountSkeletonProps) {
 				<h1 className="text-lg">Contas Bancárias</h1>
 
 				<Button variant="outline" disabled>
+					<Plus size={16} />
 					Adicionar Conta Bancária
 				</Button>
 			</div>
@@ -32,7 +34,7 @@ export function BankAccountSkeleton({ count = 3 }: BankAccountSkeletonProps) {
 								<Skeleton className="h-7 w-32" />
 							</div>
 
-							<Skeleton className="w-8 h-8 rounded" />
+							<Skeleton className="w-9 h-9 rounded-md" />
 						</div>
 
 						<div className="flex flex-col gap-2">
