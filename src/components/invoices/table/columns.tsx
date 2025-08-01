@@ -6,6 +6,7 @@ import { formatCurrency } from "@/utils/format-currency";
 import { InvoiceCategory } from "./category";
 import { InvoiceActions } from "./menu";
 import { InvoiceStatus } from "./status";
+import { InvoiceType } from "./type";
 
 type InvoiceColumnDef = ColumnDef<Invoice> & {
 	accessorKey: keyof Invoice | "actions";
@@ -46,6 +47,11 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 		},
 	},
 	{
+		accessorKey: "status",
+		header: ({ column }) => <TableSort column={column}>Status</TableSort>,
+		cell: ({ row }) => <InvoiceStatus status={row.getValue("status")} />,
+	},
+	{
 		accessorKey: "category",
 		header: ({ column }) => <TableSort column={column}>Categoria</TableSort>,
 		cell: ({ row }) => {
@@ -55,9 +61,9 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 		},
 	},
 	{
-		accessorKey: "status",
-		header: ({ column }) => <TableSort column={column}>Status</TableSort>,
-		cell: ({ row }) => <InvoiceStatus status={row.getValue("status")} />,
+		accessorKey: "type",
+		header: ({ column }) => <TableSort column={column}>Tipo</TableSort>,
+		cell: ({ row }) => <InvoiceType type={row.getValue("type")} />,
 	},
 	{
 		accessorKey: "actions",

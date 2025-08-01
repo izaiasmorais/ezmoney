@@ -8,6 +8,7 @@ export const installmentSchema = z.object({
 	unitValue: z.number(),
 	dueDate: z.string(),
 	status: z.enum(["PENDING", "PAID", "OVERDUE", "DRAFT"]),
+	isPaid: z.boolean(),
 });
 
 export type Installment = z.infer<typeof installmentSchema>;

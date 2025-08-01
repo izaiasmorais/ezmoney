@@ -3,7 +3,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 
 export function InvoicesTableSkeleton() {
 	const rowKeys = Array.from({ length: 10 }, () => crypto.randomUUID());
-	const cellKeys = Array.from({ length: 7 }, () => crypto.randomUUID());
+	const cellKeys = Array.from({ length: 8 }, () => crypto.randomUUID());
 
 	return (
 		<>

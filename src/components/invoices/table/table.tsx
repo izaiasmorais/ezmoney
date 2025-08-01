@@ -1,4 +1,5 @@
 import { flexRender, type Table as TableType } from "@tanstack/react-table";
+import { TableEmpty } from "@/components/table/table-empty";
 import {
 	Table,
 	TableBody,
@@ -10,7 +11,6 @@ import {
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { InvoicesTableColumns } from "./columns";
 import { InvoicesTableSkeleton } from "./skeleton";
-import { TableEmpty } from "@/components/table/table-empty";
 
 interface InvoicesTableProps {
 	table: TableType<Invoice>;
@@ -27,10 +27,11 @@ export function InvoicesTable({
 		"min-w-[270px]",
 		"min-w-[150px]",
 		"min-w-[100px]",
-		"min-w-[170px]",
-		"min-w-[170px]",
-		"min-w-[170px]",
-		"min-w-[170px]",
+		"min-w-[100px]",
+		"min-w-[150px]",
+		"min-w-[120px]",
+		"min-w-[120px]",
+		"min-w-[50px]",
 	],
 }: InvoicesTableProps) {
 	return (

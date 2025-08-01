@@ -10,9 +10,7 @@ import { useFormMutation } from "../form/use-form-mutation";
 export const createTransactionRequestSchema = z.object({
 	description: z.string().min(1, "A descrição é obrigatória"),
 	amount: z.number().min(0.01, "O valor deve ser maior que zero"),
-	type: z.enum(["INCOME", "EXPENSE"], {
-		errorMap: () => ({ message: "Tipo de transação é obrigatório" }),
-	}),
+	type: z.enum(["INCOME", "EXPENSE"]),
 	bankAccountId: z.string().min(1, "A conta bancária é obrigatória"),
 });
 
@@ -51,12 +49,12 @@ export function useCreateTransaction() {
 
 	const queryClient = useQueryClient();
 
-	const form = useFormMutation({
+	const form = useFormMutation<CreateTransactionRequest>({
 		schema: createTransactionRequestSchema,
 		defaultValues: {
 			description: "",
 			amount: 0,
-			type: "EXPENSE" as const,
+			type: "EXPENSE",
 			bankAccountId: "",
 		},
 		onSubmit: (data) => {

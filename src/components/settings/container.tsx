@@ -1,41 +1,29 @@
 import { Bell, CreditCard, Lock, User } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import { SettingsTrigger } from "./trigger";
 
 export default function SettingsContainer() {
 	return (
 		<Tabs defaultValue="tab-1" className="items-center">
-			<TabsList className="text-foreground h-auto gap-2 rounded-none border-b bg-transparent px-0 py-1">
-				<TabsTrigger
-					value="tab-1"
-					className="text-zinc-500 hover:bg-accent data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-base cursor-pointer"
-				>
-					<User />
+			<TabsList
+				className="text-foreground h-auto gap-2 rounded-none border-b bg-transparent
+			px-0 py-1"
+			>
+				<SettingsTrigger value="tab-1" icon={<User />}>
 					Perfil
-				</TabsTrigger>
+				</SettingsTrigger>
 
-				<TabsTrigger
-					value="tab-2"
-					className="text-zinc-500 hover:bg-accent data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-base cursor-pointer"
-				>
-					<Bell />
+				<SettingsTrigger value="tab-2" icon={<Bell />}>
 					Notificações
-				</TabsTrigger>
+				</SettingsTrigger>
 
-				<TabsTrigger
-					value="tab-3"
-					className="text-zinc-500 hover:bg-accent data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-base cursor-pointer"
-				>
-					<CreditCard />
+				<SettingsTrigger value="tab-3" icon={<CreditCard />}>
 					Plano
-				</TabsTrigger>
+				</SettingsTrigger>
 
-				<TabsTrigger
-					value="tab-4"
-					className="text-zinc-500 hover:bg-accent data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-base cursor-pointer"
-				>
-					<Lock />
+				<SettingsTrigger value="tab-4" icon={<Lock />}>
 					Segurança
-				</TabsTrigger>
+				</SettingsTrigger>
 			</TabsList>
 
 			<TabsContent value="tab-1"></TabsContent>

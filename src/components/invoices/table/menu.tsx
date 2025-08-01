@@ -5,7 +5,6 @@ import {
 	FileDown,
 	Printer,
 	SquarePen,
-	Trash,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { InvoiceDetailsDialog } from "../details/invoice-details-dialog";
+import { DeleteInvoiceDialog } from "./delete-dialog";
 
 interface InvoiceActionsProps {
 	invoice: Invoice;
@@ -36,22 +36,22 @@ export function InvoiceActions({ invoice }: InvoiceActionsProps) {
 				<DropdownMenuGroup>
 					<InvoiceDetailsDialog invoice={invoice} />
 
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
 						<SquarePen className="mr-2 h-4 w-4" />
 						Editar
 					</DropdownMenuItem>
 
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
 						<FileCheck className="mr-2 h-4 w-4" />
 						Marcar como paga
 					</DropdownMenuItem>
 
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
 						<Printer className="mr-2 h-4 w-4" />
 						Imprimir
 					</DropdownMenuItem>
 
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
 						<FileDown className="mr-2 h-4 w-4" />
 						Baixar
 					</DropdownMenuItem>
@@ -59,10 +59,7 @@ export function InvoiceActions({ invoice }: InvoiceActionsProps) {
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem className="text-red-400 hover:!text-red-400">
-					<Trash className="mr-2 h-4 w-4 text-red-400" />
-					Excluir
-				</DropdownMenuItem>
+				<DeleteInvoiceDialog invoice={invoice} />
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

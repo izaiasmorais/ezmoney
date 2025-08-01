@@ -32,12 +32,12 @@ export function InvoiceDetailsDialog({ invoice }: InvoiceDetailsDialogProps) {
 							e.preventDefault();
 						}}
 					>
-						<Eye className="mr-2 h-4 w-4" />
+						<Eye className="mr-2" />
 						Visualizar
 					</DropdownMenuItem>
 				</DialogTrigger>
 
-				<DialogContent className="min-w-[800px] h-[500px] p-0 gap-0 flex flex-col mb-0">
+				<DialogContent className="mx-6 !w-full !max-w-[900px] h-[500px] p-0 gap-0 flex flex-col mb-0">
 					<DialogHeader className="p-4 border-zinc-300 dark:border-zinc-800">
 						<DialogTitle className="text-2xl font-medium flex items-center gap-4">
 							{invoice.name} <InvoiceStatus status={invoice.status} />

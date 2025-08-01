@@ -10,8 +10,8 @@ import {
 import type { Installment } from "@/hooks/invoices/use-get-invoices-installments";
 import { formatFromNow } from "@/utils/form-from-now";
 import { formatCurrency } from "@/utils/format-currency";
-import { InvoiceInstallmentsTableSkeleton } from "./invoice-installments-table-skeleton";
 import { InvoiceStatus } from "../table/status";
+import { InvoiceInstallmentsTableSkeleton } from "./invoice-installments-table-skeleton";
 
 interface InvoiceInstallmentsTableProps {
 	installments: Installment[];
@@ -60,7 +60,12 @@ export function InvoiceInstallmentsTable({
 							</TableCell>
 
 							<TableCell>
-								<Switch className="cursor-pointer" />
+								<Switch
+									className="cursor-pointer"
+									checked={item.status === "PAID"}
+									onCheckedChange={() => {}}
+									disabled
+								/>
 							</TableCell>
 						</TableRow>
 					))}

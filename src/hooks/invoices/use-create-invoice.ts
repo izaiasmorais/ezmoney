@@ -9,9 +9,10 @@ import { useFormMutation } from "../form/use-form-mutation";
 
 export const createInvoiceSchema = z.object({
 	name: z.string().min(1, "O nome é obrigatório"),
-	description: z.string().min(1, "A descrição é obrigatória"),
+	description: z.string().optional().nullable(),
 	issueDate: z.string().min(1, "A data de emissão é obrigatória"),
 	dueDate: z.string().min(1, "A data de vencimento é obrigatória"),
+	type: z.enum(["FIXED", "RECURRING", "ONE_TIME"]),
 	unitValue: z.coerce
 		.number()
 		.min(0.01, "O valor unitário deve ser maior que 0"),
@@ -44,7 +45,8 @@ export async function createInvoice(
 export function useCreateInvoice() {
 	const [isCreateInvoiceSheetOpen, setIsCreateInvoiceSheetOpen] =
 		useState(false);
-	const form = useFormMutation({
+
+	const form = useFormMutation<CreateInvoiceData>({
 		schema: createInvoiceSchema,
 		defaultValues: {
 			name: "",
@@ -52,6 +54,7 @@ export function useCreateInvoice() {
 			issueDate: new Date().toISOString(),
 			dueDate: "",
 			unitValue: 0,
+			type: "FIXED",
 			totalInstallments: 1,
 			categoryId: "",
 		},
@@ -62,6 +65,7 @@ export function useCreateInvoice() {
 
 	const { mutateAsync: createInvoiceFn, isPending: isLoadingCreateInvoice } =
 		useMutation({
+			mutationKey: ["create-invoice"],
 			mutationFn: createInvoice,
 			onSuccess: (response) => {
 				if (response.success) {

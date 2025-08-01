@@ -1,16 +1,16 @@
 "use client";
+import { Upload } from "lucide-react";
+import { useState } from "react";
+import type { FieldValues, Path, UseFormReturn } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import {
+	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-	FormControl,
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FieldValues, Path, UseFormReturn } from "react-hook-form";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Upload } from "lucide-react";
 
 interface FormFileInputProps<TFieldValues extends FieldValues> {
 	form: UseFormReturn<TFieldValues>;

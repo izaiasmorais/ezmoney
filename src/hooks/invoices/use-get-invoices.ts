@@ -8,6 +8,7 @@ export const invoiceSchema = z.object({
 	name: z.string(),
 	unitValue: z.number(),
 	totalInstallments: z.number(),
+	type: z.enum(["FIXED", "RECURRING", "ONE_TIME"]),
 	dueDate: z.string(),
 	category: z.object({
 		label: z.string(),

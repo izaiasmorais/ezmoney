@@ -6,6 +6,7 @@ import { FormInputSkeleton } from "@/components/form/form-input-sleleton";
 import { FormMoneyInput } from "@/components/form/form-money-input";
 import { SubmitButton } from "@/components/form/form-submit-button";
 import { FormTextarea } from "@/components/form/form-textarea";
+import { FormToggleGroup } from "@/components/form/form-toggle-group";
 import { Button } from "@/components/ui/button";
 import { Form, FormLabel } from "@/components/ui/form";
 import {
@@ -22,6 +23,21 @@ import { useGetCategories } from "@/hooks/categories/use-get-categories";
 import { useCreateInvoice } from "@/hooks/invoices/use-create-invoice";
 import { formatCurrency } from "@/utils/format-currency";
 import { FormCategoryCombobox } from "./form-category-combobox";
+
+const invoiceTypeOptions = [
+	{
+		label: "Fixa",
+		value: "FIXED",
+	},
+	{
+		label: "Recorrente",
+		value: "RECURRING",
+	},
+	{
+		label: "Única",
+		value: "ONE_TIME",
+	},
+];
 
 export function CreateInvoiceForm() {
 	const {
@@ -70,6 +86,16 @@ export function CreateInvoiceForm() {
 							entity="description"
 							label="Descrição"
 							placeholder="Descrição da fatura"
+						/>
+
+						<FormToggleGroup
+							form={form}
+							entity="type"
+							translatedEntity="Tipo de fatura"
+							options={invoiceTypeOptions}
+							className="w-full"
+							alwaysSelected={true}
+							onChange={() => form.clearErrors()}
 						/>
 
 						<div className="grid grid-cols-2 gap-2">

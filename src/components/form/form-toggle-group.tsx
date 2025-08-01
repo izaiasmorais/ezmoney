@@ -57,7 +57,7 @@ export function FormToggleGroup<TFieldValues extends FieldValues>({
 								}
 								field.onChange(value);
 							}}
-							className={cn(className, "border")}
+							className={cn(className, "border p-1 gap-2")}
 						>
 							{options.map((option) => (
 								<ToggleGroupItem
@@ -66,8 +66,8 @@ export function FormToggleGroup<TFieldValues extends FieldValues>({
 									aria-label={`Toggle ${option.label}`}
 									className={
 										field.value === option.value
-											? "!bg-border dark:!border dark:border-zinc-800/50"
-											: ""
+											? "!bg-card !border !border-zinc-200 dark:!border-zinc-800"
+											: "dark:border-zinc-800/50"
 									}
 								>
 									{option.icon && (

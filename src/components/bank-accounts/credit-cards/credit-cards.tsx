@@ -1,10 +1,10 @@
 import { GeistMono } from "geist/font/mono";
 import { CreditCard } from "lucide-react";
+import { TableEmpty } from "@/components/table/table-empty";
 import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
 import { formatCurrency } from "@/utils/format-currency";
 import { Progress } from "../../ui/progress";
 import { CreditCardMenu } from "./menu";
-import { TableEmpty } from "@/components/table/table-empty";
 
 interface CreditCardsProps {
 	creditCards: BankAccount[];
@@ -59,8 +59,13 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 
 						<div className="w-full h-2 rounded-full ">
 							<Progress
-								value={(1000 / (creditCard.creditLimit ?? 0)) * 100}
-								className="h-2"
+								value={
+									((creditCard.spentLimit ?? 0) /
+										(creditCard.creditLimit ?? 0)) *
+									100
+								}
+								className="h-1"
+								color={creditCard.color}
 							/>
 						</div>
 

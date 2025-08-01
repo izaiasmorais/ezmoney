@@ -59,7 +59,7 @@ function ToggleGroupItem({
 					size: context.size || size,
 				}),
 				"min-w-0 flex-1 shrink-0 rounded-none shadow-none focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
-				"rounded-md cursor-pointer first:rounded-r-none last:rounded-l-none",
+				"rounded-md cursor-pointer",
 				"dark:hover:!bg-zinc-800/10",
 				className
 			)}
