@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/sheet";
 import { useCreateCategory } from "@/hooks/categories/use-create-category";
 
-export function CreateCategoryForm() {
+export function CreateCategorySheet() {
 	const {
 		form,
 		isLoadingCreateCategory,

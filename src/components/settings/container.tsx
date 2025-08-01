@@ -26,13 +26,25 @@ export default function SettingsContainer() {
 				</SettingsTrigger>
 			</TabsList>
 
-			<TabsContent value="tab-1"></TabsContent>
+			<TabsContent
+				value="tab-1"
+				className="animate-in fade-in-50 slide-in-from-bottom-2 duration-300"
+			></TabsContent>
 
-			<TabsContent value="tab-2"></TabsContent>
+			<TabsContent
+				value="tab-2"
+				className="animate-in fade-in-50 slide-in-from-bottom-2 duration-300"
+			></TabsContent>
 
-			<TabsContent value="tab-3"></TabsContent>
+			<TabsContent
+				value="tab-3"
+				className="animate-in fade-in-50 slide-in-from-bottom-2 duration-300"
+			></TabsContent>
 
-			<TabsContent value="tab-4"></TabsContent>
+			<TabsContent
+				value="tab-4"
+				className="animate-in fade-in-50 slide-in-from-bottom-2 duration-300"
+			></TabsContent>
 		</Tabs>
 	);
 }

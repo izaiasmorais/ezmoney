@@ -43,7 +43,7 @@ export const TransactionsTableColumns: TransactionColumnDef[] = [
 	{
 		accessorKey: "paymentMethod",
 		header: ({ column }) => (
-			<TableSort column={column}>Método de Pagamento</TableSort>
+			<TableSort column={column}>Meio</TableSort>
 		),
 		cell: ({ row }) => {
 			const paymentMethod = row.original.paymentMethod;

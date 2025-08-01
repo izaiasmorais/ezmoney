@@ -1,9 +1,8 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { Ellipsis } from "lucide-react";
 import { TableSort } from "@/components/table/table-sort";
-import { Button } from "@/components/ui/button";
 import type { Category } from "@/hooks/categories/use-get-categories";
 import { formatDate } from "@/utils/format-date";
+import { CategoryActions } from "./menu";
 
 type CategoryColumnDef = ColumnDef<Category> & {
 	accessorKey: keyof Category | "actions";
@@ -39,12 +38,6 @@ export const CategoriesTableColumns: CategoryColumnDef[] = [
 	{
 		accessorKey: "actions",
 		header: ({ column }) => <TableSort column={column}>Ações</TableSort>,
-		cell: () => (
-			<div>
-				<Button size="icon" variant="ghost">
-					<Ellipsis />
-				</Button>
-			</div>
-		),
+		cell: ({ row }) => <CategoryActions category={row.original} />,
 	},
 ];

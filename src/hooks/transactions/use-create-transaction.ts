@@ -70,8 +70,8 @@ export function useCreateTransaction() {
 		mutationFn: createTransaction,
 		onSuccess: (response) => {
 			if (response.success) {
-				queryClient.invalidateQueries({ queryKey: ["transactions"] });
-				queryClient.invalidateQueries({ queryKey: ["bank-accounts"] });
+				queryClient.invalidateQueries({ queryKey: ["get-transactions"] });
+				queryClient.invalidateQueries({ queryKey: ["get-bank-accounts"] });
 				setIsCreateTransactionSheetOpen(false);
 				form.reset();
 				toast.success("Transação criada com sucesso!");

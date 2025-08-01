@@ -15,7 +15,7 @@ import { TablePagination } from "@/components/table/table-pagination";
 import { Button } from "@/components/ui/button";
 import { SearchInput } from "@/components/ui/search-input";
 import { useGetCategories } from "@/hooks/categories/use-get-categories";
-import { CreateCategoryForm } from "../form/create-category-form";
+import { CreateCategorySheet } from "../modals/create-category-sheet";
 import { CategoriesTableColumns } from "./columns";
 import { CategoriesTable } from "./table";
 
@@ -65,7 +65,7 @@ export function CategoriesTableContainer() {
 					<Filter />
 				</Button>
 
-				<CreateCategoryForm />
+				<CreateCategorySheet />
 			</div>
 
 			<CategoriesTable
