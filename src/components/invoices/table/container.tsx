@@ -15,7 +15,7 @@ import { TablePagination } from "@/components/table/table-pagination";
 import { Button } from "@/components/ui/button";
 import { SearchInput } from "@/components/ui/search-input";
 import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
-import { CreateInvoiceForm } from "../form/create-invoice-form";
+import { CreateInvoiceForm } from "../modals/create-invoice-sheet";
 import { InvoicesTableColumns } from "./columns";
 import { InvoicesTable } from "./table";
 

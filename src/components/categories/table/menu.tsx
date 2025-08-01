@@ -9,7 +9,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { Category } from "@/hooks/categories/use-get-categories";
-import { EditCategorySheet } from "../sheets/edit-category-sheet";
+import { EditCategorySheet } from "../modals/edit-category-sheet";
 
 interface CategoryActionsProps {
 	category: Category;

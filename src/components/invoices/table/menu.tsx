@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { Invoice } from "@/hooks/invoices/use-get-invoices";
 import { InvoiceDetailsDialog } from "../details/invoice-details-dialog";
-import { DeleteInvoiceDialog } from "./delete-dialog";
+import { DeleteInvoiceDialog } from "../modals/delete-invoice-dialog";
 
 interface InvoiceActionsProps {
 	invoice: Invoice;

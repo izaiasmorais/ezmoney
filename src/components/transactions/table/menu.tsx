@@ -1,5 +1,5 @@
 "use client";
-import { Ellipsis, Eye, SquarePen, Trash } from "lucide-react";
+import { Ellipsis, Eye, SquarePen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -10,6 +10,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { Transaction } from "@/hooks/transactions/use-get-transactions";
+import { DeleteTransactionDialog } from "../modals/delete-transactions-dialog";
 
 interface TransactionActionsProps {
 	transaction: Transaction;
@@ -39,10 +40,7 @@ export function TransactionActions({ transaction }: TransactionActionsProps) {
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem className="text-red-400 hover:!text-red-400">
-					<Trash className="mr-2 h-4 w-4 text-red-400" />
-					Excluir
-				</DropdownMenuItem>
+				<DeleteTransactionDialog transaction={transaction} />
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
