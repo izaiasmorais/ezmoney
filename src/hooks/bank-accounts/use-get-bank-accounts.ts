@@ -11,6 +11,7 @@ export const bankAccountSchema = z.object({
 	color: z.string(),
 	creditLimit: z.number().nullable(),
 	spentLimit: z.number().nullable(),
+	availableLimit: z.number().nullable(),
 	closingDay: z.number().nullable(),
 	dueDay: z.number().nullable(),
 	isActive: z.boolean(),

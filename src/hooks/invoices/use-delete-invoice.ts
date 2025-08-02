@@ -1,8 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useState } from "react";
+import { toast } from "sonner";
 import type { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
 import { api } from "@/lib/axios";
+import { queryClient } from "@/lib/react-query";
 
 type DeleteInvoiceResponse = HTTPSuccessResponse<null> | HTTPErrorResponse;
 
@@ -34,6 +36,18 @@ export function useDeleteInvoice() {
 		useMutation({
 			mutationKey: ["delete-invoice"],
 			mutationFn: deleteInvoice,
+			onSuccess: (response) => {
+				if (response.success) {
+					queryClient.invalidateQueries({ queryKey: ["get-invoices"] });
+					setIsDeleteInvoiceDialogOpen(false);
+					toast.success("Fatura excluída com sucesso");
+					return;
+				}
+
+				for (const error of response.errors) {
+					toast.error(error);
+				}
+			},
 		});
 
 	return {

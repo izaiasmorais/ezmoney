@@ -6,6 +6,7 @@ export function TransactionsSummarySkeleton() {
 			<TransactionsSummaryCardSkeleton />
 			<TransactionsSummaryCardSkeleton />
 			<TransactionsSummaryCardSkeleton />
+			<TransactionsSummaryCardSkeleton />
 		</div>
 	);
 }

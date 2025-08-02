@@ -35,7 +35,7 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 								<h1 className="text-lg">{creditCard.name}</h1>
 							</div>
 
-							<CreditCardMenu creditCardId={creditCard.id} />
+							<CreditCardMenu creditCard={creditCard} />
 						</div>
 
 						<div className="flex items-center justify-between">
@@ -74,19 +74,19 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 								<span className="text-muted-foreground text-sm">Utilizado</span>
 
 								<span
-									className={`text-2xl font-semibold ${GeistMono.className}`}
+									className={`text-xl font-semibold ${GeistMono.className}`}
 								>
 									{formatCurrency(creditCard.spentLimit ?? 0)}
 								</span>
 							</div>
 
 							<div className="flex flex-col gap-2">
-								<span className="text-xs text-muted-foreground">Limite</span>
+								<span className="text-xs text-muted-foreground">Disponível</span>
 
 								<span
-									className={`text-2xl font-semibold ${GeistMono.className}`}
+									className={`text-xl font-semibold ${GeistMono.className}`}
 								>
-									{formatCurrency(creditCard.creditLimit ?? 0)}
+									{formatCurrency(creditCard.availableLimit ?? 0)}
 								</span>
 							</div>
 						</div>

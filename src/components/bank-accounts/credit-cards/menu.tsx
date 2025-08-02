@@ -1,5 +1,5 @@
 "use client";
-import { CreditCard, Ellipsis, SquarePen, Trash } from "lucide-react";
+import { CreditCard, Ellipsis, Eye, SquarePen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -9,12 +9,14 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
+import { DeleteBankAccountDialog } from "../modals/delete-bank-account-dialog";
 
 interface CreditCardMenuProps {
-	creditCardId: string;
+	creditCard: BankAccount;
 }
 
-export function CreditCardMenu({ creditCardId }: CreditCardMenuProps) {
+export function CreditCardMenu({ creditCard }: CreditCardMenuProps) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -25,12 +27,17 @@ export function CreditCardMenu({ creditCardId }: CreditCardMenuProps) {
 
 			<DropdownMenuContent className="w-56" align="end">
 				<DropdownMenuGroup>
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
+						<Eye className="mr-2 h-4 w-4" />
+						Visualizar
+					</DropdownMenuItem>
+
+					<DropdownMenuItem disabled>
 						<SquarePen className="mr-2 h-4 w-4" />
 						Editar
 					</DropdownMenuItem>
 
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
 						<CreditCard className="mr-2 h-4 w-4" />
 						Pagar Fatura
 					</DropdownMenuItem>
@@ -38,10 +45,7 @@ export function CreditCardMenu({ creditCardId }: CreditCardMenuProps) {
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem className="text-red-400 hover:!text-red-400">
-					<Trash className="mr-2 h-4 w-4 text-red-400" />
-					Excluir
-				</DropdownMenuItem>
+				<DeleteBankAccountDialog bankAccount={creditCard} />
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

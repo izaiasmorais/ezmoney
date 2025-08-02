@@ -31,6 +31,15 @@ export function DeleteBankAccountDialog({
 		return null;
 	}
 
+	function handleDeleteBankAccount() {
+		if (!bankAccount) {
+			return;
+		}
+
+		// deleteBankAccountFn(bankAccount.id);
+		setIsDeleteBankAccountDialogOpen(false);
+	}
+
 	return (
 		<Dialog
 			open={isDeleteBankAccountDialogOpen}
@@ -79,9 +88,7 @@ export function DeleteBankAccountDialog({
 							type="submit"
 							variant="destructive"
 							isLoading={isLoadingDeleteBankAccount}
-							onClick={() => {
-								deleteBankAccountFn(bankAccount.id);
-							}}
+							onClick={handleDeleteBankAccount}
 						>
 							Confirmar
 						</Button>

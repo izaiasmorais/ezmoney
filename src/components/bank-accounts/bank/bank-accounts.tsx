@@ -45,7 +45,7 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 								Saldo Disponível
 							</span>
 
-							<span className={`text-2xl font-semibold ${GeistMono.className}`}>
+							<span className={`text-xl font-semibold ${GeistMono.className}`}>
 								{formatCurrency(bankAccount.balance)}
 							</span>
 						</div>

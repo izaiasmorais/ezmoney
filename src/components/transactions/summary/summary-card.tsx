@@ -7,6 +7,7 @@ interface TransactionsSummaryCardProps {
 	value: number;
 	transactions: number;
 	Icon: LucideIcon;
+	countLabel?: string;
 }
 
 export function TransactionsSummaryCard({
@@ -14,6 +15,7 @@ export function TransactionsSummaryCard({
 	value,
 	transactions,
 	Icon,
+	countLabel = "transações",
 }: TransactionsSummaryCardProps) {
 	return (
 		<div className="dark:bg-card border-border w-full p-6 rounded-md border flex flex-col gap-6">
@@ -31,7 +33,7 @@ export function TransactionsSummaryCard({
 				</span>
 
 				<span className={`text-sm text-zinc-500 ${GeistMono.className}`}>
-					{transactions} transações
+					{transactions} {countLabel}
 				</span>
 			</div>
 		</div>

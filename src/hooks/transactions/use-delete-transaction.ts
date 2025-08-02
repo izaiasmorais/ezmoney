@@ -41,6 +41,7 @@ export function useDeleteTransaction() {
 		onSuccess: (response) => {
 			if (response.success) {
 				queryClient.invalidateQueries({ queryKey: ["get-transactions"] });
+				queryClient.invalidateQueries({ queryKey: ["get-bank-accounts"] });
 				setIsDeleteTransactionDialogOpen(false);
 				toast.success("Transação excluída com sucesso");
 				return;

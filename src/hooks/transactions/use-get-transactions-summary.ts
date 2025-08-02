@@ -1,9 +1,12 @@
 "use client";
 import { useMemo } from "react";
+import { useGetBankAccounts } from "../bank-accounts/use-get-bank-accounts";
 import { useGetTransactions } from "./use-get-transactions";
 
 export function useGetTransactionsSummary() {
 	const { transactions, isLoadingGetTransactions } = useGetTransactions();
+	const { bankAccounts, creditCards, isLoadingGetBankAccounts } =
+		useGetBankAccounts();
 
 	const summary = useMemo(() => {
 		const income = transactions.filter(
@@ -21,12 +24,25 @@ export function useGetTransactionsSummary() {
 			(acc, transaction) => acc + parseFloat(transaction.amount),
 			0
 		);
-		const balance = totalIncome - totalExpense;
+
+		const totalBalance = bankAccounts.reduce(
+			(acc, account) => acc + account.balance,
+			0
+		);
+
+		const availableLimit = creditCards.reduce(
+			(acc, card) => acc + (card.availableLimit || 0),
+			0
+		);
 
 		return {
 			balance: {
-				value: balance,
+				value: totalBalance,
 				count: transactions.length,
+			},
+			availableLimit: {
+				value: availableLimit,
+				count: creditCards.length,
 			},
 			income: {
 				value: totalIncome,
@@ -37,7 +53,10 @@ export function useGetTransactionsSummary() {
 				count: expense.length,
 			},
 		};
-	}, [transactions]);
+	}, [transactions, bankAccounts, creditCards]);
 
-	return { summary, isLoadingSummary: isLoadingGetTransactions };
+	return {
+		summary,
+		isLoadingSummary: isLoadingGetTransactions || isLoadingGetBankAccounts,
+	};
 }

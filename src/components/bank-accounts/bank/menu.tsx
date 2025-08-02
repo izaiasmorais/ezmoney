@@ -1,5 +1,5 @@
 "use client";
-import { Ellipsis, Landmark, SquarePen } from "lucide-react";
+import { Ellipsis, Eye, Landmark, SquarePen } from "lucide-react";
 import { BankTransferSheet } from "@/components/bank-accounts/modals/bank-transfer-sheet";
 import { DeleteBankAccountDialog } from "@/components/bank-accounts/modals/delete-bank-account-dialog";
 import { Button } from "@/components/ui/button";
@@ -28,12 +28,17 @@ export function BankAccountMenu({ bankAccount }: BankAccountMenuProps) {
 
 			<DropdownMenuContent className="w-56" align="end">
 				<DropdownMenuGroup>
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
+						<Eye className="mr-2 h-4 w-4" />
+						Visualizar
+					</DropdownMenuItem>
+
+					<DropdownMenuItem disabled>
 						<SquarePen className="mr-2 h-4 w-4" />
 						Editar
 					</DropdownMenuItem>
 
-					<DropdownMenuItem>
+					<DropdownMenuItem disabled>
 						<Landmark className="mr-2 h-4 w-4" />
 						Depósito
 					</DropdownMenuItem>
