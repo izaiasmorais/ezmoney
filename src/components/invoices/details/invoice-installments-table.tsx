@@ -12,6 +12,7 @@ import { formatFromNow } from "@/utils/form-from-now";
 import { formatCurrency } from "@/utils/format-currency";
 import { InvoiceStatus } from "../table/status";
 import { InvoiceInstallmentsTableSkeleton } from "./invoice-installments-table-skeleton";
+import { MarkInstallmentAsPaidDialog } from "./mark-installment-as-paid-dialog";
 
 interface InvoiceInstallmentsTableProps {
 	installments: Installment[];
@@ -31,6 +32,7 @@ export function InvoiceInstallmentsTable({
 					<TableHead className="min-w-[100px]">Data de Vencimento</TableHead>
 					<TableHead className="min-w-[100px]">Status</TableHead>
 					<TableHead className="min-w-[100px]">Paga</TableHead>
+					<TableHead className="min-w-[100px]">Forma de Pagamento</TableHead>
 				</TableRow>
 			</TableHeader>
 
@@ -60,13 +62,14 @@ export function InvoiceInstallmentsTable({
 							</TableCell>
 
 							<TableCell>
-								<Switch
-									className="cursor-pointer"
-									checked={item.status === "PAID"}
-									onCheckedChange={() => {}}
-									disabled
-								/>
+								{item.isPaid && <Switch checked={item.isPaid} disabled />}
+
+								{!item.isPaid && (
+									<MarkInstallmentAsPaidDialog installment={item} />
+								)}
 							</TableCell>
+
+							<TableCell>-</TableCell>
 						</TableRow>
 					))}
 			</TableBody>

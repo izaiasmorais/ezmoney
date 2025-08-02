@@ -1,4 +1,5 @@
 import { flexRender, type Table as TableType } from "@tanstack/react-table";
+import { TableEmpty } from "@/components/table/table-empty";
 import {
 	Table,
 	TableBody,
@@ -10,7 +11,6 @@ import {
 import type { Transaction } from "@/hooks/transactions/use-get-transactions";
 import { TransactionsTableColumns } from "./columns";
 import { TransactionTableSkeleton } from "./skeleton";
-import { TableEmpty } from "@/components/table/table-empty";
 
 interface TransactionTableProps {
 	table: TableType<Transaction>;
@@ -28,7 +28,7 @@ export function TransactionTable({
 		"min-w-[150px]",
 		"min-w-[150px]",
 		"min-w-[150px]",
-		"min-w-[150px]",
+		"min-w-[210px]",
 		"min-w-[150px]",
 		"min-w-[50px]",
 	],

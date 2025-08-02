@@ -27,13 +27,14 @@ export function FormCheckbox<TFieldValues extends FieldValues>({
 			name={entity}
 			render={({ field }) => (
 				<FormItem
-					className={`flex flex-row items-start space-x-3 space-y-0 ${className}`}
+					className={`flex flex-row items-center space-y-0 ${className}`}
 				>
 					<FormControl>
 						<Checkbox
 							id={entity}
 							checked={field.value}
 							onCheckedChange={field.onChange}
+							className="mt-0.25"
 						/>
 					</FormControl>
 

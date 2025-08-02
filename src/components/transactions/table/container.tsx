@@ -33,7 +33,10 @@ export function TransactionsTableContainer({
 	const [columnVisibility, setColumnVisibility] =
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
-
+	const [pagination, setPagination] = React.useState({
+		pageIndex: 0,
+		pageSize: 10,
+	});
 	const { transactions, isLoadingGetTransactions } = useGetTransactions();
 
 	const table = useReactTable({
@@ -47,11 +50,13 @@ export function TransactionsTableContainer({
 		getFilteredRowModel: getFilteredRowModel(),
 		onColumnVisibilityChange: setColumnVisibility,
 		onRowSelectionChange: setRowSelection,
+		onPaginationChange: setPagination,
 		state: {
 			sorting,
 			columnFilters,
 			columnVisibility,
 			rowSelection,
+			pagination,
 		},
 	});
 
@@ -93,7 +98,7 @@ export function TransactionsTableContainer({
 				data={transactions}
 			/>
 
-			<TablePagination table={table} />
+			<TablePagination table={table} pagination={pagination} />
 		</div>
 	);
 }

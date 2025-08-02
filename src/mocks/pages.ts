@@ -31,14 +31,14 @@ export const pages = [
 		label: "Contas",
 	},
 	{
-		href: "/categorias",
-		icon: Tag,
-		label: "Categorias",
-	},
-	{
 		href: "/orcamentos",
 		icon: PiggyBank,
 		label: "Orçamentos",
+	},
+	{
+		href: "/categorias",
+		icon: Tag,
+		label: "Categorias",
 	},
 	{
 		href: "/clientes",

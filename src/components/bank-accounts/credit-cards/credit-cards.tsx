@@ -39,11 +39,11 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 						</div>
 
 						<div className="flex items-center justify-between">
-							<div className="space-x-2 text-xs">
-								<span>✱✱✱✱</span>
-								<span>✱✱✱✱</span>
-								<span>✱✱✱✱</span>
-								<span className="text-xl">4567</span>
+							<div className="space-x-2">
+								<span className="text-[10px]">✱✱✱✱</span>
+								<span className="text-[10px]">✱✱✱✱</span>
+								<span className="text-[10px]">✱✱✱✱</span>
+								<span className="text-sm">4567</span>
 							</div>
 
 							<div className="flex flex-col gap-2 text-sm ml-auto">
@@ -71,7 +71,9 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 
 						<div className="flex items-center justify-between">
 							<div className="flex flex-col gap-2">
-								<span className="text-muted-foreground text-sm">Utilizado</span>
+								<span className={`text-muted-foreground text-sm ${GeistMono.className}`}>
+									Utilizado
+								</span>
 
 								<span
 									className={`text-xl font-semibold ${GeistMono.className}`}
@@ -81,7 +83,9 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 							</div>
 
 							<div className="flex flex-col gap-2">
-								<span className="text-xs text-muted-foreground">Disponível</span>
+								<span className={`text-xs text-muted-foreground ${GeistMono.className}`}>
+									Disponível
+								</span>
 
 								<span
 									className={`text-xl font-semibold ${GeistMono.className}`}

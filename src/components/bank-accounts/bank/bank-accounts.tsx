@@ -41,7 +41,7 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="text-muted-foreground text-sm">
+							<span className={`text-muted-foreground text-sm ${GeistMono.className}`}>
 								Saldo Disponível
 							</span>
 

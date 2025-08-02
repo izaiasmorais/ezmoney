@@ -33,7 +33,10 @@ export function InvoicesTableContainer({
 	const [columnVisibility, setColumnVisibility] =
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
-
+	const [pagination, setPagination] = React.useState({
+		pageIndex: 0,
+		pageSize: 10,
+	});
 	const { invoices, isLoadingGetInvoices } = useGetInvoices();
 
 	const table = useReactTable({
@@ -47,11 +50,13 @@ export function InvoicesTableContainer({
 		getFilteredRowModel: getFilteredRowModel(),
 		onColumnVisibilityChange: setColumnVisibility,
 		onRowSelectionChange: setRowSelection,
+		onPaginationChange: setPagination,
 		state: {
 			sorting,
 			columnFilters,
 			columnVisibility,
 			rowSelection,
+			pagination,
 		},
 	});
 
@@ -91,7 +96,7 @@ export function InvoicesTableContainer({
 				data={invoices}
 			/>
 
-			<TablePagination table={table} />
+			<TablePagination table={table} pagination={pagination} />
 		</div>
 	);
 }

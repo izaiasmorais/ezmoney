@@ -27,7 +27,10 @@ export function CategoriesTableContainer() {
 	const [columnVisibility, setColumnVisibility] =
 		React.useState<VisibilityState>({});
 	const [rowSelection, setRowSelection] = React.useState({});
-
+	const [pagination, setPagination] = React.useState({
+		pageIndex: 0,
+		pageSize: 10,
+	});
 	const { categories, isLoadingGetCategories } = useGetCategories();
 
 	const table = useReactTable({
@@ -41,11 +44,13 @@ export function CategoriesTableContainer() {
 		getFilteredRowModel: getFilteredRowModel(),
 		onColumnVisibilityChange: setColumnVisibility,
 		onRowSelectionChange: setRowSelection,
+		onPaginationChange: setPagination,
 		state: {
 			sorting,
 			columnFilters,
 			columnVisibility,
 			rowSelection,
+			pagination,
 		},
 	});
 
@@ -74,7 +79,7 @@ export function CategoriesTableContainer() {
 				data={categories}
 			/>
 
-			<TablePagination table={table} />
+			<TablePagination table={table} pagination={pagination} />
 		</div>
 	);
 }
