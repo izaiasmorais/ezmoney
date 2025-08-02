@@ -1,10 +1,10 @@
 import { GeistMono } from "geist/font/mono";
 import { Landmark } from "lucide-react";
+import { TableEmpty } from "@/components/table/table-empty";
 import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
 import { formatCurrency } from "@/utils/format-currency";
 import { CreateBankAccountForm } from "../create-bank-account-sheet";
 import { BankAccountMenu } from "./menu";
-import { TableEmpty } from "@/components/table/table-empty";
 
 interface BankAccountsProps {
 	bankAccounts: BankAccount[];
@@ -37,7 +37,7 @@ export function BankAccounts({ bankAccounts }: BankAccountsProps) {
 								<h1 className="text-lg">{bankAccount.name}</h1>
 							</div>
 
-							<BankAccountMenu bankAccountId={bankAccount.id} />
+							<BankAccountMenu bankAccount={bankAccount} />
 						</div>
 
 						<div className="flex flex-col gap-2">

@@ -21,7 +21,12 @@ export const TransactionsTableColumns: TransactionColumnDef[] = [
 		accessorKey: "amount",
 		header: ({ column }) => <TableSort column={column}>Valor</TableSort>,
 		cell: ({ row }) => {
-			return <div>{formatCurrency(row.getValue("amount"))}</div>;
+			return (
+				<div>
+					{row.original.type === "EXPENSE" && "-"}
+					{formatCurrency(row.getValue("amount"))}
+				</div>
+			);
 		},
 	},
 	{

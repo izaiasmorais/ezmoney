@@ -1,11 +1,7 @@
 "use client";
-import {
-	ArrowLeftRight,
-	Ellipsis,
-	Landmark,
-	SquarePen,
-	Trash,
-} from "lucide-react";
+import { Ellipsis, Landmark, SquarePen } from "lucide-react";
+import { BankTransferSheet } from "@/components/bank-accounts/modals/bank-transfer-sheet";
+import { DeleteBankAccountDialog } from "@/components/bank-accounts/modals/delete-bank-account-dialog";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -15,12 +11,13 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { BankAccount } from "@/hooks/bank-accounts/use-get-bank-accounts";
 
 interface BankAccountMenuProps {
-	bankAccountId: string;
+	bankAccount?: BankAccount;
 }
 
-export function BankAccountMenu({ bankAccountId }: BankAccountMenuProps) {
+export function BankAccountMenu({ bankAccount }: BankAccountMenuProps) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -41,18 +38,12 @@ export function BankAccountMenu({ bankAccountId }: BankAccountMenuProps) {
 						Depósito
 					</DropdownMenuItem>
 
-					<DropdownMenuItem>
-						<ArrowLeftRight className="mr-2 h-4 w-4" />
-						transferência
-					</DropdownMenuItem>
+					<BankTransferSheet currentBankAccount={bankAccount} />
 				</DropdownMenuGroup>
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem className="text-red-400 hover:!text-red-400">
-					<Trash className="mr-2 h-4 w-4 text-red-400" />
-					Excluir
-				</DropdownMenuItem>
+				<DeleteBankAccountDialog bankAccount={bankAccount} />
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

@@ -9,6 +9,7 @@ import { useFormMutation } from "../form/use-form-mutation";
 
 export const createTransactionRequestSchema = z.object({
 	description: z.string().min(1, "A descrição é obrigatória"),
+	date: z.string().optional(),
 	amount: z.number().min(0.01, "O valor deve ser maior que zero"),
 	type: z.enum(["INCOME", "EXPENSE"]),
 	bankAccountId: z.string().min(1, "A conta bancária é obrigatória"),
@@ -56,6 +57,7 @@ export function useCreateTransaction() {
 			amount: 0,
 			type: "EXPENSE",
 			bankAccountId: "",
+			date: new Date().toISOString(),
 		},
 		onSubmit: (data) => {
 			createTransactionFn(data);

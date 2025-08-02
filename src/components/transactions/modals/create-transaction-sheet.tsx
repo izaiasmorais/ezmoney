@@ -1,5 +1,6 @@
 "use client";
 import { Plus } from "lucide-react";
+import { FormDatePicker } from "@/components/form/form-date-picker";
 import { FormInput } from "@/components/form/form-input";
 import { FormInputSkeleton } from "@/components/form/form-input-sleleton";
 import { FormMoneyInput } from "@/components/form/form-money-input";
@@ -34,13 +35,16 @@ export function CreateTransactionSheet() {
 		setIsCreateTransactionSheetOpen,
 	} = useCreateTransaction();
 
-	const { bankAccounts, creditCards, isLoadingGetBankAccounts } = useGetBankAccounts();
+	const { bankAccounts, creditCards, isLoadingGetBankAccounts } =
+		useGetBankAccounts();
 
-	const bankAccountsOptions = [...bankAccounts, ...creditCards].map((bankAccount) => ({
-		label: bankAccount.name,
-		value: bankAccount.id,
-		color: bankAccount.color,
-	}));
+	const bankAccountsOptions = [...bankAccounts, ...creditCards].map(
+		(bankAccount) => ({
+			label: bankAccount.name,
+			value: bankAccount.id,
+			color: bankAccount.color,
+		})
+	);
 
 	return (
 		<Sheet
@@ -80,6 +84,8 @@ export function CreateTransactionSheet() {
 							label="Valor"
 							placeholder="Ex: 1.000,00"
 						/>
+
+						<FormDatePicker form={form} entity="date" label="Data" />
 
 						<FormToggleGroup
 							form={form}
