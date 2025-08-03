@@ -37,10 +37,7 @@ export function BudgetsSummaryCard({
 				</span>
 
 				<span className={`text-sm text-zinc-500 ${GeistMono.className}`}>
-					{!customDescription &&
-						`${count} ${count === 1 ? singularDescription : pluralDescription}`}
-
-					{customDescription && customDescription}
+					{customDescription || `${count} ${count === 1 ? singularDescription : pluralDescription}`}
 				</span>
 			</div>
 		</div>
