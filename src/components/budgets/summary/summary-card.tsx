@@ -9,6 +9,7 @@ interface BudgetsSummaryCardProps {
 	Icon: LucideIcon;
 	singularDescription?: string;
 	pluralDescription?: string;
+	customDescription?: string;
 }
 
 export function BudgetsSummaryCard({
@@ -18,9 +19,8 @@ export function BudgetsSummaryCard({
 	Icon,
 	singularDescription,
 	pluralDescription,
+	customDescription,
 }: BudgetsSummaryCardProps) {
-
-
 	return (
 		<div className="dark:bg-card border-border w-full p-6 rounded-md border flex flex-col gap-6">
 			<div className="flex items-center gap-2">
@@ -37,7 +37,10 @@ export function BudgetsSummaryCard({
 				</span>
 
 				<span className={`text-sm text-zinc-500 ${GeistMono.className}`}>
-					{`${count} ${count === 1 ? singularDescription : pluralDescription}`}
+					{!customDescription &&
+						`${count} ${count === 1 ? singularDescription : pluralDescription}`}
+
+					{customDescription && customDescription}
 				</span>
 			</div>
 		</div>

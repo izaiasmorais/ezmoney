@@ -26,7 +26,7 @@ export function CreditCards({ creditCards }: CreditCardsProps) {
 						<div className="flex items-start justify-between">
 							<div className="flex items-center gap-4">
 								<div
-									className="w-12 h-12 rounded-full bg-background flex items-center
+									className="w-12 h-12 rounded-full bg-card dark:bg-background flex items-center
 						justify-center"
 								>
 									<CreditCard size={24} style={{ color: creditCard.color }} />

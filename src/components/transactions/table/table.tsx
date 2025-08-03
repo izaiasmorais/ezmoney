@@ -28,7 +28,7 @@ export function TransactionTable({
 		"min-w-[150px]",
 		"min-w-[150px]",
 		"min-w-[150px]",
-		"min-w-[210px]",
+		"min-w-[245px]",
 		"min-w-[150px]",
 		"min-w-[50px]",
 	],

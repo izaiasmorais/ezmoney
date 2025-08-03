@@ -9,10 +9,9 @@ import {
 	useReactTable,
 	type VisibilityState,
 } from "@tanstack/react-table";
-import { Filter } from "lucide-react";
 import React from "react";
 import { TablePagination } from "@/components/table/table-pagination";
-import { Button } from "@/components/ui/button";
+import { Combobox } from "@/components/ui/combobox";
 import { SearchInput } from "@/components/ui/search-input";
 import { useGetInvoices } from "@/hooks/invoices/use-get-invoices";
 import { CreateInvoiceForm } from "../modals/create-invoice-sheet";
@@ -82,9 +81,21 @@ export function InvoicesTableContainer({
 						}
 					/>
 
-					<Button size="icon" variant="outline">
-						<Filter />
-					</Button>
+					<Combobox
+						items={[
+							{ label: "Todas", value: "" },
+							{ label: "Pendente", value: "PENDING" },
+							{ label: "Pago", value: "PAID" },
+							{ label: "Vencida", value: "OVERDUE" },
+						]}
+						className="w-[161px]"
+						entity="status"
+						translatedEntity="status"
+						placeholder="Filtrar por status"
+						onChange={(value) =>
+							table.getColumn("status")?.setFilterValue(value)
+						}
+					/>
 
 					<CreateInvoiceForm />
 				</div>
