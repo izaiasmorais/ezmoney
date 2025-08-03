@@ -18,6 +18,7 @@ export function TransactionsSummary() {
 				value={summary.balance.value}
 				transactions={summary.balance.count}
 				Icon={DollarSign}
+				countLabel="contas bancárias"
 			/>
 
 			<TransactionsSummaryCard
@@ -25,7 +26,7 @@ export function TransactionsSummary() {
 				value={summary.availableLimit.value}
 				transactions={summary.availableLimit.count}
 				Icon={CreditCard}
-				countLabel="cartões"
+				countLabel="cartões de crédito"
 			/>
 
 			<TransactionsSummaryCard

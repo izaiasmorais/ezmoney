@@ -9,10 +9,9 @@ import {
 	useReactTable,
 	type VisibilityState,
 } from "@tanstack/react-table";
-import { Filter } from "lucide-react";
 import React from "react";
 import { TablePagination } from "@/components/table/table-pagination";
-import { Button } from "@/components/ui/button";
+import { Combobox } from "@/components/ui/combobox";
 import { SearchInput } from "@/components/ui/search-input";
 import { useGetTransactions } from "@/hooks/transactions/use-get-transactions";
 import { CreateTransactionSheet } from "../modals/create-transaction-sheet";
@@ -84,9 +83,18 @@ export function TransactionsTableContainer({
 						}
 					/>
 
-					<Button size="icon" variant="outline">
-						<Filter />
-					</Button>
+					<Combobox
+						items={[
+							{ label: "Todas", value: "" },
+							{ label: "Entradas", value: "INCOME" },
+							{ label: "Saídas", value: "EXPENSE" },
+						]}
+						className="w-[161px]"
+						entity="type"
+						translatedEntity="type"
+						placeholder="Filtrar por tipo"
+						onChange={(value) => table.getColumn("type")?.setFilterValue(value)}
+					/>
 
 					<CreateTransactionSheet />
 				</div>

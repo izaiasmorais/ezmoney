@@ -35,10 +35,14 @@ export function useGetTransactionsSummary() {
 			0
 		);
 
+		const bankAccountCount = bankAccounts.filter(
+			(account) => account.type === "BANK"
+		).length;
+
 		return {
 			balance: {
 				value: totalBalance,
-				count: transactions.length,
+				count: bankAccountCount,
 			},
 			availableLimit: {
 				value: availableLimit,

@@ -14,15 +14,6 @@ export function BudgetsSummary() {
 	return (
 		<div className="w-full flex gap-4">
 			<BudgetsSummaryCard
-				label="Faturas"
-				Icon={FileText}
-				value={summary.invoices.value}
-				count={summary.invoices.count}
-				singularDescription="fatura pendente"
-				pluralDescription="faturas pendentes"
-			/>
-
-			<BudgetsSummaryCard
 				label="Saldo Total"
 				Icon={Wallet}
 				value={summary.totalBalance.value}
@@ -41,11 +32,20 @@ export function BudgetsSummary() {
 			/>
 
 			<BudgetsSummaryCard
+				label="Faturas"
+				Icon={FileText}
+				value={summary.invoices.value}
+				count={summary.invoices.count}
+				singularDescription="fatura pendente"
+				pluralDescription="faturas pendentes"
+			/>
+
+			<BudgetsSummaryCard
 				label="Saldo Restante"
 				value={summary.remainingBalance.value}
 				count={summary.remainingBalance.count}
 				Icon={TrendingUp}
-				singularDescription="item"
+				customDescription="Estimados"
 			/>
 		</div>
 	);
