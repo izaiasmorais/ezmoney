@@ -122,11 +122,11 @@ export function RoundedPieChart() {
 								<ChartTooltipContent
 									nameKey="category"
 									labelKey="category"
-									formatter={(value) => [
+									formatter={(value) =>
 										`R$ ${Number(value).toLocaleString("pt-BR", {
 											minimumFractionDigits: 2,
-										})}`,
-									]}
+										})}`
+									}
 								/>
 							}
 						/>
