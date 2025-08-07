@@ -30,7 +30,10 @@ export const InvoicesTableColumns: InvoiceColumnDef[] = [
 	{
 		accessorKey: "totalInstallments",
 		header: ({ column }) => <TableSort column={column}>Parcelas</TableSort>,
-		cell: ({ row }) => <div>{row.getValue("totalInstallments")}</div>,
+		cell: ({ row }) =>
+		<div className="flex flex-col gap-1">
+			{row.getValue("totalInstallments")}
+		</div>,
 	},
 	{
 		accessorKey: "dueDate",

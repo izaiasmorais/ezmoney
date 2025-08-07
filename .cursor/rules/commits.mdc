@@ -1,0 +1,44 @@
+---
+alwaysApply: false
+---
+// Commit Pattern Rules for Cursor AI
+
+## Commit Message Format
+Always generate commit messages in English following this structure:
+
+### Pattern:
+`<type>: <description in English>. <action> #<issue_number>`
+
+### Types:
+- feat: new feature
+- fix: bug fix
+- chore: maintenance tasks
+- build: build system changes
+- refactor: code refactoring
+- docs: documentation changes
+- style: code style changes
+- test: test additions/modifications
+- perf: performance improvements
+- ci: CI/CD changes
+
+### Actions:
+- `closes #<number>` - when closing an issue
+- `fixes #<number>` - when fixing a bug issue
+- `#<number>` - when only referencing without closing
+
+### Examples:
+- `feat: add user authentication system. closes #123`
+- `fix: resolve login validation error. fixes #456`
+- `refactor: optimize database queries. #789`
+- `chore: update dependencies to latest versions. closes #101`
+
+### Instructions:
+1. Always write commit messages in English
+2. Use the issue type I specify (feat, fix, chore, etc.)
+3. Convert the issue name/description to English if provided in Portuguese
+4. Use the appropriate action based on my instruction:
+  - "fechar" or "close" → `closes #`
+  - "corrigir bug" or "fix bug" → `fixes #`
+  - "referenciar" or "reference" → `#`
+5. Keep descriptions concise and descriptive
+6. Use imperative mood (add, fix, update, etc.)

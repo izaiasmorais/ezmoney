@@ -84,9 +84,9 @@ export function InvoicesTableContainer({
 					<Combobox
 						items={[
 							{ label: "Todas", value: "" },
+							{ label: "Atrasada", value: "OVERDUE" },
+							{ label: "Paga", value: "PAID" },
 							{ label: "Pendente", value: "PENDING" },
-							{ label: "Pago", value: "PAID" },
-							{ label: "Vencida", value: "OVERDUE" },
 						]}
 						className="w-[161px]"
 						entity="status"
