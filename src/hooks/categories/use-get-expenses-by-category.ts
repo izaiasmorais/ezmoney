@@ -13,17 +13,17 @@ export const getExpensesByCategoryResponseSchema = z.array(
 	})
 );
 
-export type ExpensesByCategorie = z.infer<
-	typeof getExpensesByCategorieResponseSchema
+export type ExpensesByCategory = z.infer<
+	typeof getExpensesByCategoryResponseSchema
 >;
 
-type GetExpensesByCategorieResponse =
-	| HTTPSuccessResponse<ExpensesByCategorie>
+type GetExpensesByCategoryResponse =
+	| HTTPSuccessResponse<ExpensesByCategory>
 	| HTTPErrorResponse;
 
-export async function getExpensesByCategorie(): Promise<GetExpensesByCategorieResponse> {
+export async function getExpensesByCategory(): Promise<GetExpensesByCategoryResponse> {
 	try {
-		const response = await api.get<HTTPSuccessResponse<ExpensesByCategorie>>(
+		const response = await api.get<HTTPSuccessResponse<ExpensesByCategory>>(
 			"/categories/expenses"
 		);
 		return response.data;
