@@ -39,16 +39,16 @@ export async function getExpensesByCategory(): Promise<GetExpensesByCategoryResp
 	}
 }
 
-export function useGetExpensesByCategorie() {
-	const { data: result, isLoading: isLoadingGetExpensesByCategorie } = useQuery(
+export function useGetExpensesByCategory() {
+	const { data: result, isLoading: isLoadingGetExpensesByCategory } = useQuery(
 		{
-			queryKey: ["get-expenses-by-categorie"],
-			queryFn: () => getExpensesByCategorie(),
+			queryKey: ["get-expenses-by-category"],
+			queryFn: () => getExpensesByCategory(),
 		}
 	);
 
 	return {
-		expensesByCategorie: result?.success ? result.data : null,
-		isLoadingGetExpensesByCategorie,
+		expensesByCategory: result?.success ? result.data : null,
+		isLoadingGetExpensesByCategory,
 	};
 }
