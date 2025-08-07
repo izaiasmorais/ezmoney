@@ -16,15 +16,15 @@ import {
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useGetExpensesByCategorie } from "@/hooks/categories/use-get-expenses-by-category";
+import { useGetExpensesByCategory } from "@/hooks/categories/use-get-expenses-by-category";
 
 export const description = "Gráfico de pizza mostrando gastos por categoria";
 
 export function RoundedPieChart() {
-	const { expensesByCategorie, isLoadingGetExpensesByCategorie } =
-		useGetExpensesByCategorie();
+	const { expensesByCategory, isLoadingGetExpensesByCategory } =
+		useGetExpensesByCategory();
 
-	if (isLoadingGetExpensesByCategorie || !expensesByCategorie) {
+	if (isLoadingGetExpensesByCategory || !expensesByCategory) {
 		return (
 			<Card className="flex flex-col">
 				<CardHeader className="items-center pb-0">
@@ -41,13 +41,13 @@ export function RoundedPieChart() {
 		);
 	}
 
-	const chartData = expensesByCategorie.map((item) => ({
+	const chartData = expensesByCategory.map((item) => ({
 		category: item.category,
 		total: item.value,
 		fill: item.color,
 	}));
 
-	const chartConfig = expensesByCategorie.reduce(
+	const chartConfig = expensesByCategory.reduce(
 		(config, item) => {
 			config[item.category] = {
 				label: item.category,
