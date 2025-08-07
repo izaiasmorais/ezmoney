@@ -4,7 +4,7 @@ import { z } from "zod";
 import type { HTTPErrorResponse, HTTPSuccessResponse } from "@/@types/http";
 import { api } from "@/lib/axios";
 
-export const getExpensesByCategorieResponseSchema = z.array(
+export const getExpensesByCategoryResponseSchema = z.array(
 	z.object({
 		id: z.string(),
 		category: z.string(),
