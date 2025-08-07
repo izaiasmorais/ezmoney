@@ -35,21 +35,29 @@ export function useGetBudgetsSummary() {
 		);
 
 		return {
-			invoices: {
-				value: totalInvoicesValue,
-				count: pendingInvoices.length + overdueInvoices.length,
+			income: {
+				value: transactionsSummary.income.value,
+				count: transactionsSummary.income.count,
+			},
+			expense: {
+				value: transactionsSummary.expense.value,
+				count: transactionsSummary.expense.count,
 			},
 			totalBalance: {
 				value: totalBalance,
 				count: totalBankAccount.length,
 			},
-			availableLimit: {
-				value: availableLimit,
-				count: transactionsSummary.availableLimit.count,
+			invoices: {
+				value: totalInvoicesValue,
+				count: pendingInvoices.length + overdueInvoices.length,
 			},
 			remainingBalance: {
 				value: remainingBalance,
 				count: 1,
+			},
+			availableLimit: {
+				value: availableLimit,
+				count: transactionsSummary.availableLimit.count,
 			},
 		};
 	}, [transactionsSummary, invoices, bankAccounts]);

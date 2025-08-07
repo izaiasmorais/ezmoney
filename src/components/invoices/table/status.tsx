@@ -24,9 +24,9 @@ function getStatusLabel(status: string) {
 		case "PENDING":
 			return "Pendente";
 		case "PAID":
-			return "Pago";
+			return "Paga";
 		case "OVERDUE":
-			return "Vencido";
+			return "Atrasada";
 		case "DRAFT":
 			return "Rascunho";
 		default:

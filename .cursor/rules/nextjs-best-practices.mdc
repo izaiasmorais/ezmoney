@@ -1,0 +1,100 @@
+---
+description: Best practices for Next.js applications and routing
+alwaysApply: false
+---
+
+- Use the App Router for better performance and organization.
+- Implement proper error boundaries to handle errors gracefully.
+- Utilize dynamic routing for better SEO and user experience.
+- Optimize images and assets using Next.js built-in features.
+
+---
+
+name: react-best-practices.mdc
+description: Best practices for React applications
+globs: \*_/_.{ts,tsx,js,jsx}
+
+---
+
+- Use functional components and hooks for cleaner code.
+- Implement context API for global state management.
+- Optimize performance with React.memo and useCallback.
+- Ensure accessibility by following ARIA guidelines.
+
+---
+
+name: react-query-best-practices.mdc
+description: Best practices for data fetching with React Query
+globs: \*_/_.{ts,tsx}
+
+---
+
+- Use query keys to uniquely identify queries for caching.
+- Implement pagination and infinite queries for large datasets.
+- Use the `useMutation` hook for creating/updating data.
+- Handle loading and error states in your UI effectively.
+
+---
+
+name: react-hook-form-best-practices.mdc
+description: Best practices for form handling with React Hook Form
+globs: \*_/_.{ts,tsx}
+
+---
+
+- Use `useForm` for managing form state and validation.
+- Implement schema validation with Zod for type safety.
+- Leverage `Controller` for integrating with UI libraries.
+- Optimize performance by using `shouldUnregister` for dynamic fields.
+
+---
+
+name: zod-best-practices.mdc
+description: Best practices for schema validation with Zod
+globs: \*_/_.{ts,tsx}
+
+---
+
+- Use Zod for type-safe validation schemas.
+- Leverage `.refine()` for custom validation logic.
+- Utilize `.merge()` to combine multiple schemas.
+- Implement error handling to provide user-friendly feedback.
+
+---
+
+name: tailwindcss-best-practices.mdc
+description: Best practices for styling with Tailwind CSS
+globs: \*_/_.{ts,tsx,css}
+
+---
+
+- Use utility-first classes for rapid UI development.
+- Implement responsive design using Tailwind's responsive utilities.
+- Create custom components with Tailwind's `@apply` directive.
+- Optimize CSS by purging unused styles in production.
+
+---
+
+name: zustand-best-practices.mdc
+description: Best practices for state management with Zustand
+globs: \*_/_.{ts,tsx}
+
+---
+
+- Use Zustand for lightweight global state management.
+- Create separate stores for different parts of your application.
+- Leverage middleware for logging and persisting state.
+- Use selectors to optimize component re-renders.
+
+---
+
+name: radix-ui-best-practices.mdc
+description: Best practices for UI components with Radix UI
+globs: \*_/_.{ts,tsx}
+
+---
+
+- Use Radix components for accessible and customizable UI elements.
+- Implement state management for controlled components.
+- Follow the design system for consistent styling and behavior.
+- Ensure keyboard navigation and screen reader support for all components.
